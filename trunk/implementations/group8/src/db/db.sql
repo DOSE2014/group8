@@ -92,18 +92,5 @@ CREATE TABLE `Backlog` (
 	`description`	TEXT,
 	`project`	INTEGER
 );
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
+
 COMMIT;
