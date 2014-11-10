@@ -41,5 +41,9 @@
 		<cluster name="pdt" location=".\" recursive="true"/>
 	</target>
 	<target name="pdt" extends="pdt_nino">
+		<library name="time" location="$ISE_LIBRARY\library\time\time-safe.ecf"/>
+	</target>
+	<target name="new_1">
+		<library name="time" location="$ISE_LIBRARY\library\time\time-safe.ecf"/>
 	</target>
 </system>
