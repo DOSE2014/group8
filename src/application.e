@@ -1,6 +1,8 @@
-note
-	description : "The main class of the demo. Sets up the router and instanciates the controllers and database."
-	author		: "hce"
+﻿note
+	project     : "Professional Developer’s Tool - DOSE 2014"
+	description : "The main class of the project. It initializes the webframework and db object."
+	author		: "Milan3 Team - Politecnico di Milano"
+	email       : "se-dose-group8@lists.inf.ethz.ch"
 
 class
 	APPLICATION
@@ -35,7 +37,7 @@ feature {NONE} -- Initialization
 	state : STATE
 	------------- REMOVE PREVIOUS, ONLY FOR TESTING COMPILATION ----------------
 	----------------------------------------------------------------------------
-	
+
 	path_to_db_file: STRING
 		-- calculates the path to the demo.db file, based on the location of the .ecf file
 		-- Note: we used to have a fixed path here but this way it should work out-of-box for everyone
