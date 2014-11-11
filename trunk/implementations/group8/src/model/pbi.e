@@ -19,7 +19,7 @@ feature{NONE}
 	type: PBITYPE
 	priority: INTEGER
 	dueDate: DATE
-	
+
 	make(id: INTEGER; name, description: STRING; backlog: BACKLOG; sprintlog: SPRINTLOG; type: PBITYPE; priority: INTEGER; dueDate: DATE)
 		do
 			Current.id := id
@@ -31,7 +31,7 @@ feature{NONE}
 			Current.priority := priority
 			Current.dueDate := dueDate
 		end
-feature	
+feature
 	getId: INTEGER
 		do
 			Result := Current.id
