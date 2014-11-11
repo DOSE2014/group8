@@ -20,81 +20,82 @@ feature{NONE}
 	state: STATE
 	pbi: PBI
 
-	make(id: INTEGER; name, description: STRING; sprintlog: SPRINTLOG; developer: USER; points: INTEGER; state: STATE; pbi: PBI)
+feature
+	make(i: INTEGER; n, desc: STRING; s: SPRINTLOG; dev: USER; pts: INTEGER; st: STATE; p: PBI)
 	do
-		Current.id := id
-		Current.name := name
-		Current.description := description
-		Current.sprintlog := sprintlog
-		Current.developer := developer
-		Current.points := points
-		Current.state := state
-		Current.pbi := pbi
+		id := i
+		name := n
+		description := desc
+		sprintlog := s
+		developer := dev
+		points := pts
+		state := st
+		pbi := p
 	end
 
 feature
 	getId: INTEGER
 		do
-			Result := Current.id
+			Result := id
 		end
 	setId(i: INTEGER)
 		do
-			Current.id := i
+			id := i
 		end
 	getName: STRING
 		do
-			Result := Current.name
+			Result := name
 		end
 	setName(n: STRING)
 		do
-			Current.name := n
+			name := n
 		end
 	getDescription: STRING
 		do
-			Result := Current.description
+			Result := description
 		end
 	setDescription(d: STRING)
 		do
-			Current.description := d
+			description := d
 		end
 	getSprintlog: SPRINTLOG
 		do
-			Result := Current.sprintlog
+			Result := sprintlog
 		end
 	setSprintlog(s: SPRINTLOG)
 		do
-			Current.sprintlog := s
+			sprintlog := s
 		end
 	getDeveloper: USER
 		do
-			Result := Current.developer
+			Result := developer
 		end
 	setDeveloper(d: USER)
 		do
-			Current.developer := d
+			developer := d
 		end
 	getPoints: INTEGER
 		do
-			Result := Current.points
+			Result := points
 		end
 	setPoints(p: INTEGER)
 		do
-			Current.points := p
+			points := p
 		end
 	getState: STATE
 		do
-			Result := Current.state
+			Result := state
 		end
 	setState(s: STATE)
 		do
-			Current.state := s
+			state := s
 		end
 	getPBI: PBI
 		do
-			Result := Current.pbi
+			Result := pbi
 		end
 	setPBI(p: PBI)
 		do
-			Current.pbi := p
+			pbi := p
 		end
 end

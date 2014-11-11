@@ -16,9 +16,10 @@ feature{NONE}
 	dbInserStatement: SQLITE_INSERT_STATEMENT
 	dbModifyStatement: SQLITE_MODIFY_STATEMENT
 
+feature
 	make(s: SQLITE_DATABASE)
 		do
-			s := db
+			db := s
 		end
 
 feature
