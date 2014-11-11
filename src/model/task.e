@@ -19,8 +19,8 @@ feature{NONE}
 	points: INTEGER
 	state: STATE
 	pbi: PBI
-	
-	make(id: INTEGER; name, description: STRING; sprintlog: SPRINTLOG; developer: USER; points: INTEGER, state: STATE; pbi: PBI)
+
+	make(id: INTEGER; name, description: STRING; sprintlog: SPRINTLOG; developer: USER; points: INTEGER; state: STATE; pbi: PBI)
 	do
 		Current.id := id
 		Current.name := name
@@ -38,7 +38,7 @@ feature
 			Result := Current.id
 		end
 	setId(i: INTEGER)
-		do 
+		do
 			Current.id := i
 		end
 	getName: STRING

@@ -25,6 +25,17 @@ create
 
 feature {NONE} -- Initialization
 
+	----------------------------------------------------------------------------
+	------------- REMOVE THESE, ONLY FOR TESTING COMPILATION -------------------
+	backlog : BACKLOG
+	pbi : PBI
+	sprintlog : SPRINTLOG
+	task : TASK
+	pdtdb : PDT_DB
+	state : STATE
+	------------- REMOVE PREVIOUS, ONLY FOR TESTING COMPILATION ----------------
+	----------------------------------------------------------------------------
+	
 	path_to_db_file: STRING
 		-- calculates the path to the demo.db file, based on the location of the .ecf file
 		-- Note: we used to have a fixed path here but this way it should work out-of-box for everyone

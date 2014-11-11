@@ -14,7 +14,7 @@ feature{NONE}
 	id: INTEGER
 	description: STRING
 	project: PROJECT
-	
+
 	make(id: INTEGER; description: STRING; project: PROJECT)
 		do
 			Current.id := id
