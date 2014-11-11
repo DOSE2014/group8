@@ -24,93 +24,94 @@ feature{NONE}
 	organization: STRING
 	programmingLanguages: STRING[]
 
-	make(		id: INTEGER;
-			firstName, lastName: STRING;
-			sex: SEX;
-			dateOfBirth: DATE;
-			country, timezone, email, password: STRING;
-			userType: USERTYPE;
-			organization: STRING;
-			programmingLanguages: STRING[]
+feature
+	make(		i: INTEGER;
+			fName, lName: STRING;
+			s: SEX;
+			doB: DATE;
+			cntr, tmzn, eml, pass: STRING;
+			usrtp: USERTYPE;
+			org: STRING;
+			prgmLangs: STRING[]
 			)
 		do
-			Current.id := id
-			Current.firstName := firstName
-			Current.lastName := lastName
-			Current.sex := sex
-			Current.dateOfBirth := dateOfBirth
-			Current.country := country
-			Current.timezone := timezone
-			Current.email := email
-			Current.password := password
-			Current.organization := organization
-			Current.programmingLanguages := programmingLanguages
+			id := i
+			firstName := fName
+			lastName := lName
+			sex := s
+			dateOfBirth := doB
+			country := cntr
+			timezone := tmzn
+			email := eml
+			password := pass
+			organization := org
+			programmingLanguages := prgmLangs
 		end
 
 feature
 	getId: INTEGER
 		do
-			Result := Current.id
+			Result := id
 		end
 	setId(i: INTEGER)
 		do
-			Current.id := i
+			id := i
 		end
 	getFirstName: STRING
 		do
-			Result := Current.firstName
+			Result := firstName
 		end
 	setFirstName(s: STRING)
 		do
-			Current.firstName := s
+			firstName := s
 		end
 	getLastName: STRING
 		do
-			Result := Current.lastName
+			Result := lastName
 		end
 	setLastName(s: STRING)
 		do
-			Current.lastName := s
+			lastName := s
 		end
 	getSex: SEX
 		do
-			Result := Current.sex
+			Result := sex
 		end
 	setSex(s: SEX)
 		do
-			Current.sex := s
+			sex := s
 		end
 	getDateOfBirth: DATE
 		do
-			Result := Current.dateOfBirth
+			Result := dateOfBirth
 		end
 	setDateOfBirth(d: DATE)
 		do
-			Current.dateOfBirth := d
+			dateOfBirth := d
 		end
 	getCountry: STRING
 		do
-			Result := Current.country
+			Result := country
 		end
 	setCountry(c: STRING)
 		do
-			Current.country := c
+			country := c
 		end
 	getTimezone: STRING
 		do
-			Result := Current.timezone
+			Result := timezone
 		end
 	setTimezone(t: STRING)
 		do
-			Current.timezone := t
+			timezone := t
 		end
 	getEmail: STRING
 		do
-			Result := Current.email
+			Result := email
 		end
 	setEmail(e: STRING)
 		do
-			Current.email := e
+			email := e
 		end
 	getPassword: STRING
 		do
@@ -122,19 +123,18 @@ feature
 		end
 	getOrganization: STRING
 		do
-			Result := Current.organization
+			Result := organization
 		end
 	setOrganization(o: STRING)
 		do
-			Current.organization := o
+			organization := o
 		end
 	getProgrammingLanguages: STRING[]
 		do
-			Result.make_array
-			Result := Current.programmingLanguages
+			Result := programmingLanguages
 		end
 	setProgrammingLanguages(p: STRING[])
 		do
-			Current.programmingLanguages := p
+			programmingLanguages := p
 		end
 end

@@ -15,35 +15,36 @@ feature{NONE}
 	description: STRING
 	project: PROJECT
 
-	make(id: INTEGER; description: STRING; project: PROJECT)
+feature
+	make(i: INTEGER; desc: STRING; proj: PROJECT)
 		do
-			Current.id := id
-			Current.description := description
-			Current.project := project
+			id := i
+			description := desc
+			project := proj
 		end
 feature
 	getProject: PROJECT
 		do
-			Result := Current.project
+			Result := project
 		end
 	setProject(p: PROJECT)
 		do
-			Current.project := p
+			project := p
 		end
 	getId: INTEGER
 		do
-			Result := Current.id
+			Result := id
 		end
-	setId(id: INTEGER)
+	setId(i: INTEGER)
 		do
-			Current.id := id
+			id := i
 		end
 	getDescription: STRING
 		do
-			Result := Current.description
+			Result := description
 		end
 	setDescription(s: STRING)
 		do
-			Current.description := s
+			description := s
 		end
 end

@@ -18,55 +18,56 @@ feature{NONE}
 	startDate: DATE
 	endDate: DATE
 
-	make(id: INTEGER; name, description: STRING; backlog: BACKLOG; startDate, endDate: DATE)
+feature
+	make(i: INTEGER; n, desc: STRING; b: BACKLOG; s, e: DATE)
 		do
-			Current.id := id
-			Current.name := name
-			Current.description := description
-			Current.backlog := backlog
-			Current.startDate := startDate
-			Current.endDate := endDate
+			id := i
+			name := n
+			description := desc
+			backlog := b
+			startDate := s
+			endDate := e
 		end
 
 feature
 	getId: INTEGER
 		do
-			Result := Current.id
+			Result := id
 		end
 	setId(i: INTEGER)
 		do
-			Current.id := i
+			id := i
 		end
 	getDescription: STRING
 		do
-			Result := Current.description
+			Result := description
 		end
 	setDescription(s: STRING)
 		do
-			Current.description := s
+			description := s
 		end
 	getBacklog: BACKLOG
 		do
-			Result := Current.backlog
+			Result := backlog
 		end
 	setBacklog(b: BACKLOG)
 		do
-			Current.backlog := b
+			backlog := b
 		end
 	getStartDate: DATE
 		do
-			Result := Current.startDate
+			Result := startDate
 		end
 	setStartDate(d: DATE)
 		do
-			Current.startDate := d
+			startDate := d
 		end
 	getEndDate: DATE
 		do
-			Result := Current.endDate
+			Result := endDate
 		end
 	setEndDate(d: DATE)
 		do
-			Current.endDate := d
+			endDate := d
 		end
 end

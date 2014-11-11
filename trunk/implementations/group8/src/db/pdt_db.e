@@ -13,12 +13,13 @@ feature {NONE}
 	db: SQLITE_DATABASE
 	userDBHandler: USER_DB_HANDLER
 
+feature
 	make(pathToDB: STRING)
 		require
 			validPath: pathToDB /= Void and not pathToDB.is_empty
 		do
 			create db.make_open_read_write(pathToDB)
-			userDBHandler.make(Current)
+			userDBHandler.make(db)
 		end
 
 	feature {NONE} -- Format helpers

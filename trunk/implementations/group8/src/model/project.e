@@ -17,15 +17,16 @@ feature{NONE}
 	manager: USER
 	stakeholder: USER
 	creationDate: DATE
-	
-	make(id: INTEGER; name, description: STRING; manager, stakeholder: USER; creationDate: DATE)
+
+feature
+	make(i: INTEGER; n, desc: STRING; mgr, st: USER; cr: DATE)
 		do
-			Current.id := id
-			Current.name := name
-			Current.description := description
-			Current.manager := manager
-			Current.stakeholder := stakeholder
-			Current.creationDate := creationDate
+			id := i
+			name := n
+			description := desc
+			manager := mgr
+			stakeholder := st
+			creationDate := cr
 		end
 
 feature
@@ -36,39 +37,39 @@ feature
 	setId(i: INTEGER)
 		do
 		end
-	
+
 	getName: STRING
 		do
 		end
-	
+
 	setName(s: STRING)
 		do
 		end
-	
+
 	getDescription: STRING
 		do
 		end
-	
+
 	setDescription(s: STRING)
 		do
 		end
-	
+
 	getManager: USER
 		do
 		end
-	
+
 	setManager(u: USER)
 		do
 		end
-	
+
 	getStakeholder: USER
 		do
 		end
-	
+
 	setStakeholder(u: USER)
 		do
 		end
-	
+
 	getCreationDate: DATE
 		do
 		end

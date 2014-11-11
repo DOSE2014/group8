@@ -20,80 +20,81 @@ feature{NONE}
 	priority: INTEGER
 	dueDate: DATE
 
-	make(id: INTEGER; name, description: STRING; backlog: BACKLOG; sprintlog: SPRINTLOG; type: PBITYPE; priority: INTEGER; dueDate: DATE)
+feature
+	make(i: INTEGER; n, desc: STRING; b: BACKLOG; s: SPRINTLOG; t: PBITYPE; p: INTEGER; d: DATE)
 		do
-			Current.id := id
-			Current.name := name
-			Current.description := description
-			Current.backlog := backlog
-			Current.sprintlog := sprintlog
-			Current.type := type
-			Current.priority := priority
-			Current.dueDate := dueDate
+			id := i
+			name := n
+			description := desc
+			backlog := b
+			sprintlog := s
+			type := t
+			priority := p
+			dueDate := d
 		end
 feature
 	getId: INTEGER
 		do
-			Result := Current.id
+			Result := id
 		end
 	setId(i: INTEGER)
 		do
-			Current.id := i
+			id := i
 		end
 	getName: STRING
 		do
-			Result := Current.name
+			Result := name
 		end
 	setName(s: STRING)
 		do
-			Current.name := s
+			name := s
 		end
 	getDescription: STRING
 		do
-			Result := Current.description
+			Result := description
 		end
 	setDescription(s: STRING)
 		do
-			Current.description := s
+			description := s
 		end
 	getBacklog: BACKLOG
 		do
-			Result := Current.backlog
+			Result := backlog
 		end
 	setBacklog(b: BACKLOG)
 		do
-			Current.backlog := b
+			backlog := b
 		end
 	getSprintlog: SPRINTLOG
 		do
-			Result := Current.sprintlog
+			Result := sprintlog
 		end
 	setSprintlog(s: SPRINTLOG)
 		do
-			Current.sprintlog := s
+			sprintlog := s
 		end
 	getType: PBITYPE
 		do
-			Result := Current.type
+			Result := type
 		end
 	setType(t: PBITYPE)
 		do
-			Current.type := t
+			type := t
 		end
 	getPriority: INTEGER
 		do
-			Result := Current.priority
+			Result := priority
 		end
 	setPriority(p: INTEGER)
 		do
-			Current.priority := p
+			priority := p
 		end
 	getDueDate: DATE
 		do
-			Result := Current.dueDate
+			Result := dueDate
 		end
 	setDueDate(d: DATE)
 		do
-			Current.dueDate := d
+			dueDate := d
 		end
 end
