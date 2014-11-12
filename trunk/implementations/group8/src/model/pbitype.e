@@ -1,6 +1,7 @@
-class 
+class
 	PBITYPE
 feature
-	typea: PBITYPE once create Result end
-	typeb: PBITYPE once create Result end
+	requirement: PBITYPE once create Result end
+	nonFunctionalRequirement: PBITYPE once create Result end
+	bugFix: PBITYPE	once create Result end
 end

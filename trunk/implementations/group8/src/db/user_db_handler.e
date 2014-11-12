@@ -16,6 +16,18 @@ feature{NONE}
 	dbInserStatement: SQLITE_INSERT_STATEMENT
 	dbModifyStatement: SQLITE_MODIFY_STATEMENT
 
+	genUser(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: USER): BOOLEAN
+		local
+			i: NATURAL
+		do
+			from i := 1
+			until i > numColumns
+			loop
+				print("Row " + i.out + ": " + row.string_value(i) + "%N")
+				i := i + 1
+			end
+			Result := false
+		end
 feature
 	make(s: SQLITE_DATABASE)
 		do
@@ -23,17 +35,11 @@ feature
 		end
 
 feature
-	getUsers: USER[]
+	getUser(id: INTEGER): USER
 		do
-		end
-	getUser(id: INTEGER)
-		do
-		end
-	addUser(id: INTEGER;
-			firstName, lastName: STRING; sex: SEX; dateOfBirth: DATE;
-			country, timezone, email, password: STRING;
-			userType: USERTYPE; organization: STRING; programmingLanguages: STRING[])
-		do
+			create Result.make_default
+			create dbQueryStatement.make ("SELECT * FROM User WHERE id=" + id.out + ";", db)
+			dbQueryStatement.execute (agent genUser(?, 11, Result))
 		end
 	deleteUser(id: INTEGER)
 		do

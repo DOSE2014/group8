@@ -42,7 +42,7 @@ feature {NONE} -- Initialization
 		-- calculates the path to the demo.db file, based on the location of the .ecf file
 		-- Note: we used to have a fixed path here but this way it should work out-of-box for everyone
 		once
-			Result := ".." + Operating_environment.directory_separator.out + "demo.db"
+			Result := ".." + Operating_environment.directory_separator.out + "pdt.db"
 		end
 
 	path_to_www_folder: STRING
@@ -58,7 +58,8 @@ feature {NONE} -- Initialization
 	initialize
 			-- Initialize current service.
 		do
-
+			create pdtdb.make (path_to_db_file)
+			pdtdb.getUser(1)
 		end
 
 feature -- Basic operations
