@@ -8,7 +8,9 @@ class
 	USER
 
 create
-	make
+	make,
+	make_without_langs,
+	make_default
 
 feature{NONE}
 	id: INTEGER
@@ -23,9 +25,11 @@ feature{NONE}
 	userType: USERTYPE
 	organization: STRING
 	programmingLanguages: SET[STRING]
+	languages: SET[STRING]
 
 feature
-	make(		i: INTEGER;
+	make(
+			i: INTEGER;
 			fName, lName: STRING;
 			s: SEX;
 			doB: DATE;
@@ -33,6 +37,7 @@ feature
 			usrtp: USERTYPE;
 			org: STRING;
 			prgmLangs: SET[STRING]
+			langs: SET[STRING]
 			)
 		do
 			id := i
@@ -46,6 +51,33 @@ feature
 			password := passHash(pass)
 			organization := org
 			programmingLanguages := prgmLangs
+			languages := langs
+		end
+
+	make_without_langs(
+				i: INTEGER;
+				fName, lName: STRING;
+				s: SEX;
+				doB: DATE;
+				cntr, tmzn, eml, pass: STRING;
+				usrtp: USERTYPE;
+				org: STRING;
+				)
+		do
+			id := i
+			firstName := fName
+			lastName := lName
+			sex := s
+			dateOfBirth := doB
+			country := cntr
+			timezone := tmzn
+			email := eml
+			password := passHash(pass)
+			organization := org
+		end
+
+	make_default
+		do
 		end
 
 feature
