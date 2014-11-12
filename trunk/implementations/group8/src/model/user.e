@@ -22,7 +22,7 @@ feature{NONE}
 	password: STRING
 	userType: USERTYPE
 	organization: STRING
-	programmingLanguages: STRING[]
+	programmingLanguages: SET[STRING]
 
 feature
 	make(		i: INTEGER;
@@ -32,7 +32,7 @@ feature
 			cntr, tmzn, eml, pass: STRING;
 			usrtp: USERTYPE;
 			org: STRING;
-			prgmLangs: STRING[]
+			prgmLangs: SET[STRING]
 			)
 		do
 			id := i
@@ -43,7 +43,7 @@ feature
 			country := cntr
 			timezone := tmzn
 			email := eml
-			password := pass
+			password := passHash(pass)
 			organization := org
 			programmingLanguages := prgmLangs
 		end
@@ -113,13 +113,31 @@ feature
 		do
 			email := e
 		end
-	getPassword: STRING
+	getPasswordHash: STRING
 		do
-			--Decryption stuff?
+			-- Return hash of the string
+			Result := password
 		end
-	setPassword(p: STRING)
+
+	checkPassword(p : STRING) : BOOLEAN
 		do
-			--Encryption stuff?
+			Result := password = passHash(p)
+		end
+
+	setPassword(p: STRING)
+			-- convert immediatly the password to hash
+		do
+			password := passHash(p)
+		end
+
+	passHash(p : STRING) : STRING
+		local
+			hashEngine : SHA1
+		do
+			-- Convert a string to SHA1 hash
+			create hashEngine.make
+			hashEngine.update_from_string(p)
+			Result := hashEngine.digest_as_string
 		end
 	getOrganization: STRING
 		do
@@ -129,11 +147,11 @@ feature
 		do
 			organization := o
 		end
-	getProgrammingLanguages: STRING[]
+	getProgrammingLanguages: SET[STRING]
 		do
 			Result := programmingLanguages
 		end
-	setProgrammingLanguages(p: STRING[])
+	setProgrammingLanguages(p: SET[STRING])
 		do
 			programmingLanguages := p
 		end

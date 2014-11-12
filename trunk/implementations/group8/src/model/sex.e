@@ -2,6 +2,6 @@ class
 	SEX
 
 feature
-	male: SEX once create Result end
-	female: SEX once create Result end
+	male: INTEGER is once Result := 1 end
+	female: INTEGER is once Result := 0 end
 end
