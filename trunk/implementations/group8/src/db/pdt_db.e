@@ -15,13 +15,14 @@ feature {NONE}
 
 feature
 	make(pathToDB: STRING)
-		require
-			validPath: pathToDB /= Void and not pathToDB.is_empty
+		--require
+		--	validPath: pathToDB /= Void and not pathToDB.is_empty
 		do
 			print("pathToDB: " + pathToDB)
+
 			create db.make_open_read_write(pathToDB)
 			print("Am here")
-			userDBHandler.make(db)
+			create userDBHandler.make(db)
 		end
 
 	feature {NONE} -- Format helpers
