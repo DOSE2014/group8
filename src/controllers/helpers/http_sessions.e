@@ -20,7 +20,7 @@ feature
 	session_cookie_name : STRING once Result := "_pdt_session_id_" end
 
 feature{NONE}
-	ec : EIFFEL_CONVERSION
+	ec : EIFFEL_CONVERSION once create Result end
 
 feature
 

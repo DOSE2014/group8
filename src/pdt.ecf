@@ -25,6 +25,7 @@
 		</option>
 		<library name="default_nino" location="$ISE_LIBRARY\contrib\library\web\framework\ewf\wsf\default\nino.ecf"/>
 		<cluster name="pdt" location=".\" recursive="true"/>
+
 	</target>
 	<target name="pdt_cgi" extends="common">
 		<root class="APPLICATION" feature="make_and_launch"/>
