@@ -35,6 +35,7 @@ feature {NONE} -- Initialization
 	task : TASK
 	pdtdb : PDT_DB
 	state : STATE
+	ra : REST_ACCOUNT
 	------------- REMOVE PREVIOUS, ONLY FOR TESTING COMPILATION ----------------
 	----------------------------------------------------------------------------
 

@@ -16,7 +16,7 @@ feature{NONE}
 	id: INTEGER
 	firstName: STRING
 	lastName: STRING
-	sex: SEX
+	sex: INTEGER -- See SEX class
 	dateOfBirth: DATE
 	country: STRING
 	timezone: STRING
@@ -31,7 +31,7 @@ feature
 	make(
 			i: INTEGER;
 			fName, lName: STRING;
-			s: SEX;
+			s: INTEGER;
 			doB: DATE;
 			cntr, tmzn, eml, pass: STRING;
 			usrtp: USERTYPE;
@@ -39,6 +39,8 @@ feature
 			prgmLangs: SET[STRING]
 			langs: SET[STRING]
 			)
+		require
+			s={SEX}.male or s={SEX}.female
 		do
 			id := i
 			firstName := fName
@@ -57,7 +59,7 @@ feature
 	make_without_langs(
 				i: INTEGER;
 				fName, lName: STRING;
-				s: SEX;
+				s: INTEGER;
 				doB: DATE;
 				cntr, tmzn, eml, pass: STRING;
 				usrtp: USERTYPE;
@@ -105,11 +107,11 @@ feature
 		do
 			lastName := s
 		end
-	getSex: SEX
+	getSex: INTEGER
 		do
 			Result := sex
 		end
-	setSex(s: SEX)
+	setSex(s: INTEGER)
 		do
 			sex := s
 		end
