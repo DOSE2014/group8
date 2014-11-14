@@ -35,7 +35,7 @@ feature {NONE} -- Initialization
 	task : TASK
 	pdtdb : PDT_DB
 	state : STATE
-	ra : REST_ACCOUNT
+	rest_account : REST_ACCOUNT
 	------------- REMOVE PREVIOUS, ONLY FOR TESTING COMPILATION ----------------
 	----------------------------------------------------------------------------
 
@@ -59,8 +59,16 @@ feature {NONE} -- Initialization
 	initialize
 			-- Initialize current service.
 		do
+			-- Database initialization
 			create pdtdb.make (path_to_db_file)
-			pdtdb.getUser(1)
+
+			-- Network initialization
+			create session_manager.make
+			create rest_account.make(session_manager)
+
+			set_service_option ("port", 8080)
+			initialize_router
+
 		end
 
 feature -- Basic operations
@@ -69,7 +77,7 @@ feature -- Basic operations
 		local
 			fhdl: WSF_FILE_SYSTEM_HANDLER
 		do
-
+			map_uri_template_agent_with_request_methods ("/test", agent rest_account.account_info, router.methods_get)
 		end
 
 end

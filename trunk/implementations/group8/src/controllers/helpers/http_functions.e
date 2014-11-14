@@ -36,6 +36,8 @@ feature
 	end
 
 	send(res : WSF_RESPONSE; text : STRING)
+	obsolete
+		"Use JSON method instead of this."
 	do
 		res.set_status_code (200)
 		res.header.put_content_type_text_plain
@@ -44,6 +46,8 @@ feature
 	end
 
 	send_error(res : WSF_RESPONSE; text : STRING; error : INTEGER)
+	obsolete
+		"Use JSON method instead of this."
 	require
 		error = 500 or (error >= 402 and error <= 405)
 	do

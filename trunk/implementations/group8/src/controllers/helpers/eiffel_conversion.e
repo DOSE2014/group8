@@ -27,6 +27,7 @@ feature
 		end
 	end
 
+
 	any_to_wsf_string(var : ANY) : WSF_STRING
 	do
 		if attached {WSF_STRING} var as conversion then
