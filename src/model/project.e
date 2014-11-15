@@ -32,49 +32,61 @@ feature
 feature
 	getId: INTEGER
 		do
+			Result:=id
 		end
 
 	setId(i: INTEGER)
 		do
+			id:=i
 		end
 
 	getName: STRING
 		do
+			Result:=name
 		end
 
 	setName(s: STRING)
 		do
+			name:= s
 		end
 
 	getDescription: STRING
 		do
+			Result:= description
 		end
 
 	setDescription(s: STRING)
 		do
+			description:=s
 		end
 
 	getManager: USER
 		do
+			Result:=manager
 		end
 
 	setManager(u: USER)
 		do
+			manager:=u
 		end
 
 	getStakeholder: USER
 		do
+			Result:=stakeholder
 		end
 
 	setStakeholder(u: USER)
 		do
+			stakeholder:=u
 		end
 
 	getCreationDate: DATE
 		do
+			Result:=creationDate
 		end
 
 	setCreationDate(d: DATE)
 		do
+			creationDate:=d
 		end
 end
