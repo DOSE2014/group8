@@ -17,27 +17,27 @@ feature{NONE}
 	firstName: STRING
 	lastName: STRING
 	sex: INTEGER -- See SEX class
-	dateOfBirth: DATE
+	dateOfBirth: DATE_TIME
 	country: STRING
 	timezone: STRING
 	email: STRING
 	password: STRING
-	userType: USERTYPE
+	userType: INTEGER -- See USERTYPE class
 	organization: STRING
-	programmingLanguages: SET[STRING]
-	languages: SET[STRING]
+	programmingLanguages: LINKED_SET[PROGRAMMING_LANGUAGE]
+	languages: LINKED_SET[LANGUAGE]
 
 feature
 	make(
 			i: INTEGER;
 			fName, lName: STRING;
 			s: INTEGER;
-			doB: DATE;
+			doB: DATE_TIME;
 			cntr, tmzn, eml, pass: STRING;
-			usrtp: USERTYPE;
+			usrtp: INTEGER;
 			org: STRING;
-			prgmLangs: SET[STRING]
-			langs: SET[STRING]
+			prgmLangs: LINKED_SET[PROGRAMMING_LANGUAGE]
+			langs: LINKED_SET[LANGUAGE]
 			)
 		require
 			s={SEX}.male or s={SEX}.female
@@ -51,6 +51,7 @@ feature
 			timezone := tmzn
 			email := eml
 			password := passHash(pass)
+			usertype := usrtp
 			organization := org
 			programmingLanguages := prgmLangs
 			languages := langs
@@ -60,9 +61,9 @@ feature
 				i: INTEGER;
 				fName, lName: STRING;
 				s: INTEGER;
-				doB: DATE;
+				doB: DATE_TIME;
 				cntr, tmzn, eml, pass: STRING;
-				usrtp: USERTYPE;
+				usrtp: INTEGER;
 				org: STRING;
 				)
 		do
@@ -75,6 +76,7 @@ feature
 			timezone := tmzn
 			email := eml
 			password := passHash(pass)
+			usertype := usrtp
 			organization := org
 		end
 
@@ -115,11 +117,11 @@ feature
 		do
 			sex := s
 		end
-	getDateOfBirth: DATE
+	getDateOfBirth: DATE_TIME
 		do
 			Result := dateOfBirth
 		end
-	setDateOfBirth(d: DATE)
+	setDateOfBirth(d: DATE_TIME)
 		do
 			dateOfBirth := d
 		end
@@ -173,6 +175,14 @@ feature
 			hashEngine.update_from_string(p)
 			Result := hashEngine.digest_as_string
 		end
+	getUserType: INTEGER
+		do
+			Result := usertype
+		end
+	setUserType(u: INTEGER)
+		do
+			usertype := u
+		end
 	getOrganization: STRING
 		do
 			Result := organization
@@ -181,12 +191,20 @@ feature
 		do
 			organization := o
 		end
-	getProgrammingLanguages: SET[STRING]
+	getProgrammingLanguages: LINKED_SET[PROGRAMMING_LANGUAGE]
 		do
 			Result := programmingLanguages
 		end
-	setProgrammingLanguages(p: SET[STRING])
+	setProgrammingLanguages(p: LINKED_SET[PROGRAMMING_LANGUAGE])
 		do
 			programmingLanguages := p
+		end
+	getLanguages: LINKED_SET[LANGUAGE]
+		do
+			Result := languages
+		end
+	setLanguages(l: LINKED_SET[LANGUAGE])
+		do
+			languages := l
 		end
 end
