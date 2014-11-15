@@ -1,7 +1,7 @@
-class 
+class
 	USERTYPE
 
 feature
-	developer: USERTYPE once create Result end
-	stakeholder: USERTYPE once create Result end
+	developer: INTEGER = 1
+	stakeholder: INTEGER = 0
 end

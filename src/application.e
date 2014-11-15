@@ -58,6 +58,14 @@ feature {NONE} -- Initialization
 
 	initialize
 			-- Initialize current service.
+		local
+			u: USER
+			d: DATE_TIME
+			l: LINKED_SET[PROGRAMMING_LANGUAGE]
+			l1: LINKED_SET[LANGUAGE]
+			lan: LANGUAGE
+			proglan: PROGRAMMING_LANGUAGE
+			i: INTEGER
 		do
 			-- Database initialization
 			create pdtdb.make (path_to_db_file)

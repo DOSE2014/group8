@@ -75,7 +75,9 @@ feature
 						  ec.any_to_string(session_data["country"]),
 						  ec.any_to_string(session_data["timezone"]),
 						  ec.any_to_string(session_data["email"]),
-						  Void, Void, ec.any_to_string(session_data["organization"]),
+						  Void,
+						  ec.any_to_int (session_data["usertype"]),
+						  ec.any_to_string(session_data["organization"]),
 						  Void, Void) -- TODO
 
 	ensure
