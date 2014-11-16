@@ -37,8 +37,8 @@ feature{NONE}
 		local
 			d: DATE_TIME
 		do
-			if row.count = 0 then resultobject.setid(-1)
-			else
+			--if row.count = 0 then resultobject.setid(-1)
+			--else
 
 				resultobject.setid (row.string_value (1).to_integer)
 				resultobject.setfirstname (row.string_value (2))
@@ -68,7 +68,7 @@ feature{NONE}
 				languageUser_Hash := getLanguageUser
 				resultobject.setprogramminglanguages (programminglanguageuser_hash.at (resultobject.getid))
 				resultobject.setlanguages (languageuser_hash.at (resultobject.getid))
-			end
+--			end
 			Result := false
 		end
 
