@@ -15,13 +15,17 @@ create
 	make
 
 feature {NONE}	-- Constructors
-	make(sm : WSF_SESSION_MANAGER)
+	make(sm : WSF_SESSION_MANAGER; pdt_db : PDT_DB)
 	require
-		sm   /= Void
+		sm /= Void
+		pdt_db /= Void
 	do
 		session_manager := sm
+		db := pdt_db
 	end
 
+feature{NONE}  -- Private properies
+	db : PDT_DB
 
 feature -- declaring deferred properties
 	session_manager : WSF_SESSION_MANAGER
@@ -30,7 +34,9 @@ feature -- declaring deferred properties
 
 feature
 
-	account_info( hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	account_info(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /account/userinfo
+	-- METHOD: GET
 	require
 		hreq /= Void
 		hres /= Void
@@ -38,14 +44,23 @@ feature
 		http_request  := hreq
 		http_response := hres
 
-		log.warning("AAA")
-
 		-- User must be logged
 		if ensure_authenticated then
 
 
+		end
+	end
+
+	register(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /account/register
+	-- METHOD: POST
+	do
+		if ensure_not_authenticated then
+
+			
 
 		end
+
 	end
 
 end

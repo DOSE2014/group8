@@ -21,6 +21,8 @@ inherit
 		-- for the routing we use uri templates
 		-- thus we can have "varialbes" in the uris
 
+	LOG
+
 create
 	make_and_launch
 
@@ -59,23 +61,19 @@ feature {NONE} -- Initialization
 	initialize
 			-- Initialize current service.
 		local
-			u: USER
-			d: DATE_TIME
-			l: LINKED_SET[PROGRAMMING_LANGUAGE]
-			l1: LINKED_SET[LANGUAGE]
-			lan: LANGUAGE
-			proglan: PROGRAMMING_LANGUAGE
-			i: INTEGER
 		do
+			log.info("Initializing...")
 			-- Database initialization
 			create pdtdb.make (path_to_db_file)
 
 			-- Network initialization
 			create session_manager.make
-			create rest_account.make(session_manager)
+			create rest_account.make(session_manager, pdtdb)
 
 			set_service_option ("port", 8080)
 			initialize_router
+
+			log.info("Ready to serve.")
 
 		end
 
