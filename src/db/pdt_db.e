@@ -28,9 +28,13 @@ feature
 		end
 
 feature
-	getUser(i: INTEGER): USER
+	getUserFromId(i: INTEGER): USER
 		do
-			Result := userDBHandler.getuser(i)
+			Result := userDBHandler.getuserfromid(i)
+		end
+	getUserFromEmailPassword(email, password: STRING): USER
+		do
+			Result := userDBHandler.getuserfromemailpassword (email, password)
 		end
 
 	insertUser(u: USER)
