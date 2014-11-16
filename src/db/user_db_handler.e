@@ -37,7 +37,7 @@ feature{NONE}
 		local
 			d: DATE_TIME
 		do
-			if row.count = 0 then resultobject := Void
+			if row.count = 0 then resultobject.setid(-1)
 			else
 
 				resultobject.setid (row.string_value (1).to_integer)
@@ -96,7 +96,7 @@ feature{NONE}
 	getProgrammingLanguageUser: HASH_TABLE[LINKED_SET[PROGRAMMING_LANGUAGE], INTEGER]
 		do
 			create Result.make(10)
-			create dbQueryStatement.make("SELECT * FROM ProgrammingLanguage_User", db)
+			create dbQueryStatement.make("SELECT * FROM ProgrammingLanguage_User;", db)
 			dbQueryStatement.execute(agent create_ProgrammingLanguageUser_Hash(?, 2, Result))
 		end
 
@@ -118,7 +118,7 @@ feature{NONE}
 	getProgrammingLanguages: LINKED_SET[PROGRAMMING_LANGUAGE]
 		do
 			create Result.make
-			create dbQueryStatement.make ("SELECT * FROM ProgrammingLanguage", db)
+			create dbQueryStatement.make ("SELECT * FROM ProgrammingLanguage;", db)
 			dbQueryStatement.execute (agent create_ProgrammingLanguage_Set(?, 2, Result))
 		end
 
@@ -140,7 +140,7 @@ feature{NONE}
 	getLanguages: LINKED_SET[LANGUAGE]
 		do
 			create Result.make
-			create dbQueryStatement.make ("SELECT * FROM Language", db)
+			create dbQueryStatement.make ("SELECT * FROM Language;", db)
 			dbQueryStatement.execute (agent create_Language_Set(?, 2, Result))
 		end
 
@@ -168,7 +168,7 @@ feature{NONE}
 	getLanguageUser: HASH_TABLE[LINKED_SET[LANGUAGE], INTEGER]
 		do
 			create Result.make(10)
-			create dbQueryStatement.make("SELECT * FROM Language_User", db)
+			create dbQueryStatement.make("SELECT * FROM Language_User;", db)
 			dbQueryStatement.execute(agent create_LanguageUser_Hash(?, 2, Result))
 		end
 
