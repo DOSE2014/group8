@@ -84,6 +84,7 @@ feature -- Basic operations
 			fhdl: WSF_FILE_SYSTEM_HANDLER
 		do
 			map_uri_template_agent_with_request_methods ("/test", agent rest_account.account_info, router.methods_get)
+			map_uri_template_agent_with_request_methods ("/account/register", agent rest_account.register, router.methods_post)
 		end
 
 end

@@ -9,6 +9,7 @@ class
 
 inherit
 	AUTHENTICATION
+	HTTP_FUNCTIONS
 	LOG
 
 create
@@ -55,10 +56,30 @@ feature
 	-- PATH: /account/register
 	-- METHOD: POST
 	local
-		regex : RX_REGULAR_EXPRESSION
+		regex : REGEX
+		hp : HTTP_PARSER
+		ok : BOOLEAN
+		json_error : JSON_OBJECT
 	do
+		http_request  := hreq
+		http_response := hres
+
 		if ensure_not_authenticated then
-		
+			create hp.make(hreq)
+			create regex.make
+
+			ok := TRUE
+
+			if not regex.check_email (hp.post_param ("email")) then
+				create json_error.make
+				json_error.put_string ("error", "status")
+				json_error.put_string ("E-Mail not present or not correct.", "reason")
+				send_json(hres, json_error)
+
+				ok := FALSE
+				log.info ("E-Mail not present or not correct.")
+			end
+
 
 		end
 
