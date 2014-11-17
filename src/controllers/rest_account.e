@@ -54,10 +54,11 @@ feature
 	register(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
 	-- PATH: /account/register
 	-- METHOD: POST
+	local
+		regex : RX_REGULAR_EXPRESSION
 	do
 		if ensure_not_authenticated then
-
-			
+		
 
 		end
 

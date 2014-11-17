@@ -7,6 +7,9 @@ note
 class
 	USER_DB_HANDLER
 
+inherit
+	LOG
+
 create
 	make
 
@@ -33,42 +36,39 @@ feature
 		end
 
 feature{NONE}
-	genUser(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: detachable USER): BOOLEAN
+	genUser(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: USER): BOOLEAN
 		local
 			d: DATE_TIME
 		do
-			--if row.count = 0 then resultobject.setid(-1)
-			--else
 
-				resultobject.setid (row.string_value (1).to_integer)
-				resultobject.setfirstname (row.string_value (2))
-				resultobject.setlastname (row.string_value (3))
+			resultobject.setid (row.string_value (1).to_integer)
+			resultobject.setfirstname (row.string_value (2))
+			resultobject.setlastname (row.string_value (3))
 
-				if row.string_value (4).to_integer = {SEX}.male
-				then resultobject.setsex ({SEX}.male)
-				else resultobject.setsex ({SEX}.female)
-				end
+			if row.string_value (4).to_integer = {SEX}.male
+			then resultobject.setsex ({SEX}.male)
+			else resultobject.setsex ({SEX}.female)
+			end
 
-				create d.make_from_epoch (row.string_value (5).to_integer)
-				resultobject.setdateofbirth (d)
+			create d.make_from_epoch (row.string_value (5).to_integer)
+			resultobject.setdateofbirth (d)
 
-				resultobject.setcountry (row.string_value (6))
-				resultobject.settimezone (row.string_value (7))
-				resultobject.setemail (row.string_value (8))
-				resultobject.setpassword (row.string_value (9))
+			resultobject.setcountry (row.string_value (6))
+			resultobject.settimezone (row.string_value (7))
+			resultobject.setemail (row.string_value (8))
+			resultobject.setpassword (row.string_value (9))
 
-				if row.string_value (10).to_integer = {USERTYPE}.developer
-				then resultobject.setusertype({USERTYPE}.developer)
-				else resultobject.setusertype({USERTYPE}.stakeholder)
-				end
+			if row.string_value (10).to_integer = {USERTYPE}.developer
+			then resultobject.setusertype({USERTYPE}.developer)
+			else resultobject.setusertype({USERTYPE}.stakeholder)
+			end
 
-				resultobject.setorganization (row.string_value (11))
+			resultobject.setorganization (row.string_value (11))
 
-				programmingLanguageUser_Hash := getprogrammingLanguageUser
-				languageUser_Hash := getLanguageUser
-				resultobject.setprogramminglanguages (programminglanguageuser_hash.at (resultobject.getid))
-				resultobject.setlanguages (languageuser_hash.at (resultobject.getid))
---			end
+			programmingLanguageUser_Hash := getprogrammingLanguageUser
+			languageUser_Hash := getLanguageUser
+			resultobject.setprogramminglanguages (programminglanguageuser_hash.at (resultobject.getid))
+			resultobject.setlanguages (languageuser_hash.at (resultobject.getid))
 			Result := false
 		end
 
@@ -178,6 +178,9 @@ feature
 			create Result.make_default
 			create dbQueryStatement.make ("SELECT * FROM User WHERE id=" + id.out + ";", db)
 			dbQueryStatement.execute (agent genUser(?, 11, Result))
+			if Result.getId = 0 then
+				Result := Void
+			end
 		end
 
 	getUserFromEmailPassword(email, password: STRING): USER
