@@ -29,6 +29,8 @@ feature
 
 feature
 	getUserFromId(i: INTEGER): USER
+		local
+			u : USER
 		do
 			Result := userDBHandler.getuserfromid(i)
 		end
