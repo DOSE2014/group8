@@ -8,7 +8,8 @@ class
 	PROJECT
 
 create
-	make
+	make,
+	make_default
 
 feature{NONE}
 	id: INTEGER
@@ -16,10 +17,11 @@ feature{NONE}
 	description: STRING
 	manager: USER
 	stakeholder: USER
-	creationDate: DATE
+	creationDate: DATE_TIME
+	deleted: BOOLEAN
 
 feature
-	make(i: INTEGER; n, desc: STRING; mgr, st: USER; cr: DATE)
+	make(i: INTEGER; n, desc: STRING; mgr, st: USER; cr: DATE_TIME; b:BOOLEAN)
 		do
 			id := i
 			name := n
@@ -27,6 +29,11 @@ feature
 			manager := mgr
 			stakeholder := st
 			creationDate := cr
+			deleted:=b
+		end
+	make_default
+		do
+
 		end
 
 feature
@@ -80,13 +87,21 @@ feature
 			stakeholder:=u
 		end
 
-	getCreationDate: DATE
+	getCreationDate: DATE_TIME
 		do
 			Result:=creationDate
 		end
 
-	setCreationDate(d: DATE)
+	setCreationDate(d: DATE_TIME)
 		do
 			creationDate:=d
+		end
+	getDeleted:BOOLEAN
+		do
+			Result:=deleted
+		end
+	setDeleted(b: BOOLEAN)
+		do
+			deleted:=b
 		end
 end

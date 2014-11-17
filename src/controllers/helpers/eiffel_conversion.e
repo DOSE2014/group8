@@ -36,6 +36,22 @@ feature
 		--	Result := ""
 		end
 	end
+	bool_to_int(b:BOOLEAN): INTEGER
+	do
+		if b then
+			Result:=1
+		else
+			Result:=0
+		end
+	end
 
+	int_to_bool(i:INTEGER):BOOLEAN
+	do
+		if i=0 then
+			Result:=false
+		else
+			Result:=true
+		end
+	end
 
 end
