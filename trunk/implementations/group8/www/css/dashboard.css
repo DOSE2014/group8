@@ -39,3 +39,24 @@ a{
 	font-family:inherit;
 	font-size:12px;
 }
+.btn_project:hover{
+	background-color:#F5F5F5;
+}
+.btn_project{
+	cursor:pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

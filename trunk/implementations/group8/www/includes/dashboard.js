@@ -1,9 +1,52 @@
-/**
- * 
 
- */
 
 var dashboard = angular.module('dashboard', []);
+
+dashboard.config(function(){
+	if(global_usr_id == undefined || global_usr_id == ""){
+		window.location.replace("login.php");
+	}
+	
+	setChart();
+});
+
+dashboard.controller('Users', ['$scope', '$http', function($scope, $http){
+	var url_getUser = "rest/getUserInfo.php?id="+global_usr_id;
+	var url_getProjects = "rest/getUserProjects.php?id="+global_usr_id;
+	
+	$scope.user = {};
+	$scope.projects = {};
+	$scope.project = {};
+	
+	$scope.getUser = $http.get(url_getUser).success(function(data){
+        $scope.user = data;
+    });
+	
+	$scope.getUserProjects = $http.get(url_getProjects).success(function(data){
+        $scope.projects = data.projects;
+        $scope.project = data.projects[0];
+    });
+	
+	$scope.setProject = function(idProject){
+		if(idProject > 0 && idProject != null){
+			for(var i=0; i<$scope.projects.length; i++){
+				if($scope.projects[i].id == idProject){
+					$scope.project = $scope.projects[i];
+					break;
+				}
+			}
+		}
+	};
+	
+	
+	$scope.user = $scope.getUser;
+	
+}]);
+
+
+
+
+
 
 
 
@@ -69,4 +112,4 @@ function setChart(){
 	
 }
 
-$(setChart());
+//$(setChart());
