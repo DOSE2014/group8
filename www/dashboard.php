@@ -1,4 +1,6 @@
-<html>
+<?php 
+	require_once 'includes/security.php';
+?><html data-ng-app="dashboard">
 <head>
 <title>Developer Dashboard</title>
 <meta charset="utf-8">
@@ -8,14 +10,12 @@
 <link href="css/dashboard.css" rel="stylesheet">
 </head>
 
-<body data-ng-app="dashboard">
-
-
-
+<body  ng-controller="Users">
+	
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<p class="navbar-brand">DevTool</p>
-			<p class="navbar-text">Hello, {{ "Williams" }}</p>
+			<p class="navbar-text" >Hello, {{ user.firstname }}</p>
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a>Messages</a></li>
@@ -27,7 +27,6 @@
 	</nav>
 
 	<div class="container-fluid">
-
 		<div class="row">
 			<div class="col-xs-3">
 				<div class="row">
@@ -38,14 +37,12 @@
 				</div>
 
 				<div class="row well div_myProjects">
-					<div class="btn-group-vertical col-xs-12" role="group"
-						aria-label="...">
-						<button type="button"
-							class="btn btn-default btn-block btn_project"
-							data-ng-repeat="i in [1,2,3,4,5]" value="{{$index+1}}">Project
-							{{$index+1}}</button>
+					<ul class="list-group col-xs-12" role="group">
+						<li class="list-group-item btn_project" data-ng-repeat="project in projects" data-ng-click="setProject(project.id)" ng-href="">
+							{{project.name}}
+						</li>
 
-					</div>
+					</ul>
 				</div>
 			</div>
 
@@ -54,7 +51,7 @@
 
 					<nav class="navbar navbar-default">
 						<div class="container">
-							<p class="navbar-brand">{{"Project Name"}}</p>
+							<p class="navbar-brand">{{project.name}}</p>
 							<ul class="nav navbar-nav navbar_project_edit">
 								<li><a class="navbar-link navbar_project_edit">(edit)</a></li>
 							</ul>
@@ -103,7 +100,7 @@
 
 							<div class="panel panel-default">
 								<div class="panel-heading">Project description</div>
-								<div class="panel-body">{{"About my project"}}</div>
+								<div class="panel-body">{{ project.description }}</div>
 							</div>
 
 						</div>
