@@ -17,7 +17,7 @@ feature{NONE}
 	dbModifyStatement: SQLITE_MODIFY_STATEMENT
 	uDBhand: USER_DB_HANDLER
 feature{NONE}
-	make(s: SQLITE_DATABASE, userDBHandler: USER_DB_HANDLER)
+	make(s: SQLITE_DATABASE; userDBHandler: USER_DB_HANDLER)
 		do
 			db := s
 			uDBhand := userDBHandler
