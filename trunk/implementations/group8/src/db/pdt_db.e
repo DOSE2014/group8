@@ -26,7 +26,7 @@ feature
 		do
 			create db.make_open_read_write(pathToDB)
 			create userdbhandler.make(db)
-			create projectDBHandler.make (db)
+			create projectDBHandler.make (db, userdbhandler)
 		end
 
 feature
@@ -62,6 +62,6 @@ feature
 		do
 			projectDBHandler.deleteProject(p)
 		end
-		
+
 
 end

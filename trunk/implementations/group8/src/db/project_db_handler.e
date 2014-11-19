@@ -15,10 +15,12 @@ feature{NONE}
 	dbQueryStatement: SQLITE_QUERY_STATEMENT
 	dbInsertStatement: SQLITE_INSERT_STATEMENT
 	dbModifyStatement: SQLITE_MODIFY_STATEMENT
+	uDBhand: USER_DB_HANDLER
 feature{NONE}
-	make(s: SQLITE_DATABASE)
+	make(s: SQLITE_DATABASE, userDBHandler: USER_DB_HANDLER)
 		do
 			db := s
+			uDBhand := userDBHandler
 		end
 
 feature
@@ -47,20 +49,17 @@ feature
 	end
 	deleteProject(p:PROJECT)
 	do
-			create dbmodifystatement.make ("DELETE FROM User WHERE id=" + p.getid.out + ";", db)
+			create dbmodifystatement.make ("DELETE FROM Project WHERE id=" + p.getid.out + ";", db)
 			dbmodifystatement.execute
 			if dbmodifystatement.has_error
-			then print("Error while deleting user.%N")
+			then print("Error while deleting project.%N")
 			end
-
-			--TODO Delete entries from Language_User, ProgrammingLanguage_User?
 	end
 
 feature{NONE}
 	genProject(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: PROJECT): BOOLEAN
 		local
 			d: DATE_TIME
-			uDBhand: USER_DB_HANDLER
 		do
 			resultobject.setid (row.string_value (1).to_integer)
 			resultobject.setName (row.string_value (2).out)
