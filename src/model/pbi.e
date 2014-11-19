@@ -15,7 +15,6 @@ feature{NONE}
 	name: STRING
 	description: STRING
 	backlog: BACKLOG
-	sprintlog: SPRINTLOG
 	type: PBITYPE
 	priority: INTEGER
 	dueDate: DATE
