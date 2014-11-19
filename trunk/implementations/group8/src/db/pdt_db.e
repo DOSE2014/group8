@@ -17,6 +17,7 @@ feature{NONE}
 	dbModifyStatement: SQLITE_MODIFY_STATEMENT
 
 	userDBHandler: USER_DB_HANDLER
+	projectDBHandler: PROJECT_DB_HANDLER
 
 feature
 	make(pathToDB: STRING)
@@ -25,6 +26,7 @@ feature
 		do
 			create db.make_open_read_write(pathToDB)
 			create userdbhandler.make(db)
+			create projectDBHandler.make (db)
 		end
 
 feature
@@ -48,5 +50,18 @@ feature
 		do
 			userDBHandler.deleteuser (u)
 		end
+	getProjectFromId(id: INTEGER): PROJECT
+		do
+			Result:= projectDBHandler.getProjectFromId(id)
+		end
+		insertProject(p:PROJECT)
+		do
+			projectDBHandler.insertProject(p)
+		end
+		deleteProject(p:PROJECT)
+		do
+			projectDBHandler.deleteProject(p)
+		end
+		
 
 end
