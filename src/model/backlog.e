@@ -8,7 +8,8 @@ class
 	BACKLOG
 
 create
-	make
+	make,
+	make_default
 
 feature{NONE}
 	id: INTEGER
@@ -21,6 +22,9 @@ feature
 			id := i
 			description := desc
 			project := proj
+		end
+	make_default
+		do
 		end
 feature
 	getProject: PROJECT
