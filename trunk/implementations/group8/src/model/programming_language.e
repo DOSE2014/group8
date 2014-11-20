@@ -38,4 +38,6 @@ feature
 		do
 			name := s
 		end
+
+
 end

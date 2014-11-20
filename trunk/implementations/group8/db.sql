@@ -12,9 +12,9 @@ CREATE TABLE "User" (
 	`userType`	INTEGER,
 	`organization`	TEXT
 );
-INSERT INTO `User` VALUES(1,'Filippo','Pagano',1,712022400,'Italy','UTC+01:00','paganofilippo@gmail.com','password',1,'');
-INSERT INTO `User` VALUES(2,'Federico','Reghenzani',1,712022400,'Italy','UTC+01:00','federico1.reghenzani@mail.polimi.it','password',1,'');
-INSERT INTO `User` VALUES(3,'Мунир','Махмутов',1,712022400,'Russia','UTC+03:00','munir.makhmutov@gmail.com','password',0,'Россия, Республика Татарстан, Казань');
+INSERT INTO `User` VALUES(1,'Filippo','Pagano',1,712022400,'Italy','UTC+01:00','paganofilippo@gmail.com','5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',1,'');
+INSERT INTO `User` VALUES(2,'Federico','Reghenzani',1,712022400,'Italy','UTC+01:00','federico1.reghenzani@mail.polimi.it','5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',1,'');
+INSERT INTO `User` VALUES(3,'Мунир','Махмутов',1,712022400,'Russia','UTC+03:00','munir.makhmutov@gmail.com','5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',0,'Россия, Республика Татарстан, Казань');
 CREATE TABLE `Task` (
 	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	`name`	TEXT,

@@ -6,6 +6,8 @@ note
 
 class
 	PDT_DB
+inherit
+	LOG
 
 create
 	make
@@ -29,7 +31,15 @@ feature
 		require
 			validPath: pathToDB /= Void and not pathToDB.is_empty
 		do
-			create db.make_open_read_write(pathToDB)
+			if ((create {RAW_FILE}.make (pathToDB.as_string_8)).exists) then
+				-- If db exists, open it!
+				create db.make_open_read_write(pathToDB)
+			else
+				-- Ok no, we need to create it!
+				log.warning("[PDT_DB] no DB found, creating one...")
+				-- create db.create_open_read_write(pathToDB)
+				-- TODO EXECUTE QUERY FOR CREATION
+			end
 			create languageDBHandler.make(db)
 			create programmingLanguageDBHandler.make(db)
 			create userdbhandler.make(db, languageDBHandler, programmingLanguageDBHandler)
