@@ -57,4 +57,17 @@ feature
 		res.put_string (text)
 	end
 
+	send_malformed_json(http_response : WSF_RESPONSE)
+	local
+		json_error : JSON_OBJECT
+	do
+		-- Here there is a problem with JSON in HTTP request (e.g. missing commas, etc.)
+		-- So sends a 405 to user
+		create json_error.make
+		json_error.put_string ("error", "status")
+		json_error.put_string ("JSON request malformed", "reason")
+		send_error_json (http_response,json_error,{HTTP_FUNCTIONS}.REQUEST_ERROR)
+
+	end
+
 end

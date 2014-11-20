@@ -146,8 +146,11 @@ feature
 	getUserFromEmailPassword(email, password: STRING): USER
 		do
 			create Result.make_default
-			create dbquerystatement.make ("SELECT * FROM User WHERE email='" + email + "' AND password='" + password + "';)", db)
+			create dbquerystatement.make ("SELECT * FROM User WHERE email='" + email + "' AND password='" + password + "';", db)
 			dbquerystatement.execute (agent genUser(?, 11, Result))
+			if Result.getId = 0 then
+				Result := Void
+			end
 		end
 
 	insertUser(u: USER)

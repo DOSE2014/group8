@@ -24,13 +24,15 @@ feature{NONE}
 
 feature
 
-	create_session
-	-- Creates a new (empty) session and sends it to the browser
+	create_session(u : USER)
+	-- Creates a new (empty) session (you should sends a HTTP response after this)
 	local
 		session_obj : WSF_COOKIE_SESSION
 	do
 		create session_obj.make_new(session_cookie_name, session_manager)
-
+		session_obj.remember (u, "user_obj")
+		session_obj.commit -- Save to disk the session
+		session_obj.apply(http_request, http_response, "/") -- Create cookie session for entire app path (/)
 	end
 
 	destroy_session
@@ -42,13 +44,6 @@ feature
 		create session_obj.make(http_request, session_cookie_name, session_manager)
 		-- Now destroy that session.
 		session_obj.destroy
-	end
-
-	set_session_user (u : USER)
-	require
-		exists_session
-	do
-
 	end
 
 	get_session_user : USER
@@ -67,18 +62,20 @@ feature
 		cookie_id := ec.any_to_wsf_string(http_request.cookie(session_cookie_name))
 		session_data := session_manager.session_data(cookie_id.value)
 
-		create user.make (ec.any_to_int(session_data["id"]),
-						  ec.any_to_string(session_data["first_name"]),
-						  ec.any_to_string(session_data["last_name"]),
-						  ec.any_to_int(session_data["sex"]),
-						  Void,
-						  ec.any_to_string(session_data["country"]),
-						  ec.any_to_string(session_data["timezone"]),
-						  ec.any_to_string(session_data["email"]),
-						  Void,
-						  ec.any_to_int (session_data["usertype"]),
-						  ec.any_to_string(session_data["organization"]),
-						  Void, Void) -- TODO
+		Result := ec.any_to_user(session_data["user_obj"])
+
+--		create user.make (ec.any_to_int(session_data["id"]),
+--						  ec.any_to_string(session_data["first_name"]),
+--						  ec.any_to_string(session_data["last_name"]),
+--						  ec.any_to_int(session_data["sex"]),
+--						  Void,
+--						  ec.any_to_string(session_data["country"]),
+--						  ec.any_to_string(session_data["timezone"]),
+--						  ec.any_to_string(session_data["email"]),
+--						  Void,
+--						  ec.any_to_int (session_data["usertype"]),
+--						  ec.any_to_string(session_data["organization"]),
+--						  Void, Void) -- TODO
 
 	ensure
 		Result /= Void

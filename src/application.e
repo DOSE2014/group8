@@ -85,6 +85,7 @@ feature -- Basic operations
 		do
 			map_uri_template_agent_with_request_methods ("/test", agent rest_account.account_info, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/account/register", agent rest_account.register, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/account/login", agent rest_account.login_, router.methods_post)
 		end
 
 end

@@ -27,6 +27,14 @@ feature
 		end
 	end
 
+	any_to_user(var : ANY) : USER
+	do
+		if attached {USER} var as conversion then
+			Result := conversion
+		else
+			Result := Void
+		end
+	end
 
 	any_to_wsf_string(var : ANY) : WSF_STRING
 	do
