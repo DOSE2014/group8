@@ -19,7 +19,9 @@ feature{NONE}
 	dbInsertStatement: SQLITE_INSERT_STATEMENT
 	dbModifyStatement: SQLITE_MODIFY_STATEMENT
 
-	--Data taken from DB and kept in memory throughout the execution for simplicity, shouldn't change in runtime
+	programmingLanguageDBHandler: PROGRAMMING_LANGUAGE_DB_HANDLER
+	languageDBHandler: LANGUAGE_DB_HANDLER
+
 	programmingLanguages: LINKED_SET[PROGRAMMING_LANGUAGE]
 	languages: LINKED_SET[LANGUAGE]
 
@@ -28,11 +30,13 @@ feature{NONE}
 	languageUser_Hash: HASH_TABLE[LINKED_SET[LANGUAGE], INTEGER]
 
 feature
-	make(s: SQLITE_DATABASE)
+	make(s: SQLITE_DATABASE; lanDBHand: LANGUAGE_DB_HANDLER; proglanDBHand: PROGRAMMING_LANGUAGE_DB_HANDLER)
 		do
 			db := s
-			programminglanguages := getprogramminglanguages
-			languages := getlanguages
+			programmingLanguageDBHandler := proglanDBHand
+			languageDBHandler := lanDBHand
+			programminglanguages := programminglanguageDBHandler.getProgrammingLanguages
+			languages := languageDBHandler.getLanguages
 		end
 
 feature{NONE}
@@ -98,50 +102,6 @@ feature{NONE}
 			create Result.make(10)
 			create dbQueryStatement.make("SELECT * FROM ProgrammingLanguage_User;", db)
 			dbQueryStatement.execute(agent create_ProgrammingLanguageUser_Hash(?, 2, Result))
-		end
-
-	create_ProgrammingLanguage_Set(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: LINKED_SET[PROGRAMMING_LANGUAGE]): BOOLEAN
-		local
-			i: NATURAL
-			proglan: PROGRAMMING_LANGUAGE
-		do
-			from i := 1
-			until i > numColumns
-			loop
-				create proglan.make(row.string_value (i).to_integer_32, row.string_value (i+1))
-				resultObject.extend (proglan)
-				i := i + 2
-			end
-			Result := false
-		end
-
-	getProgrammingLanguages: LINKED_SET[PROGRAMMING_LANGUAGE]
-		do
-			create Result.make
-			create dbQueryStatement.make ("SELECT * FROM ProgrammingLanguage;", db)
-			dbQueryStatement.execute (agent create_ProgrammingLanguage_Set(?, 2, Result))
-		end
-
-	create_Language_Set(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: LINKED_SET[LANGUAGE]): BOOLEAN
-		local
-			i: NATURAL
-			lan: LANGUAGE
-		do
-			from i := 1
-			until i > numColumns
-			loop
-				create lan.make(row.string_value (i).to_integer_32, row.string_value (i+1))
-				resultObject.extend (lan)
-				i := i + 2
-			end
-			Result := false
-		end
-
-	getLanguages: LINKED_SET[LANGUAGE]
-		do
-			create Result.make
-			create dbQueryStatement.make ("SELECT * FROM Language;", db)
-			dbQueryStatement.execute (agent create_Language_Set(?, 2, Result))
 		end
 
 	create_LanguageUser_Hash(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: HASH_TABLE[LINKED_SET[LANGUAGE], INTEGER]): BOOLEAN

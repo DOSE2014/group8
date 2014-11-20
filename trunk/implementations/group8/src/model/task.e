@@ -8,7 +8,7 @@ class
 	TASK
 
 create
-	make
+	make, make_default
 
 feature{NONE}
 	id: INTEGER
@@ -17,11 +17,11 @@ feature{NONE}
 	sprintlog: SPRINTLOG
 	developer: USER
 	points: INTEGER
-	state: STATE
+	state: INTEGER
 	pbi: PBI
 
 feature
-	make(i: INTEGER; n, desc: STRING; s: SPRINTLOG; dev: USER; pts: INTEGER; st: STATE; p: PBI)
+	make(i: INTEGER; n, desc: STRING; s: SPRINTLOG; dev: USER; pts: INTEGER; st: INTEGER; p: PBI)
 	do
 		id := i
 		name := n
@@ -32,6 +32,10 @@ feature
 		state := st
 		pbi := p
 	end
+	make_default
+		do
+
+		end
 
 feature
 	getId: INTEGER
@@ -82,11 +86,11 @@ feature
 		do
 			points := p
 		end
-	getState: STATE
+	getState: INTEGER
 		do
 			Result := state
 		end
-	setState(s: STATE)
+	setState(s: INTEGER)
 		do
 			state := s
 		end

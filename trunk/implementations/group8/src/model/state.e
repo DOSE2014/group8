@@ -2,6 +2,6 @@ class
 	STATE
 
 feature
-	completed: STATE once create Result end
-	pending: STATE once create Result end
+	completed: INTEGER = 1
+	pending: INTEGER = 2
 end

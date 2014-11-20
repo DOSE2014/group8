@@ -15,12 +15,12 @@ feature{NONE}
 	dbQueryStatement: SQLITE_QUERY_STATEMENT
 	dbInsertStatement: SQLITE_INSERT_STATEMENT
 	dbModifyStatement: SQLITE_MODIFY_STATEMENT
-	uDBhand: USER_DB_HANDLER
-feature{NONE}
-	make(s: SQLITE_DATABASE; userDBHandler: USER_DB_HANDLER)
+	userDBhandler: USER_DB_HANDLER
+feature
+	make(s: SQLITE_DATABASE; uDBHand: USER_DB_HANDLER)
 		do
 			db := s
-			uDBhand := userDBHandler
+			userDBhandler := uDBHand
 		end
 
 feature
@@ -64,9 +64,8 @@ feature{NONE}
 			resultobject.setid (row.string_value (1).to_integer)
 			resultobject.setName (row.string_value (2).out)
 			resultobject.setDescription (row.string_value (3).out)
-			create uDBhand.make (db)
-			resultobject.setManager (uDBhand.getuserfromid (row.string_value (4).to_integer))
-			resultobject.setStakeholder (uDBhand.getuserfromid (row.string_value (5).to_integer))
+			resultobject.setManager (userDBHandler.getuserfromid (row.string_value (4).to_integer))
+			resultobject.setStakeholder (userDBHandler.getuserfromid (row.string_value (5).to_integer))
 			create d.make_from_epoch (row.string_value (6).to_integer)
 			resultobject.setCreationDate (d)
 			resultobject.setDeleted(row.string_value (7).to_boolean)
