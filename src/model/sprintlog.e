@@ -8,18 +8,19 @@ class
 	SPRINTLOG
 
 create
-	make
+	make,
+	make_default
 
 feature{NONE}
 	id: INTEGER
 	name: STRING
 	description: STRING
 	backlog: BACKLOG
-	startDate: DATE
-	endDate: DATE
+	startDate: DATE_TIME
+	endDate: DATE_TIME
 
 feature
-	make(i: INTEGER; n, desc: STRING; b: BACKLOG; s, e: DATE)
+	make(i: INTEGER; n, desc: STRING; b: BACKLOG; s, e: DATE_TIME)
 		do
 			id := i
 			name := n
@@ -27,6 +28,9 @@ feature
 			backlog := b
 			startDate := s
 			endDate := e
+		end
+	make_default
+		do
 		end
 
 feature
@@ -37,6 +41,14 @@ feature
 	setId(i: INTEGER)
 		do
 			id := i
+		end
+	getName: STRING
+		do
+			Result := name
+		end
+	setName(s: STRING)
+		do
+			name := s
 		end
 	getDescription: STRING
 		do
@@ -54,19 +66,19 @@ feature
 		do
 			backlog := b
 		end
-	getStartDate: DATE
+	getStartDate: DATE_TIME
 		do
 			Result := startDate
 		end
-	setStartDate(d: DATE)
+	setStartDate(d: DATE_TIME)
 		do
 			startDate := d
 		end
-	getEndDate: DATE
+	getEndDate: DATE_TIME
 		do
 			Result := endDate
 		end
-	setEndDate(d: DATE)
+	setEndDate(d: DATE_TIME)
 		do
 			endDate := d
 		end

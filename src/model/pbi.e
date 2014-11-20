@@ -8,19 +8,20 @@ class
 	PBI
 
 create
-	make
+	make,
+	make_default
 
 feature{NONE}
 	id: INTEGER
 	name: STRING
 	description: STRING
 	backlog: BACKLOG
-	type: PBITYPE
+	type: INTEGER
 	priority: INTEGER
-	dueDate: DATE
+	dueDate: DATE_TIME
 
 feature
-	make(i: INTEGER; n, desc: STRING; b: BACKLOG;  t: PBITYPE; p: INTEGER; d: DATE)
+	make(i: INTEGER; n, desc: STRING; b: BACKLOG;  t: INTEGER; p: INTEGER; d: DATE_TIME)
 		do
 			id := i
 			name := n
@@ -29,6 +30,10 @@ feature
 			type := t
 			priority := p
 			dueDate := d
+		end
+	make_default
+		do
+
 		end
 feature
 	getId: INTEGER
@@ -63,11 +68,11 @@ feature
 		do
 			backlog := b
 		end
-	getType: PBITYPE
+	getType: INTEGER
 		do
 			Result := type
 		end
-	setType(t: PBITYPE)
+	setType(t: INTEGER)
 		do
 			type := t
 		end
@@ -79,11 +84,11 @@ feature
 		do
 			priority := p
 		end
-	getDueDate: DATE
+	getDueDate: DATE_TIME
 		do
 			Result := dueDate
 		end
-	setDueDate(d: DATE)
+	setDueDate(d: DATE_TIME)
 		do
 			dueDate := d
 		end

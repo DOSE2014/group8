@@ -1,7 +1,7 @@
 class
 	PBITYPE
 feature
-	requirement: PBITYPE once create Result end
-	nonFunctionalRequirement: PBITYPE once create Result end
-	bugFix: PBITYPE	once create Result end
+	requirement: INTEGER = 1
+	nonFunctionalRequirement: INTEGER = 2
+	bugFix: INTEGER = 3
 end

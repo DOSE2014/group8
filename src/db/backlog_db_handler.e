@@ -14,10 +14,12 @@ feature{NONE}
 	dbQueryStatement: SQLITE_QUERY_STATEMENT
 	dbInsertStatement: SQLITE_INSERT_STATEMENT
 	dbModifyStatement: SQLITE_MODIFY_STATEMENT
-feature{NONE}
-	make(s: SQLITE_DATABASE)
+	projectDBHandler: PROJECT_DB_HANDLER
+feature
+	make(s: SQLITE_DATABASE; pDBhand: PROJECT_DB_HANDLER)
 		do
 			db := s
+			projectDBHandler := pDBhand
 		end
 feature
 	getBacklogFromId(id: INTEGER): BACKLOG
@@ -29,7 +31,7 @@ feature
 				Result := Void
 			end
 	end
-	insertBacklog(b:backlog)
+	insertBacklog(b: BACKLOG)
 	do
 		create dbinsertstatement.make ("INSERT INTO Backlog" +
 										 "VALUES ('" + b.getid.out + "', '" + b.getdescription + "', '" + b.getproject.getid.out +	 "');", db)
@@ -38,7 +40,7 @@ feature
 		then print("Error while inserting a new backlog.%N")
 		end
 	end
-	updateBacklog(b:backlog)
+	updateBacklog(b: BACKLOG)
 	do
 		create dbModifyStatement.make("UPDATE Backlog SET id = '" +
 										b.getid.out +"', description = '"+b.getdescription+"', project='"+ b.getproject.getid.out+
@@ -52,13 +54,10 @@ feature
 
 feature{NONE}
 	genBacklog(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: BACKLOG): BOOLEAN
-	local
-		pDBhand: PROJECT_DB_HANDLER
 		do
 			resultobject.setid (row.string_value (1).to_integer)
 			resultobject.setDescription (row.string_value (2).out)
-			create pDBhand.make (db)
-			resultobject.setProject ( pDBHand.getProjectFromID( ec.any_to_int(row.string_value (3)) ) )
+			resultobject.setProject ( projectDBHandler.getProjectFromID( ec.any_to_int(row.string_value (3)) ) )
 		end
 feature{NONE}
 	ec : EIFFEL_CONVERSION once create Result end
