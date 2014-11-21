@@ -70,4 +70,13 @@ feature
 
 	end
 
+	send_generic_ok(http_response : WSF_RESPONSE)
+	local
+		json_ok : JSON_OBJECT
+	do
+		create json_ok.make
+		json_ok.put_string ("ok", "status")
+		send_json (http_response,json_ok)
+
+	end
 end

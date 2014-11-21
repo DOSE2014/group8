@@ -23,7 +23,7 @@ feature{NONE}
 	email: STRING
 	password: STRING
 	userType: INTEGER -- See USERTYPE class
-	organization: STRING
+	organization: detachable STRING
 	programmingLanguages: LINKED_SET[PROGRAMMING_LANGUAGE]
 	languages: LINKED_SET[LANGUAGE]
 
