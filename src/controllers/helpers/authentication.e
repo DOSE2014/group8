@@ -97,9 +97,12 @@ feature
 		-- After this instruction you cannot read again password
 		hash.update_from_string(password)
 		password_hashed := hash.digest_as_string
+		password_hashed.to_lower	-- Eiffel uses upper case for HEX values, let's convert it!
 
 		-- For security reason and for eventually future use
 		hash.reset
+
+		log.severe(password_hashed)
 
 		-- Search user & password from database
 		u := db.getUserFromEmailPassword(email, password_hashed)

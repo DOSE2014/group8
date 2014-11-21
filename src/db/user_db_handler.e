@@ -44,7 +44,6 @@ feature{NONE}
 		local
 			d: DATE_TIME
 		do
-
 			resultobject.setid (row.string_value (1).to_integer)
 			resultobject.setfirstname (row.string_value (2))
 			resultobject.setlastname (row.string_value (3))
@@ -67,7 +66,11 @@ feature{NONE}
 			else resultobject.setusertype({USERTYPE}.stakeholder)
 			end
 
-			resultobject.setorganization (row.string_value (11))
+			if not row.is_null(11) then
+				resultobject.setorganization (row.string_value (11))
+			else
+				resultobject.setorganization (Void)
+			end
 
 			programmingLanguageUser_Hash := getprogrammingLanguageUser
 			languageUser_Hash := getLanguageUser

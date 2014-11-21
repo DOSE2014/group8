@@ -55,6 +55,9 @@ feature
 	-- Underscore at name's end to prevent overloading
 	-- of inerith method
 	login_(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	require
+		hreq /= Void
+		hres /= Void
 	local
 		hp : HTTP_PARSER
 		param_email : STRING
@@ -65,7 +68,8 @@ feature
 
 		create hp.make(hreq)
 		if is_logged then
-			-- TODO
+			-- Already logged - do nothing:
+			send_generic_ok(hres)
 		else
 			if hp.is_good_request then
 				param_email 	:= hp.post_param ("email")
@@ -91,7 +95,6 @@ feature
 		ok : BOOLEAN
 		error_reason : STRING
 		json_error : JSON_OBJECT
-		json_ok : JSON_OBJECT
 		u : USER
 
 		-- Parameters
@@ -217,9 +220,7 @@ feature
 				log.info ("/account/register [POST] Created a new user "+param_fname + " "+param_lname)
 
 				-- send OK to the user :)				
-				create json_ok.make
-				json_ok.put_string ("ok", "status")
-				send_json(hres, json_ok)
+				send_generic_ok(hres)
 
 			end
 
