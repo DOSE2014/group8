@@ -10,12 +10,12 @@
 <link href="css/dashboard.css" rel="stylesheet">
 </head>
 
-<body  ng-controller="Users">
+<body data-ng-controller="Users">
 	
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<p class="navbar-brand">DevTool</p>
-			<p class="navbar-text" >Hello, {{ user.firstname }}</p>
+			<p class="navbar-text" >Hello, {{ user.firstname + " " + user.lastname}}</p>
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a>Messages</a></li>
@@ -28,7 +28,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-3">
+			<div class="col-sm-12 col-md-3">
 				<div class="row">
 
 					<button type="button" class="btn btn-primary btn-lg btn-block">New
@@ -38,8 +38,11 @@
 
 				<div class="row well div_myProjects">
 					<ul class="list-group col-xs-12" role="group">
-						<li class="list-group-item btn_project" data-ng-repeat="project in projects" data-ng-click="setProject(project.id)" ng-href="">
-							{{project.name}}
+						<li class="list-group-item" data-ng-hide="projects.length > 0">
+							Create a project by clicking the button New Project
+						</li>
+						<li class="list-group-item btn_project" data-ng-repeat="proj in projects" data-ng-click="setProject(proj.id)" data-ng-href="">
+							{{proj.name}}
 						</li>
 
 					</ul>
@@ -49,16 +52,17 @@
 			<div class="col-xs-9">
 				<div class="row">
 
-					<nav class="navbar navbar-default">
+					<nav class="navbar navbar-default" data-ng-show="project.id != undefined">
 						<div class="container">
 							<p class="navbar-brand">{{project.name}}</p>
 							<ul class="nav navbar-nav navbar_project_edit">
 								<li><a class="navbar-link navbar_project_edit">(edit)</a></li>
 							</ul>
-							<p class="navbar-text navbar-project-info" style="">{{
-								"01/01/2014" }} - {{ "02/01/2014" }}</p>
+							<p class="navbar-text navbar-project-info" style="">{{ project.creationDate }}</p>
 
-							<p class="navbar-text">{{ "80" }} % completado</p>
+							<p class="navbar-text">{{ "80" }} % completed</p>
+							
+							<p class="navbar-text">Manager: {{ projectManager.firstname + " " + projectManager.lastname }}</p>
 
 						</div>
 
@@ -66,8 +70,13 @@
 					</nav>
 
 				</div>
-				<div class="row panel panel-default">
-					<div class="panel-body">
+				<div class="row panel panel-default" >
+					
+					<div class="panel-body" data-ng-hide="project.id != undefined">
+						You are currently not enroled in any project.
+					</div>
+					
+					<div class="panel-body" data-ng-show="project.id != undefined">
 						<div class="col-xs-5 noPadding">
 							<form class="form-horizontal" role="form">
 								<div class="form-group">
