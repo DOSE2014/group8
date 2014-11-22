@@ -10,21 +10,52 @@ dashboard.config(function(){
 	setChart();
 });
 
-dashboard.controller('Users', ['$scope', '$http', function($scope, $http){
+
+
+dashboard.service('restUsers', function($http) {
+	// accept a function as an argument
+	this.getUser = function(userId, callback) {
+		// Get the logge din users info
+		$http.get("rest/getUserInfo.php?id=" + userId).success(
+			function(response) {
+				callback(response);
+			})
+	}
+
+});
+
+dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, $http, restUsers){
 	var url_getUser = "rest/getUserInfo.php?id="+global_usr_id;
 	var url_getProjects = "rest/getUserProjects.php?id="+global_usr_id;
 	
 	$scope.user = {};
 	$scope.projects = {};
 	$scope.project = {};
+	$scope.projectManager = {};
 	
-	$scope.getUser = $http.get(url_getUser).success(function(data){
+	
+	
+	$http.get(url_getUser).success(function(data){
         $scope.user = data;
     });
 	
+	
+	$scope.setProjectManager = function(userId){
+			//alert(userId);
+			restUsers.getUser(userId, function(response){
+		        $scope.projectManager = response;
+		        console.log('$scope.projectManager = '+$scope.projectManager);        
+		    });
+	}
+	
 	$scope.getUserProjects = $http.get(url_getProjects).success(function(data){
         $scope.projects = data.projects;
-        $scope.project = data.projects[0];
+        if($scope.projects.length > 0){
+        	$scope.setProject($scope.projects[0].id);
+        }else{
+        	$scope.setProject(null);
+        }
+        
     });
 	
 	$scope.setProject = function(idProject){
@@ -32,14 +63,16 @@ dashboard.controller('Users', ['$scope', '$http', function($scope, $http){
 			for(var i=0; i<$scope.projects.length; i++){
 				if($scope.projects[i].id == idProject){
 					$scope.project = $scope.projects[i];
+					$scope.setProjectManager($scope.project.manager);
 					break;
 				}
 			}
+		}else{
+			$scope.project = {};
+			$scope.projectManager = {};
 		}
 	};
 	
-	
-	$scope.user = $scope.getUser;
 	
 }]);
 
