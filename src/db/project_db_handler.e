@@ -33,6 +33,7 @@ feature
 				Result := Void
 			end
 	end
+
 	insertProject(p:PROJECT)
 	local
 		epoch: DATE_TIME
@@ -47,6 +48,7 @@ feature
 		then print("Error while inserting a new user.%N")
 		end
 	end
+
 	deleteProject(p:PROJECT)
 	do
 			create dbmodifystatement.make ("DELETE FROM Project WHERE id=" + p.getid.out + ";", db)
@@ -55,6 +57,36 @@ feature
 			then print("Error while deleting project.%N")
 			end
 	end
+
+	addDeveloperToProject(d: USER; p: PROJECT)
+		do
+			create dbinsertstatement.make ("INSERT INTO Developer_Project(developer, project) VALUES('" + d.getid.out + "', '" + p.getid.out + "');", db)
+			dbinsertstatement.execute
+			if dbinsertstatement.has_error
+			then print("Error while inserting a developer in project.")
+			end
+		end
+
+	getProjectsVisibleToUser(u: USER): LINKED_SET[PROJECT]
+		do
+			create Result.make
+			create dbquerystatement.make ("SELECT id, name, description, manager, stakeholder, creationDate, deleted FROM PROJECT JOIN Developer_Project" +
+											" ON Project.id = Developer_Project.project WHERE manager=" + u.getid.out + " OR stakeholder=" + u.getid.out +
+											" OR Developer_Project.developer=" + u.getid.out + ";", db)
+			dbquerystatement.execute (agent genProjects(?, 7, Result))
+			if Result.count = 0
+			then Result := Void
+			end
+		end
+
+	deleteDeveloperFromProject(d: USER; p: PROJECT)
+		do
+			create dbmodifystatement.make ("DELETE FROM Developer_Project WHERE developer=" + d.getid.out + " AND project=" + p.getid.out + ";", db)
+			dbmodifystatement.execute
+			if dbmodifystatement.has_error
+			then print("Error while deleting developer from project.")
+			end
+		end
 
 feature{NONE}
 	genProject(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: PROJECT): BOOLEAN
@@ -69,6 +101,31 @@ feature{NONE}
 			create d.make_from_epoch (row.string_value (6).to_integer)
 			resultobject.setCreationDate (d)
 			resultobject.setDeleted(row.string_value (7).to_boolean)
+		end
+
+	genProjects(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject:LINKED_SET[PROJECT]): BOOLEAN
+		local
+			i: NATURAL
+			d: DATE_TIME
+			p: PROJECT
+		do
+			from i := 1
+			until i > row.count
+			loop
+				create p.make_default
+				p.setid (row.string_value (i).to_integer)
+				p.setName (row.string_value (i + 1).out)
+				p.setDescription (row.string_value (i + 2).out)
+				p.setManager (userDBHandler.getuserfromid (row.string_value (i + 3).to_integer))
+				p.setStakeholder (userDBHandler.getuserfromid (row.string_value (i + 4).to_integer))
+				create d.make_from_epoch (row.string_value (i + 5).to_integer)
+				p.setCreationDate (d)
+				p.setDeleted(row.string_value (i + 6).to_boolean)
+
+				resultobject.extend (p)
+				i := i + 7
+			end
+			Result := false
 		end
 feature{NONE}
 	ec : EIFFEL_CONVERSION once create Result end
