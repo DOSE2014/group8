@@ -59,6 +59,15 @@ feature
 			then print("Error while deleting task.")
 			end
 		end
+	getTasksFromPBI(p: PBI): LINKED_SET[TASK]
+		do
+			create Result.make
+			create dbquerystatement.make ("SELECT * FROM Task WHERE pbi=" + p.getid.out + ";", db)
+			dbquerystatement.execute (agent genTasks(?, 8, Result))
+			if Result.getId = 0 then
+				Result := Void
+			end
+		end
 
 feature{NONE}
 	genTask(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: TASK): BOOLEAN
@@ -78,5 +87,33 @@ feature{NONE}
 			resultobject.setpbi (pbiDBHandler.getPBIFromId(row.string_value (8).to_integer))
 
 			Result := false
+		end
+
+	genTasks(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: LINKED_SET[TASK]): BOOLEAN
+		local
+			i: NATURAL
+			d: DATE_TIME
+			t: TASK
+		do
+			from i := 1
+			until i > row.count
+			loop
+				create t.make_default
+				t.setid (row.string_value (i).to_integer)
+				t.setname (row.string_value (i + 1))
+				t.setdescription (row.string_value (i + 2))
+				t.setSprintlog(sprintlogDBHandler.getSprintlogFromId(row.string_value (i + 3).to_integer))
+				t.setDeveloper (userDBHandler.getUserFromId(row.string_value (i + 4).to_integer))
+				t.setpoints (row.string_value(i + 5).to_integer)
+				if row.string_value (i + 6).to_integer = {STATE}.completed
+				then resultobject.setstate ({STATE}.completed)
+				else resultobject.setstate ({STATE}.pending)
+				end
+				t.setpbi (pbiDBHandler.getPBIFromId(row.string_value (i + 7).to_integer))
+				resultobject.extend(t)
+				i := i + 8
+			end
+			Result := false
+
 		end
 end

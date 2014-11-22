@@ -55,6 +55,10 @@ feature
 		do
 			Result := userDBHandler.getuserfromid(i)
 		end
+	getDevelopers: LINKED_SET[USER]
+		do
+			Result := userDBHandler.getDevelopers
+		end
 	getUserFromEmailPassword(email, password: STRING): USER
 		do
 			Result := userDBHandler.getuserfromemailpassword (email, password)
@@ -137,5 +141,32 @@ feature
 		do
 			taskdbhandler.deletetask (t)
 		end
-
+	addDeveloperToProject(d: USER; p: PROJECT)
+		do
+			projectdbhandler.addDeveloperToProject(d, p)
+		end
+	getProjectsVisibleToUser(u: USER): LINKED_SET[PROJECT]
+		do
+			Result := projectdbhandler.getProjectsVisibleToUser(u)
+		end
+	deleteDeveloperFromProject(d: USER; p: PROJECT)
+		do
+			projectdbhandler.deleteDeveloperFromProject(d, p)
+		end
+	getBacklogFromProjectId(id: INTEGER): BACKLOG
+		do
+			Result := backlogdbhandler.getbacklogFromProjectId(id)
+		end
+	deleteBacklogFromProjectId(id: INTEGER)
+		do
+			backlogdbhandler.deleteBacklogFromProjectId(id)
+		end
+	getTasksFromPBI(pbi: PBI): LINKED_SET[TASK]
+		do
+			Result := taskdbhandler.getTasksFromPBI(pbi)
+		end
+	insertTaskInPBI(t: TASK; p: PBI)
+		do
+			taskdbhandler.inserTaskInPBI(t, p)
+		end
 end

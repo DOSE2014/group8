@@ -26,10 +26,10 @@ feature
 	do
 		create Result.make_default
 		create dbQueryStatement.make ("SELECT * FROM Backlog WHERE id=" + id.out + ";", db)
-			dbQueryStatement.execute (agent genBacklog(?, 3, Result))
-			if Result.getId = 0 then
-				Result := Void
-			end
+		dbQueryStatement.execute (agent genBacklog(?, 3, Result))
+		if Result.getId = 0 then
+			Result := Void
+		end
 	end
 	insertBacklog(b: BACKLOG)
 	do
@@ -51,6 +51,24 @@ feature
 		end
 	end
 
+	getBacklogFromProjectId(id: INTEGER): BACKLOG
+		do
+			create Result.make_default
+			create dbquerystatement.make ("SELECT * FROM Backlog WHERE project=" + id.out + ";", db)
+			dbquerystatement.execute (agent genBacklog(?, 3, Result))
+			if Result.getId = 0 then
+				Result := Void
+			end
+		end
+
+	deleteBacklogFromProjectId(id: INTEGER)
+		do
+			create dbmodifystatement.make ("DELETE FROM Backlog WHERE project=" + id.out + ";", db)
+			dbmodifystatement.execute
+			if dbmodifystatement.has_error
+			then print("Error while deleting backlog.")
+			end
+		end
 
 feature{NONE}
 	genBacklog(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: BACKLOG): BOOLEAN
