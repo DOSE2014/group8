@@ -283,4 +283,15 @@ feature
 
 			--TODO Delete entries from Language_User, ProgrammingLanguage_User?
 		end
+
+	existsEmail(email: STRING): USER
+		do
+			create Result.make_default
+			create dbquerystatement.make ("SELECT * FROM User WHERE email='" + email + "';", db)
+			dbquerystatement.execute (agent genUser(?, 11, Result))
+			if Result.getId = 0
+			then
+				Result := Void
+			end
+		end
 end

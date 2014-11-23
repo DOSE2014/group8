@@ -165,4 +165,14 @@ feature
 		do
 			Result := taskdbhandler.getTasksFromPBI(pbi)
 		end
+	existsEmailInUser(email: STRING): BOOLEAN
+		local
+			u: USER
+		do
+			u := userdbhandler.existsEmail(email)
+			if u = Void
+			then Result := false
+			else Result := true
+			end
+		end
 end
