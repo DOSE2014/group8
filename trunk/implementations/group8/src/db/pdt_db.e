@@ -46,8 +46,8 @@ feature
 			create projectDBHandler.make (db, userdbhandler)
 			create backlogDBHandler.make(db, projectDBHandler)
 			create sprintlogDBHandler.make(db, backlogDBHandler)
-			create pbiDBHandler.make(db, backlogDBHandler)
-			create taskDBHandler.make(db, sprintlogDBHandler, userDBHandler, pbiDBHandler)
+			create pbiDBHandler.make(db, backlogDBHandler, sprintlogDBHandler)
+			create taskDBHandler.make(db, userDBHandler, pbiDBHandler)
 		end
 
 feature
@@ -164,9 +164,5 @@ feature
 	getTasksFromPBI(pbi: PBI): LINKED_SET[TASK]
 		do
 			Result := taskdbhandler.getTasksFromPBI(pbi)
-		end
-	insertTaskInPBI(t: TASK; p: PBI)
-		do
-			taskdbhandler.inserTaskInPBI(t, p)
 		end
 end

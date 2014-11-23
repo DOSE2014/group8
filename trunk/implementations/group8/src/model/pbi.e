@@ -16,17 +16,19 @@ feature{NONE}
 	name: STRING
 	description: STRING
 	backlog: BACKLOG
+	sprintlog: SPRINTLOG
 	type: INTEGER
 	priority: INTEGER
 	dueDate: DATE_TIME
 
 feature
-	make(i: INTEGER; n, desc: STRING; b: BACKLOG;  t: INTEGER; p: INTEGER; d: DATE_TIME)
+	make(i: INTEGER; n, desc: STRING; b: BACKLOG; s: SPRINTLOG;  t: INTEGER; p: INTEGER; d: DATE_TIME)
 		do
 			id := i
 			name := n
 			description := desc
 			backlog := b
+			sprintlog := s
 			type := t
 			priority := p
 			dueDate := d
@@ -67,6 +69,14 @@ feature
 	setBacklog(b: BACKLOG)
 		do
 			backlog := b
+		end
+	getSprintlog: SPRINTLOG
+		do
+			Result := sprintlog
+		end
+	setSprintlog(s: SPRINTLOG)
+		do
+			sprintlog := s
 		end
 	getType: INTEGER
 		do
