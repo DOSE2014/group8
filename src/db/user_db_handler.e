@@ -128,6 +128,12 @@ feature{NONE}
 			Result := false
 		end
 
+	getLastInsertRowId(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: INTEGER): BOOLEAN
+		do
+			resultobject.set_item (row.string_value (1).to_integer)
+			Result := false
+		end
+
 	create_ProgrammingLanguageUser_Hash(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: HASH_TABLE[LINKED_SET[PROGRAMMING_LANGUAGE], INTEGER]): BOOLEAN
 		local
 			i: NATURAL
@@ -218,6 +224,7 @@ feature
 	insertUser(u: USER)
 		local
 			i, j: INTEGER
+			rowId: INTEGER
 			epoch: DATE_TIME
 		do
 			create epoch.make_from_epoch (0)
@@ -227,6 +234,9 @@ feature
 											 u.gettimezone + "', '" + u.getemail + "', '" + u.getpasswordhash + "', '" + u.getusertype.out + "', '" + u.getorganization +
 											 "');", db)
 			dbinsertstatement.execute
+			create dbquerystatement.make ("SELECT last_insert_rowid()", db)
+			create rowId.default_create
+			dbquerystatement.execute (agent getLastInsertRowId(?, 1, rowId))
 			if dbinsertstatement.has_error
 			then print("Error while inserting a new user.%N")
 			end
@@ -240,7 +250,7 @@ feature
 					if programminglanguages.at (i).getid = u.getprogramminglanguages.at(j).getid
 					then
 						create dbinsertstatement.make ("INSERT INTO ProgrammingLanguage_User(programmingLanguage, user) VALUES ('" + programminglanguages.at (i).getid.out + "', '" +
-											u.getid.out + "');", db)
+											rowId.out + "');", db)
 						dbinsertstatement.execute
 						if dbinsertstatement.has_error
 						then print("Error while inserting a new entry in ProgrammingLanguage_User.%N")
@@ -261,7 +271,7 @@ feature
 					if languages.at (i).getid = u.getlanguages.at(j).getid
 					then
 						create dbinsertstatement.make ("INSERT INTO Language_User(language, user) VALUES ('" + languages.at (i).getid.out + "', '" +
-											u.getid.out + "');", db)
+											rowId.out + "');", db)
 						dbinsertstatement.execute
 						if dbinsertstatement.has_error
 						then print("Error while inserting a new entry in Language_User.%N")
