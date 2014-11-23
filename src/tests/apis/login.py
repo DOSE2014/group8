@@ -3,8 +3,8 @@ import json
 
 params = """
 {
-    "email" : "federico1.reghenzani@mail.polimi.it",
-    "password" : "password"
+    "email" : "federico@reghe.net",
+    "password" : "nonteladico"
 }
 """;
 

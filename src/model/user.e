@@ -169,11 +169,14 @@ feature
 	passHash(p : STRING) : STRING
 		local
 			hashEngine : SHA1
+			hashedString : STRING
 		do
 			-- Convert a string to SHA1 hash
 			create hashEngine.make
 			hashEngine.update_from_string(p)
-			Result := hashEngine.digest_as_string
+			hashedString := hashEngine.digest_as_string
+			hashedString.to_lower	 -- Manitain lowercase hex
+			Result := hashedstring
 		end
 	getUserType: INTEGER
 		do
