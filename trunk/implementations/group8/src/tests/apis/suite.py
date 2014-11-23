@@ -24,7 +24,7 @@ def test_(name, function):
         if function(verbose):
             print(bcolors.OKGREEN+"OK"+bcolors.ENDC)
         else:
-            print(bcolors.OKERROR+"ERROR"+bcolors.ENDC)
+            print(bcolors.FAIL+"ERROR"+bcolors.ENDC)
     except(ConnectionRefusedError):
         print(bcolors.WARNING+"CONNECTION REFUSED"+bcolors.ENDC)
 

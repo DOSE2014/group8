@@ -41,6 +41,13 @@ feature{NONE}
 		Result.compile(regex_date_iso8601)
 	end
 
+	regex_unixtime : STRING = "[0-9]{0,10}"
+	regex_unixtime_obj : RX_PCRE_REGULAR_EXPRESSION
+	once
+		create Result.make
+		Result.compile(regex_unixtime)
+	end
+
 	make
 	do
 
@@ -78,6 +85,15 @@ feature
 	do
 		if (s /= Void) then
 			Result := regex_date_iso8601_obj.recognizes(s)
+		else
+			Result := False
+		end
+	end
+
+	check_unixtime (s : STRING) : BOOLEAN
+	do
+		if (s /= Void) then
+			Result := regex_unixtime_obj.recognizes(s)
 		else
 			Result := False
 		end

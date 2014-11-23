@@ -102,8 +102,6 @@ feature
 		-- For security reason and for eventually future use
 		hash.reset
 
-		log.severe(password_hashed)
-
 		-- Search user & password from database
 		u := db.getUserFromEmailPassword(email, password_hashed)
 

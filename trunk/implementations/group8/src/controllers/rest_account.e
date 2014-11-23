@@ -110,6 +110,13 @@ feature
 		param_type      : detachable STRING
 		param_langs		: detachable ARRAYED_LIST [STRING]
 		param_plangs	: detachable ARRAYED_LIST [STRING]
+
+		availableProgL	: LINKED_SET[PROGRAMMING_LANGUAGE]
+		selectedProgL	: LINKED_SET[PROGRAMMING_LANGUAGE]
+
+		availableLangs	: LINKED_SET[LANGUAGE]
+		selectedLangs	: LINKED_SET[LANGUAGE]
+
 	do
 		http_request  := hreq
 		http_response := hres
@@ -160,7 +167,7 @@ feature
 				ok := FALSE
 			end
 
-			if ok and not regex.check_date_iso8601 (param_dob) then
+			if ok and not regex.check_unixtime (param_dob) then
 				error_reason := "Date of birth not present or not correct (3<=length<=50)."
 				ok := FALSE
 			end
@@ -209,11 +216,45 @@ feature
 
 			if ok then
 
+				-- Retrive all lang and programming lang
+				availableProgL := db.getprogramminglanguages
+				availableLangs  := db.getlanguages
+
+				create selectedProgL.make
+				create selectedLangs.make
+
+				-- Now search proglangs selected by user
+				across availableProgL as apl
+				loop
+					across param_plangs as ppl
+					loop
+						if apl.item.getName.is_equal(ppl.item) then
+							-- Append to selected progL
+							selectedProgL.force (apl.item)
+						end
+					end
+				end
+
+				-- Now search langs selected by user
+				across availableLangs as apl
+				loop
+					across param_langs as ppl
+					loop
+						if apl.item.getName.is_equal(ppl.item) then
+							-- Append to selected progL
+							selectedLangs.force (apl.item)
+						end
+					end
+
+				end
+
+
 				-- Create the user
 				create u.make (0, param_fname, param_lname,	ec.bool_to_int(param_sex.is_equal("M")),
-							   create {DATE_TIME}.make(2000,1,1,0,0,0), param_country, param_timezone,
-							   param_email, param_password, ec.bool_to_int(param_type.is_equal("developer")),
-							   param_organiz, Void, Void)
+							   create {DATE_TIME}.make_from_epoch(param_dob.to_integer_32), param_country,
+							   param_timezone, param_email, param_password,
+							   ec.bool_to_int(param_type.is_equal("developer")),param_organiz,
+							   selectedProgL, selectedLangs)
 
 				db.insertUser(u)
 
