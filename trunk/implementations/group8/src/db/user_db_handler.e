@@ -221,8 +221,8 @@ feature
 			epoch: DATE_TIME
 		do
 			create epoch.make_from_epoch (0)
-			create dbinsertstatement.make ("INSERT INTO User(id, firstname, lastname, sex, dateOfBirth, country, timezone, email, password, usertype, organization)" +
-											 "VALUES ('" + u.getid.out + "', '" + u.getfirstname + "', '" + u.getlastname + "', '" + u.getsex.out +
+			create dbinsertstatement.make ("INSERT INTO User(firstname, lastname, sex, dateOfBirth, country, timezone, email, password, usertype, organization)" +
+											 "VALUES ('" + u.getfirstname + "', '" + u.getlastname + "', '" + u.getsex.out +
 											 "', '" + u.getdateofbirth.definite_duration (epoch).seconds_count.out + "', '" + u.getcountry + "', '" +
 											 u.gettimezone + "', '" + u.getemail + "', '" + u.getpasswordhash + "', '" + u.getusertype.out + "', '" + u.getorganization +
 											 "');", db)
