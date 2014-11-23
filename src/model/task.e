@@ -14,19 +14,17 @@ feature{NONE}
 	id: INTEGER
 	name: STRING
 	description: STRING
-	sprintlog: SPRINTLOG
 	developer: USER
 	points: INTEGER
 	state: INTEGER
 	pbi: PBI
 
 feature
-	make(i: INTEGER; n, desc: STRING; s: SPRINTLOG; dev: USER; pts: INTEGER; st: INTEGER; p: PBI)
+	make(i: INTEGER; n, desc: STRING; dev: USER; pts: INTEGER; st: INTEGER; p: PBI)
 	do
 		id := i
 		name := n
 		description := desc
-		sprintlog := s
 		developer := dev
 		points := pts
 		state := st
@@ -61,14 +59,6 @@ feature
 	setDescription(d: STRING)
 		do
 			description := d
-		end
-	getSprintlog: SPRINTLOG
-		do
-			Result := sprintlog
-		end
-	setSprintlog(s: SPRINTLOG)
-		do
-			sprintlog := s
 		end
 	getDeveloper: USER
 		do

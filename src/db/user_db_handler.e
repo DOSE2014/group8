@@ -208,7 +208,7 @@ feature
 	getDevelopers: LINKED_SET[USER]
 		do
 			create Result.make
-			create dbQueryStatement.make ("SELECT * FROM User WHERE userType=" + {USERTYPE}.developer + ";", db)
+			create dbQueryStatement.make ("SELECT * FROM User WHERE userType=" + {USERTYPE}.developer.out + ";", db)
 			dbquerystatement.execute (agent genDevelopers(?, 11, Result))
 			if Result.count = 0
 			then Result := Void

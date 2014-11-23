@@ -16,15 +16,13 @@ feature{NONE}
 	dbInsertStatement: SQLITE_INSERT_STATEMENT
 	dbModifyStatement: SQLITE_MODIFY_STATEMENT
 
-	sprintlogDBHandler: SPRINTLOG_DB_HANDLER
 	userDBHandler: USER_DB_HANDLER
 	pbiDBHandler: PBI_DB_HANDLER
 
 feature
-	make(s: SQLITE_DATABASE; sprintdbhand: SPRINTLOG_DB_HANDLER; userdbHand: USER_DB_HANDLER; pbidbhand: PBI_DB_HANDLER)
+	make(s: SQLITE_DATABASE; userdbHand: USER_DB_HANDLER; pbidbhand: PBI_DB_HANDLER)
 		do
 			db := s
-			sprintlogDBHandler := sprintdbhand
 			userDBHandler := userdbHand
 			pbiDBHandler := pbidbhand
 		end
@@ -42,8 +40,8 @@ feature
 
 	insertTask(t: TASK)
 		do
-			create dbInsertStatement.make("INSERT INTO Task(id, name, description, sprintlog, developer, points, state, pbi) VALUES('" + t.getid.out + "', '" +
-											t.getname + "', '" + t.getdescription + "', '" + t.getsprintlog.getid.out + "', '" + t.getDeveloper.getid.out + "', '" +
+			create dbInsertStatement.make("INSERT INTO Task(id, name, description, developer, points, state, pbi) VALUES('" + t.getid.out + "', '" +
+											t.getname + "', '" + t.getdescription + "', '" + t.getDeveloper.getid.out + "', '" +
 											t.getpoints.out + "', '" + t.getState.out + "', '" + t.getpbi.getid.out + "');", db)
 			dbInsertStatement.execute
 			if dbInsertStatement.has_error
@@ -63,8 +61,8 @@ feature
 		do
 			create Result.make
 			create dbquerystatement.make ("SELECT * FROM Task WHERE pbi=" + p.getid.out + ";", db)
-			dbquerystatement.execute (agent genTasks(?, 8, Result))
-			if Result.getId = 0 then
+			dbquerystatement.execute (agent genTasks(?, 7, Result))
+			if Result.count = 0 then
 				Result := Void
 			end
 		end
@@ -77,14 +75,13 @@ feature{NONE}
 			resultobject.setid (row.string_value (1).to_integer)
 			resultobject.setname (row.string_value (2))
 			resultobject.setdescription (row.string_value (3))
-			resultobject.setSprintlog(sprintlogDBHandler.getSprintlogFromId(row.string_value (4).to_integer))
-			resultobject.setDeveloper (userDBHandler.getUserFromId(row.string_value (5).to_integer))
-			resultobject.setpoints (row.string_value(6).to_integer)
-			if row.string_value (7).to_integer = {STATE}.completed
+			resultobject.setDeveloper (userDBHandler.getUserFromId(row.string_value (4).to_integer))
+			resultobject.setpoints (row.string_value(5).to_integer)
+			if row.string_value (6).to_integer = {STATE}.completed
 			then resultobject.setstate ({STATE}.completed)
 			else resultobject.setstate ({STATE}.pending)
 			end
-			resultobject.setpbi (pbiDBHandler.getPBIFromId(row.string_value (8).to_integer))
+			resultobject.setpbi (pbiDBHandler.getPBIFromId(row.string_value (7).to_integer))
 
 			Result := false
 		end
@@ -102,16 +99,15 @@ feature{NONE}
 				t.setid (row.string_value (i).to_integer)
 				t.setname (row.string_value (i + 1))
 				t.setdescription (row.string_value (i + 2))
-				t.setSprintlog(sprintlogDBHandler.getSprintlogFromId(row.string_value (i + 3).to_integer))
-				t.setDeveloper (userDBHandler.getUserFromId(row.string_value (i + 4).to_integer))
-				t.setpoints (row.string_value(i + 5).to_integer)
-				if row.string_value (i + 6).to_integer = {STATE}.completed
-				then resultobject.setstate ({STATE}.completed)
-				else resultobject.setstate ({STATE}.pending)
+				t.setDeveloper (userDBHandler.getUserFromId(row.string_value (i + 3).to_integer))
+				t.setpoints (row.string_value(i + 4).to_integer)
+				if row.string_value (i + 5).to_integer = {STATE}.completed
+				then t.setstate ({STATE}.completed)
+				else t.setstate ({STATE}.pending)
 				end
-				t.setpbi (pbiDBHandler.getPBIFromId(row.string_value (i + 7).to_integer))
+				t.setpbi (pbiDBHandler.getPBIFromId(row.string_value (i + 6).to_integer))
 				resultobject.extend(t)
-				i := i + 8
+				i := i + 7
 			end
 			Result := false
 

@@ -17,12 +17,14 @@ feature{NONE}
 	dbModifyStatement: SQLITE_MODIFY_STATEMENT
 
 	backlogDBHandler: BACKLOG_DB_HANDLER
+	sprintlogDBHandler: SPRINTLOG_DB_HANDLER
 
 feature
-	make(s: SQLITE_DATABASE; backdbhand: BACKLOG_DB_HANDLER)
+	make(s: SQLITE_DATABASE; backdbhand: BACKLOG_DB_HANDLER; sprintdbhand: SPRINTLOG_DB_HANDLER)
 		do
 			db := s
 			backlogDBHandler := backdbhand
+			sprintlogDBHandler := sprintdbhand
 		end
 
 feature
@@ -30,7 +32,7 @@ feature
 		do
 			create Result.make_default
 			create dbQueryStatement.make ("SELECT * FROM PBI WHERE id=" + id.out + ";", db)
-			dbQueryStatement.execute (agent genPBI(?, 7, Result))
+			dbQueryStatement.execute (agent genPBI(?, 8, Result))
 			if Result.getId = 0 then
 				Result := Void
 			end
@@ -41,9 +43,9 @@ feature
 			epoch: DATE_TIME
 		do
 			create epoch.make_from_epoch (0)
-			create dbInsertStatement.make("INSERT INTO PBI(id, name, description, backlog, type, priority, dueDate) VALUES('" + pbi.getid.out + "', '" +
-											pbi.getname + "', '" + pbi.getdescription + "', '" + pbi.getbacklog.getid.out + "', '" + pbi.gettype.out + "', '" +
-											pbi.getpriority.out + "', '" + pbi.getduedate.definite_duration(epoch).seconds_count.out + "');", db)
+			create dbInsertStatement.make("INSERT INTO PBI(id, name, description, backlog, sprintlog, type, priority, dueDate) VALUES('" + pbi.getid.out + "', '" +
+											pbi.getname + "', '" + pbi.getdescription + "', '" + pbi.getbacklog.getid.out + "', '" + pbi.getSprintlog.getid.out + "', '" +
+											pbi.gettype.out + "', '" + pbi.getpriority.out + "', '" + pbi.getduedate.definite_duration(epoch).seconds_count.out + "');", db)
 			dbInsertStatement.execute
 			if dbInsertStatement.has_error
 			then print("Error while inserting pbi.")
@@ -68,9 +70,10 @@ feature{NONE}
 			resultobject.setname (row.string_value (2))
 			resultobject.setdescription (row.string_value (3))
 			resultobject.setbacklog(backlogDBHandler.getBacklogFromId(row.string_value (4).to_integer))
-			resultobject.settype (row.string_value (5).to_integer)
-			resultobject.setpriority (row.string_value(6).to_integer)
-			create d.make_from_epoch (row.string_value (7).to_integer)
+			resultobject.setsprintlog(sprintlogDBHandler.getSprintlogFromId(row.string_value (5).to_integer))
+			resultobject.settype (row.string_value (6).to_integer)
+			resultobject.setpriority (row.string_value(7).to_integer)
+			create d.make_from_epoch (row.string_value (8).to_integer)
 			resultobject.setduedate (d)
 
 			Result := false
