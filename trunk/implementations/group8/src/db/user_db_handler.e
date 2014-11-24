@@ -234,7 +234,7 @@ feature
 											 u.gettimezone + "', '" + u.getemail + "', '" + u.getpasswordhash + "', '" + u.getusertype.out + "', '" + u.getorganization +
 											 "');", db)
 			dbinsertstatement.execute
-			create dbquerystatement.make ("SELECT last_insert_rowid()", db)
+			create dbquerystatement.make ("SELECT last_insert_rowid();", db)
 			create rowId.default_create
 			dbquerystatement.execute (agent getLastInsertRowId(?, 1, rowId))
 			if dbinsertstatement.has_error

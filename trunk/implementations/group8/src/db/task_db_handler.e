@@ -69,8 +69,6 @@ feature
 
 feature{NONE}
 	genTask(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: TASK): BOOLEAN
-		local
-			d: DATE_TIME
 		do
 			resultobject.setid (row.string_value (1).to_integer)
 			resultobject.setname (row.string_value (2))
@@ -89,7 +87,6 @@ feature{NONE}
 	genTasks(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: LINKED_SET[TASK]): BOOLEAN
 		local
 			i: NATURAL
-			d: DATE_TIME
 			t: TASK
 		do
 			from i := 1

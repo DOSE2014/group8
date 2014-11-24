@@ -210,4 +210,47 @@ feature
 		do
 			languages := l
 		end
+
+
+	to_json : JSON_OBJECT
+	require
+		-- user must be loaded to generate json
+		getid /= 0
+	local
+		epoch: DATE_TIME
+		sex_class : SEX
+		ut_class : USERTYPE
+		plangs: JSON_ARRAY
+		langs: JSON_ARRAY
+	do
+		if userType = ut_class.developer then
+			across  programminglanguages as pl
+			loop
+				plangs.add (create {JSON_STRING}.make_json(pl.item.getName))
+			end
+		end
+
+		across languages as l
+		loop
+			langs.add(create {JSON_STRING}.make_json(l.item.getName))
+		end
+
+
+		create epoch.make_from_epoch (0)
+		create Result.make
+		Result.put_integer(id, "id")
+		Result.put_string (firstname, "firstname")
+		Result.put_string (lastname, "lastname")
+		Result.put_string (sex_class.to_string(sex), "sex")
+		Result.put_integer(dateOfBirth.definite_duration (epoch).seconds_count, "dateOfBirth")
+		Result.put_string (country, "country")
+		Result.put_string (timezone, "timezone")
+		Result.put_string (ut_class.to_string(userType), "userType")
+		Result.put_string (organization, "organization")
+		Result.put_string (email, "email")
+		if plangs /= Void then
+			Result.put(plangs, "programmingLanguages")
+		end
+		Result.put(langs, "languages")
+	end
 end

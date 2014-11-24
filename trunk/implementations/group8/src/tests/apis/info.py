@@ -1,37 +1,24 @@
 import http.client
-import json
+import json, login
 
-params = """
-{
-    "email" : "federico1.reghenzani@mail.polimi.it",
-    "password" : "password"
-}
-""";
+params = "";
 
-expected_response = json.loads("""{"status":"ok"}""");
-
-cookie_id = ""
+expected_response = json.loads("""{}""");
 
 def exec_test(debug=False):
-
-    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
+    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain", "Cookie" : "_pdt_session_id_="+login.cookie_id+";"}
     conn = http.client.HTTPConnection("localhost", 8080)
-    conn.request("POST", "/account/login", params, headers)
+    conn.request("GET", "/account/userinfo", params, headers)
     response = conn.getresponse()
 
     if debug:
         print("")
         print("\tREPLY HTTP STATUS: ", response.status)
         print("\tHEADERS:")
-    headers = response.getheaders()
+        headers = response.getheaders()
     
-    for h in headers:
-        if debug:
+        for h in headers:
             print("\t\t"+h[0]+": "+h[1])
-        if h[0] == "Set-Cookie":
-            where = int(h[1].find("_pdt_session_id_="))
-            where2 = int(h[1].find(";"))
-            cookie_id = h[1][where+18:where2]
 
     data = response.read()
         

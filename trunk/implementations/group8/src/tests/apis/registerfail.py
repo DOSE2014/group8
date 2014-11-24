@@ -4,34 +4,36 @@ import json
 params = """
 {
     "email" : "federico1.reghenzani@mail.polimi.it",
-    "password" : "password"
+    "firstname" : "Federico",
+    "lastname" : "Reghenzani",
+    "country" : "Italy",
+    "sex" : "M",
+    "timezone" : "Europe/Rome",
+    "type" : "developer",
+    "password" : "nonteladico",
+    "dateOfBirth" : "1248757",
+    "organization" : "Politecnico di Milano",
+    "languages" : [ "Italian", "English" ],
+    "programmingLanguages" : [ "C++", "PHP"] 
 }
 """;
 
-expected_response = json.loads("""{"status":"ok"}""");
-
-cookie_id = ""
+expected_response = json.loads("""{"status":"error","reason":"E-Mail already exists"}""");
 
 def exec_test(debug=False):
-
     headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
     conn = http.client.HTTPConnection("localhost", 8080)
-    conn.request("POST", "/account/login", params, headers)
+    conn.request("POST", "/account/register", params, headers)
     response = conn.getresponse()
 
     if debug:
         print("")
         print("\tREPLY HTTP STATUS: ", response.status)
         print("\tHEADERS:")
-    headers = response.getheaders()
+        headers = response.getheaders()
     
-    for h in headers:
-        if debug:
+        for h in headers:
             print("\t\t"+h[0]+": "+h[1])
-        if h[0] == "Set-Cookie":
-            where = int(h[1].find("_pdt_session_id_="))
-            where2 = int(h[1].find(";"))
-            cookie_id = h[1][where+18:where2]
 
     data = response.read()
         
