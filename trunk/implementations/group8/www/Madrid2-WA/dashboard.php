@@ -1,6 +1,7 @@
 <?php 
 	require_once 'includes/security.php';
-?><html data-ng-app="dashboard">
+?>
+<html data-ng-app="dashboard">
 <head>
 <title>Developer Dashboard</title>
 <meta charset="utf-8">
@@ -190,6 +191,8 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 	<script src="includes/graph/jquery.canvasjs.min.js"></script>
+	
+	<script src="includes/jquery.cookie.js"></script>
 
 	<script src="includes/bootstrap.min.js"></script>
 
