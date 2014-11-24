@@ -52,12 +52,21 @@ feature
 			--TODO Should insert backlog from here? I think the method to insert backlog should be called separately.
 		end
 
-	deleteSprintlog(s: SPRINTLOG)
+	deleteSprintlog(s: INTEGER)
 		do
-			create dbModifyStatement.make("DELETE FROM Sprintlog WHERE id=" + s.getid.out + ";", db)
+			create dbModifyStatement.make("DELETE FROM Sprintlog WHERE id=" + s.out + ";", db)
 			dbModifyStatement.execute
 			if dbModifyStatement.has_error
 			then print("Error while deleting sprintlog")
+			end
+		end
+	listSprintlogsFromBacklogId(b: INTEGER): LINKED_SET[SPRINTLOG]
+		do
+			Result.make
+			create dbquerystatement.make ("SELECT * FROM Sprintlog WHERE backlog=" + b.out + ";", db)
+			dbquerystatement.execute (agent genSprintlogs(?, 6, Result)
+			if Result.count = 0
+			then Result := Void
 			end
 		end
 
@@ -75,6 +84,31 @@ feature{NONE}
 			create d.make_from_epoch (row.string_value (6).to_integer)
 			resultobject.setenddate (d)
 
+			Result := false
+		end
+
+	genSprintlogs(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: LINKED_SET[SPRINTLOG]): BOOLEAN
+		local
+			i: NATURAL
+			d: DATE_TIME
+			s: SPRINTLOG
+		do
+			from i := 1
+			until i > row.count
+			loop
+				create s.make_default
+				s.setid (row.string_value (i).to_integer)
+				s.setName(row.string_value (i + 1))
+				s.setdescription (row.string_value (i + 2))
+				s.setbacklog (backlogDBHandler.getBacklogFromId(row.string_value (i + 3).to_integer))
+				create d.make_from_epoch (row.string_value (i + 4).to_integer)
+				s.setstartdate (d)
+				create d.make_from_epoch (row.string_value (i + 5).to_integer)
+				s.setenddate (d)
+
+				resultobject.extend (s)
+				i := i + 6
+			end
 			Result := false
 		end
 

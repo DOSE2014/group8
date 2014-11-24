@@ -69,7 +69,7 @@ feature
 			userDBHandler.insertUser(u)
 		end
 
-	deleteUser(u: USER)
+	deleteUserFromId(u: INTEGER)
 		do
 			userDBHandler.deleteuser (u)
 		end
@@ -77,11 +77,11 @@ feature
 		do
 			Result:= projectDBHandler.getProjectFromId(id)
 		end
-	insertProject(p:PROJECT)
+	insertProject(p: PROJECT)
 		do
 			projectDBHandler.insertProject(p)
 		end
-	deleteProject(p:PROJECT)
+	deleteProjectFromId(p: INTEGER)
 		do
 			projectDBHandler.deleteProject(p)
 		end
@@ -113,7 +113,7 @@ feature
 		do
 			pbidbhandler.insertpbi (pbi)
 		end
-	deletePBI(pbi: PBI)
+	deletePBIFromId(pbi: INTEGER)
 		do
 			pbidbhandler.deletepbi (pbi)
 		end
@@ -125,7 +125,7 @@ feature
 		do
 			sprintlogdbhandler.insertsprintlog (s)
 		end
-	deleteSprintlog(s: SPRINTLOG)
+	deleteSprintlogFromId(s: INTEGER)
 		do
 			sprintlogdbhandler.deletesprintlog (s)
 		end
@@ -137,19 +137,19 @@ feature
 		do
 			taskdbhandler.inserttask (t)
 		end
-	deleteTask(t: TASK)
+	deleteTaskFromId(t: INTEGER)
 		do
 			taskdbhandler.deletetask (t)
 		end
-	addDeveloperToProject(d: USER; p: PROJECT)
+	addDeveloperToProject(d: INTEGER; p: INTEGER)
 		do
 			projectdbhandler.addDeveloperToProject(d, p)
 		end
-	getProjectsVisibleToUser(u: USER): LINKED_SET[PROJECT]
+	getProjectsVisibleToUser(u: INTEGER): LINKED_SET[PROJECT]
 		do
 			Result := projectdbhandler.getProjectsVisibleToUser(u)
 		end
-	deleteDeveloperFromProject(d: USER; p: PROJECT)
+	deleteDeveloperFromProject(d: INTEGER; p: INTEGER)
 		do
 			projectdbhandler.deleteDeveloperFromProject(d, p)
 		end
@@ -161,7 +161,7 @@ feature
 		do
 			backlogdbhandler.deleteBacklogFromProjectId(id)
 		end
-	getTasksFromPBI(pbi: PBI): LINKED_SET[TASK]
+	getTasksFromPBIId(pbi: INTEGER): LINKED_SET[TASK]
 		do
 			Result := taskdbhandler.getTasksFromPBI(pbi)
 		end
@@ -174,5 +174,17 @@ feature
 			then Result := false
 			else Result := true
 			end
+		end
+	listPBIOfSprintlogID(s: INTEGER): LINKED_SET[PBI]
+		do
+			Result := pbidbhandler.listPBIOfSprintlogID(s)
+		end
+	editPBI(pbi: PBI)
+		do
+			pbidbhandler.editPBI(pbi)
+		end
+	listSprintlogsFromBacklogId(b: INTEGER)
+		do
+			sprintlogdbhandler.listSprintlogsFromBacklogId(b)
 		end
 end
