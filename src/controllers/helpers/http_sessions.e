@@ -7,6 +7,9 @@ note
 deferred class
 	HTTP_SESSIONS
 
+inherit
+	LOG
+
 feature
 	session_manager: WSF_SESSION_MANAGER
 		deferred
@@ -57,7 +60,6 @@ feature
 		-- Note: WSF_SESSION_DATA is a specialization of STRING_TABLE that is specialization
 		-- of HASH_TABLE and can be used as associative array xxx[cookiename]=value
 		session_data : WSF_SESSION_DATA
-		user : USER
 	do
 		cookie_id := ec.any_to_wsf_string(http_request.cookie(session_cookie_name))
 		session_data := session_manager.session_data(cookie_id.value)
@@ -85,12 +87,14 @@ feature
 	exists_session : BOOLEAN
 	-- Returns True or False if the session already exists or not.
 	do
+		print("Start")
 		Result := False
 		-- Check if there is cookie
 		if attached {WSF_STRING} http_request.cookie(session_cookie_name) as cookie_id then
 			-- and if there is a session related
 			Result := session_manager.session_exists(cookie_id.value)
 		end
+		print("End")
 	end
 
 end

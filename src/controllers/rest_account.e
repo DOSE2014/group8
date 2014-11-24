@@ -41,6 +41,8 @@ feature
 	require
 		hreq /= Void
 		hres /= Void
+	local
+		u : USER
 	do
 		http_request  := hreq
 		http_response := hres
@@ -48,6 +50,8 @@ feature
 		-- User must be logged
 		if ensure_authenticated then
 
+			u := get_session_user
+			send_json(http_response, u.to_json)
 
 		end
 	end
@@ -151,6 +155,11 @@ feature
 				ok := FALSE
 			end
 
+			if ok and db.existsEmailInUser(param_email) then
+				error_reason := "E-Mail already exists"
+				ok := FALSE
+			end
+
 			if ok and not regex.check_name (param_fname) then
 				error_reason := "First-name not present or not correct (3<=length<=50)."
 				ok := FALSE
@@ -203,7 +212,8 @@ feature
 				ok := FALSE
 			end
 
-			if ok and (param_plangs = Void or param_plangs.count < 1 ) then
+			-- Check programming languges only if user is a developer.
+			if ok and (param_type.is_equal("developer")) and (param_plangs = Void or param_plangs.count < 1 ) then
 				error_reason := "Programming languages not present."
 				ok := FALSE
 			end
@@ -224,13 +234,15 @@ feature
 				create selectedLangs.make
 
 				-- Now search proglangs selected by user
-				across availableProgL as apl
-				loop
-					across param_plangs as ppl
+				if param_type.is_equal("developer")	then
+					across availableProgL as apl
 					loop
-						if apl.item.getName.is_equal(ppl.item) then
-							-- Append to selected progL
-							selectedProgL.force (apl.item)
+						across param_plangs as ppl
+						loop
+							if apl.item.getName.is_equal(ppl.item) then
+								-- Append to selected progL
+								selectedProgL.force (apl.item)
+							end
 						end
 					end
 				end
