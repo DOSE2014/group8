@@ -49,18 +49,18 @@ feature
 			end
 		end
 
-	deleteTask(t: TASK)
+	deleteTask(t: INTEGER)
 		do
-			create dbModifyStatement.make("DELETE FROM Task WHERE id=" + t.getid.out + ";", db)
+			create dbModifyStatement.make("DELETE FROM Task WHERE id=" + t.out + ";", db)
 			dbModifyStatement.execute
 			if dbModifyStatement.has_error
 			then print("Error while deleting task.")
 			end
 		end
-	getTasksFromPBI(p: PBI): LINKED_SET[TASK]
+	getTasksFromPBIId(p: INTEGER): LINKED_SET[TASK]
 		do
 			create Result.make
-			create dbquerystatement.make ("SELECT * FROM Task WHERE pbi=" + p.getid.out + ";", db)
+			create dbquerystatement.make ("SELECT * FROM Task WHERE pbi=" + p.out + ";", db)
 			dbquerystatement.execute (agent genTasks(?, 7, Result))
 			if Result.count = 0 then
 				Result := Void

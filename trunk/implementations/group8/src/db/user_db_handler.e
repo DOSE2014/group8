@@ -72,10 +72,12 @@ feature{NONE}
 				resultobject.setorganization (Void)
 			end
 
-			programmingLanguageUser_Hash := getprogrammingLanguageUser
-			languageUser_Hash := getLanguageUser
-			resultobject.setprogramminglanguages (programminglanguageuser_hash.at (resultobject.getid))
-			resultobject.setlanguages (languageuser_hash.at (resultobject.getid))
+			if resultobject.getusertype = {USERTYPE}.developer then
+				programmingLanguageUser_Hash := getprogrammingLanguageUser
+				languageUser_Hash := getLanguageUser
+				resultobject.setprogramminglanguages (programminglanguageuser_hash.at (resultobject.getid))
+				resultobject.setlanguages (languageuser_hash.at (resultobject.getid))
+			end
 			Result := false
 		end
 
@@ -117,11 +119,12 @@ feature{NONE}
 					u.setorganization (Void)
 				end
 
-				programmingLanguageUser_Hash := getprogrammingLanguageUser
-				languageUser_Hash := getLanguageUser
-				u.setprogramminglanguages (programminglanguageuser_hash.at (u.getid))
-				u.setlanguages (languageuser_hash.at (u.getid))
-
+				if u.getusertype = {USERTYPE}.developer then
+					programmingLanguageUser_Hash := getprogrammingLanguageUser
+					languageUser_Hash := getLanguageUser
+					u.setprogramminglanguages (programminglanguageuser_hash.at (u.getid))
+					u.setlanguages (languageuser_hash.at (u.getid))
+				end
 				resultobject.extend (u)
 				i := i + 11
 			end
@@ -241,51 +244,53 @@ feature
 			then print("Error while inserting a new user.%N")
 			end
 
-			from i := 1
-			until i > programminglanguages.count
-			loop
-				from j := 1
-				until j > u.getprogramminglanguages.count
+			if u.getusertype = {USERTYPE}.developer then
+				from i := 1
+				until i > programminglanguages.count
 				loop
-					if programminglanguages.at (i).getid = u.getprogramminglanguages.at(j).getid
-					then
-						create dbinsertstatement.make ("INSERT INTO ProgrammingLanguage_User(programmingLanguage, user) VALUES ('" + programminglanguages.at (i).getid.out + "', '" +
-											rowId.out + "');", db)
-						dbinsertstatement.execute
-						if dbinsertstatement.has_error
-						then print("Error while inserting a new entry in ProgrammingLanguage_User.%N")
+					from j := 1
+					until j > u.getprogramminglanguages.count
+					loop
+						if programminglanguages.at (i).getid = u.getprogramminglanguages.at(j).getid
+						then
+							create dbinsertstatement.make ("INSERT INTO ProgrammingLanguage_User(programmingLanguage, user) VALUES ('" + programminglanguages.at (i).getid.out + "', '" +
+												rowId.out + "');", db)
+							dbinsertstatement.execute
+							if dbinsertstatement.has_error
+							then print("Error while inserting a new entry in ProgrammingLanguage_User.%N")
+							end
 						end
+						j := j + 1
 					end
-					j := j + 1
+					i := i + 1
 				end
-				i := i + 1
-			end
 
 
-			from i := 1
-			until i > languages.count
-			loop
-				from j := 1
-				until j > u.getlanguages.count
+				from i := 1
+				until i > languages.count
 				loop
-					if languages.at (i).getid = u.getlanguages.at(j).getid
-					then
-						create dbinsertstatement.make ("INSERT INTO Language_User(language, user) VALUES ('" + languages.at (i).getid.out + "', '" +
-											rowId.out + "');", db)
-						dbinsertstatement.execute
-						if dbinsertstatement.has_error
-						then print("Error while inserting a new entry in Language_User.%N")
+					from j := 1
+					until j > u.getlanguages.count
+					loop
+						if languages.at (i).getid = u.getlanguages.at(j).getid
+						then
+							create dbinsertstatement.make ("INSERT INTO Language_User(language, user) VALUES ('" + languages.at (i).getid.out + "', '" +
+												rowId.out + "');", db)
+							dbinsertstatement.execute
+							if dbinsertstatement.has_error
+							then print("Error while inserting a new entry in Language_User.%N")
+							end
 						end
+						j := j + 1
 					end
-					j := j + 1
+					i := i + 1
 				end
-				i := i + 1
 			end
 		end
 
-	deleteUser(u: USER)
+	deleteUser(u: INTEGER)
 		do
-			create dbmodifystatement.make ("DELETE FROM User WHERE id=" + u.getid.out + ";", db)
+			create dbmodifystatement.make ("DELETE FROM User WHERE id=" + u.out + ";", db)
 			dbmodifystatement.execute
 			if dbmodifystatement.has_error
 			then print("Error while deleting user.%N")

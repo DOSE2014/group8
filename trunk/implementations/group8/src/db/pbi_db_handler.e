@@ -52,12 +52,33 @@ feature
 			end
 		end
 
-	deletePBI(pbi: PBI)
+	deletePBI(pbi: INTEGER)
 		do
-			create dbModifyStatement.make("DELETE FROM PBI WHERE id=" + pbi.getid.out + ";", db)
+			create dbModifyStatement.make("DELETE FROM PBI WHERE id=" + pbi.out + ";", db)
 			dbModifyStatement.execute
 			if dbModifyStatement.has_error
 			then print("Error while deleting pbi.")
+			end
+		end
+	listPBIOfSprintlogId(s: INTEGER): LINKED_SET[PBI]
+		do
+			create Result.make
+			create dbquerystatement.make ("SELECT * FROM PBI Where sprintlog=" + s.out + ";", db)
+			dbquerystatement.execute (agent genpbis (?, 8, Result))
+			if Result.count = 0
+			then Result := Void
+			end
+		end
+	editPBI(pbi: PBI)
+		do
+			create dbModifyStatement.make("UPDATE PBI SET id = '" +
+											pbi.getid.out +"', name = '" + pbi.getname + "', description = '" + b.getdescription + "', backlog='" + pbi.getbacklog.getid.out +
+											"', sprintlog = '" + pbi.getsprintlog.getid.out + "', type = '" + pbi.gettype.out + "', priority = '" +
+											pbi.getpriority.out + "', dueDate = '" + pbi.getduedate.definite_duration(epoch).seconds_count.out + "' WHERE id='" +
+											pbi.getid.out+ "';", db)
+			dbModifyStatement.execute
+			if dbModifyStatement.has_error
+			then print("Error while updating a backlog.%N")
 			end
 		end
 
@@ -75,6 +96,34 @@ feature{NONE}
 			resultobject.setpriority (row.string_value(7).to_integer)
 			create d.make_from_epoch (row.string_value (8).to_integer)
 			resultobject.setduedate (d)
+
+			Result := false
+		end
+
+	genPBIs(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: LINKED_SET[PBI]): BOOLEAN
+		local
+			d: DATE_TIME
+			i: NATURAL
+			p: PBI
+		do
+			from i := 1
+			until i > row.count
+			loop
+				create p.make_default
+				p.setid (row.string_value (i).to_integer)
+				p.setname (row.string_value (i + 1))
+				p.setdescription (row.string_value (i + 2))
+				p.setbacklog(backlogDBHandler.getBacklogFromId(row.string_value (i + 3).to_integer))
+				p.setsprintlog(sprintlogDBHandler.getSprintlogFromId(row.string_value (i + 4).to_integer))
+				p.settype (row.string_value (i + 5).to_integer)
+				p.setpriority (row.string_value(i + 6).to_integer)
+				create d.make_from_epoch (row.string_value (i + 7).to_integer)
+				p.setduedate (d)
+
+				resultobject.extend (p)
+				i := i + 1
+			end
+
 
 			Result := false
 		end

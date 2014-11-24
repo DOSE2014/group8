@@ -49,39 +49,39 @@ feature
 		end
 	end
 
-	deleteProject(p:PROJECT)
+	deleteProject(p: INTEGER)
 	do
-			create dbmodifystatement.make ("DELETE FROM Project WHERE id=" + p.getid.out + ";", db)
+			create dbmodifystatement.make ("DELETE FROM Project WHERE id=" + p.out + ";", db)
 			dbmodifystatement.execute
 			if dbmodifystatement.has_error
 			then print("Error while deleting project.%N")
 			end
 	end
 
-	addDeveloperToProject(d: USER; p: PROJECT)
+	addDeveloperToProject(d: INTEGER; p: INTEGER)
 		do
-			create dbinsertstatement.make ("INSERT INTO Developer_Project(developer, project) VALUES('" + d.getid.out + "', '" + p.getid.out + "');", db)
+			create dbinsertstatement.make ("INSERT INTO Developer_Project(developer, project) VALUES('" + d.out + "', '" + p.out + "');", db)
 			dbinsertstatement.execute
 			if dbinsertstatement.has_error
 			then print("Error while inserting a developer in project.")
 			end
 		end
 
-	getProjectsVisibleToUser(u: USER): LINKED_SET[PROJECT]
+	getProjectsVisibleToUser(u: INTEGER): LINKED_SET[PROJECT]
 		do
 			create Result.make
 			create dbquerystatement.make ("SELECT id, name, description, manager, stakeholder, creationDate, deleted FROM PROJECT JOIN Developer_Project" +
-											" ON Project.id = Developer_Project.project WHERE manager=" + u.getid.out + " OR stakeholder=" + u.getid.out +
-											" OR Developer_Project.developer=" + u.getid.out + ";", db)
+											" ON Project.id = Developer_Project.project WHERE manager=" + u.out + " OR stakeholder=" + u.out +
+											" OR Developer_Project.developer=" + u.out + ";", db)
 			dbquerystatement.execute (agent genProjects(?, 7, Result))
 			if Result.count = 0
 			then Result := Void
 			end
 		end
 
-	deleteDeveloperFromProject(d: USER; p: PROJECT)
+	deleteDeveloperFromProject(d: INTEGER; p: INTEGER)
 		do
-			create dbmodifystatement.make ("DELETE FROM Developer_Project WHERE developer=" + d.getid.out + " AND project=" + p.getid.out + ";", db)
+			create dbmodifystatement.make ("DELETE FROM Developer_Project WHERE developer=" + d.out + " AND project=" + p.out + ";", db)
 			dbmodifystatement.execute
 			if dbmodifystatement.has_error
 			then print("Error while deleting developer from project.")
