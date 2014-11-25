@@ -223,6 +223,11 @@ feature
 		plangs: JSON_ARRAY
 		langs: JSON_ARRAY
 	do
+		create sex_class
+		create ut_class
+		create plangs.make_array
+		create langs.make_array
+
 		if userType = ut_class.developer then
 			across  programminglanguages as pl
 			loop
@@ -246,7 +251,9 @@ feature
 		Result.put_string (country, "country")
 		Result.put_string (timezone, "timezone")
 		Result.put_string (ut_class.to_string(userType), "userType")
-		Result.put_string (organization, "organization")
+		if organization /= Void then
+			Result.put_string (organization, "organization")
+		end
 		Result.put_string (email, "email")
 		if plangs /= Void then
 			Result.put(plangs, "programmingLanguages")

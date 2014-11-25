@@ -1,5 +1,5 @@
 import sys, shutil
-import login, register, registerfail, info
+import login, register, registerfail, info, info2
 
 class bcolors:
     HEADER = '\033[95m'
@@ -34,13 +34,14 @@ def test_(name, function):
             print(bcolors.FAIL+"ERROR"+bcolors.ENDC)
     except(ConnectionRefusedError):
         print(bcolors.WARNING+"CONNECTION REFUSED"+bcolors.ENDC)
-    except:
-        print(bcolors.FAIL+"EXCEPTION ("+sys.exc_info()[0]+")"+bcolors.ENDC)
+    except Exception as e:
+        print(bcolors.FAIL+"EXCEPTION ("+e+")"+bcolors.ENDC)
 
 test_("LOGIN", login.exec_test)
-test_("REGISTER", register.exec_test)
+#test_("REGISTER", register.exec_test)
 test_("REGISTER-FAIL", registerfail.exec_test)
 test_("INFO", info.exec_test)
+test_("INFO2", info2.exec_test)
 
 # RESTORE THE DATABASE
 print("\nRestoring pdt.db DB... ",end="")

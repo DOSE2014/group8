@@ -85,16 +85,16 @@ feature
 	end
 
 	exists_session : BOOLEAN
+	local
+		cookie_str : STRING
 	-- Returns True or False if the session already exists or not.
 	do
-		print("Start")
 		Result := False
 		-- Check if there is cookie
 		if attached {WSF_STRING} http_request.cookie(session_cookie_name) as cookie_id then
 			-- and if there is a session related
-			Result := session_manager.session_exists(cookie_id.value)
+			cookie_str := cookie_id.value
+			Result := session_manager.session_exists(cookie_str)
 		end
-		print("End")
 	end
-
 end

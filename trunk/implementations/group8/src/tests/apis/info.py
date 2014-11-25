@@ -3,10 +3,11 @@ import json, login
 
 params = "";
 
-expected_response = json.loads("""{}""");
+expected_response = json.loads("""{"id":2,"firstname":"Federico","lastname":"Reghenzani","sex":"M","dateOfBirth":712022400,"country":"Italy","timezone":"UTC+01:00","userType":"developer","email":"federico1.reghenzani@mail.polimi.it","programmingLanguages":["Eiffel"],"languages":["Italian","English"]}
+""");
 
 def exec_test(debug=False):
-    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain", "Cookie" : "_pdt_session_id_="+login.cookie_id+";"}
+    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain", "Cookie" : "_pdt_session_id_="+login.cookie_id+""}
     conn = http.client.HTTPConnection("localhost", 8080)
     conn.request("GET", "/account/userinfo", params, headers)
     response = conn.getresponse()
