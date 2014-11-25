@@ -42,15 +42,25 @@ feature
 		hreq /= Void
 		hres /= Void
 	local
+		hp : HTTP_PARSER
 		u : USER
 	do
 		http_request  := hreq
 		http_response := hres
 
+		create hp.make(hreq)
+
 		-- User must be logged
 		if ensure_authenticated then
 
-			u := get_session_user
+			if hp.get_param("id") = Void then
+				-- CASE 1: no id passed
+				u := get_session_user
+			else
+				-- CASE 2: id passed
+				u := db.getuserfromid (hp.get_param("id").to_integer)
+			end
+
 			send_json(http_response, u.to_json)
 
 		end
