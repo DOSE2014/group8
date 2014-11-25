@@ -163,7 +163,7 @@ feature
 		end
 	getTasksFromPBIId(pbi: INTEGER): LINKED_SET[TASK]
 		do
-			Result := taskdbhandler.getTasksFromPBI(pbi)
+			Result := taskdbhandler.getTasksFromPBIId(pbi)
 		end
 	existsEmailInUser(email: STRING): BOOLEAN
 		local
@@ -183,8 +183,8 @@ feature
 		do
 			pbidbhandler.editPBI(pbi)
 		end
-	listSprintlogsFromBacklogId(b: INTEGER)
+	listSprintlogsFromBacklogId(b: INTEGER) : LINKED_SET[SPRINTLOG]
 		do
-			sprintlogdbhandler.listSprintlogsFromBacklogId(b)
+			Result := sprintlogdbhandler.listSprintlogsFromBacklogId(b)
 		end
 end

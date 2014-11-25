@@ -44,6 +44,7 @@ feature
 	local
 		hp : HTTP_PARSER
 		u : USER
+		json_error : JSON_OBJECT
 	do
 		http_request  := hreq
 		http_response := hres
@@ -58,10 +59,19 @@ feature
 				u := get_session_user
 			else
 				-- CASE 2: id passed
-				u := db.getuserfromid (hp.get_param("id").to_integer)
+				if hp.get_param("id").is_integer then
+					u := db.getuserfromid (hp.get_param("id").to_integer)
+				end
 			end
 
-			send_json(http_response, u.to_json)
+			if u /= Void then
+				send_json(http_response, u.to_json)
+			else
+				create json_error.make
+				json_error.put_string ("error", "status")
+				send_json(http_response, json_error)
+				log.warning ("/account/userinfo [GET] Trying to get a non-existent user.")
+			end
 
 		end
 	end
