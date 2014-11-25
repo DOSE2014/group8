@@ -1,5 +1,5 @@
 import sys, shutil
-import login, register, registerfail, info, info2
+import login, register, registerfail, info, info2, infofail
 
 class bcolors:
     HEADER = '\033[95m'
@@ -42,6 +42,7 @@ test_("LOGIN", login.exec_test)
 test_("REGISTER-FAIL", registerfail.exec_test)
 test_("INFO", info.exec_test)
 test_("INFO2", info2.exec_test)
+test_("INFO-FAIL", infofail.exec_test)
 
 # RESTORE THE DATABASE
 print("\nRestoring pdt.db DB... ",end="")

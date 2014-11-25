@@ -62,11 +62,11 @@ feature
 		end
 	listSprintlogsFromBacklogId(b: INTEGER): LINKED_SET[SPRINTLOG]
 		do
-			Result.make
+			create Result.make
 			create dbquerystatement.make ("SELECT * FROM Sprintlog WHERE backlog=" + b.out + ";", db)
-			dbquerystatement.execute (agent genSprintlogs(?, 6, Result)
-			if Result.count = 0
-			then Result := Void
+			dbquerystatement.execute (agent genSprintlogs(?, 6, Result))
+			if Result.count = 0 then
+				Result := Void
 			end
 		end
 
