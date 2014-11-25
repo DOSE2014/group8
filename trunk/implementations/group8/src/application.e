@@ -86,6 +86,11 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/account/userinfo", agent rest_account.account_info, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/account/register", agent rest_account.register, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/account/login", agent rest_account.login_, router.methods_post)
+
+				-- setting the path to the folder from where we serve static files
+			create fhdl.make_hidden (path_to_www_folder)
+			fhdl.set_directory_index (<<"index.html">>)
+			router.handle_with_request_methods ("", fhdl, router.methods_GET)
 		end
 
 end
