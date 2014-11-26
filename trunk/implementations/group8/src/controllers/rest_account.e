@@ -313,4 +313,40 @@ feature
 
 	end
 
+	langs(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /account/langs
+	-- METHOD: GET
+	local
+		programmingLanguages : LINKED_SET[PROGRAMMING_LANGUAGE]
+		languages : LINKED_SET[LANGUAGE]
+		j_plangs: JSON_ARRAY
+		j_langs: JSON_ARRAY
+
+		json_response : JSON_OBJECT
+	do
+		-- Read programming languages from db and
+		-- converet the LINKED_SET into a JSON_ARRAY
+		programmingLanguages := db.getprogramminglanguages
+		create j_plangs.make_array
+		across programmingLanguages as lan
+		loop
+			j_plangs.add(create {JSON_STRING}.make_json(lan.item.getName))
+		end
+
+		-- Same opereation with languages		
+		languages := db.getlanguages
+		create j_langs.make_array
+		across languages as lan
+		loop
+			j_langs.add(create {JSON_STRING}.make_json(lan.item.getName))
+		end
+
+		-- And now create and sends JSON
+		create json_response.make
+		json_response.put (j_plangs, "programmingLanguages")
+		json_response.put (j_langs, "languages")
+		send_json(hres, json_response)
+	end
+
+
 end

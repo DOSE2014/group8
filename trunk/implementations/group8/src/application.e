@@ -83,9 +83,12 @@ feature -- Basic operations
 		local
 			fhdl: WSF_FILE_SYSTEM_HANDLER
 		do
-			map_uri_template_agent_with_request_methods ("/account/userinfo", agent rest_account.account_info, router.methods_get)
-			map_uri_template_agent_with_request_methods ("/account/register", agent rest_account.register, router.methods_post)
+			-- List of accessible URL.
+			-- PLEASE KEEP URL IN LESSICAL ORDER!
+			map_uri_template_agent_with_request_methods ("/account/langs", agent rest_account.langs, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/account/login", agent rest_account.login_, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/account/register", agent rest_account.register, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/account/userinfo", agent rest_account.account_info, router.methods_get)
 
 				-- setting the path to the folder from where we serve static files
 			create fhdl.make_hidden (path_to_www_folder)
