@@ -4,7 +4,7 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 
-class
+frozen class	-- Declared as frozen to not inherit this by mistake
 	PDT_DB
 inherit
 	LOG
