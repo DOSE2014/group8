@@ -104,4 +104,28 @@ feature
 		do
 			deleted:=b
 		end
+	to_minimal_json: JSON_OBJECT
+		require
+			getId /= 0
+		do
+			create Result.make
+			Result.put_integer(id, "id")
+			Result.put_string(name, "name")
+		end
+	to_json: JSON_OBJECT
+		require
+			getId /= 0
+		local
+			epoch: DATE_TIME
+		do
+			create epoch.make_from_epoch (0)
+			create Result.make
+			Result.put_integer (id, "id")
+			Result.put_string (name, "name")
+			Result.put_string (description, "description")
+			Result.put (manager.to_json, "manager")
+			Result.put (stakeholder.to_json, "stakeholder")
+			Result.put_integer (creationdate.definite_duration (epoch).seconds_count, "creationDate")
+			Result.put_boolean (deleted, "deleted")
+		end
 end
