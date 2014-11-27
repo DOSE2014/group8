@@ -49,6 +49,7 @@ feature
 			http_request := hreq
 			http_response := hres
 
+			create hp.make (hreq)
 			if ensure_authenticated
 			then
 				if hp.get_param ("id") = Void
