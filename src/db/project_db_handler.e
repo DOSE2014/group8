@@ -100,7 +100,7 @@ feature{NONE}
 			resultobject.setStakeholder (userDBHandler.getuserfromid (row.string_value (5).to_integer))
 			create d.make_from_epoch (row.string_value (6).to_integer)
 			resultobject.setCreationDate (d)
-			resultobject.setDeleted(row.string_value (7).to_boolean)
+			resultobject.setdeleted (ec.int_to_bool (row.string_value (7).to_integer))
 		end
 
 	genProjects(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject:LINKED_SET[PROJECT]): BOOLEAN
