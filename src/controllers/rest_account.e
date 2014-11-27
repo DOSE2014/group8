@@ -76,6 +76,28 @@ feature
 		end
 	end
 
+	logout_(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	local
+		u : USER
+		json_ok : JSON_OBJECT
+	do
+		http_request  := hreq
+		http_response := hres
+
+		if exists_session then
+			u := get_session_user
+		end
+
+		logout -- from AUTHENTICATION
+		create json_ok.make
+		json_ok.put_string ("ok", "status")
+		send_json(http_response, json_ok)
+		if attached u then
+			log.warning ("/account/logout [GET] Logout user: " + u.getemail + ".")
+		end
+
+	end
+
 	-- Underscore at name's end to prevent overloading
 	-- of inerith method
 	login_(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
@@ -357,20 +379,25 @@ feature
 		j_devs : JSON_ARRAY
 		json_response : JSON_OBJECT
 	do
-		developers := db.getDevelopers
-		create j_devs.make_array
+		http_request  := hreq
+		http_response := hres
 
-		-- For all developers...
-		across developers as d
-		loop
-			j_user := d.item.to_minimal_json
-			j_devs.add (j_user)
+		if ensure_authenticated then
+			developers := db.getDevelopers
+			create j_devs.make_array
+
+			-- For all developers...
+			across developers as d
+			loop
+				j_user := d.item.to_minimal_json
+				j_devs.add (j_user)
+			end
+
+			-- Now create the JSON response
+			create json_response.make
+			json_response.put (j_devs, "developers")
+			send_json(hres, json_response)
 		end
-
-		-- Now create the JSON response
-		create json_response.make
-		json_response.put (j_devs, "developers")
-		send_json(hres, json_response)
 	end
 
 end

@@ -85,6 +85,9 @@ feature
 	end
 
 	exists_session : BOOLEAN
+	require
+		http_request    /= Void
+		session_manager /= Void
 	local
 		cookie_str : STRING
 	-- Returns True or False if the session already exists or not.

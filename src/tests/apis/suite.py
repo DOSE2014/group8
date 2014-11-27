@@ -1,6 +1,10 @@
-import sys, shutil
-import login, register, registerfail, info, info2, infofail
+# System libraries
+import sys, shutil, time
 
+# Tests
+import login, register, registerfail, info, info2, infofail, developerslist
+
+# Helper class for colors
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -36,15 +40,24 @@ def test_(name, function):
         print(bcolors.WARNING+"CONNECTION REFUSED"+bcolors.ENDC)
     except Exception as e:
         print(bcolors.FAIL+"EXCEPTION ("+e+")"+bcolors.ENDC)
+    finally:
+        time.sleep(0.2)
 
-test_("LOGIN", login.exec_test)
-#test_("REGISTER", register.exec_test)
-test_("REGISTER-FAIL", registerfail.exec_test)
-test_("INFO", info.exec_test)
-test_("INFO2", info2.exec_test)
-test_("INFO-FAIL", infofail.exec_test)
+try:
 
-# RESTORE THE DATABASE
-print("\nRestoring pdt.db DB... ",end="")
-shutil.move("pdtcopy.db", "../../../pdt.db")
-print("Done (don't forget to restart Eiffel for next tests!)")
+    # LIST OF TASKS TO DO:
+    
+    test_("/account/login - 1", login.exec_test)
+    test_("/account/login - SQLINJ", login.exec_test)
+    #test_("REGISTER", register.exec_test)
+    test_("/account/register - FAIL", registerfail.exec_test)
+    test_("/account/userinfo - 1", info.exec_test)
+    test_("/account/userinfo - 2", info2.exec_test)
+    test_("/account/userinfo - FAIL", infofail.exec_test)
+    test_("/account/listdevelopers", developerslist.exec_test)
+    
+finally:
+    # RESTORE THE DATABASE
+    print("\nRestoring pdt.db DB... ",end="")
+    shutil.move("pdtcopy.db", "../../../pdt.db")
+    print("Done (don't forget to restart Eiffel for next tests!)")
