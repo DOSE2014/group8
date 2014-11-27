@@ -37,9 +37,17 @@ feature {NONE} -- Initialization
 	task : TASK
 	pdtdb : PDT_DB
 	state : STATE
-	rest_account : REST_ACCOUNT
 	------------- REMOVE PREVIOUS, ONLY FOR TESTING COMPILATION ----------------
 	----------------------------------------------------------------------------
+
+	rest_account             : REST_ACCOUNT
+	rest_projects            : REST_PROJECTS
+	rest_projects_pbis 	     : REST_PROJECTS_PBIS
+	rest_projects_pbis_tasks : REST_PROJECTS_PBIS_TASKS
+	rest_projects_sprintlogs : REST_PROJECTS_SPRINTLOGS
+	rest_stats               : REST_STATS
+	rest_chat                : REST_CHAT
+
 
 	path_to_db_file: STRING
 		-- calculates the path to the demo.db file, based on the location of the .ecf file
@@ -92,7 +100,7 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/account/register", agent rest_account.register, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/account/userinfo", agent rest_account.account_info, router.methods_get)
 
-				-- setting the path to the folder from where we serve static files
+			-- setting the path to the folder from where we serve static files
 			create fhdl.make_hidden (path_to_www_folder)
 			fhdl.set_directory_index (<<"index.html">>)
 			router.handle_with_request_methods ("", fhdl, router.methods_GET)
