@@ -99,6 +99,7 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/account/logout", agent rest_account.logout_, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/account/register", agent rest_account.register, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/account/userinfo", agent rest_account.account_info, router.methods_get)
+			map_uri_template_agent_with_request_methods ("/project/listProjects", agent rest_projects.listprojects, router.methods_get)
 
 			-- setting the path to the folder from where we serve static files
 			create fhdl.make_hidden (path_to_www_folder)
