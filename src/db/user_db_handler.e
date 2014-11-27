@@ -85,12 +85,10 @@ feature{NONE}
 		local
 			x: BOOLEAN
 			u: USER
-			d: DATE_TIME
 		do
 			create u.make_default
 			x := genUser(row, numColumns, u)
 			resultobject.extend (u)
-
 		end
 
 	getLastInsertRowId(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: INTEGER): BOOLEAN
@@ -269,6 +267,21 @@ feature
 			if Result.getId = 0
 			then
 				Result := Void
+			end
+		end
+
+	editUser(u: USER)
+		local
+			epoch: DATE_TIME
+		do
+			create epoch.make_from_epoch (0)
+			create dbmodifystatement.make ("UPDATE User SET id='" + u.getid.out + "', firstName='" + u.getfirstname + "', lastName='" +
+				u.getlastname + "', sex='" + u.getsex.out + "', dateOfBirth='" + u.getdateofbirth.definite_duration (epoch).seconds_count.out +
+				"', country='" + u.getcountry + "', timezone='" + u.gettimezone + "', email='" + u.getemail + "', password='" + u.getpasswordhash +
+				"', useType='" + u.getusertype.out + "', organization='" + u.getorganization + "' WHERE id='" + u.getid.out + "';", db)
+			dbmodifystatement.execute
+			if dbmodifystatement.has_error
+			then print("Error while updating user.")
 			end
 		end
 end

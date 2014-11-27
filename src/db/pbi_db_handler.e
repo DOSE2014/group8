@@ -105,29 +105,12 @@ feature{NONE}
 
 	genPBIs(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: LINKED_SET[PBI]): BOOLEAN
 		local
-			d: DATE_TIME
-			i: NATURAL
+			x: BOOLEAN
 			p: PBI
 		do
-			from i := 1
-			until i > row.count
-			loop
-				create p.make_default
-				p.setid (row.string_value (i).to_integer)
-				p.setname (row.string_value (i + 1))
-				p.setdescription (row.string_value (i + 2))
-				p.setbacklog(backlogDBHandler.getBacklogFromId(row.string_value (i + 3).to_integer))
-				p.setsprintlog(sprintlogDBHandler.getSprintlogFromId(row.string_value (i + 4).to_integer))
-				p.settype (row.string_value (i + 5).to_integer)
-				p.setpriority (row.string_value(i + 6).to_integer)
-				create d.make_from_epoch (row.string_value (i + 7).to_integer)
-				p.setduedate (d)
-
-				resultobject.extend (p)
-				i := i + 1
-			end
-
-
+			create p.make_default
+			x := genpbi (row, numColumns, p)
+			resultobject.extend (p)
 			Result := false
 		end
 end
