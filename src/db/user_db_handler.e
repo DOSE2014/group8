@@ -83,52 +83,14 @@ feature{NONE}
 
 	genDevelopers(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: LINKED_SET[USER]): BOOLEAN
 		local
-			i: NATURAL
+			x: BOOLEAN
 			u: USER
 			d: DATE_TIME
 		do
-			from i := 1
-			until i > row.count
-			loop
-				create u.make_default
-				u.setid (row.string_value (i).to_integer)
-				u.setfirstname (row.string_value (i + 1))
-				u.setlastname (row.string_value (i + 2))
+			create u.make_default
+			x := genUser(row, numColumns, u)
+			resultobject.extend (u)
 
-				if row.string_value (i + 3).to_integer = {SEX}.male
-				then u.setsex ({SEX}.male)
-				else u.setsex ({SEX}.female)
-				end
-
-				create d.make_from_epoch (row.string_value (i + 4).to_integer)
-				u.setdateofbirth (d)
-
-				u.setcountry (row.string_value (i + 5))
-				u.settimezone (row.string_value (i + 6))
-				u.setemail (row.string_value (i + 7))
-				u.setpassword (row.string_value (i + 8))
-
-				if row.string_value (i + 9).to_integer = {USERTYPE}.developer
-				then u.setusertype({USERTYPE}.developer)
-				else u.setusertype({USERTYPE}.stakeholder)
-				end
-
-				if not row.is_null(i + 10) then
-					u.setorganization (row.string_value (i + 10))
-				else
-					u.setorganization (Void)
-				end
-
-				if u.getusertype = {USERTYPE}.developer then
-					programmingLanguageUser_Hash := getprogrammingLanguageUser
-					languageUser_Hash := getLanguageUser
-					u.setprogramminglanguages (programminglanguageuser_hash.at (u.getid))
-					u.setlanguages (languageuser_hash.at (u.getid))
-				end
-				resultobject.extend (u)
-				i := i + 11
-			end
-			Result := false
 		end
 
 	getLastInsertRowId(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: INTEGER): BOOLEAN

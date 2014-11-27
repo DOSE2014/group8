@@ -348,5 +348,29 @@ feature
 		send_json(hres, json_response)
 	end
 
+	listDevelopers(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /account/listdevelopers
+	-- METHOD: GET
+	local
+		developers : LINKED_SET[USER]
+		j_user : JSON_OBJECT
+		j_devs : JSON_ARRAY
+		json_response : JSON_OBJECT
+	do
+		developers := db.getDevelopers
+		create j_devs.make_array
+
+		-- For all developers...
+		across developers as d
+		loop
+			j_user := d.item.to_minimal_json
+			j_devs.add (j_user)
+		end
+
+		-- Now create the JSON response
+		create json_response.make
+		json_response.put (j_devs, "developers")
+		send_json(hres, json_response)
+	end
 
 end
