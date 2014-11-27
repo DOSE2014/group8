@@ -77,6 +77,7 @@ feature {NONE} -- Initialization
 			-- Network initialization
 			create session_manager.make
 			create rest_account.make(session_manager, pdtdb)
+			create rest_projects.make (session_manager, pdtdb)
 
 			set_service_option ("port", 8080)
 			initialize_router
