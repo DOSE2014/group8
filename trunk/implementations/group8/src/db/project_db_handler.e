@@ -105,26 +105,12 @@ feature{NONE}
 
 	genProjects(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject:LINKED_SET[PROJECT]): BOOLEAN
 		local
-			i: NATURAL
-			d: DATE_TIME
+			x: BOOLEAN
 			p: PROJECT
 		do
-			from i := 1
-			until i > row.count
-			loop
-				create p.make_default
-				p.setid (row.string_value (i).to_integer)
-				p.setName (row.string_value (i + 1).out)
-				p.setDescription (row.string_value (i + 2).out)
-				p.setManager (userDBHandler.getuserfromid (row.string_value (i + 3).to_integer))
-				p.setStakeholder (userDBHandler.getuserfromid (row.string_value (i + 4).to_integer))
-				create d.make_from_epoch (row.string_value (i + 5).to_integer)
-				p.setCreationDate (d)
-				p.setDeleted(row.string_value (i + 6).to_boolean)
-
-				resultobject.extend (p)
-				i := i + 7
-			end
+			create p.make_default
+			x := genproject (row, numColumns, p)
+			resultobject.extend (p)
 			Result := false
 		end
 feature{NONE}

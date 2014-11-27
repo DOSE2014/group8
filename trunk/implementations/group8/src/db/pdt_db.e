@@ -187,4 +187,8 @@ feature
 		do
 			Result := sprintlogdbhandler.listSprintlogsFromBacklogId(b)
 		end
+	editUser(u: USER)
+		do
+			userdbhandler.editUser(u)
+		end
 end

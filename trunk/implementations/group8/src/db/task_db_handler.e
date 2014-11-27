@@ -86,26 +86,12 @@ feature{NONE}
 
 	genTasks(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: LINKED_SET[TASK]): BOOLEAN
 		local
-			i: NATURAL
+			x: BOOLEAN
 			t: TASK
 		do
-			from i := 1
-			until i > row.count
-			loop
-				create t.make_default
-				t.setid (row.string_value (i).to_integer)
-				t.setname (row.string_value (i + 1))
-				t.setdescription (row.string_value (i + 2))
-				t.setDeveloper (userDBHandler.getUserFromId(row.string_value (i + 3).to_integer))
-				t.setpoints (row.string_value(i + 4).to_integer)
-				if row.string_value (i + 5).to_integer = {STATE}.completed
-				then t.setstate ({STATE}.completed)
-				else t.setstate ({STATE}.pending)
-				end
-				t.setpbi (pbiDBHandler.getPBIFromId(row.string_value (i + 6).to_integer))
-				resultobject.extend(t)
-				i := i + 7
-			end
+			create t.make_default
+			x := gentask (row, numColumns, t)
+			resultobject.extend(t)
 			Result := false
 
 		end

@@ -89,26 +89,12 @@ feature{NONE}
 
 	genSprintlogs(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: LINKED_SET[SPRINTLOG]): BOOLEAN
 		local
-			i: NATURAL
-			d: DATE_TIME
+			x: BOOLEAN
 			s: SPRINTLOG
 		do
-			from i := 1
-			until i > row.count
-			loop
-				create s.make_default
-				s.setid (row.string_value (i).to_integer)
-				s.setName(row.string_value (i + 1))
-				s.setdescription (row.string_value (i + 2))
-				s.setbacklog (backlogDBHandler.getBacklogFromId(row.string_value (i + 3).to_integer))
-				create d.make_from_epoch (row.string_value (i + 4).to_integer)
-				s.setstartdate (d)
-				create d.make_from_epoch (row.string_value (i + 5).to_integer)
-				s.setenddate (d)
-
-				resultobject.extend (s)
-				i := i + 6
-			end
+			create s.make_default
+			x := gensprintlog (row, numColumns, s)
+			resultobject.extend (s)
 			Result := false
 		end
 
