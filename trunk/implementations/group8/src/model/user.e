@@ -211,6 +211,15 @@ feature
 			languages := l
 		end
 
+	to_minimal_json : JSON_OBJECT
+	require
+		getid /= 0
+	do
+		create Result.make
+		Result.put_integer(id, "id")
+		Result.put_string (firstname, "firstname")
+		Result.put_string (lastname, "lastname")
+	end
 
 	to_json : JSON_OBJECT
 	require
