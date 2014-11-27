@@ -2,7 +2,7 @@
 import sys, shutil, time
 
 # Tests
-import login, register, registerfail, info, info2, infofail, developerslist
+import login, register, registerfail, info, info2, infofail, developerslist, projectslist
 
 # Helper class for colors
 class bcolors:
@@ -28,7 +28,7 @@ if len(sys.argv) > 1 and sys.argv[1] == "--verbose":
 
 
 def test_(name, function):
-    print("["+name+"] ", end="")
+    print("["+name+"] ",end="")
     sys.stdout.flush()
 
     try:
@@ -55,7 +55,7 @@ try:
     test_("/account/userinfo - 2", info2.exec_test)
     test_("/account/userinfo - FAIL", infofail.exec_test)
     test_("/account/listdevelopers", developerslist.exec_test)
-    
+    test_("/project/listprojects", projectslist.exec_test)
 finally:
     # RESTORE THE DATABASE
     print("\nRestoring pdt.db DB... ",end="")
