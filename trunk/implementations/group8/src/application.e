@@ -106,6 +106,11 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/project/listprojects", agent rest_projects.listprojects, router.methods_get)
 
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/create", agent rest_projects_pbis.create_pbi, router.methods_post)
+			
+			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbis}/createtask", agent rest_projects_pbis_tasks.createtask, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbis}/listtasks", agent rest_projects_pbis_tasks.listtasks, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/delete", agent rest_projects_pbis_tasks.deletetask, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit", agent rest_projects_pbis_tasks.edittask , router.methods_post)
 
 			map_uri_template_agent_with_request_methods ("/project/create", agent rest_projects.create_project, router.methods_post)
 
