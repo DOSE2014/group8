@@ -11,7 +11,7 @@ params = """
     "timezone" : "Europe/Rome",
     "type" : "developer",
     "password" : "nonteladico",
-    "dateOfBirth" : "1248757",
+    "dateOfBirth" : 1248757,
     "organization" : "Politecnico di Milano",
     "languages" : [ "Italian", "English" ],
     "programmingLanguages" : [ "C++", "PHP"] 

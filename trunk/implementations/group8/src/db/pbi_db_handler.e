@@ -43,7 +43,7 @@ feature
 			epoch: DATE_TIME
 		do
 			create epoch.make_from_epoch (0)
-			create dbInsertStatement.make("INSERT INTO PBI(id, name, description, backlog, sprintlog, type, priority, dueDate) VALUES('" + pbi.getid.out + "', '" +
+			create dbInsertStatement.make("INSERT INTO PBI(name, description, backlog, sprintlog, type, priority, dueDate) VALUES('" +
 											pbi.getname + "', '" + pbi.getdescription + "', '" + pbi.getbacklog.getid.out + "', '" + pbi.getSprintlog.getid.out + "', '" +
 											pbi.gettype.out + "', '" + pbi.getpriority.out + "', '" + pbi.getduedate.definite_duration(epoch).seconds_count.out + "');", db)
 			dbInsertStatement.execute

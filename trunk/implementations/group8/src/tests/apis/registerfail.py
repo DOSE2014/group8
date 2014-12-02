@@ -11,14 +11,14 @@ params = """
     "timezone" : "Europe/Rome",
     "type" : "developer",
     "password" : "nonteladico",
-    "dateOfBirth" : "1248757",
+    "dateOfBirth" : 1248757,
     "organization" : "Politecnico di Milano",
     "languages" : [ "Italian", "English" ],
     "programmingLanguages" : [ "C++", "PHP"] 
 }
 """;
 
-expected_response = json.loads("""{"status":"error","code":1,"reason":"EMail already exists"}""");
+expected_response = json.loads("""{"status":"error","code":1,"reason":"Email already exists"}""");
 
 def exec_test(debug=False):
     headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
