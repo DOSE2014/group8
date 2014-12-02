@@ -58,6 +58,21 @@ feature -- Ensure feature
 		end
 	end
 
+	no_permission
+	-- send an error for no permission
+	local
+		json_error : JSON_OBJECT
+	do
+		create json_error.make
+		json_error.put_string ("error", "status")
+		json_error.put_string ("You are not authorize to perform this action!", "reason")
+
+		helper.send_error_json (
+		http_response,
+		json_error,
+		{HTTP_FUNCTIONS}.NOT_AUTHORIZED)
+	end
+
 	ensure_not_authenticated: BOOLEAN
 	-- check only if a user is logged. In negative case
 	-- produce an HTTP error in JSON 405
