@@ -41,10 +41,17 @@ feature
 	insertPBI(pbi: PBI)
 		local
 			epoch: DATE_TIME
+			sprint : STRING
 		do
 			create epoch.make_from_epoch (0)
+
+			if attached pbi.getSprintlog then
+				sprint := "'" + pbi.getSprintlog.getid.out + "'"
+			else
+				sprint := "NULL"
+			end
 			create dbInsertStatement.make("INSERT INTO PBI(name, description, backlog, sprintlog, type, priority, dueDate) VALUES('" +
-											pbi.getname + "', '" + pbi.getdescription + "', '" + pbi.getbacklog.getid.out + "', '" + pbi.getSprintlog.getid.out + "', '" +
+											pbi.getname + "', '" + pbi.getdescription + "', '" + pbi.getbacklog.getid.out + "', " + sprint + ", '" +
 											pbi.gettype.out + "', '" + pbi.getpriority.out + "', '" + pbi.getduedate.definite_duration(epoch).seconds_count.out + "');", db)
 			dbInsertStatement.execute
 			if dbInsertStatement.has_error

@@ -14,9 +14,7 @@ params = """{
 }""";
 
 expected_response = json.loads("""
-{"developers": [{"id": 1, "lastname": "Pagano", "firstname": "Filippo"}, 
-{"id": 2, "lastname": "Reghenzani", "firstname": "Federico"}, {"id": 5, 
-"lastname": "Reghenzani", "firstname": "Federico"}]}
+{"status":"ok"}
 """)
 
 def exec_test(debug=False):
