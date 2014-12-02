@@ -19,6 +19,7 @@ feature{NONE}
 	state: INTEGER
 	pbi: PBI
 
+
 feature
 	make(i: INTEGER; n, desc: STRING; dev: USER; pts: INTEGER; st: INTEGER; p: PBI)
 	do
@@ -34,7 +35,6 @@ feature
 		do
 
 		end
-
 feature
 	getId: INTEGER
 		do
@@ -92,4 +92,22 @@ feature
 		do
 			pbi := p
 		end
+	to_minimal_json: JSON_OBJECT
+		require
+			getId /= 0
+		local
+			ec : EIFFEL_CONVERSION
+		do
+			create Result.make
+			Result.put_integer(id, "id")
+			Result.put_string(name, "name")
+			Result.put_string(description, "description")
+			Result.put_integer(points, "points")
+			Result.put_integer(developer.getid, "developer")
+			Result.put_string(ec.int_to_statestring (state), "state")
+			Result.put_integer(pbi.getid, "pbi")
+
+		end
+
+
 end
