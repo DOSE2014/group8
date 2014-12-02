@@ -24,6 +24,23 @@ feature
 		end
 
 feature
+	getBacklogIdFromProjectAndUser(p : PROJECT; u : USER) : INTEGER
+	require
+		p /= Void and u /= Void
+	local
+		query_res_cursor: SQLITE_STATEMENT_ITERATION_CURSOR
+	do
+		create dbQueryStatement.make ("SELECT `id` FROM Backlog WHERE project=? AND EXISTS(SELECT * FROM Project WHERE manager=? AND project=?);", db)
+		query_res_cursor := dbQueryStatement.execute_new_with_arguments (<<p.getId, u.getId, p.getId>>)
+		if query_res_cursor.after then
+			-- there are no rows in the result of the query
+			Result := -1
+		else
+			Result := ec.any_to_int (query_res_cursor.item.value(1))
+		end
+
+	end
+
 	getProjectFromId(id: INTEGER): PROJECT
 	do
 		create Result.make_default
