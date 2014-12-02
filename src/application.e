@@ -78,6 +78,7 @@ feature {NONE} -- Initialization
 			create session_manager.make
 			create rest_account.make(session_manager, pdtdb)
 			create rest_projects.make (session_manager, pdtdb)
+			create rest_projects_pbis.make (session_manager, pdtdb)
 
 			set_service_option ("port", 8080)
 			initialize_router
@@ -101,7 +102,10 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/account/logout", agent rest_account.logout_, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/account/register", agent rest_account.register, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/account/userinfo", agent rest_account.account_info, router.methods_get)
+
 			map_uri_template_agent_with_request_methods ("/project/listprojects", agent rest_projects.listprojects, router.methods_get)
+
+			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/create", agent rest_projects_pbis.create_pbi, router.methods_post)
 
 			-- setting the path to the folder from where we serve static files
 			create fhdl.make_hidden (path_to_www_folder)
