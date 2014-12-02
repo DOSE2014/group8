@@ -335,69 +335,94 @@ feature
 
 			if ok and not regex.check_email (param_email) then
 				error_reason := "E-Mail not present or not correct."
+				json_error.put_integer (2, "code")
+				json_error.put_string ("email","field")
 				ok := FALSE
 			end
 
 			if ok and db.existsEmailInUser(param_email) then
-				error_reason := "E-Mail already exists"
+				error_reason := "Email already exists"
+				json_error.put_integer (1,"code")
 				ok := FALSE
 			end
 
 			if ok and not regex.check_name (param_fname) then
 				error_reason := "First-name not present or not correct (3<=length<=50)."
+				json_error.put_integer (2,"code")
+				json_error.put_string ("firstname","field")
 				ok := FALSE
 			end
 
 			if ok and not regex.check_name (param_lname) then
 				error_reason := "Last-name not present or not correct (3<=length<=50)."
+				json_error.put_integer (2,"code")
+				json_error.put_string ("lastname", "field")
 				ok := FALSE
 			end
 
 			if ok and (param_sex = Void or
 					not (param_sex.is_equal("M") or param_sex.is_equal("F"))) then
 				error_reason := "Sex not present or not correct."
+				json_error.put_integer (2,"code")
+				json_error.put_string ("sex","field")
 				ok := FALSE
 			end
 
 			if ok and not regex.check_unixtime (param_dob) then
-				error_reason := "Date of birth not present or not correct (3<=length<=50)."
+				error_reason := "Date of birth not present or not correct (it should be unixtimestamp in seconds)."
+				json_error.put_integer (2,"code")
+				json_error.put_string ("dateOfBirth", "field")
 				ok := FALSE
 			end
 
 			if ok and not regex.check_name (param_country) then
 				error_reason := "Country not present or not correct (3<=length<=50)."
+				json_error.put_integer (2,"code")
+				json_error.put_string ( "country", "field")
 				ok := FALSE
 			end
 
 			if ok and not regex.check_timezone (param_timezone) then
 				error_reason := "Timezone not present or not correct (check IANA TZ Database)."
+				json_error.put_integer (2,"code")
+				json_error.put_string ("timezone", "field")
 				ok := FALSE
 			end
 
 			if ok and not regex.check_name (param_organiz) then
 				error_reason := "Organization not present or not correct."
+				json_error.put_integer (2,"code")
+				json_error.put_string ("organization","field")
 				ok := FALSE
 			end
 
 			if ok and not regex.check_name (param_password) then
 				error_reason := "Password not present or not correct (3<=length<=50)."
+				json_error.put_integer (2,"code")
+				json_error.put_string ("password", "field")
 				ok := FALSE
 			end
 
 			if ok and (param_type = Void or
 					not (param_type.is_equal("developer") or param_type.is_equal("stakeholder"))) then
 				error_reason := "Type not present or not correct."
+				json_error.put_integer (2,"code")
+				json_error.put_string ("type","field")
 				ok := FALSE
 			end
 
 			if ok and (param_langs = Void or param_langs.count < 1 ) then
 				error_reason := "Languages not present."
+				json_error.put_integer (2,"code")
+				json_error.put_string ("languages","field")
 				ok := FALSE
 			end
 
 			-- Check programming languges only if user is a developer.
 			if ok and (param_type.is_equal("developer")) and (param_plangs = Void or param_plangs.count < 1 ) then
 				error_reason := "Programming languages not present."
+				json_error.put_integer (2,"code")
+				json_error.put_string ("programmingLanguages", "field")
 				ok := FALSE
 			end
 
