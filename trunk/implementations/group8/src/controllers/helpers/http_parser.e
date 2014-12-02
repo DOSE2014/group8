@@ -38,11 +38,13 @@ feature
 			log.deb("HTTP POST payload: "+l_payload)
 
 			-- now parse the json object that we got as part of the payload
-			create parser.make_parser (l_payload)
+			if not l_payload.is_empty then
+				create parser.make_parser (l_payload)
+			end
 
 			-- if the parsing was successful and we have a json object, we fetch the properties
 			-- for the todo description and the userId
-			if attached {JSON_OBJECT} parser.parse as j_object_ass and parser.is_parsed then
+			if parser /= Void and attached {JSON_OBJECT} parser.parse as j_object_ass and parser.is_parsed then
 				j_object := j_object_ass
 				good_request := TRUE
 			else
@@ -56,6 +58,18 @@ feature
 	is_good_request : BOOLEAN
 	do
 			Result := good_request
+	end
+
+	path_param(name : STRING) : STRING
+	require
+		http_request.is_get_request_method or http_request.is_post_request_method
+	do
+
+
+		-- we have to convert the json string into an eiffel string
+		if attached {WSF_STRING} http_request.path_parameter(name) as s then
+			Result := s.string_representation
+		end
 	end
 
 	get_param(name : STRING) : STRING

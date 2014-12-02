@@ -35,4 +35,28 @@ feature -- declaring deferred properties
 
 feature
 
+	create_pbi(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /projects/{idproj}/pbis/create
+	-- METHOD: POST
+	local
+		id_project : INTEGER
+		hp : HTTP_PARSER
+	do
+		http_request  := hreq
+		http_response := hres
+
+		create hp.make(hreq)
+		if not attached hp.path_param("idproj") then
+			send_malformed_json(http_response)
+			-- And logs it
+			log.warning ("/projects/{idproj}/pbis/create [POST] Missing idproj in URL.")
+		end
+
+		id_project := hp.path_param("idproj").to_integer
+
+		
+
+	end
+
+
 end
