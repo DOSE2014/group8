@@ -3,6 +3,7 @@ import sys, shutil, time
 
 # Tests
 import login, register, edit, registerfail, info, info2, infofail, developerslist, projectslist
+import projectsaddpbi
 
 # Helper class for colors
 class bcolors:
@@ -56,7 +57,9 @@ try:
     test_("/account/userinfo - 2", info2.exec_test)
     test_("/account/userinfo - FAIL", infofail.exec_test)
     test_("/account/listdevelopers", developerslist.exec_test)
-    test_("/project/listprojects", projectslist.exec_test)
+    test_("/projects/listprojects", projectslist.exec_test)
+    test_("/projects/1/pbis/create", projectsaddpbi.exec_test)
+
 finally:
     # RESTORE THE DATABASE
     print("\nRestoring pdt.db DB... ",end="")

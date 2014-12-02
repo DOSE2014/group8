@@ -146,6 +146,7 @@ feature
 		json_error : JSON_OBJECT
 		param : detachable STRING
 		param_arr		: detachable ARRAYED_LIST [STRING]
+		param_int 		: detachable INTEGER
 		availableProgL	: LINKED_SET[PROGRAMMING_LANGUAGE]
 		selectedProgL	: LINKED_SET[PROGRAMMING_LANGUAGE]
 		availableLangs	: LINKED_SET[LANGUAGE]
@@ -184,9 +185,9 @@ feature
 				u.setsex (ec.bool_to_int (param.is_equal("M")))
 			end
 
-			param := hp.post_param ("dateOfBirth")
-			if regex.check_unixtime (param) then
-				u.setdateofbirth (create {DATE_TIME}.make_from_epoch(param.to_integer_32))
+			param_int := hp.post_int_param ("dateOfBirth")
+			if regex.check_unixtime (param_int.out) then
+				u.setdateofbirth (create {DATE_TIME}.make_from_epoch(param_int))
 			end
 
 			param := hp.post_param ("country")
@@ -289,7 +290,7 @@ feature
 		param_fname 	: detachable STRING
 		param_lname 	: detachable STRING
 		param_sex   	: detachable STRING
-		param_dob       : detachable STRING
+		param_dob       : detachable INTEGER
 		param_country   : detachable STRING
 		param_organiz   : detachable STRING
 		param_timezone  : detachable STRING
@@ -323,7 +324,7 @@ feature
 			param_email 	:= hp.post_param ("email")
 			param_fname 	:= hp.post_param ("firstname")
 			param_lname 	:= hp.post_param ("lastname")
-			param_dob 		:= hp.post_param ("dateOfBirth")
+			param_dob 		:= hp.post_int_param ("dateOfBirth")
 			param_sex   	:= hp.post_param ("sex")
 			param_country   := hp.post_param ("country")
 			param_timezone  := hp.post_param ("timezone")
@@ -368,7 +369,7 @@ feature
 				ok := FALSE
 			end
 
-			if ok and not regex.check_unixtime (param_dob) then
+			if ok and not regex.check_unixtime (param_dob.out) then
 				error_reason := "Date of birth not present or not correct (it should be unixtimestamp in seconds)."
 				json_error.put_integer (2,"code")
 				json_error.put_string ("dateOfBirth", "field")
@@ -471,7 +472,7 @@ feature
 
 				-- Create the user
 				create u.make (0, param_fname, param_lname,	ec.bool_to_int(param_sex.is_equal("M")),
-							   create {DATE_TIME}.make_from_epoch(param_dob.to_integer_32), param_country,
+							   create {DATE_TIME}.make_from_epoch(param_dob), param_country,
 							   param_timezone, param_email, param_password,
 							   ec.bool_to_int(param_type.is_equal("developer")),param_organiz,
 							   selectedProgL, selectedLangs)

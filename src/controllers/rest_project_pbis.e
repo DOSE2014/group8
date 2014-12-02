@@ -45,7 +45,8 @@ feature
 		param_name        : STRING
 		param_description : STRING
 		param_type 		  : STRING
-		param_priority    : STRING
+		param_priority    : INTEGER
+		param_dueDate	  : INTEGER
 
 		regex : REGEX
 		json_error  : JSON_OBJECT
@@ -53,17 +54,21 @@ feature
 
 		ok : BOOLEAN
 
+		u : USER
 		p : PBI
 		backlog : BACKLOG
+		pbitype : PBITYPE
 
 	do
 		http_request  := hreq
 		http_response := hres
 
 		create hp.make(hreq)
+		create pbitype
 
 		if ensure_authenticated then
 
+			u := get_session_user
 
 			-- First GET the id of the project
 			if not attached hp.path_param("idproj") then
@@ -87,32 +92,40 @@ feature
 			param_name := hp.post_param ("name")
 			if ok and not regex.check_name (param_name) then
 				error_reason := "Name not present or not correct."
+				json_error.put_string ("name","field")
 				ok := FALSE
 			end
 
 			param_description := hp.post_param ("description")
 			if ok and not regex.check_name (param_description) then
 				error_reason := "Description not present or not correct."
+				json_error.put_string ("description","field")
 				ok := FALSE
 			end
 
-			param_description := hp.post_param ("description")
-			if ok and not regex.check_name (param_description) then
-				error_reason := "Description not present or not correct."
-				ok := FALSE
-			end
 
-			param_description := hp.post_param ("type")
-			if ok and not regex.check_name (param_type) then
+			param_type := hp.post_param ("type")
+			if ok and (not regex.check_name (param_type) or not pbitype.is_valid(param_type)) then
 				error_reason := "Type not present or not correct."
+				json_error.put_string ("type","field")
 				ok := FALSE
 			end
 
-			param_priority := hp.post_param ("priority")
-			if ok and not regex.check_integer (param_priority) then
+			param_priority := hp.post_int_param ("priority")
+			print(param_priority)
+			if ok and not regex.check_integer (param_priority.out) then
 				error_reason := "Priority not present or not integer."
+				json_error.put_string ("priority","field")
 				ok := FALSE
 			end
+
+			param_duedate := hp.post_int_param ("dueDate")
+			if ok and not regex.check_integer (param_duedate.out) then
+				error_reason := "dueDate not present or not unixtimestamp."
+				json_error.put_string ("dueDate","field")
+				ok := FALSE
+			end
+
 
 			if not ok then
 				log.warning("/projects/{idproj}/pbis/create [POST] Request error: " + error_reason)
@@ -120,8 +133,17 @@ feature
 				send_json(hres, json_error)
 			else
 
-				-- TODO
-				create p.make (0, param_name, param_description, backlog, Void, 0, param_priority.to_integer, Void)
+				backlog := db.getbacklogfromid (db.getbacklogidfromprojectanduser (db.getprojectfromid (id_project), u))
+
+				create p.make (0, param_name, param_description, backlog, Void, pbitype.to_integer(param_type),
+				param_priority.to_integer, create {DATE_TIME}.make_from_epoch(param_dueDate.to_integer))
+
+				db.insertpbi (p)
+
+				log.info ("/projects/"+id_project.out+"/pbis/create [POST] Added pbi to project")
+
+				-- send OK to the user :)				
+				send_generic_ok(hres)
 
 			end
 

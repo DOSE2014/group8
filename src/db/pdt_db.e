@@ -149,6 +149,10 @@ feature
 		do
 			Result := projectdbhandler.getProjectsVisibleToUser(u)
 		end
+	getBacklogIdFromProjectAndUser(p : PROJECT; u : USER) : INTEGER
+		do
+			Result := projectdbhandler.getBacklogIdFromProjectAndUser(p,u)
+		end
 	deleteDeveloperFromProject(d: INTEGER; p: INTEGER)
 		do
 			projectdbhandler.deleteDeveloperFromProject(d, p)
