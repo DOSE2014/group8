@@ -334,6 +334,223 @@ feature
 		end
 
 	end
+	edit(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /account/edit
+	-- METHOD: POST
+	--NOTE: ALL FIELDS ARE REQUIRED
+	local
+		regex : REGEX
+		hp : HTTP_PARSER
+		ok : BOOLEAN
+		error_reason : STRING
+		json_error : JSON_OBJECT
+		u : USER
+
+		-- Parameters
+		param_email 	: detachable STRING
+		param_fname 	: detachable STRING
+		param_lname 	: detachable STRING
+		param_sex   	: detachable STRING
+		param_dob       : detachable STRING
+		param_country   : detachable STRING
+		param_organiz   : detachable STRING
+		param_timezone  : detachable STRING
+		param_password  : detachable STRING
+		param_type      : detachable STRING
+		param_langs		: detachable ARRAYED_LIST [STRING]
+		param_plangs	: detachable ARRAYED_LIST [STRING]
+
+		availableProgL	: LINKED_SET[PROGRAMMING_LANGUAGE]
+		selectedProgL	: LINKED_SET[PROGRAMMING_LANGUAGE]
+
+		availableLangs	: LINKED_SET[LANGUAGE]
+		selectedLangs	: LINKED_SET[LANGUAGE]
+
+	do
+		http_request  := hreq
+		http_response := hres
+
+		create hp.make(hreq)
+		if exists_session and hp.is_good_request then
+			u := get_session_user
+
+			create regex.make
+			-- Create the error object even if it is not necessary
+			-- (in this case, this object is not used)
+			create json_error.make
+			json_error.put_string ("error", "status")
+
+			-- Guard variable: if FALSE an error occurred
+			ok := TRUE
+
+			param_email 	:= hp.post_param ("email")
+			param_fname 	:= hp.post_param ("firstname")
+			param_lname 	:= hp.post_param ("lastname")
+			param_dob 		:= hp.post_param ("dateOfBirth")
+			param_sex   	:= hp.post_param ("sex")
+			param_country   := hp.post_param ("country")
+			param_timezone  := hp.post_param ("timezone")
+			param_password  := hp.post_param ("password")
+			--param_organiz   := hp.post_param ("organization")
+			--param_type      := hp.post_param ("type")
+			param_langs		:= hp.post_array_param ("languages")
+			--param_plangs	:= hp.post_array_param ("programmingLanguages")
+
+			if ok and not regex.check_email (param_email) then
+				error_reason := "E-Mail not present or not correct."
+				ok := FALSE
+			end
+
+			if ok and db.existsEmailInUser(param_email) and not u.getemail.is_equal (param_email) then
+				error_reason := "E-Mail already exists"
+				ok := FALSE
+			end
+
+			if ok and not regex.check_name (param_fname) then
+				error_reason := "First-name not present or not correct (3<=length<=50)."
+				ok := FALSE
+			end
+
+			if ok and not regex.check_name (param_lname) then
+				error_reason := "Last-name not present or not correct (3<=length<=50)."
+				ok := FALSE
+			end
+
+			if ok and (param_sex = Void or
+					not (param_sex.is_equal("M") or param_sex.is_equal("F"))) then
+				error_reason := "Sex not present or not correct."
+				ok := FALSE
+			end
+
+			if ok and not regex.check_unixtime (param_dob) then
+				error_reason := "Date of birth not present or not correct (3<=length<=50)."
+				ok := FALSE
+			end
+
+			if ok and not regex.check_name (param_country) then
+				error_reason := "Country not present or not correct (3<=length<=50)."
+				ok := FALSE
+			end
+
+			if ok and not regex.check_timezone (param_timezone) then
+				error_reason := "Timezone not present or not correct (check IANA TZ Database)."
+				ok := FALSE
+			end
+
+--			if ok and not regex.check_name (param_organiz) then
+--				error_reason := "Organization not present or not correct."
+--				ok := FALSE
+--			end
+
+			if ok and not regex.check_name (param_password) then
+				error_reason := "Password not present or not correct (3<=length<=50)."
+				ok := FALSE
+			end
+
+--			if ok and (param_type = Void or
+--					not (param_type.is_equal("developer") or param_type.is_equal("stakeholder"))) then
+--				error_reason := "Type not present or not correct."
+--				ok := FALSE
+--			end
+
+			if ok and (param_langs = Void or param_langs.count < 1 ) then
+				error_reason := "Languages not present."
+				ok := FALSE
+			end
+
+			-- Check programming languges only if user is a developer.
+--			if ok and (param_type.is_equal("developer")) and (param_plangs = Void or param_plangs.count < 1 ) then
+--				error_reason := "Programming languages not present."
+--				ok := FALSE
+--			end
+
+			if not ok then
+				log.warning("/account/edit [POST] Request error: " + error_reason)
+				json_error.put_string (error_reason, "reason")
+				send_json(hres, json_error)
+			end
+
+			if ok then
+
+				-- Retrive all lang and programming lang
+--				availableProgL := db.getprogramminglanguages
+				availableLangs  := db.getlanguages
+
+--				create selectedProgL.make
+				create selectedLangs.make
+
+				-- Now search proglangs selected by user
+--				if param_type.is_equal("developer")	then
+--					across availableProgL as apl
+--					loop
+--						across param_plangs as ppl
+--						loop
+--							if apl.item.getName.is_equal(ppl.item) then
+--								-- Append to selected progL
+--								selectedProgL.force (apl.item)
+--							end
+--						end
+--					end
+--				end
+
+				-- Now search langs selected by user
+				across availableLangs as apl
+				loop
+					across param_langs as ppl
+					loop
+						if apl.item.getName.is_equal(ppl.item) then
+							-- Append to selected progL
+							selectedLangs.force (apl.item)
+						end
+					end
+
+				end
+
+				--BOOKMARK
+				-- Create the user
+--				create u.make (0, param_fname, param_lname,	ec.bool_to_int(param_sex.is_equal("M")),
+--							   create {DATE_TIME}.make_from_epoch(param_dob.to_integer_32), param_country,
+--							   param_timezone, param_email, param_password,
+--							   ec.bool_to_int(param_type.is_equal("developer")),param_organiz,
+--							   selectedProgL, selectedLangs)
+
+--				db.insertUser(u)
+
+				u.setfirstname (param_fname)
+				u.setlastname (param_lname)
+				u.setsex (ec.bool_to_int(param_sex.is_equal("M")))
+				u.setdateofbirth (  create {DATE_TIME}.make_from_epoch(param_dob.to_integer_32))
+				u.setcountry (param_country)
+				u.settimezone (param_timezone)
+				u.setemail (param_email)
+				u.setpassword (param_password)
+				u.setlanguages (selectedLangs)
+
+				db.edituser (u)
+
+
+				log.info ("/account/edit [POST] Edited user info of  "+param_fname + " "+param_lname)
+
+				-- send OK to the user :)				
+				send_generic_ok(hres)
+
+			end
+
+		else
+			if hp.is_good_request then
+					-- HTTP error has already sent to the user by ensure_not_authenticated
+					log.warning ("/account/edit [POST] Error user not authenticated.")
+
+				else
+					send_malformed_json(http_response)
+					-- And logs it
+					log.warning ("/account/edit [POST] JSON request malformed.")
+
+				end
+
+			end
+
+		end
 
 	langs(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
 	-- PATH: /account/langs
