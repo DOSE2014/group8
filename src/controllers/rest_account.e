@@ -132,6 +132,147 @@ feature
 		end
 	end
 
+
+
+
+	edit(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /account/edit
+	-- METHOD: POST
+
+	local
+		regex : REGEX
+		hp : HTTP_PARSER
+		u : USER
+		json_error : JSON_OBJECT
+		param : detachable STRING
+		param_arr		: detachable ARRAYED_LIST [STRING]
+		availableProgL	: LINKED_SET[PROGRAMMING_LANGUAGE]
+		selectedProgL	: LINKED_SET[PROGRAMMING_LANGUAGE]
+		availableLangs	: LINKED_SET[LANGUAGE]
+		selectedLangs	: LINKED_SET[LANGUAGE]
+
+	do
+		http_request  := hreq
+		http_response := hres
+
+		create hp.make(hreq)
+		if ensure_authenticated and hp.is_good_request then
+
+			-- Get the current user
+			u := get_session_user
+
+			create regex.make
+
+			param := hp.post_param ("email")
+			if regex.check_email (param) then
+				u.setemail (param)
+			end
+
+			param := hp.post_param ("firstname")
+			if regex.check_name (param) then
+				u.setfirstname (param)
+			end
+
+			param := hp.post_param ("lastname")
+			if regex.check_name (param) then
+				u.setlastname (param)
+			end
+
+			param := hp.post_param ("sex")
+			if (param /= Void and
+				(param.is_equal("M") or param.is_equal("F"))) then
+				u.setsex (ec.bool_to_int (param.is_equal("M")))
+			end
+
+			param := hp.post_param ("dateOfBirth")
+			if regex.check_unixtime (param) then
+				u.setdateofbirth (create {DATE_TIME}.make_from_epoch(param.to_integer_32))
+			end
+
+			param := hp.post_param ("country")
+			if regex.check_name (param) then
+				u.setcountry (param)
+			end
+
+			param := hp.post_param ("timezone")
+			if regex.check_timezone (param) then
+				u.settimezone (param)
+			end
+
+			param := hp.post_param ("organization")
+			if regex.check_name (param) then
+				u.setorganization (param)
+			end
+
+			param := hp.post_param ("password")
+			if regex.check_name (param) then
+				u.setpassword (param)
+			end
+
+			param := hp.post_param ("type")
+			if (param = Void or
+					not (param.is_equal("developer") or param.is_equal("stakeholder"))) then
+				u.setusertype (ec.bool_to_int (param.is_equal("developer")))
+			end
+
+			-- Retrive all lang and programming lang
+			availableProgL := db.getprogramminglanguages
+			availableLangs  := db.getlanguages
+
+
+			param_arr := hp.post_array_param ("languages")
+			if (param_arr /= Void and param_arr.count >= 1 ) then
+
+				create selectedLangs.make
+				across availableLangs as apl
+				loop
+					across param_arr as ppl
+					loop
+						if apl.item.getName.is_equal(ppl.item) then
+							-- Append to selected progL
+							selectedLangs.extend (apl.item)
+						end
+					end
+
+				end
+
+				u.setlanguages (selectedLangs)
+			end
+
+			param_arr := hp.post_array_param ("programmingLanguages")
+			if (param_arr /= Void and param_arr.count >= 1 ) then
+
+				create selectedprogl.make
+				across availableprogl as apl
+				loop
+					across param_arr as ppl
+					loop
+						if apl.item.getName.is_equal(ppl.item) then
+							-- Append to selected progL
+							selectedprogl.extend (apl.item)
+						end
+					end
+
+				end
+
+				u.setprogramminglanguages (selectedprogl)
+			end
+
+			db.edituser (u)
+
+			log.info ("/account/edit [POST] Edit user "+u.getfirstname + " "+u.getlastname)
+
+			-- send OK to the user :)				
+			send_generic_ok(hres)
+
+
+		end
+	end
+
+
+
+
+
 	register(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
 	-- PATH: /account/register
 	-- METHOD: POST

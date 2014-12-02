@@ -2,7 +2,7 @@
 import sys, shutil, time
 
 # Tests
-import login, register, registerfail, info, info2, infofail, developerslist, projectslist
+import login, register, edit, registerfail, info, info2, infofail, developerslist, projectslist
 
 # Helper class for colors
 class bcolors:
@@ -49,8 +49,9 @@ try:
     
     test_("/account/login - 1", login.exec_test)
     test_("/account/login - SQLINJ", login.exec_test)
-    #test_("REGISTER", register.exec_test)
+    test_("/account/register", register.exec_test)
     test_("/account/register - FAIL", registerfail.exec_test)
+    test_("/account/edit", edit.exec_test)
     test_("/account/userinfo - 1", info.exec_test)
     test_("/account/userinfo - 2", info2.exec_test)
     test_("/account/userinfo - FAIL", infofail.exec_test)

@@ -1,11 +1,13 @@
 import http.client
 import json
+import login
 
 params = """
 {
-    "email" : "federico2@reghe.net",
-    "firstname" : "Federico",
-    "lastname" : "Reghenzani",
+    "id"    : 2,
+    "email" : "ciccio@bombo.it",
+    "firstname" : "Cicco",
+    "lastname" : "Bombo",
     "country" : "Italy",
     "sex" : "M",
     "timezone" : "Europe/Rome",
@@ -21,9 +23,9 @@ params = """
 expected_response = json.loads("""{"status":"ok"}""");
 
 def exec_test(debug=False):
-    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
+    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain", "Cookie" : "_pdt_session_id_="+login.cookie_id+""}
     conn = http.client.HTTPConnection("localhost", 8080)
-    conn.request("POST", "/account/register", params, headers)
+    conn.request("POST", "/account/edit", params, headers)
     response = conn.getresponse()
 
     if debug:
