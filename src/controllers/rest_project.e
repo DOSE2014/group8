@@ -64,7 +64,7 @@ feature
 				create j_projects.make_array
 				across projects as p
 				loop
-					j_project := p.item.to_minimal_json
+					j_project := p.item.to_json
 					j_projects.add (j_project)
 				end
 
@@ -74,4 +74,61 @@ feature
 			end
 		end
 
+	create_project(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
+		require
+			hreq /= Void
+			hres /= Void
+		local
+			hp: HTTP_PARSER
+			ok: BOOLEAN
+			error_reason: STRING
+			json_error: JSON_OBJECT
+			json_response: JSON_OBJECT
+			p: PROJECT
+			projId: INTEGER
+			stakeholder: USER
+			mgr: USER
+
+			--Parameters
+			param_name			: detachable STRING
+			param_description	: detachable STRING
+			param_manager		: detachable INTEGER
+		do
+			http_request := hreq
+			http_response := hres
+
+			create hp.make (hreq)
+
+			if ensure_authenticated and hp.is_good_request
+			then
+				create json_error.make
+				json_error.put_string ("error", "status")
+				stakeholder := get_session_user
+				ok := TRUE
+
+				param_name 			:= hp.post_param ("name")
+				param_description 	:= hp.post_param ("description")
+				param_manager 		:= hp.post_int_param ("manager")
+
+				if ok and db.existsNameInProject(param_name)
+				then
+					error_reason := "Project name already exists."
+					json_error.put_integer (1, "code")
+					ok := FALSE
+				end
+
+				if ok
+				then
+					mgr := db.getuserfromid (param_manager.to_integer)
+					create p.make (0, param_name, param_description, mgr, stakeholder, create {DATE_TIME}.make_now, FALSE)
+					projId := db.insertproject (p)
+					p.setid (projId)
+					log.info ("/account/register [POST] Created a new project "+ param_name + " "+ param_description)
+					create json_response.make
+					json_response.put_string ("created", "status")
+					json_response.put_integer (projId, "id")
+				end
+			end
+
+		end
 end
