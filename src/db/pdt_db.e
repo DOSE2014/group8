@@ -201,4 +201,8 @@ feature
 			else Result := true
 			end
 		end
+	editTask(t:TASK)
+	do
+		taskdbhandler.edittask (t)
+	end
 end
