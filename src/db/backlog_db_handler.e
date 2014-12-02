@@ -31,6 +31,17 @@ feature
 			Result := Void
 		end
 	end
+
+	getBacklogFromProjectId(idproj: INTEGER): BACKLOG
+	do
+		create Result.make_default
+		create dbQueryStatement.make ("SELECT * FROM Backlog WHERE project=" + idproj.out + ";", db)
+		dbQueryStatement.execute (agent genBacklog(?, 3, Result))
+		if Result.getId = 0 then
+			Result := Void
+		end
+	end
+
 	insertBacklog(b: BACKLOG)
 	do
 		create dbinsertstatement.make ("INSERT INTO Backlog" +
@@ -50,16 +61,6 @@ feature
 		then print("Error while updating a backlog.%N")
 		end
 	end
-
-	getBacklogFromProjectId(id: INTEGER): BACKLOG
-		do
-			create Result.make_default
-			create dbquerystatement.make ("SELECT * FROM Backlog WHERE project=" + id.out + ";", db)
-			dbquerystatement.execute (agent genBacklog(?, 3, Result))
-			if Result.getId = 0 then
-				Result := Void
-			end
-		end
 
 	deleteBacklogFromProjectId(id: INTEGER)
 		do
