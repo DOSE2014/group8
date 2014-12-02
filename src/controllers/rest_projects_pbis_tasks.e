@@ -59,9 +59,21 @@ feature
 	if ensure_authenticated then
 
 			u := 	get_session_user
+			-- First GET the id of the project
+			if not attached hp.path_param("idproj") then
+				send_malformed_json(http_response)
+				-- And logs it
+				log.warning ("/projects/{idproj}/pbis/{idpbis}/listtasks [GET] Missing idproj in URL.")
+			end
 			id_project := hp.path_param("idproj").to_integer
 			p := db.getprojectfromid (id_project)
 			if db.getprojectsvisibletouser (u.getid).has (p) then
+				-- Second GET the id of the PBI
+					if not attached hp.path_param("idpbis") then
+						send_malformed_json(http_response)
+						-- And logs it
+						log.warning ("/projects/{idproj}/pbis/{idpbis}/listtasks [GET] Missing idpbis in URL.")
+					end
 				id_pbi := hp.path_param("idpbis").to_integer
 				pbi := db.getpbifromid (id_pbi)
 				if   pbi.getbacklog.getproject.getid.is_equal (p.getid) then
@@ -108,7 +120,6 @@ feature
 		p : PROJECT
 		pbi : PBI
 		t: TASK
-		backlog : BACKLOG
 		u,m : USER
 
 	do
@@ -173,8 +184,7 @@ feature
 
 				param_developer:= hp.post_param ("developer")
 				u := db.getuserfromid (param_developer.to_integer)
-						if ok and not regex.check_integer (param_developer)  then
-							--TODO: developer not checked if user belongs to project
+						if ok and not regex.check_integer (param_developer) and db.getprojectsvisibletouser (u.getid).has (p)  then
 							error_reason := "Developer not present or not correct."
 							ok := FALSE
 						end
@@ -192,7 +202,6 @@ feature
 				send_json(hres, json_error)
 			else
 
-				-- TODO
 				if ok then
 					create t.make (0, param_name, param_description, u, param_points.to_integer, ec.statestring_to_int(param_state), pbi)
 					db.inserttask (t)
@@ -216,21 +225,213 @@ feature
 		hreq /= Void
 		hres /= Void
 	local
+		hp : HTTP_PARSER
+		m : USER
+		p:PROJECT
+		pbi: PBI
+		t : TASK
+		json_error : JSON_OBJECT
+		ok : BOOLEAN
 
+		id_project : INTEGER
+		id_pbi : INTEGER
+		id_task : INTEGER
+
+		error_reason : STRING
 	do
+		http_request  := hreq
+		http_response := hres
+		ok := TRUE
 
+		create hp.make(hreq)
+		if ensure_authenticated and hp.is_good_request then
+			-- Get the current user
+			m := get_session_user
+
+			-- First GET the id of the project
+			if ok and not attached hp.path_param("idproj") then
+				send_malformed_json(http_response)
+				ok := FALSE
+				-- And logs it
+				log.warning (" /projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/delete [POST] Missing idproj in URL.")
+			end
+			id_project := hp.path_param("idproj").to_integer
+			-- Second GET the id of the PBI
+			if ok and not attached hp.path_param("idpbis") then
+				ok := FALSE
+				send_malformed_json(http_response)
+				-- And logs it
+				log.warning (" /projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/delete [POST] Missing idpbis in URL.")
+			end
+			id_pbi := hp.path_param("idpbis").to_integer
+			-- Third GET the id of the task
+			if ok and not attached hp.path_param("idtask") then
+				ok := FALSE
+				send_malformed_json(http_response)
+				-- And logs it
+				log.warning (" /projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/delete [POST] Missing idpbis in URL.")
+			end
+			id_task := hp.path_param("idtask").to_integer
+			t := db.gettaskfromid (id_task)
+			pbi := t.getpbi
+			p := pbi.getbacklog.getproject
+
+
+			--CHECK m is manager
+						if ok and not p.getmanager.getid.is_equal (m.getid) then
+							error_reason := "The current user is not manager of the project"
+							ok := FALSE
+						end
+
+						if not ok then
+							log.warning("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [POST] Request error: " + error_reason)
+							json_error.put_string (error_reason, "reason")
+							send_json(hres, json_error)
+						else
+
+							if ok then
+								db.deletetaskfromid (t.getid)
+								log.info (" /projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/delete [POST] Deleted a task "+t.getname )
+								-- send OK to the user :)				
+								send_generic_ok(hres)
+							end
+		end
+	end
 	end
 feature
 	edittask(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
 	-- PATH: /projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit
 	-- METHOD: POST
+	--NOTE: All fields are required
 	require
 		hreq /= Void
 		hres /= Void
 	local
+		regex : REGEX
+		hp : HTTP_PARSER
+		m : USER
+		p:PROJECT
+		pbi: PBI
+		t : TASK
+		u: USER
+		json_error : JSON_OBJECT
+		ok : BOOLEAN
 
+		id_project : INTEGER
+		id_pbi : INTEGER
+		id_task : INTEGER
+
+		param_name        : STRING
+		param_description        : STRING
+		param_points        : STRING
+		param_developer        : STRING
+		param_state        : STRING
+		param_pbi        : STRING
+
+		error_reason : STRING
 	do
+		http_request  := hreq
+		http_response := hres
+		ok := TRUE
 
+		create hp.make(hreq)
+		if ensure_authenticated and hp.is_good_request then
+			-- Get the current user
+			m := get_session_user
+
+			-- First GET the id of the project
+			if ok and not attached hp.path_param("idproj") then
+				send_malformed_json(http_response)
+				ok := FALSE
+				-- And logs it
+				log.warning ("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [POST] Missing idproj in URL.")
+			end
+			id_project := hp.path_param("idproj").to_integer
+			-- Second GET the id of the PBI
+			if ok and not attached hp.path_param("idpbis") then
+				ok := FALSE
+				send_malformed_json(http_response)
+				-- And logs it
+				log.warning ("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [GET] Missing idpbis in URL.")
+			end
+			id_pbi := hp.path_param("idpbis").to_integer
+			-- Third GET the id of the task
+			if ok and not attached hp.path_param("idtask") then
+				ok := FALSE
+				send_malformed_json(http_response)
+				-- And logs it
+				log.warning ("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [GET] Missing idpbis in URL.")
+			end
+			id_task := hp.path_param("idtask").to_integer
+			t := db.gettaskfromid (id_task)
+			pbi := t.getpbi
+			p := pbi.getbacklog.getproject
+
+			-- Next check the POST parameters
+			create regex.make
+			-- Create the error object even if it is not necessary
+			-- (in this case, this object is not used)
+			create json_error.make
+			json_error.put_string ("error", "status")
+
+			param_name := hp.post_param ("name")
+					if ok and not regex.check_name (param_name) then
+						error_reason := "Name not present or not correct."
+						ok := FALSE
+					end
+
+			param_description := hp.post_param ("description")
+					if ok and not regex.check_name (param_description) then
+						error_reason := "Description not present or not correct."
+						ok := FALSE
+					end
+
+			param_points:= hp.post_param ("points")
+					if ok and not regex.check_integer (param_points) and param_points.to_integer < 0 then
+						error_reason := "Points not present or not correct."
+						ok := FALSE
+					end
+
+				param_state:= hp.post_param ("state")
+						if ok and not regex.check_name (param_state) and not ec.statestring_to_int(param_pbi).is_equal (-1) then
+							error_reason := "State not present or not correct."
+							ok := FALSE
+						end
+
+				param_pbi:= hp.post_param ("pbi")
+						if ok and not  regex.check_integer (param_pbi) and pbi.getbacklog.getproject.getid.is_equal (id_project) then
+								error_reason := "PBI not present or not correct."
+								ok := FALSE
+						end
+
+				param_developer:= hp.post_param ("developer")
+				u := db.getuserfromid (param_developer.to_integer)
+						if ok and not regex.check_integer (param_developer) and db.getprojectsvisibletouser (u.getid).has (p)  then
+							error_reason := "Developer not present or not correct."
+							ok := FALSE
+						end
+
+
+			--CHECK m is manager
+						if ok and not p.getmanager.getid.is_equal (m.getid) then
+							error_reason := "The current user is not manager of the project"
+							ok := FALSE
+						end
+
+						if not ok then
+							log.warning("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [POST] Request error: " + error_reason)
+							json_error.put_string (error_reason, "reason")
+							send_json(hres, json_error)
+						else
+
+							if ok then
+								create t.make (id_task, param_name, param_description, u, param_points.to_integer, ec.statestring_to_int(param_state), pbi)
+								db.editTask(t)
+								log.info ("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [POST] Edited a task "+param_name )
+								-- send OK to the user :)				
+								send_generic_ok(hres)
+							end
+		end
 	end
-
-end
+	end
+	end

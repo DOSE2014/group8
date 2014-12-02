@@ -66,6 +66,17 @@ feature
 				Result := Void
 			end
 		end
+	editTask(t: TASK)
+	do
+		create dbmodifystatement.make ("UPDATE Task SET name='" + t.getname + "', description='" +
+					t.getdescription + "', developer='" + t.getdeveloper.getid.out + "', points='" + t.getpoints.out +
+					"', state='" + t.getstate.out + "', pbi='" + t.getpbi.getid.out +  "' WHERE id=" + t.getid.out + ";", db)
+
+				dbmodifystatement.execute
+				if dbmodifystatement.has_error
+				then print("Error while updating task.")
+				end
+	end
 
 feature{NONE}
 	genTask(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: TASK): BOOLEAN
