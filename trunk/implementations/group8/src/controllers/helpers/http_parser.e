@@ -93,7 +93,15 @@ feature
 			Result := s.unescaped_string_8
 		end
 	end
-
+	post_int_param(name: STRING) : INTEGER
+	require
+		http_request.is_post_request_method
+	do
+		-- we have to convert the json integer into an eiffel integer
+		if attached {JSON_INTEGER} j_object.item (name) as i then
+			Result := i
+		end
+	end
 
 	post_array_param(name : STRING) : ARRAYED_LIST [STRING]
 	require
