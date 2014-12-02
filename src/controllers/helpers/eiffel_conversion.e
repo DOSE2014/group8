@@ -61,5 +61,32 @@ feature
 			Result:=true
 		end
 	end
+	int_to_statestring(i:INTEGER): STRING
+	do
+		if i=0 then
+			Result:="Ongoing"
+		elseif i=1 then
+			Result:="Completed"
+		elseif i=2 then
+
+			Result:="Awaiting"
+		else
+			Result:="Brokenstate"
+		end
+	end
+	statestring_to_int(s:STRING): INTEGER
+	do
+		if s="Ongoing" then
+			Result:=0
+		elseif s="Completed" then
+			Result:=1
+		elseif s="Awaiting" then
+
+			Result:=2
+		else
+			Result:=-1
+		end
+	end
+
 
 end
