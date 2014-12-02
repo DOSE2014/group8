@@ -55,19 +55,35 @@ feature
 			end
 	end
 
-	insertProject(p:PROJECT)
+	getProjectFromName(name: STRING): PROJECT
+		do
+			create Result.make_default
+			create dbquerystatement.make ("SELECT * FROM Project WHERE name='" + name + "';", db)
+			dbquerystatement.execute (agent genProject(?, 7, Result))
+			if Result.getId = 0 then
+				Result := Void
+			end
+		end
+
+	insertProject(p:PROJECT): INTEGER
 	local
 		epoch: DATE_TIME
+		rowId: INTEGER
 	do
 		create epoch.make_from_epoch (0)
-		create dbinsertstatement.make ("INSERT INTO Project" +
-										 "VALUES ('" + p.getid.out + "', '" + p.getname + "', '" + p.getdescription + "', '" + p.getmanager.getid.out +
+		create dbinsertstatement.make ("INSERT INTO Project(name, description, manager, stakeholder, creationDate, deleted) " +
+										 "VALUES ('" + p.getname + "', '" + p.getdescription + "', '" + p.getmanager.getid.out +
 										 "', '" + p.getstakeholder.getid.out + "', '" + p.getcreationdate.definite_duration (epoch).seconds_count.out + "', '" +
 										ec.bool_to_int(p.getDeleted).out +	 "');", db)
 		dbinsertstatement.execute
+		create dbquerystatement.make ("SELECT last_insert_rowid();", db)
+		create rowId.default_create
+		dbquerystatement.execute (agent getLastInsertRowId(?, 1, rowId))
+
 		if dbinsertstatement.has_error
 		then print("Error while inserting a new user.%N")
 		end
+		Result := rowId
 	end
 
 	deleteProject(p: INTEGER)
@@ -132,6 +148,11 @@ feature{NONE}
 			create p.make_default
 			x := genproject (row, numColumns, p)
 			resultobject.extend (p)
+			Result := false
+		end
+	getLastInsertRowId(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: INTEGER): BOOLEAN
+		do
+			resultobject.set_item (row.string_value (1).to_integer)
 			Result := false
 		end
 feature{NONE}

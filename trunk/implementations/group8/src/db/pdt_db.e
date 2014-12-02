@@ -77,9 +77,9 @@ feature
 		do
 			Result:= projectDBHandler.getProjectFromId(id)
 		end
-	insertProject(p: PROJECT)
+	insertProject(p: PROJECT): INTEGER
 		do
-			projectDBHandler.insertProject(p)
+			Result := projectDBHandler.insertProject(p)
 		end
 	deleteProjectFromId(p: INTEGER)
 		do
@@ -190,5 +190,15 @@ feature
 	editUser(u: USER)
 		do
 			userdbhandler.editUser(u)
+		end
+	existsNameInProject(name: STRING): BOOLEAN
+		local
+			p: PROJECT
+		do
+			p := projectdbhandler.getProjectFromName(name)
+			if p = Void
+			then Result := false
+			else Result := true
+			end
 		end
 end
