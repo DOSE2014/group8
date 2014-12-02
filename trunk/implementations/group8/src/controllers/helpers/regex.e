@@ -48,6 +48,14 @@ feature{NONE}
 		Result.compile(regex_unixtime)
 	end
 
+	regex_integer : STRING = "[0-9]{1,20}"
+	regex_integer_obj : RX_PCRE_REGULAR_EXPRESSION
+	once
+		create Result.make
+		Result.compile(regex_integer)
+	end
+
+
 	make
 	do
 
@@ -94,6 +102,15 @@ feature
 	do
 		if (s /= Void) then
 			Result := regex_unixtime_obj.recognizes(s)
+		else
+			Result := False
+		end
+	end
+
+	check_integer (s : STRING) : BOOLEAN
+	do
+		if (s /= Void) then
+			Result := regex_integer_obj.recognizes(s)
 		else
 			Result := False
 		end

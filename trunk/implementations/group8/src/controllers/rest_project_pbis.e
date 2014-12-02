@@ -41,21 +41,82 @@ feature
 	local
 		id_project : INTEGER
 		hp : HTTP_PARSER
+
+		param_name        : STRING
+		param_description : STRING
+		param_type 		  : STRING
+		param_priority    : STRING
+
+		regex : REGEX
+		json_error  : JSON_OBJECT
+		error_reason : STRING
+
+		ok : BOOLEAN
+
 	do
 		http_request  := hreq
 		http_response := hres
 
 		create hp.make(hreq)
+
+		-- First GET the id of the project
 		if not attached hp.path_param("idproj") then
 			send_malformed_json(http_response)
 			-- And logs it
 			log.warning ("/projects/{idproj}/pbis/create [POST] Missing idproj in URL.")
 		end
-
 		id_project := hp.path_param("idproj").to_integer
 
-		
 
+		-- Next check the POST parameters
+		create regex.make
+		-- Create the error object even if it is not necessary
+		-- (in this case, this object is not used)
+		create json_error.make
+		json_error.put_string ("error", "status")
+
+
+		ok := TRUE
+
+		param_name := hp.post_param ("name")
+		if ok and not regex.check_name (param_name) then
+			error_reason := "Name not present or not correct."
+			ok := FALSE
+		end
+
+		param_description := hp.post_param ("description")
+		if ok and not regex.check_name (param_description) then
+			error_reason := "Description not present or not correct."
+			ok := FALSE
+		end
+
+		param_description := hp.post_param ("description")
+		if ok and not regex.check_name (param_description) then
+			error_reason := "Description not present or not correct."
+			ok := FALSE
+		end
+
+		param_description := hp.post_param ("type")
+		if ok and not regex.check_name (param_type) then
+			error_reason := "Type not present or not correct."
+			ok := FALSE
+		end
+
+		param_priority := hp.post_param ("priority")
+		if ok and not regex.check_integer (param_priority) then
+			error_reason := "Priority not present or not integer."
+			ok := FALSE
+		end
+
+		if not ok then
+			log.warning("/projects/{idproj}/pbis/create [POST] Request error: " + error_reason)
+			json_error.put_string (error_reason, "reason")
+			send_json(hres, json_error)
+		end
+
+		if ok then
+			
+		end
 	end
 
 
