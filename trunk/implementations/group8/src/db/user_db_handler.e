@@ -278,7 +278,7 @@ feature
 			create dbmodifystatement.make ("UPDATE User SET firstName='" + u.getfirstname + "', lastName='" +
 				u.getlastname + "', sex='" + u.getsex.out + "', dateOfBirth='" + u.getdateofbirth.definite_duration (epoch).seconds_count.out +
 				"', country='" + u.getcountry + "', timezone='" + u.gettimezone + "', email='" + u.getemail + "', password='" + u.getpasswordhash +
-				"', useType='" + u.getusertype.out + "', organization='" + u.getorganization + "' WHERE id=" + u.getid.out + ";", db)
+				"', userType='" + u.getusertype.out + "', organization='" + u.getorganization + "' WHERE id=" + u.getid.out + ";", db)
 
 			dbmodifystatement.execute
 			if dbmodifystatement.has_error
