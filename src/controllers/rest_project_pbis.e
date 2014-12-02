@@ -87,7 +87,7 @@ feature
 			end
 
 			-- is the user the manager?
-			if proj.getmanager = u then
+			if proj.getmanager.getId = u.getId then
 
 				-- Next check the POST parameters
 				create regex.make
