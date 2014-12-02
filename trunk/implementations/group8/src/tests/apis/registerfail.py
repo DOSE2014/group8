@@ -18,7 +18,7 @@ params = """
 }
 """;
 
-expected_response = json.loads("""{"status":"error","reason":"E-Mail already exists"}""");
+expected_response = json.loads("""{"status":"error","code":1,"reason":"EMail already exists"}""");
 
 def exec_test(debug=False):
     headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
