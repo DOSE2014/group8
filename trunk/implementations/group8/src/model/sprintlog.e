@@ -82,4 +82,19 @@ feature
 		do
 			endDate := d
 		end
+		to_minimal_json: JSON_OBJECT
+			require
+				getId /= 0
+			local
+				epoch: DATE_TIME
+				ec : EIFFEL_CONVERSION
+			do
+				create epoch.make_from_epoch (0)
+				create Result.make
+				Result.put_integer(id, "id")
+				Result.put_string(name, "name")
+				Result.put_string(description, "description")
+				Result.put_integer(startdate.definite_duration (epoch).seconds_count, "startDate")
+				Result.put_integer(enddate.definite_duration (epoch).seconds_count, "endDate")
+			end
 end
