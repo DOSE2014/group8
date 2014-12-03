@@ -65,7 +65,7 @@ try:
     test_("/account/userinfo - 2", info2.exec_test)
     test_("/account/userinfo - FAIL", infofail.exec_test)
     test_("/account/listdevelopers", developerslist.exec_test)
-    test_("/projects/listprojects", projectslist.exec_test)
+    test_("/projects/list", projectslist.exec_test)
     test_("/projects/create", projectscreate.exec_test)
     test_("/projects/1/pbis/create", projectsaddpbi.exec_test)
     test_("/projects/1/pbis/1/edit", projectseditpbi.exec_test)
