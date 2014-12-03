@@ -35,7 +35,7 @@ feature -- declaring deferred properties
 
 feature
 	listProjects(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
-	-- PATH: /project/listProjects
+	-- PATH: /projects/listProjects
 	-- METHOD: GET
 
 		local
@@ -85,6 +85,8 @@ feature
 		end
 
 	create_project(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
+		-- PATH: /projects/create
+		-- METHOD: POST
 		require
 			hreq /= Void
 			hres /= Void
@@ -140,5 +142,139 @@ feature
 				end
 			end
 
+		end
+
+	addDeveloper(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
+		-- PATH: /projects/{idproj}/adddeveloper
+		-- METHOD: POST
+		require
+			hreq /= Void
+			hres /= Void
+		local
+			hp: HTTP_PARSER
+
+			idProj: INTEGER
+			project: PROJECT
+			param_iddev: INTEGER
+			developer: USER
+			u: USER
+
+			json_error: JSON_OBJECT
+		do
+			http_request := hreq
+			http_response := hres
+			create hp.make (hreq)
+
+			if ensure_authenticated
+			then
+				u := get_session_user
+
+				if not attached hp.path_param("idproj")
+				then
+					send_malformed_json(http_response)
+					-- And logs it
+					log.warning ("/projects/{idproj}/adddeveloper [POST] Missing idproj in URL.")
+				else
+					idProj := hp.path_param ("idproj").to_integer
+					project := db.getprojectfromid (idProj)
+					if not attached project
+					then	-- does project exist?
+						send_malformed_json(http_response)
+						-- And logs it
+						log.warning ("/projects/{idproj}/adddeveloper [POST] Project not existent.")
+					end
+
+					if project.getmanager.getid = u.getId
+					then
+						create json_error.make
+						json_error.put_string ("error", "status")
+
+						param_iddev := hp.post_int_param ("iddev")
+						developer := db.getuserfromid (param_iddev)
+						if not attached developer then
+							send_malformed_json(http_response)
+							-- And logs it
+							log.warning ("/projects/{idproj}/adddeveloper [POST] Developer not existent.")
+						else
+							db.adddevelopertoproject (param_iddev, idProj)
+
+							log.info ("/projects/" + idproj.out + "/adddeveloper [POST] Added developer to project")
+
+							-- send OK to the user :)				
+							send_generic_ok(hres)
+
+						end
+					else
+						no_permission
+					end
+				end
+			end
+		end
+
+	remDeveloper(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
+		-- PATH: /projects/{idproj}/remdeveloper
+		-- METHOD: POST
+		require
+			hreq /= Void
+			hres /= Void
+		local
+			hp: HTTP_PARSER
+
+			idProj: INTEGER
+			project: PROJECT
+			param_iddev: INTEGER
+			developer: USER
+			u: USER
+
+			json_error: JSON_OBJECT
+		do
+			http_request := hreq
+			http_response := hres
+			create hp.make (hreq)
+
+			if ensure_authenticated
+			then
+				u := get_session_user
+
+				if not attached hp.path_param("idproj")
+				then
+					send_malformed_json(http_response)
+					-- And logs it
+					log.warning ("/projects/{idproj}/remdeveloper [POST] Missing idproj in URL.")
+				else
+					idProj := hp.path_param ("idproj").to_integer
+					project := db.getprojectfromid (idProj)
+					if not attached project
+					then	-- does project exist?
+						send_malformed_json(http_response)
+						-- And logs it
+						log.warning ("/projects/{idproj}/remdeveloper [POST] Project not existent.")
+					end
+
+					if project.getmanager.getid = u.getId
+					then
+						create json_error.make
+						json_error.put_string ("error", "status")
+
+						param_iddev := hp.post_int_param ("iddev")
+						developer := db.getuserfromid (param_iddev)
+						if not attached developer then
+							send_malformed_json(http_response)
+							-- And logs it
+							log.warning ("/projects/{idproj}/adddeveloper [POST] Developer not existent.")
+						else
+							db.deletedeveloperfromproject (param_iddev, idProj)
+
+							log.info ("/projects/" + idproj.out + "/remdeveloper [POST] Removed developer from project")
+
+							-- send OK to the user :)				
+							send_generic_ok(hres)
+
+						end
+					else
+						no_permission
+					end
+				end
+			end
 		end
 end
