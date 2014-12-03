@@ -104,7 +104,8 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/account/userinfo", agent rest_account.account_info, router.methods_get)
 
 			map_uri_template_agent_with_request_methods ("/project/listprojects", agent rest_projects.listprojects, router.methods_get)
-
+			map_uri_template_agent_with_request_methods ("/project/create", agent rest_projects.create_project, router.methods_post)
+			
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/create", agent rest_projects_pbis.create_pbi, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/delete", agent rest_projects_pbis.delete_pbi, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/edit", agent rest_projects_pbis.edit_pbi, router.methods_post)
@@ -113,8 +114,6 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/listtasks", agent rest_projects_pbis_tasks.listtasks, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/delete", agent rest_projects_pbis_tasks.deletetask, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit", agent rest_projects_pbis_tasks.edittask , router.methods_post)
-
-			map_uri_template_agent_with_request_methods ("/project/create", agent rest_projects.create_project, router.methods_post)
 
 			-- setting the path to the folder from where we serve static files
 			create fhdl.make_hidden (path_to_www_folder)
