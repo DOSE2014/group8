@@ -24,6 +24,7 @@ feature{NONE}
 	password: STRING
 	userType: INTEGER -- See USERTYPE class
 	organization: detachable STRING
+	deleted: BOOLEAN
 	programmingLanguages: LINKED_SET[PROGRAMMING_LANGUAGE]
 	languages: LINKED_SET[LANGUAGE]
 
@@ -193,6 +194,14 @@ feature
 	setOrganization(o: STRING)
 		do
 			organization := o
+		end
+	isDeleted: BOOLEAN
+		do
+			Result := deleted
+		end
+	setDeleted(d: BOOLEAN)
+		do
+			deleted := d
 		end
 	getProgrammingLanguages: LINKED_SET[PROGRAMMING_LANGUAGE]
 		do
