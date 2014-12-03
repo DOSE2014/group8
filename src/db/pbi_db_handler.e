@@ -81,8 +81,7 @@ feature
 			epoch: DATE_TIME
 		do
 			create epoch.make_from_epoch (0)
-			create dbModifyStatement.make("UPDATE PBI SET id = '" +
-											pbi.getid.out +"', name = '" + pbi.getname + "', description = '" + pbi.getdescription + "', backlog='" + pbi.getbacklog.getid.out +
+			create dbModifyStatement.make("UPDATE PBI SET name = '" + pbi.getname + "', description = '" + pbi.getdescription + "', backlog='" + pbi.getbacklog.getid.out +
 											"', sprintlog = '" + pbi.getsprintlog.getid.out + "', type = '" + pbi.gettype.out + "', priority = '" +
 											pbi.getpriority.out + "', dueDate = '" + pbi.getduedate.definite_duration(epoch).seconds_count.out + "' WHERE id='" +
 											pbi.getid.out+ "';", db)

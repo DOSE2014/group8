@@ -27,20 +27,28 @@ verbose = False
 if len(sys.argv) > 1 and sys.argv[1] == "--verbose":
     verbose = True
 
+counter_ok = 0
+counter_error = 0
+counter_exception = 0
 
 def test_(name, function):
+    global counter_ok, counter_error, counter_exception
     print("["+name+"] ",end="")
     sys.stdout.flush()
 
     try:
         if function(verbose):
             print(bcolors.OKGREEN+"OK"+bcolors.ENDC)
+            counter_ok = counter_ok + 1
         else:
-            print(bcolors.FAIL+"ERROR"+bcolors.ENDC)
+            print(bcolors.WARNING+"ERROR"+bcolors.ENDC)
+            counter_error = counter_error + 1
     except(ConnectionRefusedError):
         print(bcolors.WARNING+"CONNECTION REFUSED"+bcolors.ENDC)
+        counter_exception = counter_exception + 1
     except Exception as e:
         print(bcolors.FAIL+"EXCEPTION ("+str(e)+")"+bcolors.ENDC)
+        counter_exception = counter_exception + 1
     finally:
         time.sleep(0.2)
 
@@ -65,7 +73,15 @@ try:
     
 
 finally:
+    total = counter_ok + counter_exception + counter_error
+    print("")
+    print(bcolors.OKGREEN+"Test success: "+str(counter_ok) + " ("+("{0:.2f}".format (counter_ok*100/total))+"%)"+bcolors.ENDC)
+    print(bcolors.WARNING+"Test error: "+str(counter_error)+ " ("+("{0:.2f}".format (counter_error*100/total))+"%)"+bcolors.ENDC)
+    print(bcolors.FAIL+"Test exception: "+str(counter_exception)+ " ("+("{0:.2f}".format( counter_exception*100/total))+"%)"+bcolors.ENDC)
+
     # RESTORE THE DATABASE
     print("\nRestoring pdt.db DB... ",end="")
     shutil.move("pdtcopy.db", "../../../pdt.db")
-    print("Done (don't forget to restart Eiffel for next tests!)")
+    print("Done (** don't forget to restart Eiffel for next tests! **)")
+    
+    
