@@ -81,7 +81,7 @@ feature
 		dbquerystatement.execute (agent getLastInsertRowId(?, 1, rowId))
 
 		if dbinsertstatement.has_error
-		then print("Error while inserting a new user.%N")
+		then print("Error while inserting a new project.%N")
 		end
 		Result := rowId
 	end
