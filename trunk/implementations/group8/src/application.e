@@ -103,7 +103,7 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/account/register", agent rest_account.register, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/account/userinfo", agent rest_account.account_info, router.methods_get)
 
-			map_uri_template_agent_with_request_methods ("/projects/listprojects", agent rest_projects.listprojects, router.methods_get)
+			map_uri_template_agent_with_request_methods ("/projects/list", agent rest_projects.listprojects, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/projects/create", agent rest_projects.create_project, router.methods_post)
 
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/create", agent rest_projects_pbis.create_pbi, router.methods_post)
