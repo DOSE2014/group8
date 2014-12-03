@@ -63,16 +63,16 @@ feature
 			if not attached hp.path_param("idproj") then
 				send_malformed_json(http_response)
 				-- And logs it
-				log.warning ("/projects/{idproj}/pbis/{idpbis}/listtasks [GET] Missing idproj in URL.")
+				log.warning ("/projects/{idproj}/pbis/{idpbi}/listtasks [GET] Missing idproj in URL.")
 			end
 			id_project := hp.path_param("idproj").to_integer
 			p := db.getprojectfromid (id_project)
 			if db.getprojectsvisibletouser (u.getid).has (p) then
 				-- Second GET the id of the PBI
-					if not attached hp.path_param("idpbis") then
+					if not attached hp.path_param("idpbi") then
 						send_malformed_json(http_response)
 						-- And logs it
-						log.warning ("/projects/{idproj}/pbis/{idpbis}/listtasks [GET] Missing idpbis in URL.")
+						log.warning ("/projects/{idproj}/pbis/{idpbi}/listtasks [GET] Missing idpbis in URL.")
 					end
 				id_pbi := hp.path_param("idpbis").to_integer
 				pbi := db.getpbifromid (id_pbi)
@@ -253,15 +253,15 @@ feature
 				send_malformed_json(http_response)
 				ok := FALSE
 				-- And logs it
-				log.warning (" /projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/delete [POST] Missing idproj in URL.")
+				log.warning (" /projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/delete [POST] Missing idproj in URL.")
 			end
 			id_project := hp.path_param("idproj").to_integer
 			-- Second GET the id of the PBI
-			if ok and not attached hp.path_param("idpbis") then
+			if ok and not attached hp.path_param("idpbi") then
 				ok := FALSE
 				send_malformed_json(http_response)
 				-- And logs it
-				log.warning (" /projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/delete [POST] Missing idpbis in URL.")
+				log.warning (" /projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/delete [POST] Missing idpbis in URL.")
 			end
 			id_pbi := hp.path_param("idpbis").to_integer
 			-- Third GET the id of the task
@@ -284,14 +284,14 @@ feature
 						end
 
 						if not ok then
-							log.warning("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [POST] Request error: " + error_reason)
+							log.warning("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [POST] Request error: " + error_reason)
 							json_error.put_string (error_reason, "reason")
 							send_json(hres, json_error)
 						else
 
 							if ok then
 								db.deletetaskfromid (t.getid)
-								log.info (" /projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/delete [POST] Deleted a task "+t.getname )
+								log.info (" /projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/delete [POST] Deleted a task "+t.getname )
 								-- send OK to the user :)				
 								send_generic_ok(hres)
 							end
@@ -344,15 +344,15 @@ feature
 				send_malformed_json(http_response)
 				ok := FALSE
 				-- And logs it
-				log.warning ("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [POST] Missing idproj in URL.")
+				log.warning ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [POST] Missing idproj in URL.")
 			end
 			id_project := hp.path_param("idproj").to_integer
 			-- Second GET the id of the PBI
-			if ok and not attached hp.path_param("idpbis") then
+			if ok and not attached hp.path_param("idpbi") then
 				ok := FALSE
 				send_malformed_json(http_response)
 				-- And logs it
-				log.warning ("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [GET] Missing idpbis in URL.")
+				log.warning ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [GET] Missing idpbis in URL.")
 			end
 			id_pbi := hp.path_param("idpbis").to_integer
 			-- Third GET the id of the task
@@ -360,7 +360,7 @@ feature
 				ok := FALSE
 				send_malformed_json(http_response)
 				-- And logs it
-				log.warning ("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [GET] Missing idpbis in URL.")
+				log.warning ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [GET] Missing idpbis in URL.")
 			end
 			id_task := hp.path_param("idtask").to_integer
 			t := db.gettaskfromid (id_task)
@@ -419,7 +419,7 @@ feature
 						end
 
 						if not ok then
-							log.warning("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [POST] Request error: " + error_reason)
+							log.warning("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [POST] Request error: " + error_reason)
 							json_error.put_string (error_reason, "reason")
 							send_json(hres, json_error)
 						else
@@ -427,7 +427,7 @@ feature
 							if ok then
 								create t.make (id_task, param_name, param_description, u, param_points.to_integer, ec.statestring_to_int(param_state), pbi)
 								db.editTask(t)
-								log.info ("/projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/edit [POST] Edited a task "+param_name )
+								log.info ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [POST] Edited a task "+param_name )
 								-- send OK to the user :)				
 								send_generic_ok(hres)
 							end

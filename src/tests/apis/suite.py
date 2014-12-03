@@ -3,7 +3,7 @@ import sys, shutil, time
 
 # Tests
 import login, register, edit, registerfail, info, info2, infofail, developerslist, projectslist
-import projectsaddpbi
+import projectsaddpbi, projectsdelpbi
 
 # Helper class for colors
 class bcolors:
@@ -40,7 +40,7 @@ def test_(name, function):
     except(ConnectionRefusedError):
         print(bcolors.WARNING+"CONNECTION REFUSED"+bcolors.ENDC)
     except Exception as e:
-        print(bcolors.FAIL+"EXCEPTION ("+e+")"+bcolors.ENDC)
+        print(bcolors.FAIL+"EXCEPTION ("+str(e)+")"+bcolors.ENDC)
     finally:
         time.sleep(0.2)
 
@@ -59,6 +59,7 @@ try:
     test_("/account/listdevelopers", developerslist.exec_test)
     test_("/projects/listprojects", projectslist.exec_test)
     test_("/projects/1/pbis/create", projectsaddpbi.exec_test)
+    test_("/projects/1/pbis/1/delete", projectsdelpbi.exec_test)
 
 finally:
     # RESTORE THE DATABASE
