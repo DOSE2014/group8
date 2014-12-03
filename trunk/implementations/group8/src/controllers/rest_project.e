@@ -139,6 +139,7 @@ feature
 					create json_response.make
 					json_response.put_string ("created", "status")
 					json_response.put_integer (projId, "id")
+					send_json (hres, json_response)
 				end
 			end
 
