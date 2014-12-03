@@ -285,4 +285,15 @@ feature
 			then print("Error while updating user.")
 			end
 		end
+
+	getDevelopersFromProjectId(p: INTEGER): LINKED_SET[USER]
+		do
+			create Result.make
+			create dbquerystatement.make ("SELECT * FROM User JOIN Developer_Project ON User.id = Developer_Project.developer WHERE project=" + p.out + ";", db)
+			dbquerystatement.execute (agent genDevelopers(?, 11, Result))
+			if Result.count = 0
+			then Result := Void
+			end
+
+		end
 end

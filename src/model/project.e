@@ -123,8 +123,8 @@ feature
 			Result.put_integer (id, "id")
 			Result.put_string (name, "name")
 			Result.put_string (description, "description")
-			Result.put (manager.to_json, "manager")
-			Result.put (stakeholder.to_json, "stakeholder")
+			Result.put_integer (manager.getid, "manager")
+			Result.put_integer (stakeholder.getid, "stakeholder")
 			Result.put_integer (creationdate.definite_duration (epoch).seconds_count, "creationDate")
 			Result.put_boolean (deleted, "deleted")
 		end
