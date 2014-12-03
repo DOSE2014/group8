@@ -250,6 +250,8 @@ feature
 							pbi.setduedate (create {DATE_TIME}.make_from_epoch(param_int))
 						end
 
+						db.editpbi (pbi)
+
 						log.deb ("/projects/{idproj}/pbis/{idpbi}/edit [POST] PBI with id " + pbi.getid.out + " edited.")
 						-- send OK to the user :)				
 						send_generic_ok(hres)
