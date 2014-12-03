@@ -205,4 +205,9 @@ feature
 	do
 		taskdbhandler.edittask (t)
 	end
+
+	getDevelopersFromProjectId(p: INTEGER): LINKED_SET[USER]
+		do
+			Result := userdbhandler.getdevelopersFromProjectId(p)
+		end
 end
