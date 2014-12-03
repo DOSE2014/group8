@@ -29,6 +29,8 @@ feature{NONE}
 	programmingLanguageUser_Hash: HASH_TABLE[LINKED_SET[PROGRAMMING_LANGUAGE], INTEGER]
 	languageUser_Hash: HASH_TABLE[LINKED_SET[LANGUAGE], INTEGER]
 
+	ec: EIFFEL_CONVERSION
+
 feature
 	make(s: SQLITE_DATABASE; lanDBHand: LANGUAGE_DB_HANDLER; proglanDBHand: PROGRAMMING_LANGUAGE_DB_HANDLER)
 		do
@@ -72,6 +74,7 @@ feature{NONE}
 				resultobject.setorganization (Void)
 			end
 
+			resultobject.setdeleted (row.string_value (12).to_integer = 1)
 			if resultobject.getusertype = {USERTYPE}.developer then
 				programmingLanguageUser_Hash := getprogrammingLanguageUser
 				languageUser_Hash := getLanguageUser
@@ -191,11 +194,11 @@ feature
 			epoch: DATE_TIME
 		do
 			create epoch.make_from_epoch (0)
-			create dbinsertstatement.make ("INSERT INTO User(firstname, lastname, sex, dateOfBirth, country, timezone, email, password, usertype, organization)" +
+			create dbinsertstatement.make ("INSERT INTO User(firstname, lastname, sex, dateOfBirth, country, timezone, email, password, usertype, organization, deleted)" +
 											 "VALUES ('" + u.getfirstname + "', '" + u.getlastname + "', '" + u.getsex.out +
 											 "', '" + u.getdateofbirth.definite_duration (epoch).seconds_count.out + "', '" + u.getcountry + "', '" +
 											 u.gettimezone + "', '" + u.getemail + "', '" + u.getpasswordhash + "', '" + u.getusertype.out + "', '" + u.getorganization +
-											 "');", db)
+											 "', '" + ec.bool_to_int (u.isdeleted).out + "';", db)
 			dbinsertstatement.execute
 			create dbquerystatement.make ("SELECT last_insert_rowid();", db)
 			create rowId.default_create
@@ -263,7 +266,7 @@ feature
 		do
 			create Result.make_default
 			create dbquerystatement.make ("SELECT * FROM User WHERE email='" + email + "';", db)
-			dbquerystatement.execute (agent genUser(?, 11, Result))
+			dbquerystatement.execute (agent genUser(?, 12, Result))
 			if Result.getId = 0
 			then
 				Result := Void
@@ -278,7 +281,7 @@ feature
 			create dbmodifystatement.make ("UPDATE User SET firstName='" + u.getfirstname + "', lastName='" +
 				u.getlastname + "', sex='" + u.getsex.out + "', dateOfBirth='" + u.getdateofbirth.definite_duration (epoch).seconds_count.out +
 				"', country='" + u.getcountry + "', timezone='" + u.gettimezone + "', email='" + u.getemail + "', password='" + u.getpasswordhash +
-				"', userType='" + u.getusertype.out + "', organization='" + u.getorganization + "' WHERE id=" + u.getid.out + ";", db)
+				"', userType='" + u.getusertype.out + "', organization='" + u.getorganization + "', deleted='" + u.isdeleted.to_integer.out + "' WHERE id=" + u.getid.out + ";", db)
 
 			dbmodifystatement.execute
 			if dbmodifystatement.has_error
@@ -290,7 +293,7 @@ feature
 		do
 			create Result.make
 			create dbquerystatement.make ("SELECT * FROM User JOIN Developer_Project ON User.id = Developer_Project.developer WHERE project=" + p.out + ";", db)
-			dbquerystatement.execute (agent genDevelopers(?, 11, Result))
+			dbquerystatement.execute (agent genDevelopers(?, 12, Result))
 			if Result.count = 0
 			then Result := Void
 			end
