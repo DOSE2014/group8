@@ -50,7 +50,7 @@ def test_(name, function):
         print(bcolors.FAIL+"EXCEPTION ("+str(e)+")"+bcolors.ENDC)
         counter_exception = counter_exception + 1
     finally:
-        time.sleep(0.2)
+        time.sleep(0.1)
 
 try:
 
