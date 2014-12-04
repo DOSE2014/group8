@@ -6,6 +6,7 @@ from suite_functions import *
 # Tests
 import login, register, edit, registerfail, info, info2, infofail, developerslist
 import projectslist, projectscreate, projectsadddev, projectsremdev, projectsedit
+import projectscreatebacklog, projectsdeletebacklog
 import projectsaddpbi, projectsdelpbi, projectseditpbi, taskslist, taskscreate
 
 
@@ -42,6 +43,8 @@ try:
     test_("/projects/1/adddeveloper", projectsadddev.exec_test, verbose)
     test_("/projects/1/remdeveloper", projectsremdev.exec_test, verbose)
     test_("/projects/2/edit", projectsedit.exec_test, verbose)
+    test_("/projects/2/createbacklog", projectscreatebacklog.exec_test, verbose)
+    test_("/projects/2/deletebacklog", projectsdeletebacklogO.o.exec_test, verbose)
     test_("/projects/1/pbis/create", projectsaddpbi.exec_test, verbose)
     test_("/projects/1/pbis/1/edit", projectseditpbi.exec_test, verbose)
     test_("/projects/1/pbis/1/delete", projectsdelpbi.exec_test, verbose)
