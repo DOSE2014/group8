@@ -50,10 +50,14 @@ feature
 		id_project : INTEGER
 
 		p:PROJECT
+		pu: LINKED_SET[PROJECT]
 		hp: HTTP_PARSER
+		e : STRING
 	do
+		log.warning ("helloW")
 		http_request  := hreq
 		http_response := hres
+		create hp.make(hreq)
 
 	if ensure_authenticated then
 
@@ -65,8 +69,7 @@ feature
 				log.warning ("/projects/{idproj}/sprintlogs/list [GET] Missing idproj in URL.")
 			end
 				id_project := hp.path_param("idproj").to_integer
-				p := db.getprojectfromid (id_project)
-			if db.getprojectsvisibletouser (u.getid).has (p) then
+			if db.checkVisibilityForProject(u.getId, id_project) then
 
 
 					sprints := db.listSprintlogsFromBacklogId(db.getbacklogfromprojectid (id_project).getid)

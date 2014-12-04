@@ -35,6 +35,8 @@ feature
 		do
 
 		end
+		feature{NONE}
+	ec : EIFFEL_CONVERSION once create Result end
 feature
 	getId: INTEGER
 		do
@@ -95,8 +97,6 @@ feature
 	to_minimal_json: JSON_OBJECT
 		require
 			getId /= 0
-		local
-			ec : EIFFEL_CONVERSION
 		do
 			create Result.make
 			Result.put_integer(id, "id")

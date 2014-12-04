@@ -73,10 +73,13 @@ feature
 
 feature{NONE}
 	genBacklog(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: BACKLOG): BOOLEAN
+	local
+		e : STRING
 		do
 			resultobject.setid (row.string_value (1).to_integer)
 			resultobject.setDescription (row.string_value (2).out)
-			resultobject.setProject ( projectDBHandler.getProjectFromID( ec.any_to_int(row.string_value (3)) ) )
+			print(row.string_value (3).out)
+			resultobject.setProject ( projectDBHandler.getProjectFromID( row.string_value (3).to_integer) )
 		end
 feature{NONE}
 	ec : EIFFEL_CONVERSION once create Result end
