@@ -207,12 +207,18 @@ feature
 	end
 
 	getDevelopersFromProjectId(p: INTEGER): LINKED_SET[USER]
-		do
-			Result := userdbhandler.getdevelopersFromProjectId(p)
-		end
+	do
+		Result := userdbhandler.getdevelopersFromProjectId(p)
+	end
+
 
 	editProject(p: PROJECT)
-		do
-			projectdbhandler.editProject(p)
-		end
+	do
+		projectdbhandler.editProject(p)
+	end
+
+	checkVisibilityForProject(u: INTEGER; p :INTEGER) : BOOLEAN
+	do
+		Result := projectdbhandler.checkVisibilityForProject(u,p)
+	end
 end

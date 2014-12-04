@@ -28,10 +28,41 @@ feature {NONE}	-- Constructors
 feature{NONE}  -- Private properies
 	db : PDT_DB
 
+
 feature -- declaring deferred properties
 	session_manager : WSF_SESSION_MANAGER
 	http_request : WSF_REQUEST
 	http_response : WSF_RESPONSE
+
+feature {NONE}	-- Private methods
+
+	print_list_of_tasks(pbiid : INTEGER)
+	-- This methods print the list of tasks to the client
+	-- having the PBI id requested.
+	require
+		http_response /= Void
+	local
+		j_task : JSON_OBJECT
+		j_tasks : JSON_ARRAY
+		tasks : LINKED_SET[TASK]
+		json_response : JSON_OBJECT
+	do
+		-- Get tasks from database
+		tasks := db.gettasksfrompbiid (pbiid)
+
+		-- Across over the tasks array
+		create j_tasks.make_array
+		across tasks as t
+		loop
+			j_task := t.item.to_minimal_json
+			j_tasks.add (j_task)
+		end
+
+		-- Create and fill the JSON response
+		create json_response.make
+		json_response.put (j_tasks, "tasks")
+		send_json(http_response, json_response)
+	end
 
 feature
 	listtasks(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
@@ -42,9 +73,6 @@ feature
 		hreq /= Void
 		hres /= Void
 	local
-		tasks : LINKED_SET[TASK]
-		j_task : JSON_OBJECT
-		j_tasks : JSON_ARRAY
 		json_response : JSON_OBJECT
 		u : USER
 		id_project : INTEGER
@@ -56,40 +84,41 @@ feature
 		http_request  := hreq
 		http_response := hres
 
-	if ensure_authenticated then
+		create hp.make (hreq)
 
-			u := 	get_session_user
+		if ensure_authenticated then
+
+			u := get_session_user
 			-- First GET the id of the project
 			if not attached hp.path_param("idproj") then
 				send_malformed_json(http_response)
 				-- And logs it
 				log.warning ("/projects/{idproj}/pbis/{idpbi}/listtasks [GET] Missing idproj in URL.")
-			end
-			id_project := hp.path_param("idproj").to_integer
-			p := db.getprojectfromid (id_project)
-			if db.getprojectsvisibletouser (u.getid).has (p) then
-				-- Second GET the id of the PBI
+			else
+				id_project := hp.path_param("idproj").to_integer
+				p := db.getprojectfromid (id_project)
+				if db.checkVisibilityForProject(u.getId, p.getId) then
+					-- Second GET the id of the PBI
 					if not attached hp.path_param("idpbi") then
 						send_malformed_json(http_response)
 						-- And logs it
 						log.warning ("/projects/{idproj}/pbis/{idpbi}/listtasks [GET] Missing idpbis in URL.")
-					end
-				id_pbi := hp.path_param("idpbis").to_integer
-				pbi := db.getpbifromid (id_pbi)
-				if   pbi.getbacklog.getproject.getid.is_equal (p.getid) then
-					tasks := db.gettasksfrompbiid (pbi.getid)
-					create j_tasks.make_array
-					across tasks as t
-					loop
-						j_task := t.item.to_minimal_json
-						j_tasks.add (j_task)
-					end
-					create json_response.make
-								json_response.put (j_tasks, "tasks")
-								send_json(hres, json_response)
+					else
+						id_pbi := hp.path_param("idpbis").to_integer
+						pbi := db.getpbifromid (id_pbi)
+						if   pbi.getbacklog.getproject.getid.is_equal (p.getid) then
+							print_list_of_tasks(pbi.getid)
+
+						else
+							-- PBI and Project doesn't match
+							send_generic_error("PBI in not in Project", hres)
+						end
+					end -- end not attached hp.path_param("idpbi")
+				else
+					no_permission
 				end
 			end
-	end
+		end	-- end ensure_authenticated
 	end
 
 feature
