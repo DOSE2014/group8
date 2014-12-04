@@ -474,7 +474,7 @@ feature
 				create u.make (0, param_fname, param_lname,	ec.bool_to_int(param_sex.is_equal("M")),
 							   create {DATE_TIME}.make_from_epoch(param_dob), param_country,
 							   param_timezone, param_email, param_password,
-							   ec.bool_to_int(param_type.is_equal("developer")),param_organiz,
+							   ec.bool_to_int(param_type.is_equal("developer")),param_organiz, false,
 							   selectedProgL, selectedLangs)
 
 				db.insertUser(u)
