@@ -102,4 +102,30 @@ feature
 		do
 			dueDate := d
 		end
+
+	to_json: JSON_OBJECT
+		local
+			j_pbi: JSON_OBJECT
+			epoch: DATE_TIME
+		do
+			create j_pbi.make
+			create epoch.make_from_epoch (0)
+			j_pbi.put_integer (id, "id")
+			j_pbi.put_string (name, "name")
+			j_pbi.put_string (description, "description")
+			j_pbi.put_integer (sprintlog.getid, "sprintlog")
+			if type = {PBITYPE}.bugfix then
+				j_pbi.put_string ("bugfix", "type")
+			elseif type = {PBITYPE}.nonfunctionalrequirement then
+				j_pbi.put_string ("nonfunctionalrequirement", "type")
+			elseif type = {PBITYPE}.requirement then
+				j_pbi.put_string ("requirement", "type")
+			end
+
+			j_pbi.put_integer (priority, "priority")
+			j_pbi.put_integer (duedate.definite_duration (epoch).seconds_count, "dueDate")
+
+
+			Result := j_pbi
+		end
 end

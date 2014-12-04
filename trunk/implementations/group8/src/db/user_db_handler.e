@@ -303,7 +303,7 @@ feature
 
 	getStatistics() : LINKED_LIST[LINKED_LIST[INTEGER]]
 	do
-		create dbquerystatement.make ("SELECT developer, SUM(points) AS s FROM Task WHERE state=1 GROUP BY developer ORDER BY s DESC;")
+		create dbquerystatement.make ("SELECT developer, SUM(points) AS s FROM Task WHERE state=1 GROUP BY developer ORDER BY s DESC;", db)
 
 	end
 end
