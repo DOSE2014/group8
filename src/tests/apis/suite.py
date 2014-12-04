@@ -8,6 +8,7 @@ import login, register, edit, registerfail, info, info2, infofail, developerslis
 import projectslist, projectscreate, projectsadddev, projectsremdev, projectsedit
 import projectscreatebacklog, projectsdeletebacklog
 import projectsaddpbi, projectsdelpbi, projectseditpbi, taskslist, taskscreate
+import tasksdelete, tasksedit
 
 
 
@@ -50,7 +51,8 @@ try:
     test_("/projects/1/pbis/1/delete", projectsdelpbi.exec_test, verbose)
     test_("/projects/1/pbis/2/listtasks", taskslist.exec_test, verbose)
     test_("/projects/1/pbis/2/createtask", taskscreate.exec_test, verbose)
-    
+    test_("/projects/1/pbis/2/tasks/1/edit", tasksedit.exec_test, verbose)
+    test_("/projects/1/pbis/2/tasks/1/delete", tasksdelete.exec_test, verbose)
 
 finally:
     print_stats()
