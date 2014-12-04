@@ -221,4 +221,9 @@ feature
 	do
 		Result := projectdbhandler.checkVisibilityForProject(u,p)
 	end
+
+	getpbisfrombacklogid(id: INTEGER): LINKED_SET[PBI]
+		do
+			Result := pbidbHandler.getPBIsFromBacklogId(id)
+		end
 end

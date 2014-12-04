@@ -153,6 +153,12 @@ feature
 					json_response.put_integer (projId, "id")
 					send_json (hres, json_response)
 				end
+
+				if not ok then
+					log.warning("/projects/create [POST] Request error: " + error_reason)
+					json_error.put_string (error_reason, "reason")
+					send_json(hres, json_error)
+				end
 			end
 		end
 
@@ -412,5 +418,71 @@ feature
 					send_json(hres, json_error)
 				end
 			end
+		end
+
+	getBacklog(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
+		require
+			hreq /= Void
+			hres /= Void
+		local
+			hp: HTTP_PARSER
+			backlog: BACKLOG
+			u: USER
+			project: PROJECT
+			json_error: JSON_OBJECT
+			j_backlog: JSON_OBJECT
+			j_pbi: JSON_OBJECT
+			j_pbis: JSON_ARRAY
+			ok: BOOLEAN
+			idProj: INTEGER
+			error_reason: STRING
+			pbis: LINKED_SET[PBI]
+		do
+			http_request := hreq
+			http_response := hres
+
+			create hp.make (hreq)
+
+			if ensure_authenticated and hp.is_good_request then
+				u := get_session_user
+
+				if not attached hp.path_param("idproj")
+				then
+					send_malformed_json(http_response)
+					-- And logs it
+					log.warning ("/projects/{idproj}/getbacklog [GET] Missing idproj in URL.")
+				else
+					idProj := hp.path_param ("idproj").to_integer
+					project := db.getprojectfromid (idProj)
+					if not attached project
+					then	-- does project exist?
+						send_malformed_json(http_response)
+						-- And logs it
+						log.warning ("/projects/{idproj}/getbacklog [GET] Project not existent.")
+					else
+						backlog := db.getbacklogfromprojectid (idProj)
+						create json_error.make
+						if not attached backlog then
+							error_reason := "Backlog doesn't exist"
+							json_error.put_integer (1, "code")
+							log.warning("/projects/{idproj}/getbacklog [GET] Request error: " + error_reason)
+							json_error.put_string ("no", "backlog")
+						else
+							create j_backlog.make
+							create j_pbis.make_array
+							j_backlog.put_string(backlog.getdescription, "description")
+							pbis := db.getPBIsFromBacklogId(backlog.getid)
+							across pbis as p
+							loop
+								j_pbi := p.item.to_json
+								j_pbis.add (j_pbi)
+							end
+							j_backlog.put (j_pbis, "pbis")
+						end
+					end
+				end
+
+			end
+
 		end
 end

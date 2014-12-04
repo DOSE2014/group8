@@ -91,6 +91,16 @@ feature
 			end
 		end
 
+	getPBIsFromBacklogId(id: INTEGER): LINKED_SET[PBI]
+		do
+			create Result.make
+			create dbquerystatement.make ("SELECT * FROM PBI WHERE backlog=" + id.out + ";", db)
+			dbquerystatement.execute (agent genpbis(?, 8, Result))
+			if Result.count = 0
+			then Result := Void
+			end
+		end
+
 feature{NONE}
 	genPBI(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: PBI): BOOLEAN
 		local
