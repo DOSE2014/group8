@@ -79,6 +79,7 @@ feature {NONE} -- Initialization
 			create rest_account.make(session_manager, pdtdb)
 			create rest_projects.make (session_manager, pdtdb)
 			create rest_projects_pbis.make (session_manager, pdtdb)
+			create rest_projects_pbis_tasks.make (session_manager, pdtdb)
 
 			set_service_option ("port", 8080)
 			initialize_router
@@ -114,7 +115,7 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/edit", agent rest_projects_pbis.edit_pbi, router.methods_post)
 
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/createtask", agent rest_projects_pbis_tasks.createtask, router.methods_post)
-			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/listtasks", agent rest_projects_pbis_tasks.listtasks, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/listtasks", agent rest_projects_pbis_tasks.listtasks, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/delete", agent rest_projects_pbis_tasks.deletetask, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit", agent rest_projects_pbis_tasks.edittask , router.methods_post)
 

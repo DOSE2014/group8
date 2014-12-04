@@ -3,7 +3,7 @@ import sys, shutil, time
 
 # Tests
 import login, register, edit, registerfail, info, info2, infofail, developerslist, projectslist, projectscreate
-import projectsaddpbi, projectsdelpbi, projectseditpbi
+import projectsaddpbi, projectsdelpbi, projectseditpbi, taskslist
 
 # Helper class for colors
 class bcolors:
@@ -70,6 +70,8 @@ try:
     test_("/projects/1/pbis/create", projectsaddpbi.exec_test)
     test_("/projects/1/pbis/1/edit", projectseditpbi.exec_test)
     test_("/projects/1/pbis/1/delete", projectsdelpbi.exec_test)
+    test_("/projects/1/pbis/2/listtasks", taskslist.exec_test)
+    
     
 
 finally:

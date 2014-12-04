@@ -79,4 +79,15 @@ feature
 		send_json (http_response,json_ok)
 
 	end
+
+	send_generic_error(str : STRING; http_response : WSF_RESPONSE)
+	local
+		json_error : JSON_OBJECT
+	do
+		create json_error.make
+		json_error.put_string ("error", "status")
+		json_error.put_string (str, "reason")
+		send_json (http_response,json_error)
+
+	end
 end

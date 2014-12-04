@@ -119,6 +119,21 @@ feature
 			end
 		end
 
+	checkVisibilityForProject(u : INTEGER; p : INTEGER) : BOOLEAN
+	local
+		query_result_cursor: SQLITE_STATEMENT_ITERATION_CURSOR
+	do
+		create dbquerystatement.make ("SELECT * FROM PROJECT JOIN Developer_Project" +
+											" ON Project.id = Developer_Project.project WHERE (manager=" + u.out + " OR stakeholder=" + u.out +
+											" OR Developer_Project.developer=" + u.out + ") AND id="+p.out+";", db)
+		query_result_cursor := dbquerystatement.execute_new
+		if query_result_cursor.after then
+			Result := True
+		else
+			Result := False
+		end
+	end
+
 	deleteDeveloperFromProject(d: INTEGER; p: INTEGER)
 		do
 			create dbmodifystatement.make ("DELETE FROM Developer_Project WHERE developer=" + d.out + " AND project=" + p.out + ";", db)
