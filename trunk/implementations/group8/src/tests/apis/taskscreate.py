@@ -3,38 +3,22 @@ import json, login
 
 from suite_functions import check_reply
 
-params = """
-{}
-""";
+params = """{
+"name" : "A created task!"
+"description" : "A description for this task!"
+"points" : 102
+"developer" : 1
+"state" : "pending"
+"pbi" : 5
+}""";
 
 expected_response = json.loads("""
-{
-"tasks" : [
-{
-"id" : 2,
-"name" : "Second test task",
-"description" : "BLablabla",
-"points" : 23,
-"developer" : 2,
-"state" : "pending",
-"pbi" : 2
-},
-{
-"id" : 3,
-"name" : "Another test",
-"description" : "Blablablabla",
-"points" : 10,
-"developer" : 2,
-"state" : "pending",
-"pbi" : 2
-}
-]
-}
+{"status":"ok"}
 """)
 
 def exec_test(debug=False):
     headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain", "Cookie" : "_pdt_session_id_="+login.cookie_id+""}
     conn = http.client.HTTPConnection("localhost", 8080)
-    conn.request("GET", "/projects/1/pbis/2/listtasks", params, headers)
+    conn.request("POST", "/projects/1/pbis/2/createtask", params, headers)
 
     return check_reply(conn, expected_response, debug)
