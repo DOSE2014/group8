@@ -9,25 +9,24 @@ params = """
 
 expected_response = json.loads("""
 {
-"tasks" : [
-{
-"id" : 2,
-"name" : "Second test task",
-"description" : "BLablabla",
-"points" : 23,
-"developer" : 2,
-"state" : "pending",
-"pbi" : 2
-},
-{
-"id" : 3,
-"name" : "Another test",
-"description" : "Blablablabla",
-"points" : 10,
-"developer" : 2,
-"state" : "pending",
-"pbi" : 2
-}
+"tasks":
+[
+	{"id":2,
+	 "name":"Second test task",
+	 "description":"BLablabla",
+	 "points":23,
+	 "developer":2,
+	 "state":"Completed",
+	 "pbi":2
+	},
+	{"id":3,
+	 "name":"Another test",
+	 "description":"Blablablabla",
+	 "points":10,
+         "developer":2,
+         "state":"Completed",
+         "pbi":2
+       }
 ]
 }
 """)
