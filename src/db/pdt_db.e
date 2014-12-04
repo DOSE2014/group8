@@ -210,4 +210,9 @@ feature
 		do
 			Result := userdbhandler.getdevelopersFromProjectId(p)
 		end
+
+	editProject(p: PROJECT)
+		do
+			projectdbhandler.editProject(p)
+		end
 end

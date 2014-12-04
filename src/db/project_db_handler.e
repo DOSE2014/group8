@@ -128,6 +128,20 @@ feature
 			end
 		end
 
+	editProject(p: PROJECT)
+		local
+			epoch: DATE_TIME
+		do
+			create epoch.make_from_epoch (0)
+			create dbmodifystatement.make ("UPDATE Project SET name='" + p.getname + "', description='" + p.getdescription + "', manager='" + p.getmanager.getid.out + "', stakeholder='"
+											+ p.getstakeholder.getid.out + "', creationDate='" + p.getcreationdate.definite_duration (epoch).seconds_count.out + "', deleted='"
+											+ p.getdeleted.to_integer.out + "' WHERE id=" + p.getid.out + ";", db)
+			dbmodifystatement.execute
+			if dbmodifystatement.has_error
+			then print("Error while updating project.")
+			end
+		end
+
 feature{NONE}
 	genProject(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: PROJECT): BOOLEAN
 		local

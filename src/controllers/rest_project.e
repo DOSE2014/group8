@@ -128,6 +128,18 @@ feature
 					json_error.put_integer (1, "code")
 					ok := FALSE
 				end
+				if not attached mgr
+				then
+					error_reason := "Manager doesn't exist."
+					json_error.put_integer (1, "code")
+					ok := FALSE
+				end
+				if mgr.getid = stakeholder.getId
+				then
+					error_reason := "The stakeholder cannot be manager."
+					json_error.put_integer (1, "code")
+					ok := FALSE
+				end
 
 				if ok
 				then
@@ -142,7 +154,6 @@ feature
 					send_json (hres, json_response)
 				end
 			end
-
 		end
 
 	addDeveloper(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
@@ -161,6 +172,7 @@ feature
 			u: USER
 
 			json_error: JSON_OBJECT
+			error_reason: STRING
 		do
 			http_request := hreq
 			http_response := hres
@@ -196,6 +208,13 @@ feature
 							send_malformed_json(http_response)
 							-- And logs it
 							log.warning ("/projects/{idproj}/adddeveloper [POST] Developer not existent.")
+						elseif developer.getusertype = {USERTYPE}.stakeholder
+						then
+							error_reason := "New developer cannot be stakeholder."
+							json_error.put_integer (1, "code")
+							log.warning("/projects/{idproj}/adddeveloper [POST] Request error: " + error_reason)
+							json_error.put_string (error_reason, "reason")
+							send_json(hres, json_error)
 						else
 							db.adddevelopertoproject (param_iddev, idProj)
 
@@ -232,6 +251,7 @@ feature
 			http_request := hreq
 			http_response := hres
 			create hp.make (hreq)
+
 
 			if ensure_authenticated
 			then
@@ -275,6 +295,121 @@ feature
 					else
 						no_permission
 					end
+				end
+			end
+		end
+
+	editProject(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
+		-- PATH: /projects/{idproj}/edit
+		-- METHOD: POST
+		require
+			hreq /= Void
+			hres /= Void
+		local
+			hp: HTTP_PARSER
+			u: USER
+			json_error: JSON_OBJECT
+			idProj: INTEGER
+			project: PROJECT
+			param_name: detachable STRING
+			param_description: detachable STRING
+			param_manager: detachable INTEGER
+			ok: BOOLEAN
+			newMgr: USER
+			developers: LINKED_SET[USER]
+
+			error_reason: STRING
+		do
+			http_request := hreq
+			http_response := hres
+
+			create hp.make (hreq)
+			if ensure_authenticated and hp.is_good_request
+			then
+				u := get_session_user
+				create json_error.make
+
+				ok := true
+
+				idProj := hp.path_param ("idproj").to_integer
+				project := db.getprojectfromid (idProj)
+
+				if ok and not attached project
+				then
+					error_reason := "Project doesn't exist."
+					json_error.put_integer (1, "code")
+					ok := false
+				end
+
+				if ok and u.getid /= project.getmanager.getid then
+					no_permission
+				end
+
+
+				if attached hp.post_param ("name") then
+					param_name := hp.post_param ("name")
+					if ok and db.existsnameinproject (param_name) then
+						error_reason := "Project name already exists."
+						json_error.put_integer (1, "code")
+						ok := false
+					end
+				end
+
+				if attached hp.post_param ("description") then
+					param_description := hp.post_param ("description")
+				end
+
+				if attached hp.post_int_param ("manager") then
+					param_manager := hp.post_int_param ("manager")
+					newMgr := db.getuserfromid (param_manager)
+					if ok and not attached newMgr then
+						error_reason := "New manager doesn't exist."
+						json_error.put_integer (1, "code")
+						ok := false
+					end
+
+					if ok and newMgr.getusertype = {USERTYPE}.stakeholder then
+						error_reason := "Stakeholder cannot be manager."
+						json_error.put_integer (1, "code")
+						ok := false
+					end
+
+					if ok then
+						developers := db.getdevelopersfromprojectid (idproj)
+						across developers as d
+						loop
+							if d.item.getId = newMgr.getid then
+								error_reason := "New manager can't be among the developers of the project."
+								json_error.put_integer (1, "code")
+								ok := false
+							end
+						end
+					end
+				end
+
+				if ok then
+					if attached param_name then
+						project.setname (param_name)
+					end
+					if attached param_manager then
+						project.setmanager (db.getuserfromid (param_manager))
+					end
+					if attached param_description then
+						project.setdescription (param_description)
+					end
+
+					db.editProject(project)
+					log.info ("/projects/{idproj}/edit [POST] Edited project " + idproj.out + ".")
+
+					-- send OK to the user :)				
+					send_generic_ok(hres)
+
+				end
+
+				if not ok then
+					log.warning("/projects/{idproj}/edit [POST] Request error: " + error_reason)
+					json_error.put_string (error_reason, "reason")
+					send_json(hres, json_error)
 				end
 			end
 		end
