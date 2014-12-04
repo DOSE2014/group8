@@ -87,7 +87,6 @@ feature
 				getId /= 0
 			local
 				epoch: DATE_TIME
-				ec : EIFFEL_CONVERSION
 			do
 				create epoch.make_from_epoch (0)
 				create Result.make

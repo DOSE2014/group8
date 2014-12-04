@@ -80,7 +80,6 @@ feature
 		p:PROJECT
 		pbi : PBI
 		hp: HTTP_PARSER
-		e : STRING
 		b: BACKLOG
 	do
 		http_request  := hreq

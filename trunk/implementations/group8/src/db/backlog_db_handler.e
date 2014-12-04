@@ -73,8 +73,6 @@ feature
 
 feature{NONE}
 	genBacklog(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: BACKLOG): BOOLEAN
-	local
-		e : STRING
 		do
 			resultobject.setid (row.string_value (1).to_integer)
 			resultobject.setDescription (row.string_value (2).out)

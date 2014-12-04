@@ -123,7 +123,6 @@ feature
 	checkVisibilityForProject(u : INTEGER; p : INTEGER) : BOOLEAN
 	local
 		query_result_cursor: SQLITE_STATEMENT_ITERATION_CURSOR
-		e:STRING
 	do
 		create dbquerystatement.make ("SELECT * FROM PROJECT JOIN Developer_Project" +
 											" ON Project.id = Developer_Project.project WHERE (manager=" + u.out + " OR stakeholder=" + u.out +

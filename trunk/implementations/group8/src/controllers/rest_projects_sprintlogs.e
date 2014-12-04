@@ -49,10 +49,7 @@ feature
 		u : USER
 		id_project : INTEGER
 
-		p:PROJECT
-		pu: LINKED_SET[PROJECT]
 		hp: HTTP_PARSER
-		e : STRING
 	do
 		log.warning ("helloW")
 		http_request  := hreq
@@ -104,7 +101,6 @@ feature
 		hres /= Void
 	local
 		id_project : INTEGER
-		id_pbi : INTEGER
 		hp : HTTP_PARSER
 
 		param_name        : STRING
@@ -120,7 +116,6 @@ feature
 		ok : BOOLEAN
 
 		p : PROJECT
-		pbi : PBI
 		m : USER
 		s: SPRINTLOG
 
