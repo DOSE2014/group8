@@ -54,6 +54,7 @@ feature
 			password := passHash(pass)
 			usertype := usrtp
 			organization := org
+			deleted := 0
 			programmingLanguages := prgmLangs
 			languages := langs
 		end
