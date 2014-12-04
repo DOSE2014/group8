@@ -140,6 +140,7 @@ feature
 			if dbmodifystatement.has_error
 			then print("Error while updating project.")
 			end
+			
 		end
 
 feature{NONE}
