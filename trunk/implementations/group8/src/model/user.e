@@ -37,6 +37,7 @@ feature
 			cntr, tmzn, eml, pass: STRING;
 			usrtp: INTEGER;
 			org: STRING;
+			del: BOOLEAN
 			prgmLangs: LINKED_SET[PROGRAMMING_LANGUAGE]
 			langs: LINKED_SET[LANGUAGE]
 			)
@@ -54,7 +55,7 @@ feature
 			password := passHash(pass)
 			usertype := usrtp
 			organization := org
-			deleted := false
+			deleted := del
 			programmingLanguages := prgmLangs
 			languages := langs
 		end
@@ -67,6 +68,7 @@ feature
 				cntr, tmzn, eml, pass: STRING;
 				usrtp: INTEGER;
 				org: STRING;
+				del: BOOLEAN
 				)
 		do
 			id := i
@@ -80,6 +82,7 @@ feature
 			password := passHash(pass)
 			usertype := usrtp
 			organization := org
+			deleted := del
 		end
 
 	make_default
