@@ -69,6 +69,7 @@ feature
 	local
 		epoch: DATE_TIME
 		rowId: INTEGER
+		cursor: SQLITE_STATEMENT_ITERATION_CURSOR
 	do
 		create epoch.make_from_epoch (0)
 		create dbinsertstatement.make ("INSERT INTO Project(name, description, manager, stakeholder, creationDate, deleted) " +
@@ -77,8 +78,10 @@ feature
 										ec.bool_to_int(p.getDeleted).out +	 "');", db)
 		dbinsertstatement.execute
 		create dbquerystatement.make ("SELECT last_insert_rowid();", db)
-		create rowId.default_create
-		dbquerystatement.execute (agent getLastInsertRowId(?, 1, rowId))
+		cursor := dbquerystatement.execute_new
+		if not cursor.after then
+			rowId := cursor.item.value(1).out.to_integer
+		end
 
 		if dbinsertstatement.has_error
 		then print("Error while inserting a new project.%N")
