@@ -160,8 +160,11 @@ feature
 		http_response := hres
 
 		create hp.make(hreq)
+		-- Create the error object even if it is not necessary
+		-- (in this case, this object is not used)
+		create json_error.make
 
-		if ensure_authenticated then
+		if ensure_authenticated and hp.is_good_request then
 
 
 			-- First GET the id of the project
@@ -176,48 +179,46 @@ feature
 
 			-- Next check the POST parameters
 			create regex.make
-			-- Create the error object even if it is not necessary
-			-- (in this case, this object is not used)
-			create json_error.make
+
 			json_error.put_string ("error", "status")
 
 
 			ok := TRUE
 
 			param_name := hp.post_param ("name")
-					if ok and not regex.check_name (param_name) then
+					if ok and param_name.is_empty then
 						error_reason := "Name not present or not correct."
 						ok := FALSE
 					end
 
 			param_description := hp.post_param ("description")
-					if ok and not regex.check_name (param_description) then
+					if ok and param_description.is_empty then
 						error_reason := "Description not present or not correct."
 						ok := FALSE
 					end
 
-			param_points:= hp.post_param ("points")
+			param_points:= hp.post_int_param ("points").out
 					if ok and not regex.check_integer (param_points) and param_points.to_integer < 0 then
 						error_reason := "Points not present or not correct."
 						ok := FALSE
 					end
 
 				param_state:= hp.post_param ("state")
-						if ok and not regex.check_name (param_state) and not ec.statestring_to_int(param_pbi).is_equal (-1) then
+						if ok and not regex.check_name (param_state) and not ec.statestring_to_int(param_state).is_equal (-1) then
 							error_reason := "State not present or not correct."
 							ok := FALSE
 						end
 
-				param_pbi:= hp.post_param ("pbi")
+				param_pbi:= hp.post_int_param ("pbi").out
 				pbi:= db.getpbifromid (param_pbi.to_integer)
 						if ok and not  regex.check_integer (param_pbi) and pbi.getbacklog.getproject.getid.is_equal (id_project) then
 								error_reason := "PBI not present or not correct."
 								ok := FALSE
 						end
 
-				param_developer:= hp.post_param ("developer")
+				param_developer:= hp.post_int_param ("developer").out
 				u := db.getuserfromid (param_developer.to_integer)
-						if ok and not regex.check_integer (param_developer) and db.getprojectsvisibletouser (u.getid).has (p)  then
+						if ok and not regex.check_integer (param_developer) and db.checkvisibilityforproject (u.getid, p.getid)  then
 							error_reason := "Developer not present or not correct."
 							ok := FALSE
 						end
@@ -246,6 +247,11 @@ feature
 
 			end
 
+		else
+			json_error.put_string ("error", "status")
+			error_reason := "Not authenticated or bad request"
+			json_error.put_string (error_reason, "reason")
+			send_json(hres, json_error)
 		end -- end ensure authenticated
 
 	end -- end current feature
