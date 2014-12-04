@@ -193,12 +193,13 @@ feature
 			rowId: INTEGER
 			epoch: DATE_TIME
 		do
+			create ec
 			create epoch.make_from_epoch (0)
 			create dbinsertstatement.make ("INSERT INTO User(firstname, lastname, sex, dateOfBirth, country, timezone, email, password, usertype, organization, deleted)" +
 											 "VALUES ('" + u.getfirstname + "', '" + u.getlastname + "', '" + u.getsex.out +
 											 "', '" + u.getdateofbirth.definite_duration (epoch).seconds_count.out + "', '" + u.getcountry + "', '" +
 											 u.gettimezone + "', '" + u.getemail + "', '" + u.getpasswordhash + "', '" + u.getusertype.out + "', '" + u.getorganization +
-											 "', '" + ec.bool_to_int (u.isdeleted).out + "';", db)
+											 "', '" + ec.bool_to_int (u.isdeleted).out + "');", db)
 			dbinsertstatement.execute
 			create dbquerystatement.make ("SELECT last_insert_rowid();", db)
 			create rowId.default_create
