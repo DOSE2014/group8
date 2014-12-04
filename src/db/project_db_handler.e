@@ -46,6 +46,7 @@ feature
 --	end
 
 	getProjectFromId(id: INTEGER): PROJECT
+	local
 	do
 		create Result.make_default
 		create dbQueryStatement.make ("SELECT * FROM Project WHERE id=" + id.out + ";", db)
@@ -122,12 +123,15 @@ feature
 	checkVisibilityForProject(u : INTEGER; p : INTEGER) : BOOLEAN
 	local
 		query_result_cursor: SQLITE_STATEMENT_ITERATION_CURSOR
+		e:STRING
 	do
 		create dbquerystatement.make ("SELECT * FROM PROJECT JOIN Developer_Project" +
 											" ON Project.id = Developer_Project.project WHERE (manager=" + u.out + " OR stakeholder=" + u.out +
-											" OR Developer_Project.developer=" + u.out + ") AND id="+p.out+";", db)
+											" OR Developer_Project.developer=" + u.out + ")  AND id="+p.out+";", db)
 		query_result_cursor := dbquerystatement.execute_new
-		if query_result_cursor.after then
+
+
+		if not query_result_cursor.item.is_null (1) then
 			Result := True
 		else
 			Result := False
@@ -155,7 +159,7 @@ feature
 			if dbmodifystatement.has_error
 			then print("Error while updating project.")
 			end
-			
+
 		end
 
 feature{NONE}

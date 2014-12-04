@@ -80,6 +80,8 @@ feature
 		p:PROJECT
 		pbi : PBI
 		hp: HTTP_PARSER
+		e : STRING
+		b: BACKLOG
 	do
 		http_request  := hreq
 		http_response := hres
@@ -97,6 +99,7 @@ feature
 			else
 				id_project := hp.path_param("idproj").to_integer
 				p := db.getprojectfromid (id_project)
+
 				if db.checkVisibilityForProject(u.getId, p.getId) then
 					-- Second GET the id of the PBI
 					if not attached hp.path_param("idpbi") then
@@ -104,9 +107,10 @@ feature
 						-- And logs it
 						log.warning ("/projects/{idproj}/pbis/{idpbi}/listtasks [GET] Missing idpbis in URL.")
 					else
-						id_pbi := hp.path_param("idpbis").to_integer
+						id_pbi := hp.path_param("idpbi").to_integer
 						pbi := db.getpbifromid (id_pbi)
-						if   pbi.getbacklog.getproject.getid.is_equal (p.getid) then
+						b := db.getbacklogfromid (pbi.getbacklog.getid)
+						if   b.getproject.getid.is_equal (p.getid) then
 							print_list_of_tasks(pbi.getid)
 
 						else
