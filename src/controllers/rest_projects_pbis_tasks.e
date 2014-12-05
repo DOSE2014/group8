@@ -259,10 +259,11 @@ feature
 			end
 
 		else
-			json_error.put_string ("error", "status")
-			error_reason := "Not authenticated or bad request"
-			json_error.put_string (error_reason, "reason")
-			send_json(hres, json_error)
+			if hp.is_good_request then
+				no_permission
+			else
+				send_malformed_json (hres)
+			end
 		end -- end ensure authenticated
 
 	end -- end current feature

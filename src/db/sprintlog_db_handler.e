@@ -40,8 +40,8 @@ feature
 			epoch: DATE_TIME
 		do
 			create epoch.make_from_epoch (0)
-			create dbInsertStatement.make("INSERT INTO Sprintlog(id, name, description, backlog, startDate, endDate) VALUES ('" +
-											s.getid.out + "', '" + s.getname + "', '" + s.getdescription + "', '" + s.getbacklog.getid.out + "', '" +
+			create dbInsertStatement.make("INSERT INTO Sprintlog(name, description, backlog, startDate, endDate) VALUES ('" +
+											s.getname + "', '" + s.getdescription + "', '" + s.getbacklog.getid.out + "', '" +
 											s.getstartdate.definite_duration(epoch).seconds_count.out + "', '" +
 											s.getenddate.definite_duration(epoch).seconds_count.out + "');", db)
 			dbInsertStatement.execute
