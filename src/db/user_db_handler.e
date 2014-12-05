@@ -94,6 +94,17 @@ feature{NONE}
 			resultobject.extend (u)
 		end
 
+	genStats(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: LINKED_LIST[STAT_ENTRY]): BOOLEAN
+	local
+		st : STAT_ENTRY
+		userid,points : INTEGER
+	do
+		userid := row.integer_value(1)
+		points := row.integer_value(2)
+		create st.make_from_int (userid, points)
+		resultobject.extend(st)
+	end
+
 	getLastInsertRowId(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: INTEGER): BOOLEAN
 		do
 			resultobject.set_item (row.string_value (1).to_integer)
@@ -301,9 +312,10 @@ feature
 
 		end
 
-	getStatistics() : LINKED_LIST[LINKED_LIST[INTEGER]]
+	getStatistics : LINKED_LIST[STAT_ENTRY]
 	do
+		create Result.make
 		create dbquerystatement.make ("SELECT developer, SUM(points) AS s FROM Task WHERE state=1 GROUP BY developer ORDER BY s DESC;", db)
-
+		dbquerystatement.execute (agent genStats(?, 2, Result))
 	end
 end
