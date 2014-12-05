@@ -404,7 +404,7 @@ feature
 				-- And logs it
 				log.warning ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [GET] Missing idpbis in URL.")
 			end
-			id_pbi := hp.path_param("idpbis").to_integer
+			id_pbi := hp.path_param("idpbi").to_integer
 			-- Third GET the id of the task
 			if ok and not attached hp.path_param("idtask") then
 				ok := FALSE
@@ -414,8 +414,8 @@ feature
 			end
 			id_task := hp.path_param("idtask").to_integer
 			t := db.gettaskfromid (id_task)
-			pbi := t.getpbi
-			p := pbi.getbacklog.getproject
+	--		pbi := t.getpbi
+			p := db.getprojectfromid (id_project)
 
 			-- Next check the POST parameters
 			create regex.make
@@ -425,18 +425,18 @@ feature
 			json_error.put_string ("error", "status")
 
 			param_name := hp.post_param ("name")
-					if ok and not regex.check_name (param_name) then
+					if ok then
 						error_reason := "Name not present or not correct."
 						ok := FALSE
 					end
 
 			param_description := hp.post_param ("description")
-					if ok and not regex.check_name (param_description) then
+					if ok then
 						error_reason := "Description not present or not correct."
 						ok := FALSE
 					end
 
-			param_points:= hp.post_param ("points")
+			param_points:= hp.post_int_param ("points").out
 					if ok and not regex.check_integer (param_points) and param_points.to_integer < 0 then
 						error_reason := "Points not present or not correct."
 						ok := FALSE
@@ -448,15 +448,15 @@ feature
 							ok := FALSE
 						end
 
-				param_pbi:= hp.post_param ("pbi")
+				param_pbi:= hp.post_int_param ("pbi").out
 						if ok and not  regex.check_integer (param_pbi) and pbi.getbacklog.getproject.getid.is_equal (id_project) then
 								error_reason := "PBI not present or not correct."
 								ok := FALSE
 						end
 
-				param_developer:= hp.post_param ("developer")
+				param_developer:= hp.post_int_param ("developer").out
 				u := db.getuserfromid (param_developer.to_integer)
-						if ok and not regex.check_integer (param_developer) and db.getprojectsvisibletouser (u.getid).has (p)  then
+						if ok and not regex.check_integer (param_developer) and db.checkvisibilityforproject (u.getid, p.getid)  then
 							error_reason := "Developer not present or not correct."
 							ok := FALSE
 						end
