@@ -335,7 +335,7 @@ feature
 			http_response := hres
 
 			create hp.make (hreq)
-			if ensure_authenticated and hp.is_good_request
+			if ensure_authenticated and hp.is_good_request and False
 			then
 				u := get_session_user
 				create json_error.make
@@ -354,6 +354,7 @@ feature
 
 				if ok and u.getid /= project.getmanager.getid then
 					no_permission
+					ok := FALSE
 				end
 
 
@@ -490,4 +491,9 @@ feature
 			end
 
 		end
+
+	create_backlog(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
+	do
+
+	end
 end

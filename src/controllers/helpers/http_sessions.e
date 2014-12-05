@@ -29,6 +29,8 @@ feature
 
 	create_session(u : USER)
 	-- Creates a new (empty) session (you should sends a HTTP response after this)
+	require
+		u /= Void
 	local
 		session_obj : WSF_COOKIE_SESSION
 	do
