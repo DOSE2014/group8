@@ -51,7 +51,6 @@ feature
 
 		hp: HTTP_PARSER
 	do
-		log.warning ("helloW")
 		http_request  := hreq
 		http_response := hres
 		create hp.make(hreq)
@@ -125,7 +124,7 @@ feature
 
 		create hp.make(hreq)
 
-		if ensure_authenticated then
+		if ensure_authenticated and hp.is_good_request then
 
 
 			-- First GET the id of the project
@@ -160,16 +159,16 @@ feature
 						ok := FALSE
 					end
 
-			param_startDate:= hp.post_param ("startDate")
-					if ok and not regex.check_unixtime (param_startDate.out) then
+			param_startDate:= hp.post_int_param ("startDate").out
+					if ok and not attached param_startDate and not regex.check_unixtime (param_startDate.out) then
 								error_reason := "Start date not present or not correct (it should be unixtimestamp in seconds)."
 								json_error.put_integer (200,"code")
 								json_error.put_string ("startDate", "field")
 								ok := FALSE
 							end
 
-			param_endDate:= hp.post_param ("endDate")
-					if ok and not regex.check_unixtime (param_startDate.out) then
+			param_endDate:= hp.post_int_param ("endDate").out
+					if ok and not attached param_startDate and not regex.check_unixtime (param_startDate.out) then
 								error_reason := "End date not present or not correct (it should be unixtimestamp in seconds)."
 								json_error.put_integer (200,"code")
 								json_error.put_string ("endDate", "field")
@@ -197,7 +196,7 @@ feature
 						end
 
 			if not ok then
-				log.warning("/projects/{idproj}/pbis/create [POST] Request error: " + error_reason)
+				log.warning("/projects/{idproj}/sprintlogs/create  [POST] Request error: " + error_reason)
 				json_error.put_string (error_reason, "reason")
 				send_json(hres, json_error)
 			else
@@ -205,7 +204,7 @@ feature
 				if ok then
 					create s.make (0, param_name, param_description, db.getbacklogfromprojectid (id_project), create {DATE_TIME}.make_from_epoch(param_startDate.to_integer), create {DATE_TIME}.make_from_epoch(param_startDate.to_integer))
 					db.insertsprintlog (s)
-					log.info ("/projects/{idproj}/pbis/create [POST] Created a new task "+param_name )
+					log.info ("/projects/{idproj}/sprintlogs/create [POST] Created a new task "+param_name )
 					-- send OK to the user :)				
 					send_generic_ok(hres)
 				end
@@ -213,7 +212,20 @@ feature
 
 			end
 
-		end -- end ensure authenticated
+		else
+			if not hp.is_good_request then
+				-- Bad request
+					send_malformed_json(http_response)
+					log.warning("/projects/{idproj}/sprintlogs/create [POST] JSON request malformed.")
+			else
+					error_reason := "No user logged in"
+					log.warning("/projects/{idproj}/sprintlogs/create [POST] Request error: " + error_reason)
+					create json_error.make
+					json_error.put_string (error_reason, "reason")
+					send_json(hres, json_error)
+			end
+
+		end -- end ensure authenticated and good request
 
 	end -- end current feature
 
