@@ -6,7 +6,7 @@ from suite_functions import *
 # Tests
 import login, register, edit, registerfail, info, info2, infofail, developerslist, login_sh
 import projectslist, projectscreate, projectsadddev, projectsremdev, projectsedit
-import projectscreatebacklog, projectsdeletebacklog
+import projectscreatebacklog, projectsdeletebacklog, projectscreatefail,projectscreatefail2
 import projectsaddpbi, projectsdelpbi, projectseditpbi, taskslist, taskscreate
 import tasksdelete, tasksedit, stats, sprintlogslist, sprintlogscreate, sprintlogscreate_fail
 import sprintlogslistpbis, sprintlogsaddpbi, sprintlogsdelpbi, sprintlogsdelete, recoverpasswordok
@@ -38,7 +38,7 @@ try:
     test_("/account/register", register.exec_test, verbose)
     test_("/account/register - FAIL", registerfail.exec_test, verbose)
     test_("/account/recoverpassword", recoverpasswordok.exec_test, verbose)
-    test_("/account/recoverpassword - FAIL", recoverpasswordfail.exec_test, verbose)
+    test_("/account/recoverpassword - FAIL 1", recoverpasswordfail.exec_test, verbose)
     test_("/account/recoverpassword - FAIL 2", recoverpasswordfail2.exec_test, verbose)
     test_("/account/edit", edit.exec_test, verbose)
     test_("/account/userinfo - 1", info.exec_test, verbose)
@@ -47,6 +47,8 @@ try:
     test_("/account/listdevelopers", developerslist.exec_test, verbose)
     test_("/projects/list", projectslist.exec_test, verbose)
     test_("/projects/create", projectscreate.exec_test, verbose)
+    test_("/projects/create - FAIL 1", projectscreatefail.exec_test, verbose)
+    test_("/projects/create - FAIL 2", projectscreatefail2.exec_test, verbose)
     test_("/projects/1/adddeveloper", projectsadddev.exec_test, verbose)
     test_("/projects/1/remdeveloper", projectsremdev.exec_test, verbose)
     test_("/projects/2/edit", projectsedit.exec_test, verbose)
