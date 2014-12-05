@@ -12,7 +12,7 @@ params = """{
 expected_response = json.loads("""
 {
     "status":"error",
-    "reason" : "Wrong fields."
+    "reason" : "Project name is empty."
 }
 """)
 

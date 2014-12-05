@@ -14,7 +14,7 @@ params = """{
 expected_response = json.loads("""
 {
     "status":"error",
-    "reason" : "A stakeholder cannot be manager."
+    "reason" : "The stakeholder that creates the project cannot be manager."
 }
 """)
 
