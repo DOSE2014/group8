@@ -537,7 +537,7 @@ feature
 							param_description := hp.post_param ("description")
 							create backlog.make (0, param_description, project)
 							db.insertbacklog (backlog)
-							log.info ("/projects/" + idProj.out + "/createbacklog [POST] Created backlog: " + param_description + ".")
+							log.info ("/projects/" + idProj.out + "/create_backlog [POST] Created backlog: " + param_description + ".")
 							send_generic_ok (hres)
 						end
 					end
@@ -545,7 +545,7 @@ feature
 			end
 		end
 
-	deleteBacklog(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
+	delete_Backlog(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
 		require
 			hreq /= Void
 			hres /= Void
