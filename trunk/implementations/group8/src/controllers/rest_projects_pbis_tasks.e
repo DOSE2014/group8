@@ -313,7 +313,7 @@ feature
 				-- And logs it
 				log.warning (" /projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/delete [POST] Missing idpbis in URL.")
 			end
-			id_pbi := hp.path_param("idpbis").to_integer
+			id_pbi := hp.path_param("idpbi").to_integer
 			-- Third GET the id of the task
 			if ok and not attached hp.path_param("idtask") then
 				ok := FALSE
@@ -323,8 +323,8 @@ feature
 			end
 			id_task := hp.path_param("idtask").to_integer
 			t := db.gettaskfromid (id_task)
-			pbi := t.getpbi
-			p := pbi.getbacklog.getproject
+	--		pbi := t.getpbi
+			p := db.getprojectfromid (id_project)
 
 
 			--CHECK m is manager
