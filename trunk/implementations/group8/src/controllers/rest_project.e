@@ -134,7 +134,7 @@ feature
 					json_error.put_integer (1, "code")
 					ok := FALSE
 				end
-				if mgr.getid = stakeholder.getId
+				if ok and mgr.getid = stakeholder.getId
 				then
 					error_reason := "The stakeholder cannot be manager."
 					json_error.put_integer (1, "code")

@@ -35,5 +35,36 @@ feature -- declaring deferred properties
 
 feature
 
+	devpoints(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /stats/devpoint
+	-- METHOD: GET
+	local
+		ls : LINKED_LIST[STAT_ENTRY]
+		ls_json : JSON_ARRAY
+		json_object : JSON_OBJECT
+		json_response : JSON_OBJECT
+	do
+		http_request  := hreq
+		http_response := hres
+
+		if ensure_authenticated then
+			ls := db.getStatistics
+			create ls_json.make_array
+
+			across ls as stat_entry
+			loop
+				create json_object.make
+				json_object.put_integer (stat_entry.item.getUserId, "dev")
+				json_object.put_integer (stat_entry.item.getPoints, "points")
+				ls_json.extend (json_object)
+			end
+
+
+			create json_response.make
+			json_response.put (ls_json, "stats")
+
+			send_json(hres, json_response)
+		end
+	end
 
 end

@@ -223,7 +223,12 @@ feature
 	end
 
 	getpbisfrombacklogid(id: INTEGER): LINKED_SET[PBI]
-		do
-			Result := pbidbHandler.getPBIsFromBacklogId(id)
-		end
+	do
+		Result := pbidbHandler.getPBIsFromBacklogId(id)
+	end
+
+	getStatistics : LINKED_LIST[STAT_ENTRY]
+	do
+		Result := userdbhandler.getstatistics
+	end
 end
