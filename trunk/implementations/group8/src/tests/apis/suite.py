@@ -9,7 +9,8 @@ import projectslist, projectscreate, projectsadddev, projectsremdev, projectsedi
 import projectscreatebacklog, projectsdeletebacklog
 import projectsaddpbi, projectsdelpbi, projectseditpbi, taskslist, taskscreate
 import tasksdelete, tasksedit, stats, sprintlogslist, sprintlogscreate, sprintlogscreate_fail
-import sprintlogslistpbis, sprintlogsaddpbi, sprintlogsdelpbi, sprintlogsdelete
+import sprintlogslistpbis, sprintlogsaddpbi, sprintlogsdelpbi, sprintlogsdelete, recoverpasswordok
+import recoverpasswordfail, recoverpasswordfail2
 
 
 
@@ -36,6 +37,9 @@ try:
     test_("/account/login - SQL-INJECTION", login.exec_test, verbose)
     test_("/account/register", register.exec_test, verbose)
     test_("/account/register - FAIL", registerfail.exec_test, verbose)
+    test_("/account/recoverpassword", recoverpasswordok.exec_test, verbose)
+    test_("/account/recoverpassword - FAIL", recoverpasswordfail.exec_test, verbose)
+    test_("/account/recoverpassword - FAIL 2", recoverpasswordfail2.exec_test, verbose)
     test_("/account/edit", edit.exec_test, verbose)
     test_("/account/userinfo - 1", info.exec_test, verbose)
     test_("/account/userinfo - 2", info2.exec_test, verbose)
