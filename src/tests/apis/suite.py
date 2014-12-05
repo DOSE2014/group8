@@ -4,11 +4,11 @@ import sys, shutil
 from suite_functions import *
 
 # Tests
-import login, register, edit, registerfail, info, info2, infofail, developerslist
+import login, register, edit, registerfail, info, info2, infofail, developerslist, login_sh
 import projectslist, projectscreate, projectsadddev, projectsremdev, projectsedit
 import projectscreatebacklog, projectsdeletebacklog
 import projectsaddpbi, projectsdelpbi, projectseditpbi, taskslist, taskscreate
-import tasksdelete, tasksedit, stats, sprintlogslist, sprintlogscreate
+import tasksdelete, tasksedit, stats, sprintlogslist, sprintlogscreate, sprintlogscreate_fail
 
 
 
@@ -31,6 +31,7 @@ try:
     # LIST OF TASKS TO DO:
     
     test_("/account/login - 1", login.exec_test, verbose)
+    test_("/account/login - 2 (SH)", login_sh.exec_test, verbose)
     test_("/account/login - SQL-INJECTION", login.exec_test, verbose)
     test_("/account/register", register.exec_test, verbose)
     test_("/account/register - FAIL", registerfail.exec_test, verbose)
@@ -56,6 +57,8 @@ try:
     test_("/projects/1/pbis/2/tasks/1/delete", tasksdelete.exec_test, verbose)   
     test_("/projects/1/sprintlogs/list", sprintlogslist.exec_test, verbose)
     test_("/projects/1/sprintlogs/create", sprintlogscreate.exec_test, verbose)
+    test_("/projects/1/sprintlogs/create - FAIL", sprintlogscreate_fail.exec_test, verbose)
+
     test_("/stats/devpoint", stats.exec_test, verbose)
 
 finally:
