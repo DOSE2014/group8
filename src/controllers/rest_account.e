@@ -108,6 +108,7 @@ feature
 		hp : HTTP_PARSER
 		param_email : STRING
 		param_password : STRING
+		json_error : JSON_OBJECT
 	do
 		http_request  := hreq
 		http_response := hres
@@ -122,8 +123,15 @@ feature
 				param_password	:= hp.post_param ("password")
 				-- Regex check is unuseless
 
-				-- From AUTHENTICATION:
-				login(param_email, param_password, db)
+				if attached param_email and attached param_password then
+					-- From AUTHENTICATION:
+					login(param_email, param_password, db)
+				else
+					log.warning("/account/login [POST] Login failed, fields error ")
+					create json_error.make
+					json_error.put_string ("error", "status")
+					send_json (hres, json_error)
+				end
 			else
 				-- Bad request
 				send_malformed_json(http_response)
