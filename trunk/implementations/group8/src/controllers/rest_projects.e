@@ -449,7 +449,7 @@ feature
 
 			create hp.make (hreq)
 
-			if ensure_authenticated and hp.is_good_request then
+			if ensure_authenticated then
 				u := get_session_user
 
 				if not attached hp.path_param("idproj")
@@ -493,7 +493,47 @@ feature
 		end
 
 	create_backlog(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
-	do
+		require
+			hreq /= Void
+			hres /= Void
+		local
+			hp: HTTP_PARSER
+			u: USER
+			project: PROJECT
+			backlog: BACKLOG
+			manager: USER
+			json_error: JSON_OBJECT
+			error_reason: STRING
+			idProj: INTEGER
+			param_description: STRING
+		do
+			http_request := hreq
+			http_response := hres
 
-	end
+			create hp.make (hreq)
+
+			if ensure_authenticated and hp.is_good_request then
+				u := get_session_user
+
+				if not attached hp.path_param("idproj")
+				then
+					send_malformed_json(http_response)
+					-- And logs it
+					log.warning ("/projects/{idproj}/createbacklog [GET] Missing idproj in URL.")
+				else
+					idProj := hp.path_param ("idproj").to_integer
+					project := db.getprojectfromid (idProj)
+					manager := project.getmanager
+					if u.getid /= manager.getid then
+						no_permission
+					else
+						param_description := hp.post_param ("description")
+						create backlog.make (0, param_description, project)
+						db.insertbacklog (backlog)
+						log.info ("/projects/" + idProj.out + "/createbacklog [POST] Created backlog: " + param_description + ".")
+						send_generic_ok (hres)
+					end
+				end
+			end
+		end
 end
