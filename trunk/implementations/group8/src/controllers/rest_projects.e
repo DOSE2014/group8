@@ -335,7 +335,7 @@ feature
 			http_response := hres
 
 			create hp.make (hreq)
-			if ensure_authenticated and hp.is_good_request and False
+			if ensure_authenticated and hp.is_good_request
 			then
 				u := get_session_user
 				create json_error.make
@@ -388,12 +388,14 @@ feature
 
 					if ok then
 						developers := db.getdevelopersfromprojectid (idproj)
-						across developers as d
-						loop
-							if d.item.getId = newMgr.getid then
-								error_reason := "New manager can't be among the developers of the project."
-								json_error.put_integer (1, "code")
-								ok := false
+						if attached developers then
+							across developers as d
+								loop
+									if d.item.getId = newMgr.getid then
+									error_reason := "New manager can't be among the developers of the project."
+									json_error.put_integer (1, "code")
+									ok := false
+								end
 							end
 						end
 					end
@@ -537,7 +539,7 @@ feature
 							param_description := hp.post_param ("description")
 							create backlog.make (0, param_description, project)
 							db.insertbacklog (backlog)
-							log.info ("/projects/" + idProj.out + "/create_backlog [POST] Created backlog: " + param_description + ".")
+							log.info ("/projects/" + idProj.out + "/createbacklog [POST] Created backlog: " + param_description + ".")
 							send_generic_ok (hres)
 						end
 					end
