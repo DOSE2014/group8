@@ -103,6 +103,7 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/account/listdevelopers", agent rest_account.listdevelopers, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/account/login", agent rest_account.login_, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/account/logout", agent rest_account.logout_, router.methods_get)
+			map_uri_template_agent_with_request_methods ("/account/recoverpassword", agent rest_account.recover_password, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/account/register", agent rest_account.register, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/account/userinfo", agent rest_account.account_info, router.methods_get)
 

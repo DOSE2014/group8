@@ -169,34 +169,45 @@ feature{NONE}
 
 feature
 	getUserFromId(id: INTEGER): USER
-		do
-			create Result.make_default
-			create dbQueryStatement.make ("SELECT * FROM User WHERE id=" + id.out + ";", db)
-			dbQueryStatement.execute (agent genUser(?, 11, Result))
-			if Result.getId = 0 then
-				Result := Void
-			end
+	do
+		create Result.make_default
+		create dbQueryStatement.make ("SELECT * FROM User WHERE id=" + id.out + ";", db)
+		dbQueryStatement.execute (agent genUser(?, 11, Result))
+		if Result.getId = 0 then
+			Result := Void
 		end
+	end
 
 	getUserFromEmailPassword(email, password: STRING): USER
-		do
-			create Result.make_default
-			create dbquerystatement.make ("SELECT * FROM User WHERE email='" + email + "' AND password='" + password + "';", db)
-			dbquerystatement.execute (agent genUser(?, 11, Result))
-			if Result.getId = 0 then
-				Result := Void
-			end
+	do
+		create Result.make_default
+		create dbquerystatement.make ("SELECT * FROM User WHERE email='" + email + "' AND password='" + password + "';", db)
+		dbquerystatement.execute (agent genUser(?, 11, Result))
+		if Result.getId = 0 then
+			Result := Void
+		end
+	end
+
+	getUserFromEmailAndDOB (email : STRING; dateofbirth : INTEGER) : detachable USER
+	do
+		create Result.make_default
+		create dbquerystatement.make ("SELECT * FROM User WHERE email='" + email + "' AND dateOfBirth=" + dateofbirth.out + ";", db)
+		dbquerystatement.execute (agent genUser(?, 11, Result))
+		if Result.getId = 0 then
+			Result := Void
 		end
 
+	end
+
 	getDevelopers: LINKED_SET[USER]
-		do
-			create Result.make
-			create dbQueryStatement.make ("SELECT * FROM User WHERE userType=" + {USERTYPE}.developer.out + ";", db)
-			dbquerystatement.execute (agent genDevelopers(?, 11, Result))
-			if Result.count = 0
-			then Result := Void
-			end
+	do
+		create Result.make
+		create dbQueryStatement.make ("SELECT * FROM User WHERE userType=" + {USERTYPE}.developer.out + ";", db)
+		dbquerystatement.execute (agent genDevelopers(?, 11, Result))
+		if Result.count = 0
+		then Result := Void
 		end
+	end
 
 	insertUser(u: USER)
 		local

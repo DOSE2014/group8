@@ -232,4 +232,9 @@ feature
 		Result := userdbhandler.getstatistics
 	end
 
+	getUserFromEmailAndDOB (email : STRING; dateofbirth : INTEGER) : detachable USER
+	do
+		Result := userdbhandler.getUserFromEmailAndDOB(email, dateofbirth)
+	end
+
 end

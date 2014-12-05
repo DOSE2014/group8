@@ -570,12 +570,39 @@ feature
 	recover_password(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
 	-- PATH: /account/recover_password
 	-- METHOD: POST
+	local
+		hp : HTTP_PARSER
+		param_email : STRING
+		param_dob : INTEGER
+		u : USER
 	do
 		http_request  := hreq
 		http_response := hres
 
+
+		create hp.make (hreq)
 		if ensure_not_authenticated then
-			
-		end
+			if hp.is_good_request then
+
+				param_email := hp.post_param ("email")
+				param_dob   := hp.post_int_param ("dateOfBirth")
+
+				if not attached param_email or not attached param_dob then
+					send_generic_error ("Email or DateOfBirth missing.", hres)
+				else
+					u := db.getuserfromemailanddob (param_email, param_dob)
+					if not attached u then
+						send_generic_error ("Email and/or DateOfBirth not valid.",hres)
+					else
+						-- Send email TODO
+						send_generic_ok (hres)
+					end
+				end
+			else
+				send_malformed_json (hres)
+			end	-- end hp.is_good_request
+		end -- end ensure_authenticated
 	end
-end
+
+
+end -- end class
