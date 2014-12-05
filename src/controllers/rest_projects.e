@@ -152,7 +152,7 @@ feature
 					create p.make (0, param_name, param_description, mgr, stakeholder, create {DATE_TIME}.make_now, FALSE)
 					projId := db.insertproject (p)
 					p.setid (projId)
-					log.info ("/account/register [POST] Created a new project "+ param_name + " "+ param_description)
+					log.info ("/projects/create [POST] Created a new project "+ param_name + " "+ param_description)
 					create json_response.make
 					json_response.put_string ("created", "status")
 					json_response.put_integer (projId, "id")
@@ -205,7 +205,7 @@ feature
 					then	-- does project exist?
 						send_malformed_json(http_response)
 						-- And logs it
-						log.warning ("/projects/{idproj}/adddeveloper [POST] Project not existent.")
+						log.warning ("/projects/" + idproj.out + "/adddeveloper [POST] Project not existent.")
 					end
 
 					if project.getmanager.getid = u.getId
@@ -218,12 +218,12 @@ feature
 						if not attached developer then
 							send_malformed_json(http_response)
 							-- And logs it
-							log.warning ("/projects/{idproj}/adddeveloper [POST] Developer not existent.")
+							log.warning ("/projects/" + idProj.out + "/adddeveloper [POST] Developer not existent.")
 						elseif developer.getusertype = {USERTYPE}.stakeholder
 						then
 							error_reason := "New developer cannot be stakeholder."
 							json_error.put_integer (1, "code")
-							log.warning("/projects/{idproj}/adddeveloper [POST] Request error: " + error_reason)
+							log.warning("/projects/" + idProj.out + "/adddeveloper [POST] Request error: " + error_reason)
 							json_error.put_string (error_reason, "reason")
 							send_json(hres, json_error)
 						else
@@ -280,7 +280,7 @@ feature
 					then	-- does project exist?
 						send_malformed_json(http_response)
 						-- And logs it
-						log.warning ("/projects/{idproj}/remdeveloper [POST] Project not existent.")
+						log.warning ("/projects/" + idProj.out + "/remdeveloper [POST] Project not existent.")
 					end
 
 					if project.getmanager.getid = u.getId
@@ -293,7 +293,7 @@ feature
 						if not attached developer then
 							send_malformed_json(http_response)
 							-- And logs it
-							log.warning ("/projects/{idproj}/adddeveloper [POST] Developer not existent.")
+							log.warning ("/projects/" + idProj.out + "/remdeveloper [POST] Developer not existent.")
 						else
 							db.deletedeveloperfromproject (param_iddev, idProj)
 
@@ -411,7 +411,7 @@ feature
 					end
 
 					db.editProject(project)
-					log.info ("/projects/{idproj}/edit [POST] Edited project " + idproj.out + ".")
+					log.info ("/projects/" + idProj.out + "/edit [POST] Edited project " + idproj.out + ".")
 
 					-- send OK to the user :)				
 					send_generic_ok(hres)
@@ -419,7 +419,7 @@ feature
 				end
 
 				if not ok then
-					log.warning("/projects/{idproj}/edit [POST] Request error: " + error_reason)
+					log.warning("/projects/" + idproj.out + "/edit [POST] Request error: " + error_reason)
 					json_error.put_string (error_reason, "reason")
 					send_json(hres, json_error)
 				end
@@ -464,14 +464,14 @@ feature
 					then	-- does project exist?
 						send_malformed_json(http_response)
 						-- And logs it
-						log.warning ("/projects/{idproj}/getbacklog [GET] Project not existent.")
+						log.warning ("/projects/" + idProj.out + "/getbacklog [GET] Project not existent.")
 					else
 						backlog := db.getbacklogfromprojectid (idProj)
 						create json_error.make
 						if not attached backlog then
 							error_reason := "Backlog doesn't exist"
 							json_error.put_integer (1, "code")
-							log.warning("/projects/{idproj}/getbacklog [GET] Request error: " + error_reason)
+							log.warning("/projects/" + idProj.out + "/getbacklog [GET] Request error: " + error_reason)
 							json_error.put_string ("no", "backlog")
 						else
 							create j_backlog.make
@@ -523,15 +523,73 @@ feature
 				else
 					idProj := hp.path_param ("idproj").to_integer
 					project := db.getprojectfromid (idProj)
-					manager := project.getmanager
-					if u.getid /= manager.getid then
-						no_permission
+					if not attached project
+					then	-- does project exist?
+						send_malformed_json(http_response)
+						-- And logs it
+						log.warning ("/projects/" + idproj.out + "/createbacklog [GET] Project not existent.")
 					else
-						param_description := hp.post_param ("description")
-						create backlog.make (0, param_description, project)
-						db.insertbacklog (backlog)
-						log.info ("/projects/" + idProj.out + "/createbacklog [POST] Created backlog: " + param_description + ".")
-						send_generic_ok (hres)
+
+						manager := project.getmanager
+						if u.getid /= manager.getid then
+							no_permission
+						else
+							param_description := hp.post_param ("description")
+							create backlog.make (0, param_description, project)
+							db.insertbacklog (backlog)
+							log.info ("/projects/" + idProj.out + "/createbacklog [POST] Created backlog: " + param_description + ".")
+							send_generic_ok (hres)
+						end
+					end
+				end
+			end
+		end
+
+	deleteBacklog(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
+		require
+			hreq /= Void
+			hres /= Void
+		local
+			hp: HTTP_PARSER
+			u: USER
+			backlog: BACKLOG
+			project: PROJECT
+			idProj: INTEGER
+			json_error: JSON_OBJECT
+			error_reason: STRING
+			manager: USER
+		do
+			http_request := hreq
+			http_response := hres
+
+			create hp.make (hreq)
+
+			if ensure_authenticated and hp.is_good_request then
+				u := get_session_user
+
+				if not attached hp.path_param("idproj")
+				then
+					send_malformed_json(http_response)
+					-- And logs it
+					log.warning ("/projects/{idproj}/deletebacklog [GET] Missing idproj in URL.")
+				else
+					idProj := hp.path_param ("idproj").to_integer
+					project := db.getprojectfromid (idProj)
+					if not attached project
+					then	-- does project exist?
+						send_malformed_json(http_response)
+						-- And logs it
+						log.warning ("/projects/" + idproj.out + "/deletebacklog [GET] Project not existent.")
+					else
+
+						manager := project.getmanager
+						if u.getid /= manager.getid then
+							no_permission
+						else
+							db.deletebacklogfromprojectid (idProj)
+							log.info ("/projects/" + idProj.out + "/deletebacklog [POST] deleted backlog.")
+							send_generic_ok (hres)
+						end
 					end
 				end
 			end
