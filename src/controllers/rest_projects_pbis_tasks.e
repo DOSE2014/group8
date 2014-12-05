@@ -425,13 +425,13 @@ feature
 			json_error.put_string ("error", "status")
 
 			param_name := hp.post_param ("name")
-					if ok then
+					if ok and  param_name.is_empty then
 						error_reason := "Name not present or not correct."
 						ok := FALSE
 					end
 
 			param_description := hp.post_param ("description")
-					if ok then
+					if ok and  param_description.is_empty then
 						error_reason := "Description not present or not correct."
 						ok := FALSE
 					end
@@ -475,6 +475,7 @@ feature
 						else
 
 							if ok then
+								pbi := db.getpbifromid (param_pbi.to_integer)
 								create t.make (id_task, param_name, param_description, u, param_points.to_integer, ec.statestring_to_int(param_state), pbi)
 								db.editTask(t)
 								log.info ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [POST] Edited a task "+param_name )
