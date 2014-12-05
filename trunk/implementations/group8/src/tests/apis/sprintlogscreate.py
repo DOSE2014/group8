@@ -4,15 +4,22 @@ import json, login
 from suite_functions import check_reply
 
 params = """{
+
+"name" : "PBI Test",
+"description" : "Questa e una prova",
+"startDate" : 1234567,
+"idpbis" : [1,2],
+"endDate" : 1852495723
+
 }""";
 
 expected_response = json.loads("""
-{"stats":[{"dev":2,"points":33}]}
+{"status":"ok"}
 """)
 
 def exec_test(debug=False):
     headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain", "Cookie" : "_pdt_session_id_="+login.cookie_id+""}
     conn = http.client.HTTPConnection("localhost", 8080)
-    conn.request("GET", "/stats/devpoints", params, headers)
+    conn.request("POST", "/projects/1/sprintlogs/create", params, headers)
 
     return check_reply(conn, expected_response, debug)
