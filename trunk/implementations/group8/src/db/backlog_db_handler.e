@@ -42,24 +42,14 @@ feature
 		end
 	end
 
-	insertBacklog(b: BACKLOG)--: INTEGER
-	local
-		rowId: INTEGER
-		cursor: SQLITE_STATEMENT_ITERATION_CURSOR
+	insertBacklog(b: BACKLOG)
 	do
 		create dbinsertstatement.make ("INSERT INTO Backlog" +
-										 "VALUES ('" + b.getdescription + "', '" + b.getproject.getid.out +	 "');", db)
+										 "VALUES ('" + b.getid.out + "', '" + b.getdescription + "', '" + b.getproject.getid.out +	 "');", db)
 		dbinsertstatement.execute
-		--create dbquerystatement.make ("SELECT last_insert_rowid();", db)
-		--cursor := dbquerystatement.execute_new
-		--if not cursor.after then
-		--	rowId := cursor.item.value(1).out.to_integer
-		--end
-
 		if dbinsertstatement.has_error
 		then print("Error while inserting a new backlog.%N")
 		end
-		--Result :=rowId
 	end
 	updateBacklog(b: BACKLOG)
 	do
@@ -86,7 +76,6 @@ feature{NONE}
 		do
 			resultobject.setid (row.string_value (1).to_integer)
 			resultobject.setDescription (row.string_value (2).out)
-			print(row.string_value (3).out)
 			resultobject.setProject ( projectDBHandler.getProjectFromID( row.string_value (3).to_integer) )
 		end
 feature{NONE}

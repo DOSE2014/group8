@@ -119,7 +119,6 @@ feature
 					end
 
 					param_priority := hp.post_int_param ("priority")
-					print(param_priority)
 					if ok and not regex.check_integer (param_priority.out) then
 						error_reason := "Priority not present or not integer."
 						json_error.put_string ("priority","field")
