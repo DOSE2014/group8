@@ -122,10 +122,13 @@ feature
 				param_description 	:= hp.post_param ("description")
 				param_manager 		:= hp.post_int_param ("manager")
 
+				if ok and param_name.count = 0 then
+					error_reason := "Project name is empty."
+					ok := FALSE
+				end
 				if ok and db.existsNameInProject(param_name)
 				then
 					error_reason := "Project name already exists."
-					json_error.put_integer (1, "code")
 					ok := FALSE
 				end
 				if ok and attached param_manager then
@@ -136,13 +139,15 @@ feature
 				if ok and not attached mgr
 				then
 					error_reason := "Manager doesn't exist."
-					json_error.put_integer (1, "code")
 					ok := FALSE
 				end
 				if ok and mgr.getid = stakeholder.getId
 				then
-					error_reason := "The stakeholder cannot be manager."
-					json_error.put_integer (1, "code")
+					error_reason := "The stakeholder that creates the project cannot be manager."
+					ok := FALSE
+				end
+				if ok and mgr.getusertype /= {USERTYPE}.developer then
+					error_reason := "A stakeholder cannot be manager."
 					ok := FALSE
 				end
 
