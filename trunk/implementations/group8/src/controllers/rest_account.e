@@ -567,4 +567,15 @@ feature
 		end
 	end
 
+	recover_password(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /account/recover_password
+	-- METHOD: POST
+	do
+		http_request  := hreq
+		http_response := hres
+
+		if ensure_not_authenticated then
+			
+		end
+	end
 end

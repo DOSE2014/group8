@@ -111,6 +111,7 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/adddeveloper", agent rest_projects.adddeveloper, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/remdeveloper", agent rest_projects.remdeveloper, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/edit", agent rest_projects.editproject, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/projects/{idproj}/createbacklog", agent rest_projects.create_backlog, router.methods_post)
 
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/create", agent rest_projects_pbis.create_pbi, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/delete", agent rest_projects_pbis.delete_pbi, router.methods_post)

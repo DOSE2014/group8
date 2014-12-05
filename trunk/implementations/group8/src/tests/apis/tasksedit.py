@@ -4,8 +4,8 @@ import json, login
 from suite_functions import check_reply
 
 params = """{
-"name" : "A created task!",
-"description" : "A description for this edited task!",
+"name" : "A created task",
+"description" : "A description for this edited task",
 "points" : 34,
 "developer" : 1,
 "state" : "Completed",

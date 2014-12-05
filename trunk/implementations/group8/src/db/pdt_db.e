@@ -231,4 +231,5 @@ feature
 	do
 		Result := userdbhandler.getstatistics
 	end
+
 end
