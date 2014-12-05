@@ -9,6 +9,7 @@ import projectslist, projectscreate, projectsadddev, projectsremdev, projectsedi
 import projectscreatebacklog, projectsdeletebacklog
 import projectsaddpbi, projectsdelpbi, projectseditpbi, taskslist, taskscreate
 import tasksdelete, tasksedit, stats, sprintlogslist, sprintlogscreate, sprintlogscreate_fail
+import sprintlogslistpbis, sprintlogsaddpbi, sprintlogsdelpbi, sprintlogsdelete
 
 
 
@@ -58,7 +59,11 @@ try:
     test_("/projects/1/sprintlogs/list", sprintlogslist.exec_test, verbose)
     test_("/projects/1/sprintlogs/create", sprintlogscreate.exec_test, verbose)
     test_("/projects/1/sprintlogs/create - FAIL", sprintlogscreate_fail.exec_test, verbose)
-
+    test_("/projects/1/sprintlogs/1/listpbis", sprintlogslistpbis.exec_test, verbose)
+    test_("/projects/1/sprintlogs/1/addpbi", sprintlogsaddpbi.exec_test, verbose)
+    test_("/projects/1/sprintlogs/1/removepbi", sprintlogsdelpbi.exec_test, verbose)
+    test_("/projects/1/sprintlogs/2/delete", sprintlogsdelete.exec_test, verbose)
+    
     test_("/stats/devpoint", stats.exec_test, verbose)
 
 finally:
