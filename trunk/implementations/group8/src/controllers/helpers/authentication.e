@@ -65,7 +65,7 @@ feature -- Ensure feature
 	do
 		create json_error.make
 		json_error.put_string ("error", "status")
-		json_error.put_string ("You are not authorize to perform this action!", "reason")
+		json_error.put_string ("You are not authorized to perform this action!", "reason")
 
 		helper.send_error_json (
 		http_response,

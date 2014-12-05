@@ -128,7 +128,12 @@ feature
 					json_error.put_integer (1, "code")
 					ok := FALSE
 				end
-				if not attached mgr
+				if ok and attached param_manager then
+					mgr := db.getuserfromid (param_manager)
+				else
+					ok := FALSE
+				end
+				if ok and not attached mgr
 				then
 					error_reason := "Manager doesn't exist."
 					json_error.put_integer (1, "code")
