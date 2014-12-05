@@ -4,6 +4,7 @@ import json, login
 from suite_functions import check_reply
 
 params = """{
+"description" : "backlog 1"
 }""";
 
 expected_response = json.loads("""

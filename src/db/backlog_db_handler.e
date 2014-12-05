@@ -44,8 +44,8 @@ feature
 
 	insertBacklog(b: BACKLOG)
 	do
-		create dbinsertstatement.make ("INSERT INTO Backlog" +
-										 "VALUES ('" + b.getid.out + "', '" + b.getdescription + "', '" + b.getproject.getid.out +	 "');", db)
+		create dbinsertstatement.make ("INSERT INTO Backlog(description, project)" +
+										 "VALUES ('" + b.getdescription + "', '" + b.getproject.getid.out +	 "');", db)
 		dbinsertstatement.execute
 		if dbinsertstatement.has_error
 		then print("Error while inserting a new backlog.%N")
