@@ -155,6 +155,8 @@ feature
 		u,m : USER
 
 	do
+		ok := TRUE
+
 		http_request  := hreq
 		http_response := hres
 
@@ -165,15 +167,15 @@ feature
 
 		if ensure_authenticated and hp.is_good_request then
 
-
 			-- First GET the id of the project
-			if not attached hp.path_param("idproj") then
+			if not attached hp.path_param("idproj") or not hp.path_param("idproj").is_integer then
 				send_malformed_json(http_response)
 				-- And logs it
 				log.warning ("/projects/{idproj}/pbis/create [POST] Missing idproj in URL.")
-			end
+				ok := FALSE
+			else
 			id_project := hp.path_param("idproj").to_integer
-
+			end
 
 
 			-- Next check the POST parameters
@@ -182,7 +184,7 @@ feature
 			json_error.put_string ("error", "status")
 
 
-			ok := TRUE
+
 
 			param_name := hp.post_param ("name")
 					if ok and param_name.is_empty then
@@ -209,21 +211,31 @@ feature
 						end
 
 				param_pbi:= hp.post_int_param ("pbi").out
-				pbi:= db.getpbifromid (param_pbi.to_integer)
+				if ok and  regex.check_integer (param_pbi) then
+					pbi:= db.getpbifromid (param_pbi.to_integer)
+				end
+
 						if ok and not  regex.check_integer (param_pbi) and pbi.getbacklog.getproject.getid.is_equal (id_project) then
 								error_reason := "PBI not present or not correct."
 								ok := FALSE
 						end
 
 				param_developer:= hp.post_int_param ("developer").out
-				u := db.getuserfromid (param_developer.to_integer)
+				if ok and regex.check_integer (param_developer) then
+					u := db.getuserfromid (param_developer.to_integer)
+				end
+
 						if ok and not regex.check_integer (param_developer) and db.checkvisibilityforproject (u.getid, p.getid)  then
 							error_reason := "Developer not present or not correct."
 							ok := FALSE
 						end
+
 				--CHECK m is manager
 						m := get_session_user
-						p := pbi.getbacklog.getproject
+						if ok then
+							p := pbi.getbacklog.getproject
+						end
+
 						if ok and not p.getmanager.getid.is_equal (m.getid) then
 							error_reason := "The current user is not manager of the project"
 							ok := FALSE
