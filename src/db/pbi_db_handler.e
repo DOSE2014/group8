@@ -67,15 +67,6 @@ feature
 			then print("Error while deleting pbi.")
 			end
 		end
-	listPBIOfSprintlogId(s: INTEGER): LINKED_SET[PBI]
-		do
-			create Result.make
-			create dbquerystatement.make ("SELECT * FROM PBI Where sprintlog=" + s.out + ";", db)
-			dbquerystatement.execute (agent genpbis (?, 8, Result))
-			if Result.count = 0
-			then Result := Void
-			end
-		end
 	editPBI(pbi: PBI)
 		local
 			epoch: DATE_TIME
@@ -109,7 +100,7 @@ feature
 					Result := Void
 				end
 		end
-		
+
 		listPBIOfSprintlogId(s: INTEGER): LINKED_SET[PBI]
 		do
 			create Result.make
