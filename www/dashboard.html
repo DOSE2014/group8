@@ -61,7 +61,7 @@
 									data-ng-show="user.id == project.manager">(edit)</a></li>
 							</ul>
 							<p class="navbar-text navbar-project-info" style="">{{
-								project.creationDate }}</p>
+								getProjectFormatedDate() }}</p>
 
 							<p class="navbar-text">{{ "80" }} % completed</p>
 
@@ -225,6 +225,8 @@
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		
+	<script src="includes/jquery-ui.min.js"></script>
 
 	<script src="includes/graph/jquery.canvasjs.min.js"></script>
 
