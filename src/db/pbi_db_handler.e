@@ -72,10 +72,17 @@ feature
 			epoch: DATE_TIME
 		do
 			create epoch.make_from_epoch (0)
-			create dbModifyStatement.make("UPDATE PBI SET name = '" + pbi.getname + "', description = '" + pbi.getdescription + "', backlog='" + pbi.getbacklog.getid.out +
+			if attached pbi.getsprintlog then
+				create dbModifyStatement.make("UPDATE PBI SET name = '" + pbi.getname + "', description = '" + pbi.getdescription + "', backlog='" + pbi.getbacklog.getid.out +
 											"', sprintlog = '" + pbi.getsprintlog.getid.out + "', type = '" + pbi.gettype.out + "', priority = '" +
 											pbi.getpriority.out + "', dueDate = '" + pbi.getduedate.definite_duration(epoch).seconds_count.out + "' WHERE id='" +
 											pbi.getid.out+ "';", db)
+			else
+				create dbModifyStatement.make("UPDATE PBI SET name = '" + pbi.getname + "', description = '" + pbi.getdescription + "', backlog='" + pbi.getbacklog.getid.out +
+											"', type = '" + pbi.gettype.out + "', priority = '" +
+											pbi.getpriority.out + "', dueDate = '" + pbi.getduedate.definite_duration(epoch).seconds_count.out + "' WHERE id='" +
+											pbi.getid.out+ "';", db)
+			end
 			dbModifyStatement.execute
 			if dbModifyStatement.has_error
 			then print("Error while updating a backlog.%N")
@@ -110,6 +117,24 @@ feature
 			then Result := Void
 			end
 		end
+		insertpbiintosprintlog(pbi,s:INTEGER)
+		do
+		create dbModifyStatement.make("UPDATE PBI SET sprintlog = '" + s.out + "' WHERE id='" +
+											pbi.out + "';", db)
+			dbModifyStatement.execute
+			if dbModifyStatement.has_error
+			then print("Error while updating pbi.")
+			end
+		end
+		removepbifromsprintlog(pbi,s:INTEGER)
+			do
+			create dbModifyStatement.make("UPDATE PBI SET sprintlog = NULL WHERE id='" +
+												pbi.out + "';", db)
+				dbModifyStatement.execute
+				if dbModifyStatement.has_error
+				then print("Error while updating pbi.")
+				end
+			end
 
 feature{NONE}
 	genPBI(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: PBI): BOOLEAN

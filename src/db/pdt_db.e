@@ -236,10 +236,18 @@ feature
 	do
 		Result := userdbhandler.getUserFromEmailAndDOB(email, dateofbirth)
 	end
-	
+
 	getpbisfromsprintlogid(id: INTEGER) : LINKED_SET[PBI]
 	do
 		Result := pbidbhandler.getpbisfromsprintlogid(id)
+	end
+	insertpbiintosprintlog (pbi, s: INTEGER)
+	do
+		pbidbhandler.insertpbiintosprintlog (pbi, s)
+	end
+	removepbifromsprintlog (pbi, s: INTEGER)
+	do
+		pbidbhandler.removepbifromsprintlog (pbi, s)
 	end
 
 end
