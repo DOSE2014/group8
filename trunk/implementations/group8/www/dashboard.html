@@ -138,9 +138,9 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr data-ng-repeat="tsk in tasks | orderBy:['state','points']:true">
+										<tr data-ng-repeat="tsk in tasks | orderBy:['-state','points']:true">
 											<td>
-												<span class="label" data-ng-class="(tsk.state=='done') ? 'label-success' : 'label-warning'">
+												<span class="label" data-ng-class="(tsk.state=='Completed') ? 'label-success' : 'label-warning'">
 													{{ tsk.name }}
 												</td>
 											<td style="text-align: right; margin-right: 5px;">
@@ -197,7 +197,7 @@
 										<tr data-ng-repeat="dev in developers | orderBy:'lastname'">
 											<td>{{ dev.firstname + " " + dev.lastname }}</td>
 											<td style="text-align: right; margin-right: 5px;">{{
-												($index+1)*30 }}</td>
+												getUserPoints(dev.id) }}</td>
 										</tr>
 									</tbody>
 
