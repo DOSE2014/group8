@@ -63,13 +63,19 @@
     <div class="form-group">
       <label for="inputTimeZone" class="col-sm-2 control-label">Time Zone</label>
       <div class="col-sm-4">
-        <select class="form-control" id="inputTzone" placeholder="Time Zone" data-ng-model="formInfo.tZone">
-        	<option data-ng-repeat="time in timezones" value="time">
-        		{{time}}
-        	</option>
+        <select class="form-control" id="inputTzone" placeholder="Time Zone" data-ng-model="formInfo.tZone"
+        	data-ng-options="time for time in timezones">
+        	
         </select>
       </div>
        <span data-ng-show="tZoneRequired">{{tZoneRequired}}</span>
+    </div>
+    <div class="form-group">
+      <label for="inputOrganization" class="col-sm-2 control-label" >Organization</label>
+      <div class="col-sm-4">
+        <input class="form-control" id="inputOrganization" placeholder="Organization" data-ng-model="formInfo.Organization">
+      </div>
+       <span data-ng-show="organizationRequired">{{organizationRequired}}</span>
     </div>
     <div class="form-group">
       <label for="inputEmail" class="col-sm-2 control-label" >Email</label>
@@ -88,11 +94,8 @@
     <div class="form-group">
       <label for="inputLang" class="col-sm-2 control-label">Languages</label>
       <div class="col-sm-4">
-        <select class="form-control" name="inputLang" data-ng-model="formInfo.Languages" multiple>
-        	<option value="English">English</option>
-        	<option value="Spanish">Spanish</option>
-        	<option value="Italian">Italian</option>
-        	<option value="Russian">Russian</option>
+        <select class="form-control" name="inputLang" data-ng-model="formInfo.Languages" multiple
+        	data-ng-options="lang for lang in languages.languages">
         </select>
         <p>Hold down the Ctrl button to select multiple options.</p>
       </div>
@@ -111,10 +114,8 @@
     <div class="form-group" data-ng-if="formInfo.User == 'developer'">
       <label for="inputPLang" class="col-sm-2 control-label">Programing Languages</label>
       <div class="col-sm-4">
-        <select class="form-control" name="inputPLang" data-ng-model="formInfo.pLanguages" multiple>
-        	<option value="Java">Java</option>
-        	<option value="HTML">HTML</option>
-        	<option value="Eiffel">Eiffel</option>
+        <select class="form-control" name="inputPLang" data-ng-model="formInfo.pLanguages" multiple
+        	data-ng-options="lang for lang in languages.programmingLanguages">
         </select>
         <p>Hold down the Ctrl button to select multiple options.</p>
       </div>
