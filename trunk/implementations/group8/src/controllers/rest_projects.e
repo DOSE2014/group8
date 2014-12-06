@@ -490,10 +490,12 @@ feature
 							create j_pbis.make_array
 							j_backlog.put_string(backlog.getdescription, "description")
 							pbis := db.getPBIsFromBacklogId(backlog.getid)
-							across pbis as p
-							loop
-								j_pbi := p.item.to_json
-								j_pbis.add (j_pbi)
+							if attached pbis then
+								across pbis as p
+								loop
+									j_pbi := p.item.to_json
+									j_pbis.add (j_pbi)
+								end
 							end
 							j_backlog.put (j_pbis, "pbis")
 						end
