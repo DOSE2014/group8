@@ -1,12 +1,12 @@
 //global variables to the REST services
 var url_getCurrentUser = "/account/userinfo";
-var url_getUser = "rest/getUserInfo.php?id={0}"; //FIXME
+var url_getUser = "/account/userinfo?id={0}";
 var url_getProjects = "/projects/list";
-var url_getBacklog = "rest/getProjectBacklog.php"; //FIXME
+var url_getBacklog = "/projects/{0}/getbacklog";
 var url_logout = "account/logout";
-var url_getSprintlog = "rest/getProjectSprintlogs.php";//FIXME
-var url_getPBIs = "rest/getSprintlogPbis.php";//FIXME
-var url_getTasks = "rest/getPbiTask.php?pbiId={0}";//FIXME
+var url_getSprintlog = "/projects/{0}/sprintlogs/list";
+var url_getPBIs = "/projects/{0}/sprintlogs/{1}/listpbis";
+var url_getTasks = "/projects/{0}/pbis/{1}/listtasks";//FIXME
 
 //
 var url_login = "login.html";
@@ -57,6 +57,7 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	$scope.setProjectDevelopers = function(devIds){
 		$scope.developers = [];
 		for(var i=0; i<devIds.length; i++){
+			
 			restUsers.getUser(devIds[i], function(response){
 		        $scope.developers.push(response);
 		    });
@@ -85,20 +86,29 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	
 	//gets the backlog of the project from the REST service
 	$scope.getProjectBacklog = function(projectId){
-		$http.get(url_getBacklog).success(function(data){
+		$http.get(url_getBacklog.format(''+projectId)).success(function(data){
 	        $scope.backlog = data.pbis;
 		});
 	};
 	
+	//gets the date formated for the user to visualize
+	$scope.getProjectFormatedDate = function(){
+		if($scope.project.creationDate != undefined){
+			var prjDate = $scope.project.creationDate;
+			prjDate = new Date(prjDate*1000);
+			prjDate = prjDate.getDate()+"/"+(prjDate.getMonth()+1)+"/"+prjDate.getFullYear();
+			return prjDate;
+		}
+	}
+	
 	//sets the current sprintlog
 	$scope.setCurrentSprint = function(sprintId){
-		
-		
+	
 		$scope.currentSprint = $scope.sprints[sprintId];
 		
 		setChart($scope.currentSprint.name, $scope.currentSprint.startDate, $scope.currentSprint.endDate);
         
-        restUsers.getTasks($scope.currentSprint.id, function(response){
+        restUsers.getTasks($scope.project.id, $scope.currentSprint.id, function(response){
         	$scope.tasks = response;
         	console.log($scope.tasks);
         });
@@ -106,7 +116,7 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	
 	//gets the sprintlog of the project from the REST service
 	$scope.getProjectSprintlog = function(projectId){
-		$http.get(url_getSprintlog).success(function(data){
+		$http.get(url_getSprintlog.format(''+projectId)).success(function(data){
 	        $scope.sprints = data.sprintlogs;
 
 	        //orders by the start date, starting with the most recent one 
@@ -164,7 +174,8 @@ dashboard.service('restUsers', function($http) {
 	//gets the user from the rest service
 	this.getUser = function(userId, callback) {
 		// Get the logged in users info
-		$http.get(url_getUser.format(userId)).success(
+		//alert(url_getUser.format(''+userId));
+		$http.get(url_getUser.format(''+userId)).success(
 			function(response) {
 				callback(response);
 			})
@@ -183,9 +194,9 @@ dashboard.service('restUsers', function($http) {
 	};
 	
 	//gets the tasks from the rest service
-	this.getTasks = function(sprintLogId, callback){
+	this.getTasks = function(projectId, sprintLogId, callback){
 		// Get the logged in users info
-		$http.get(url_getPBIs.format(sprintLogId)).success(
+		$http.get(url_getPBIs.format(''+projectId,''+sprintLogId)).success(
 			
 			function(response) {
 				var tasks = [];
@@ -193,7 +204,7 @@ dashboard.service('restUsers', function($http) {
 				
 				for(var i=0; i<pbi.length; i++){
 					//console.log(url_getTasks.format(""+pbi[i]+""));
-					$http.get(url_getTasks.format(""+pbi[i]+"")).success(
+					$http.get(url_getTasks.format(''+projectId, ""+pbi[i]+"")).success(
 						function(response) {
 							for(var y=0; y<response.tasks.length; y++){
 								tasks.push(response.tasks[y]);
@@ -288,7 +299,7 @@ function setChart(name, startDate, endDate){
 }
 
 //This is the function.
-String.prototype.format = function (args) {
+/*String.prototype.format = function (args) {
 	var str = this;
 	return str.replace(String.prototype.format.regex, function(item) {
 		var intVal = parseInt(item.substring(1, item.length - 1));
@@ -305,6 +316,17 @@ String.prototype.format = function (args) {
 		return replace;
 	});
 };
-String.prototype.format.regex = new RegExp("{-?[0-9]+}", "g");
+String.prototype.format.regex = new RegExp("{-?[0-9]+}", "g");*/
+
+String.prototype.format = function() {
+    var formatted = this;
+    for (var i = 0; i < arguments.length; i++) {
+        var regexp = new RegExp('\\{'+i+'\\}', 'gi');
+        formatted = formatted.replace(regexp, arguments[i]);
+    }
+    return formatted;
+};
+
+
 
 //$(setChart());
