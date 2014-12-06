@@ -1,0 +1,67 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+    
+    <title>A skeleton Gauge chart</title>
+    
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="description" content="A Gauge chart without some of the Chrome" />
+     
+</head>
+<body>
+
+    <h1>A skeleton Gauge chart</h1>
+
+    <canvas id="cvs" width="300" height="150" style="box-shadow: ">[No canvas support]</canvas>
+    
+    <script>
+        $(document).ready(function ()
+        {
+            var gauge = new RGraph.Gauge({
+                id: 'cvs',
+                min: 0,
+                max: 50,
+                value: 46,
+                options: {
+                    'centery': 120,
+                    'radius': 130,
+                    'angles.start': RGraph.PI,
+                    'angles.end': RGraph.TWOPI,
+                    'needle.size': 85,
+                    'border.width': 0,
+                    shadow: false,
+                    'needle.type': 'line',
+                    'colors.ranges': [[0,10,'red'], [10,20,'yellow'],[20,50,'#0f0']],
+                    'border.inner': 'rgba(0,0,0,0)',
+                    'border.outer': 'rgba(0,0,0,0)',
+                    'border.outline': 'rgba(0,0,0,0)',
+                    'centerpin.color': 'rgba(0,0,0,0)',
+                    'centerpin.radius': 0
+                }
+            }).grow()
+            
+            gauge.canvas.onclick = function (e)
+            {
+                var value = gauge.getValue(e);
+                
+                if (typeof value === 'number') {
+                    gauge.value = value;
+                    gauge.grow();
+                }
+            }
+        })
+    </script>
+
+    <p>
+        <a href="./">&laquo; Back</a>
+    </p>
+
+</body>
+</html>
