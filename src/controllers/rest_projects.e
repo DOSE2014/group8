@@ -64,18 +64,23 @@ feature
 
 				projects := db.getprojectsvisibletouser (u.getid)
 				create j_projects.make_array
-				create j_developers.make_array
-				across projects as p
-				loop
-					j_project := p.item.to_json
-					developersofproject := db.getdevelopersfromprojectid (p.item.getId)
-					across developersofproject as d
+
+				if attached projects then
+					create j_developers.make_array
+					across projects as p
 					loop
-						create j_number.make_integer (d.item.getId)
-						j_developers.add (j_number)
+						j_project := p.item.to_json
+						developersofproject := db.getdevelopersfromprojectid (p.item.getId)
+						if attached developersofproject then
+							across developersofproject as d
+							loop
+								create j_number.make_integer (d.item.getId)
+								j_developers.add (j_number)
+							end
+						end
+						j_project.put (j_developers, "developers")
+						j_projects.add (j_project)
 					end
-					j_project.put (j_developers, "developers")
-					j_projects.add (j_project)
 				end
 
 				create json_response.make
