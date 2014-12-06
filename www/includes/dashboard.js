@@ -132,6 +132,11 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 		});
 	};
 	
+	//gets the points of an user
+	$scope.getUserPoints = function(userId){
+		
+	}
+	
 	
 	//Sets the current working project to display on the dashboard
 	$scope.setProject = function(idProject){
