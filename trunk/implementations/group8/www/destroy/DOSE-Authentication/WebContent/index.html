@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="HttpAuthExample">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>HTTP Authentication Example</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+
+  <body>
+  
+    <div class="jumbotron">
+      <div class="container">
+        <div class="col-xs-offset-2 col-xs-8">
+          <div ng-view></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="credits text-center">
+      <p>
+        <a href="https://code.google.com/p/dose2014/source/browse/#svn%2Ftrunk%2Fimplementations%2Fgroup8">DOSE 2014 - Group 8</a>
+      </p>
+      <p>
+        Authentication home
+      </p>
+    </div>
+
+    <script src="scripts/jquery-2.0.3.min.js"></script>
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-route.js"></script>
+    <script src="scripts/angular-cookies.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="modules/authentication/services.js"></script>
+    <script src="modules/authentication/controllers.js"></script> 
+    <script src="modules/home/controllers.js"></script>
+  </body>
+
+</html>
