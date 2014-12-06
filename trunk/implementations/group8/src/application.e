@@ -134,6 +134,7 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/sprintlogs/{idsprintlog}/removepbi", agent rest_projects_sprintlogs.removepbi, router.methods_post)
 
 			map_uri_template_agent_with_request_methods ("/stats/devpoints", agent rest_stats.devpoints, router.methods_get)
+			map_uri_template_agent_with_request_methods ("/stats/projpoints", agent rest_stats.projpoints, router.methods_get)
 
 			-- setting the path to the folder from where we serve static files
 			create fhdl.make_hidden (path_to_www_folder)
