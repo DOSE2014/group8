@@ -1,5 +1,6 @@
 //global variables to the REST services
 var url_login = "account/login";
+var url_getLang = "account/langs";
 
 //global var
 var url_dashboard = "dashboard.php";
@@ -10,10 +11,24 @@ var reg = angular.module('registration', []);
 
 //Controller of the angularJS module
 reg.controller('regController', ['$scope', '$http', function($scope, $http){
+	
+	$scope.languages = {
+		"languages" : [],
+		"programmingLanguages" : []
+	};
+	
+	$http.get(url_getLang).success(function(data){
+        $scope.languages = data;
+    });
+	
+	
 	$("#birthdate").datepicker();
 
-	$scope.timezones = ["-12","-11","-10","-9","-8","-7","-6","-5","-4","-3","-2","-1","0","+1","+2","+3","+4","+5","+6","+7","+8","+9","+10","+11","+12"];
-	
+	$scope.timezones = [
+'Asia/Vladivostok',
+'Pacific/Port_Moresby'
+	                    
+	                    ]	
 	$scope.formInfo = {};
 	
 	$scope.goTo = function(url){
@@ -29,6 +44,7 @@ reg.controller('regController', ['$scope', '$http', function($scope, $http){
 		$scope.countryRequired = '';
 		$scope.tZoneRequired = '';
 		$scope.emailRequired = '';
+		$scope.organizationRequired = '';
 		$scope.passwordRequired = '';
 		$scope.languagesRequired = '';
 		$scope.userRequired = '';
@@ -48,6 +64,8 @@ reg.controller('regController', ['$scope', '$http', function($scope, $http){
 			$scope.countryRequired = 'Country Required';
 		} else if (!$scope.formInfo.tZone) {
 			$scope.tZoneRequired = 'Time Zone Required';
+		} else if (!$scope.formInfo.Organization) {
+			$scope.organizationRequired = 'Organization Required';
 		} else if (!$scope.formInfo.Email) {
 			$scope.emailRequired = 'Email Required';
 		} else if (!$scope.formInfo.Password) {
@@ -71,6 +89,7 @@ reg.controller('regController', ['$scope', '$http', function($scope, $http){
 				'city' : $scope.formInfo.City,
 				'country' : $scope.formInfo.Country,
 				'timezone' : $scope.formInfo.tZone,
+				'organization' : $scope.formInfo.Organization,
 				'email' : $scope.formInfo.Email,
 				'password' : $scope.formInfo.Password,
 				'languages' : $scope.formInfo.Languages,
@@ -84,13 +103,8 @@ reg.controller('regController', ['$scope', '$http', function($scope, $http){
 					alert("Account created")
 					window.location = "login.html"
 				} else if (data.status == "error") {
-					if (data.code = "1") {
-						alert("Email already exists");
-					} else if (data.code == "2") {
-						alert(data.field
-								+ " has problems because:"
-								+ data.reason);
-					}
+					
+						alert(data.reason);
 				}
 			}).error(function(error) {
 				alert(error);

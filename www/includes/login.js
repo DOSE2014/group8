@@ -2,7 +2,7 @@
 var url_login = "account/login";
 
 //global var
-var url_dashboard = "dashboard.php";
+var url_dashboard = "dashboard.html";
 
 //Initializes the dashboard with AngularJS
 var login = angular.module('login', []);
@@ -27,19 +27,14 @@ login.controller('loginController', ['$scope', '$http', function($scope, $http){
 		}
 		$scope.dataLoading = true;
 		
-		var data_post = $.param({
-        	email : $scope.username,
-			password : $scope.password
+		var data_post = {
+        	'email' : $scope.username,
+			'password' : $scope.password
             
-        });
+        };
 		
-		$http({
-			url : url_login,
-			method : "POST",
-			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-			data : data_post
-		}).success(function(data) {
-			
+		$http.post(url_login, JSON.stringify(data_post)).success(function(data) {
+			console.log(data);
 			if (data.status == "ok") {
 				window.location = url_dashboard
 			} else if (data.status == "error") {
