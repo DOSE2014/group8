@@ -567,11 +567,8 @@ feature
 		local
 			hp: HTTP_PARSER
 			u: USER
-			backlog: BACKLOG
 			project: PROJECT
 			idProj: INTEGER
-			json_error: JSON_OBJECT
-			error_reason: STRING
 			manager: USER
 		do
 			http_request := hreq

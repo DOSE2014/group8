@@ -232,6 +232,11 @@ feature
 		Result := userdbhandler.getstatistics
 	end
 
+	getStatisticsFromUserProject(userid : INTEGER; projectid : INTEGER) : INTEGER
+	do
+		Result := userdbhandler.getStatisticsFromUserProject(userid, projectid)
+	end
+
 	getUserFromEmailAndDOB (email : STRING; dateofbirth : INTEGER) : detachable USER
 	do
 		Result := userdbhandler.getUserFromEmailAndDOB(email, dateofbirth)

@@ -67,4 +67,47 @@ feature
 		end
 	end
 
+	projpoints(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /stats/devpoint
+	-- METHOD: GET
+	-- This method returns points of a specified pair developer-project
+	local
+		id_proj_str : STRING
+		id_dev_str  : STRING
+		hp : HTTP_PARSER
+		ok : BOOLEAN
+		points : INTEGER
+		json_response : JSON_OBJECT
+	do
+		http_request  := hreq
+		http_response := hres
+
+		create hp.make (hreq)
+
+		if ensure_authenticated then
+			id_proj_str := hp.get_param ("idproj")
+			id_dev_str  := hp.get_param ("iddev")
+
+			ok := TRUE
+			if ok and (not attached id_proj_str or not id_proj_str.is_integer) then
+				send_generic_error ("idproj not found or not integer.", hres)
+				ok := FALSE
+			end
+			if ok and (not attached id_dev_str or not id_dev_str.is_integer) then
+				send_generic_error ("id_dev not found or not integer.", hres)
+				ok := FALSE
+			end
+
+			if ok then
+				points := db.getstatisticsfromuserproject (id_dev_str.to_integer, id_proj_str.to_integer)
+
+				-- ls is always a list with only one item
+				create json_response.make
+				json_response.put_integer (points, "points")
+				send_json(hres, json_response)
+			end
+
+		end
+	end
+
 end

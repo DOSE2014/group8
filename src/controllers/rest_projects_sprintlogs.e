@@ -241,7 +241,6 @@ feature
 		id_sprintlog : INTEGER
 		hp : HTTP_PARSER
 
-		regex : REGEX
 		json_error  : JSON_OBJECT
 		error_reason : STRING
 
@@ -255,8 +254,6 @@ feature
 		j_pbis: JSON_ARRAY
 		json_response: JSON_OBJECT
 		j_number: JSON_NUMBER
-
-		e:STRING
 
 	do
 --		print(hp.get_param ("name"))
