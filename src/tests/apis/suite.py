@@ -10,7 +10,7 @@ import projectscreatebacklog, projectsdeletebacklog, projectscreatefail,projects
 import projectsaddpbi, projectsdelpbi, projectseditpbi, taskslist, taskscreate
 import tasksdelete, tasksedit, stats, sprintlogslist, sprintlogscreate, sprintlogscreate_fail
 import sprintlogslistpbis, sprintlogsaddpbi, sprintlogsdelpbi, sprintlogsdelete, recoverpasswordok
-import recoverpasswordfail, recoverpasswordfail2
+import recoverpasswordfail, recoverpasswordfail2, projectsgetbacklog
 
 
 
@@ -49,6 +49,7 @@ try:
     test_("/projects/create", projectscreate.exec_test, verbose)
     test_("/projects/create - FAIL 1", projectscreatefail.exec_test, verbose)
     test_("/projects/create - FAIL 2", projectscreatefail2.exec_test, verbose)
+    test_("/projects/1/getbacklog", projectsgetbacklog.exec_test, verbose)
     test_("/projects/1/adddeveloper", projectsadddev.exec_test, verbose)
     test_("/projects/1/remdeveloper", projectsremdev.exec_test, verbose)
     test_("/projects/2/edit", projectsedit.exec_test, verbose)

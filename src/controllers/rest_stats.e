@@ -51,18 +51,18 @@ feature
 			ls := db.getStatistics
 			create ls_json.make_array
 
-			across ls as stat_entry
-			loop
-				create json_object.make
-				json_object.put_integer (stat_entry.item.getUserId, "dev")
-				json_object.put_integer (stat_entry.item.getPoints, "points")
-				ls_json.extend (json_object)
+			if attached ls then
+				across ls as stat_entry
+				loop
+					create json_object.make
+					json_object.put_integer (stat_entry.item.getUserId, "dev")
+					json_object.put_integer (stat_entry.item.getPoints, "points")
+					ls_json.extend (json_object)
+				end
 			end
-
 
 			create json_response.make
 			json_response.put (ls_json, "stats")
-
 			send_json(hres, json_response)
 		end
 	end
