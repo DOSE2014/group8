@@ -236,5 +236,10 @@ feature
 	do
 		Result := userdbhandler.getUserFromEmailAndDOB(email, dateofbirth)
 	end
+	
+	getpbisfromsprintlogid(id: INTEGER) : LINKED_SET[PBI]
+	do
+		Result := pbidbhandler.getpbisfromsprintlogid(id)
+	end
 
 end

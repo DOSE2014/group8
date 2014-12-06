@@ -100,6 +100,25 @@ feature
 			then Result := Void
 			end
 		end
+		getpbisfromsprintlogid(id: INTEGER) : LINKED_SET[PBI]
+		do
+			create Result.make
+				create dbquerystatement.make ("SELECT * FROM PBI WHERE sprintlog=" + id.out + ";", db)
+				dbquerystatement.execute (agent genPBIs(?, 8, Result))
+				if Result.count = 0 then
+					Result := Void
+				end
+		end
+		
+		listPBIOfSprintlogId(s: INTEGER): LINKED_SET[PBI]
+		do
+			create Result.make
+			create dbquerystatement.make ("SELECT * FROM PBI Where sprintlog=" + s.out + ";", db)
+			dbquerystatement.execute (agent genpbis (?, 8, Result))
+			if Result.count = 0
+			then Result := Void
+			end
+		end
 
 feature{NONE}
 	genPBI(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: PBI): BOOLEAN
