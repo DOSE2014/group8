@@ -128,10 +128,11 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/sprintlogs/list", agent rest_projects_sprintlogs.listsprintlogs, router.methods_get)
 
 			map_uri_template_agent_with_request_methods ("/stats/devpoints", agent rest_stats.devpoints, router.methods_get)
-			
+
 			--TODO: check and sort
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/sprintlogs/{idsprintlog}/listpbis", agent rest_projects_sprintlogs.listpbis, router.methods_get)
-			map_uri_template_agent_with_request_methods ("projects/{idproj}/sprintlogs/{idsprintlog}/delete", agent rest_projects_sprintlogs.deletesprintlog, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/projects/{idproj}/sprintlogs/{idsprintlog}/delete", agent rest_projects_sprintlogs.deletesprintlog, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/projects/{idproj}/sprintlogs/{idsprintlog}/addpbi", agent rest_projects_sprintlogs.addpbi, router.methods_post)
 
 			-- setting the path to the folder from where we serve static files
 			create fhdl.make_hidden (path_to_www_folder)

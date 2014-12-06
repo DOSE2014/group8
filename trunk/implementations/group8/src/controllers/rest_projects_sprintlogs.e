@@ -69,7 +69,7 @@ feature
 
 
 					sprints := db.listSprintlogsFromBacklogId(db.getbacklogfromprojectid (id_project).getid)
-					if sprints.is_empty then
+					if not attached sprints then
 						send_malformed_json(http_response)
 						-- And logs it
 						log.warning ("/projects/{idproj}/sprintlogs/list [GET] There are no sprintlogs for this project")
@@ -150,12 +150,16 @@ feature
 				param_name := hp.post_param ("name")
 					if ok and not regex.check_name (param_name) then
 						error_reason := "Name not present or not correct."
+						json_error.put_integer (200,"code")
+						json_error.put_string ("name", "field")
 						ok := FALSE
 					end
 
 				param_description := hp.post_param ("description")
 					if ok and not regex.check_name (param_description) then
 						error_reason := "Description not present or not correct."
+						json_error.put_integer (200,"code")
+						json_error.put_string ("description", "field")
 						ok := FALSE
 					end
 
@@ -182,6 +186,8 @@ feature
 					loop
 						if ok and not  regex.check_integer (e.item)  then
 								error_reason := "PBI not present or not correct."
+								json_error.put_integer (200,"code")
+								json_error.put_string ("idpbis", "field")
 								ok := FALSE
 						end
 					end
@@ -230,6 +236,7 @@ feature
 		hreq /= Void
 		hres /= Void
 	local
+
 		id_project : INTEGER
 		id_sprintlog : INTEGER
 		hp : HTTP_PARSER
@@ -249,15 +256,20 @@ feature
 		json_response: JSON_OBJECT
 		j_number: JSON_NUMBER
 
+		e:STRING
+
 	do
+--		print(hp.get_param ("name"))
+--		print("hellow")
 		http_request  := hreq
 		http_response := hres
-
+		create json_error.make -- I will just leave it here
+		json_error.put_string ("error", "status")
 		ok := TRUE
 
 		create hp.make(hreq)
 
-		if ensure_authenticated and hp.is_good_request then
+		if ensure_authenticated  then
 
 
 			-- First GET the id of the project
@@ -298,11 +310,12 @@ feature
 				if not ok and not hres.status_committed then
 					log.warning("/projects/{idproj}/sprintlogs/{idsprintlog}/listpbis  [POST] Request error: " + error_reason)
 					json_error.put_string (error_reason, "reason")
-					send_json(hres, json_error)
+					send_json (hres, json_error)
 				else
 
 				if ok then
 					pbis := db.getpbisfromsprintlogid(id_sprintlog)
+					create j_pbis.make_array
 					across pbis as pbi
 						loop
 							create j_number.make_integer (pbi.item.getid)
@@ -311,8 +324,8 @@ feature
 					create json_response.make
 					json_response.put (j_pbis, "pbis")
 					log.info ("/projects/{idproj}/sprintlogs/{idsprintlog}/listpbis [POST] Reply sent" )
-					-- send OK to the user :)				
-					send_generic_ok(hres)
+					-- send to the user :)			
+					send_json (hres, json_response)
 				end
 
 
@@ -333,13 +346,115 @@ feature
 	addPBI(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
 	-- /projects/{idproj}/sprintlogs/{idsprintlog}/addpbi
 	-- METHOD: POST
-	do
+	--db.insertpbiintosprintlog (pbi,s)
+	require
+		hreq /= Void
+		hres /= Void
+	local
+		id_project : INTEGER
+		hp : HTTP_PARSER
 
-	end
+		param_id        : STRING
+
+		regex : REGEX
+		json_error  : JSON_OBJECT
+		error_reason : STRING
+
+		ok : BOOLEAN
+
+		p : PROJECT
+		m : USER
+		s: SPRINTLOG
+
+	do
+		http_request  := hreq
+		http_response := hres
+
+		ok := TRUE
+
+		create hp.make(hreq)
+
+		if ensure_authenticated and hp.is_good_request then
+
+
+			-- First GET the id of the project
+			if not attached hp.path_param("idproj") then
+				send_malformed_json(http_response)
+				-- And logs it
+				log.warning ("/projects/{idproj}/sprintlogs/{idsprintlog}/addpbi [POST] Missing idproj in URL.")
+				ok := FALSE
+			else
+				id_project := hp.path_param("idproj").to_integer
+				p := db.getprojectfromid (id_project)
+			if not attached hp.path_param("idsprintlog") then
+						send_malformed_json(http_response)
+						-- And logs it
+						log.warning ("/projects/{idproj}/sprintlogs/{idsprintlog}/addpbi [POST] Missing idsprintlog in URL.")
+						ok := FALSE
+					else
+						param_id := hp.path_param("idsprintlog")
+						s := db.getsprintlogfromid (param_id.to_integer)
+						if not attached s then
+							error_reason:="Sprintlog does not exist"
+												-- And logs it
+												log.warning ("/projects/{idproj}/sprintlogs/{idsprintlog}/listpbis [POST] Missing idproj in URL.")
+												ok := FALSE
+						end
+
+				-- Next check the POST parameters
+				create regex.make
+				-- Create the error object even if it is not necessary
+				-- (in this case, this object is not used)
+				create json_error.make
+				json_error.put_string ("error", "status")
+
+				param_id := hp.post_int_param ("id").out
+					if ok and not regex.check_integer (param_id) then
+						error_reason := "Id not present or not correct."
+						json_error.put_integer (200,"code")
+						json_error.put_string ("id", "field")
+						ok := FALSE
+					end
+
+				--CHECK m is manager
+						m := get_session_user
+
+						if ok and not p.getmanager.getid.is_equal (m.getid) then
+							error_reason := "The current user is not manager of the project"
+							ok := FALSE
+						end
+
+				if not ok then
+					log.warning("/projects/{idproj}/sprintlogs/{idsprintlog}/addpbi  [POST] Request error: " + error_reason)
+					json_error.put_string (error_reason, "reason")
+					send_json(hres, json_error)
+				else
+
+				if ok then
+					db.insertpbiintosprintlog (param_id.to_integer ,s.getid)
+					log.info ("/projects/{idproj}/sprintlogs/{idsprintlog}/addpbi [POST] Added PBI to sprintlog "+ s.getid.out )
+					-- send OK to the user :)				
+					send_generic_ok(hres)
+				end
+
+
+				end
+			end end
+		else
+			if not hp.is_good_request then
+				-- Bad request
+					send_malformed_json(http_response)
+					log.warning("/projects/{idproj}/sprintlogs/{idsprintlog}/addpbi [POST] JSON request malformed.")
+			end
+
+		end -- end ensure authenticated and good request
+
+	end -- end current feature
 
 removePBI(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
 	-- /projects/{idproj}/sprintlogs/{idsprintlog}/removepbi
 	-- METHOD: POST
+	--db.removepbifromsprintlog(pbi,s)
 	do
 
 	end
