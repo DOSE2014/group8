@@ -20,7 +20,8 @@ CREATE TABLE `Task` (
 	`developer`	INTEGER,
 	`points`	INTEGER,
 	`state`	INTEGER,
-	`pbi`	INTEGER
+	`pbi`	INTEGER,
+	`completionDate` INTEGER
 );
 CREATE TABLE `Sprintlog` (
 	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,

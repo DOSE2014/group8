@@ -26,6 +26,7 @@ feature{NONE}
 	sprintlogDBHandler: SPRINTLOG_DB_HANDLER
 	pbiDBHandler: PBI_DB_HANDLER
 	taskDBHandler: TASK_DB_HANDLER
+	chatDBHandler: CHAT_DB_HANDLER
 feature
 	make(pathToDB: STRING)
 		require
@@ -48,6 +49,7 @@ feature
 			create sprintlogDBHandler.make(db, backlogDBHandler)
 			create pbiDBHandler.make(db, backlogDBHandler, sprintlogDBHandler)
 			create taskDBHandler.make(db, userDBHandler, pbiDBHandler)
+			create chatDBHandler.make(db, projectdbhandler, userDBHandler)
 		end
 
 feature
