@@ -27,6 +27,7 @@ feature{NONE}
 	pbiDBHandler: PBI_DB_HANDLER
 	taskDBHandler: TASK_DB_HANDLER
 	chatDBHandler: CHAT_DB_HANDLER
+	messageDBHandler: MESSAGE_DB_HANDLER
 feature
 	make(pathToDB: STRING)
 		require
@@ -50,6 +51,7 @@ feature
 			create pbiDBHandler.make(db, backlogDBHandler, sprintlogDBHandler)
 			create taskDBHandler.make(db, userDBHandler, pbiDBHandler)
 			create chatDBHandler.make(db, projectdbhandler, userDBHandler)
+			create messageDBHandler.make(db, userDBHandler, chatDBHandler)
 		end
 
 feature
@@ -256,5 +258,22 @@ feature
 	do
 		pbidbhandler.removepbifromsprintlog (pbi, s)
 	end
+
+	getMessageFromID(id: INTEGER): MESSAGE
+		do
+			Result := messagedbhandler.getmessagefromid (id)
+		end
+	getMessagesFromChatID(id: INTEGER): LINKED_SET[MESSAGE]
+		do
+			Result := messagedbhandler.getchatmessagesfromchatid (id)
+		end
+	getChatFromID(id: INTEGER): CHAT
+		do
+			Result := chatdbhandler.getchatfromid (id)
+		end
+	getUsersFromChatId(id: INTEGER): LINKED_SET[USER]
+		do
+			Result := userdbhandler.getUsersFromChatId(id)
+		end
 
 end

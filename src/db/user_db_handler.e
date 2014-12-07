@@ -84,7 +84,7 @@ feature{NONE}
 			Result := false
 		end
 
-	genDevelopers(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: LINKED_SET[USER]): BOOLEAN
+	genUsers(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: LINKED_SET[USER]): BOOLEAN
 		local
 			x: BOOLEAN
 			u: USER
@@ -172,7 +172,7 @@ feature
 	do
 		create Result.make_default
 		create dbQueryStatement.make ("SELECT * FROM User WHERE id=" + id.out + ";", db)
-		dbQueryStatement.execute (agent genUser(?, 11, Result))
+		dbQueryStatement.execute (agent genUser(?, 12, Result))
 		if Result.getId = 0 then
 			Result := Void
 		end
@@ -182,7 +182,7 @@ feature
 	do
 		create Result.make_default
 		create dbquerystatement.make ("SELECT * FROM User WHERE email='" + email + "' AND password='" + password + "';", db)
-		dbquerystatement.execute (agent genUser(?, 11, Result))
+		dbquerystatement.execute (agent genUser(?, 12, Result))
 		if Result.getId = 0 then
 			Result := Void
 		end
@@ -192,7 +192,7 @@ feature
 	do
 		create Result.make_default
 		create dbquerystatement.make ("SELECT * FROM User WHERE email='" + email + "' AND dateOfBirth=" + dateofbirth.out + ";", db)
-		dbquerystatement.execute (agent genUser(?, 11, Result))
+		dbquerystatement.execute (agent genUser(?, 12, Result))
 		if Result.getId = 0 then
 			Result := Void
 		end
@@ -203,7 +203,7 @@ feature
 	do
 		create Result.make
 		create dbQueryStatement.make ("SELECT * FROM User WHERE userType=" + {USERTYPE}.developer.out + ";", db)
-		dbquerystatement.execute (agent genDevelopers(?, 11, Result))
+		dbquerystatement.execute (agent genUsers(?, 12, Result))
 		if Result.count = 0
 		then Result := Void
 		end
@@ -319,7 +319,7 @@ feature
 		do
 			create Result.make
 			create dbquerystatement.make ("SELECT * FROM User JOIN Developer_Project ON User.id = Developer_Project.developer WHERE project=" + p.out + ";", db)
-			dbquerystatement.execute (agent genDevelopers(?, 12, Result))
+			dbquerystatement.execute (agent genUsers(?, 12, Result))
 			if Result.count = 0
 			then Result := Void
 			end
@@ -350,5 +350,16 @@ feature
 	ensure
 		Result /= Void
 	end
+
+	getUsersFromChatId(chatid: INTEGER): LINKED_SET[USER]
+		do
+			create Result.make
+			create dbquerystatement.make ("SELECT id, firstname, lastname, sex, dateOfBirth, country, timezone, email, password, userType, organization, deleted " +
+											"FROM User JOIN Chat_User ON User.id = Chat_User.user WHERE chat=" + chatId.out + ";", db)
+			dbquerystatement.execute (agent genUsers (?, 12, Result))
+			if Result.count = 0
+			then Result := Void
+			end
+		end
 
 end
