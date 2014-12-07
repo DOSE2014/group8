@@ -341,9 +341,10 @@ feature
 	local
 		cursor : SQLITE_STATEMENT_ITERATION_CURSOR
 	do
+		Result := 0
 		create dbquerystatement.make ("SELECT SUM(points) AS s FROM Task AS t INNER JOIN (PBI AS p INNER JOIN Backlog AS b ON p.backlog = b.id) ON t.pbi = p.id WHERE state=1 AND t.developer="+userid.out+" AND b.project="+projid.out+";", db)
 		cursor := dbquerystatement.execute_new
-		if not cursor.after then
+		if not cursor.after and attached cursor.item.value(1) then
 			Result := cursor.item.value(1).out.to_integer
 		end
 
