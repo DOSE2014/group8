@@ -254,27 +254,26 @@ feature
 					end
 					i := i + 1
 				end
+			end
 
-
-				from i := 1
-				until i > languages.count
+			from i := 1
+			until i > languages.count
+			loop
+				from j := 1
+				until j > u.getlanguages.count
 				loop
-					from j := 1
-					until j > u.getlanguages.count
-					loop
-						if languages.at (i).getid = u.getlanguages.at(j).getid
-						then
-							create dbinsertstatement.make ("INSERT INTO Language_User(language, user) VALUES ('" + languages.at (i).getid.out + "', '" +
-												rowId.out + "');", db)
-							dbinsertstatement.execute
-							if dbinsertstatement.has_error
-							then print("Error while inserting a new entry in Language_User.%N")
-							end
+					if languages.at (i).getid = u.getlanguages.at(j).getid
+					then
+						create dbinsertstatement.make ("INSERT INTO Language_User(language, user) VALUES ('" + languages.at (i).getid.out + "', '" +
+											rowId.out + "');", db)
+						dbinsertstatement.execute
+						if dbinsertstatement.has_error
+						then print("Error while inserting a new entry in Language_User.%N")
 						end
-						j := j + 1
 					end
-					i := i + 1
+					j := j + 1
 				end
+				i := i + 1
 			end
 		end
 

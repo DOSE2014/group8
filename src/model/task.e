@@ -18,10 +18,11 @@ feature{NONE}
 	points: INTEGER
 	state: INTEGER
 	pbi: PBI
+	completionDate: DATE_TIME
 
 
 feature
-	make(i: INTEGER; n, desc: STRING; dev: USER; pts: INTEGER; st: INTEGER; p: PBI)
+	make(i: INTEGER; n, desc: STRING; dev: USER; pts: INTEGER; st: INTEGER; p: PBI; completion_d: DATE_TIME)
 	do
 		id := i
 		name := n
@@ -30,6 +31,7 @@ feature
 		points := pts
 		state := st
 		pbi := p
+		completionDate := completion_d
 	end
 	make_default
 		do
@@ -94,10 +96,21 @@ feature
 		do
 			pbi := p
 		end
+	getCompletionDate: DATE_TIME
+		do
+			Result := completionDate
+		end
+	setCompletionDate(d: DATE_TIME)
+		do
+			completionDate := d
+		end
 	to_minimal_json: JSON_OBJECT
 		require
 			getId /= 0
+		local
+			epoch: DATE_TIME
 		do
+			create epoch.make_from_epoch (0)
 			create Result.make
 			Result.put_integer(id, "id")
 			Result.put_string(name, "name")
@@ -106,7 +119,7 @@ feature
 			Result.put_integer(developer.getid, "developer")
 			Result.put_string(ec.int_to_statestring (state), "state")
 			Result.put_integer(pbi.getid, "pbi")
-
+			Result.put_integer(completionDate.definite_duration(epoch).seconds_count, "completionDate")
 		end
 
 
