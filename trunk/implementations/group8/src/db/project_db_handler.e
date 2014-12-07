@@ -111,9 +111,14 @@ feature
 	getProjectsVisibleToUser(u: INTEGER): LINKED_SET[PROJECT]
 		do
 			create Result.make
-			create dbquerystatement.make ("SELECT id, name, description, manager, stakeholder, creationDate, deleted FROM PROJECT JOIN Developer_Project" +
-											" ON Project.id = Developer_Project.project WHERE manager=" + u.out + " OR stakeholder=" + u.out +
-											" OR Developer_Project.developer=" + u.out + ";", db)
+			create dbquerystatement.make (
+			-- First select all projects where user is stakeholder or manager
+			"SELECT id, name, description, manager, stakeholder, creationDate, deleted FROM Project WHERE manager="+u.out+" OR stakeholder=" + u.out + " "
+			+ "UNION "	-- then UNION the case of user is a developer
+			+ "SELECT id, name, description, manager, stakeholder, creationDate, deleted FROM Project "
+			+ "INNER JOIN Developer_Project ON Project.id = Developer_Project.project WHERE Developer_Project.developer="+u.out+";"
+			, db)
+
 			dbquerystatement.execute (agent genProjects(?, 7, Result))
 			if Result.count = 0
 			then Result := Void
