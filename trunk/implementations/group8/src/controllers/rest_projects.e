@@ -662,11 +662,13 @@ feature
 											pbiIsCompleted := false
 										end
 									end
-								end
-								if pbiIsCompleted = true then
-									pbis_completed := pbis_completed + 1
+									if pbiIsCompleted = true then
+										pbis_completed := pbis_completed + 1
+									else
+										pbis_notcompleted := pbis_notcompleted + 1
+									end
 								else
-									pbis_notcompleted := pbis_notcompleted + 1
+									pbis_notcompleted := pbis_notCompleted + 1
 								end
 							end
 							create j_completion.make
