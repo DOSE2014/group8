@@ -165,6 +165,7 @@ feature
 		param_developer        : STRING
 		param_state        : STRING
 		param_pbi        : STRING
+		param_completionDate: INTEGER
 
 		regex : REGEX
 		json_error  : JSON_OBJECT
@@ -176,6 +177,7 @@ feature
 		pbi : PBI
 		t: TASK
 		u,m : USER
+		completionDate: DATE_TIME
 
 	do
 		ok := TRUE
@@ -249,6 +251,12 @@ feature
 				ok := FALSE
 			end
 
+			param_completionDate := hp.post_int_param ("completionDate")
+			if ok and not regex.check_unixtime (param_completionDate.out)then
+				error_reason := "Completion date in bad format"
+				ok := FALSE
+			end
+
 			--CHECK m is manager
 			m := get_session_user
 			if ok then
@@ -267,7 +275,8 @@ feature
 			else
 
 				if ok then
-					create t.make (0, param_name, param_description, u, param_points.to_integer, ec.statestring_to_int(param_state), pbi)
+					create completionDate.make_from_epoch (param_completiondate)
+					create t.make (0, param_name, param_description, u, param_points.to_integer, ec.statestring_to_int(param_state), pbi, completiondate)
 					db.inserttask (t)
 					log.info ("/projects/"+  id_project.out +"/pbis/"+id_pbis.out +"/createtask [POST] Created a new task "+param_name )
 					-- send OK to the user :)				
@@ -403,6 +412,9 @@ feature
 		param_developer        : STRING
 		param_state        : STRING
 		param_pbi        : STRING
+		param_completionDate: INTEGER
+
+		completionDate: DATE_TIME
 
 		error_reason : STRING
 	do
@@ -492,6 +504,12 @@ feature
 					ok := FALSE
 			end
 
+			param_completionDate := hp.post_int_param ("completionDate")
+			if ok and not regex.check_unixtime (param_completionDate.out)then
+				error_reason := "Completion date in bad format"
+				ok := FALSE
+			end
+
 			param_developer:= hp.post_int_param ("developer").out
 			u := db.getuserfromid (param_developer.to_integer)
 			if ok and not regex.check_integer (param_developer) and db.checkvisibilityforproject (u.getid, p.getid)  then
@@ -513,7 +531,8 @@ feature
 			else
 				if ok then
 					pbi := db.getpbifromid (param_pbi.to_integer)
-					create t.make (id_task, param_name, param_description, u, param_points.to_integer, ec.statestring_to_int(param_state), pbi)
+					create completiondate.make_from_epoch (param_completionDate)
+					create t.make (id_task, param_name, param_description, u, param_points.to_integer, ec.statestring_to_int(param_state), pbi, completionDate)
 					db.editTask(t)
 					log.info ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [POST] Edited a task "+param_name )
 					-- send OK to the user :)				

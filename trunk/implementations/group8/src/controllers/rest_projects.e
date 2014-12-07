@@ -606,4 +606,80 @@ feature
 				end
 			end
 		end
+
+	getCompletionPercentage(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
+		require
+			hreq /= Void
+			hres /= Void
+		local
+			hp: HTTP_PARSER
+			u: USER
+			json_error: JSON_OBJECT
+			idProj: INTEGER
+			project: PROJECT
+			error_reason: STRING
+			pbis: LINKED_SET[PBI]
+			pbis_completed: INTEGER
+			pbis_notCompleted: INTEGER
+			tasks: LINKED_SET[TASK]
+			pbiIsCompleted: BOOLEAN
+			j_completion: JSON_OBJECT
+		do
+			http_request := hreq
+			http_response := hres
+
+			create hp.make (hreq)
+
+			if ensure_authenticated then
+				u := get_session_user
+
+				if not attached hp.path_param("idproj")
+				then
+					send_malformed_json(http_response)
+					-- And logs it
+					log.warning ("/projects/{idproj}/completion [GET] Missing idproj in URL.")
+				else
+					idProj := hp.path_param ("idproj").to_integer
+					project := db.getprojectfromid (idProj)
+					if not attached project
+					then	-- does project exist?
+						send_malformed_json(http_response)
+						-- And logs it
+						log.warning ("/projects/" + idProj.out + "/completion [GET] Project not existent.")
+					else
+						pbis := db.getpbisfrombacklogid (db.getbacklogfromprojectid (idProj).getid)
+						if attached pbis then
+							pbis_completed := 0
+							pbis_notCompleted := 0
+							across pbis as p
+							loop
+								pbiiscompleted := true
+								tasks := db.gettasksfrompbiid (p.item.getId)
+								across tasks as t
+								loop
+									if t.item.getState = {STATE}.pending then
+										pbiIsCompleted := false
+									end
+								end
+								if pbiIsCompleted = true then
+									pbis_completed := pbis_completed + 1
+								else
+									pbis_notcompleted := pbis_notcompleted + 1
+								end
+							end
+							create j_completion.make
+							j_completion.put_integer (pbis_completed, "completedPBIS")
+							j_completion.put_integer (pbis_completed + pbis_notcompleted, "numberOfPBIs")
+							send_json (hres, j_completion)
+
+						else
+							create j_completion.make
+							j_completion.put_integer (0, "completedPBIs")
+							j_completion.put_integer (0, "numberOfPBIs")
+							send_json (hres, j_completion)
+						end
+					end
+				end
+			end
+		end
 end
