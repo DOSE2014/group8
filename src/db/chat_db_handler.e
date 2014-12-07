@@ -36,6 +36,28 @@ feature
 			end
 		end
 
+	insertChat(chat: CHAT): INTEGER
+		local
+			rowId: INTEGER
+			cursor: SQLITE_STATEMENT_ITERATION_CURSOR
+		do
+			create dbinsertstatement.make ("INSERT INTO Chat(project) VALUES('" + chat.getproject.getid.out + "');", db)
+			dbinsertstatement.execute
+
+			create dbquerystatement.make ("SELECT last_insert_rowid();", db)
+			cursor := dbquerystatement.execute_new
+			if not cursor.after then
+				rowId := cursor.item.value(1).out.to_integer
+			end
+
+			if dbinsertstatement.has_error
+			then print("Error while inserting a new chat.%N")
+			end
+
+			Result := rowId
+
+		end
+
 
 feature{NONE}
 	genChat(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: CHAT): BOOLEAN
