@@ -6,7 +6,9 @@ var url_getBacklog = "/projects/{0}/getbacklog";
 var url_logout = "account/logout";
 var url_getSprintlog = "/projects/{0}/sprintlogs/list";
 var url_getPBIs = "/projects/{0}/sprintlogs/{1}/listpbis";
-var url_getTasks = "/projects/{0}/pbis/{1}/listtasks";//FIXME
+var url_getTasks = "/projects/{0}/pbis/{1}/listtasks";
+var url_getDevPoints = "/stats/projpoints?idproj={0}&iddev={1}";
+var url_getProjectCompletion = "/projects/{0}/completion";
 
 //
 var url_login = "login.html";
@@ -21,6 +23,11 @@ dashboard.config(function(){
 	
 });
 
+dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
+	$scope.openNewProject = function(){
+		$('#modal_newProject').modal('toggle')
+	}
+}]);
 
 //Controller of the angularJS module
 dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, $http, restUsers){
@@ -34,6 +41,26 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	$scope.sprints = [];
 	$scope.currentSprint = {};
 	$scope.tasks = [];
+	$scope.completion = [];
+	
+	//gets the current completion state of the project TODO
+	$scope.getProjectCompletion = function(){
+		//"completedPBIS":2,"numberOfPBIs":33
+		if($scope.completion.completedPBIS!=undefined){
+			var compPer = ($scope.completion.completedPBIS*100)/$scope.completion.numberOfPBIs;
+			return Math.round(compPer);
+		}else{
+			return 0;
+		}
+	};
+	
+	//gets the current completion state of the project TODO
+	$scope.setProjectCompletion = function(prjId){
+		$http.get(url_getProjectCompletion.format(''+prjId)).success(function(data){
+	        $scope.completion = data;
+	        console.log(data);
+		});
+	};
 	
 	
 	//gets the info of the active user of the system
@@ -57,11 +84,27 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	$scope.setProjectDevelopers = function(devIds){
 		$scope.developers = [];
 		for(var i=0; i<devIds.length; i++){
-			
 			restUsers.getUser(devIds[i], function(response){
 		        $scope.developers.push(response);
+		        
+		        $scope.setProjectDevelopersPoints(response.id);
 		    });
 		}
+	}
+	
+	//gets the info from the rest service to set the project developers points
+	$scope.setProjectDevelopersPoints = function(devId){
+		//$scope.developers = [];
+		
+		restUsers.getPoints(devId, $scope.project.id, function(response){
+			
+			for(var i=0; i<$scope.developers.length; i++){
+				if($scope.developers[i].id == devId){
+					//console.log(i+''+response);
+					$scope.developers[i].points = response.points;
+				}
+			}
+	    });
 	}
 	
 	//logs out from the application
@@ -110,7 +153,6 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
         
         restUsers.getTasks($scope.project.id, $scope.currentSprint.id, function(response){
         	$scope.tasks = response;
-        	console.log($scope.tasks);
         });
 	}
 	
@@ -125,16 +167,27 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	        });
 	        
 	        $scope.setCurrentSprint(0);
-	        
-	     
-
-	        //console.log($scope.sprints);
 		});
 	};
 	
 	//gets the points of an user
 	$scope.getUserPoints = function(userId){
-		
+		if(userId != '' && $scope.developers.length > 0){
+			var devPos = null;
+			for(var i=0; i<$scope.developers.length; i++){
+				if($scope.developers[i].id == userId){
+					devPos = i;
+					if($scope.developers[i].points != undefined){
+						return $scope.developers[i].points;
+					}else{
+						return 0;
+					}
+				}
+			}
+			
+		}else{
+			return 0;
+		}
 	}
 	
 	
@@ -159,15 +212,31 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 					//gets the project sprintlogs
 					$scope.getProjectSprintlog($scope.project.id);
 					
+					//sets the completion of the project
+					$scope.setProjectCompletion($scope.project.id);
+					
 					break;
 				}
 			}
 		}else{
 			//if the user has no projects sets the variable to blank
-			$scope.project = {};
-			$scope.projectManager = {};
+			resetVariables();
 		}
 	};
+	
+	//if the user has no projects sets the variable to blank
+	$scope.resetVariables = function(){
+		$scope.user = {};
+		$scope.projects = {};
+		$scope.project = {};
+		$scope.projectManager = {};
+		$scope.developers = [];
+		$scope.backlog = {};
+		$scope.sprints = [];
+		$scope.currentSprint = {};
+		$scope.tasks = [];
+		$scope.completion = [];
+	}
 	
 	
 }]);
@@ -182,9 +251,17 @@ dashboard.service('restUsers', function($http) {
 		//alert(url_getUser.format(''+userId));
 		$http.get(url_getUser.format(''+userId)).success(
 			function(response) {
+				
 				callback(response);
 			})
 	};
+	
+	this.getPoints = function (devId, projId, callback){
+		$http.get(url_getDevPoints.format(''+projId, ''+devId)).success(
+			function(response) {
+				callback(response);
+			})
+	}
 	
 	//gets the current user from the rest service
 	this.getCurrentUser = function(callback) {
@@ -330,6 +407,14 @@ String.prototype.format = function() {
         formatted = formatted.replace(regexp, arguments[i]);
     }
     return formatted;
+};
+
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
 };
 
 

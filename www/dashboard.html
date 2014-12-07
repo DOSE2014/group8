@@ -29,9 +29,9 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 col-md-3">
-				<div class="row">
+				<div class="row" data-ng-controller="Project">
 
-					<button type="button" class="btn btn-primary btn-lg btn-block">New
+					<button type="button" class="btn btn-primary btn-lg btn-block" data-ng-click="openNewProject()">New
 						Project</button>
 
 				</div>
@@ -58,12 +58,14 @@
 							<p class="navbar-brand">{{project.name}}</p>
 							<ul class="nav navbar-nav navbar_project_edit">
 								<li><a class="navbar-link navbar_project_edit"
-									data-ng-show="user.id == project.manager">(edit)</a></li>
+									data-ng-show="user.id == project.manager">
+										(Add developer)
+									</a></li>
 							</ul>
 							<p class="navbar-text navbar-project-info" style="">{{
 								getProjectFormatedDate() }}</p>
 
-							<p class="navbar-text">{{ "80" }} % completed</p>
+							<p class="navbar-text">{{ getProjectCompletion() }}% completed</p>
 
 							<p class="navbar-text">Manager: {{ projectManager.firstname + " "
 								+ projectManager.lastname }}</p>
@@ -194,10 +196,10 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr data-ng-repeat="dev in developers | orderBy:'lastname'">
+										<tr data-ng-repeat="dev in developers | orderBy:'-points'">
 											<td>{{ dev.firstname + " " + dev.lastname }}</td>
 											<td style="text-align: right; margin-right: 5px;">{{
-												getUserPoints(dev.id) }}</td>
+												dev.points}}</td>
 										</tr>
 									</tbody>
 
@@ -220,7 +222,45 @@
 
 	</div>
 
-
+	<div class="modal fade" id="modal_newProject" tabindex="-1" role="dialog"
+		aria-labelledby="New Project" aria-hidden="true" data-ng-controller="Project">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">New project</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="txt_projectName" class="col-sm-2 control-label">Name</label>
+						<div class="col-sm-4">
+							<input class="form-control" id="txt_projectName"
+								placeholder="Project name" data-ng-model="name">
+						</div>
+						<span data-ng-show="nameRequired">{{nameRequired}}</span>
+					</div>
+					
+					<div class="form-group">
+						<label for="txt_projectDescription" class="col-sm-2 control-label">Description</label>
+						<div class="col-sm-4">
+							<input class="form-control" id="txt_projectDescription"
+								placeholder="Project description" data-ng-model="description">
+						</div>
+						<span data-ng-show="descriptionRequired">{{descriptionRequired}}</span>
+					</div>
+					</form>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Create</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<script
