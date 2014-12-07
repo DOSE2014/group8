@@ -8,23 +8,25 @@ class
 	CHAT
 
 create
-	make
+	make, make_default
 
 feature
 	id: INTEGER
-	users: SET[USER]
 	project : PROJECT
 
 feature{NONE}
 	make (		i:INTEGER;
-				us:SET[USER];
 				proj:PROJECT
 	)
 	do
 		id:=i
-		users:= us
 		project:= proj
 	end
+
+	make_default
+		do
+
+		end
 feature
 	getId: INTEGER
 		do
@@ -34,14 +36,6 @@ feature
 		do
 			id := i
 		end
-	getUsers: SET[USER]
-		do
-			Result := users
-		end
-	setUsers (us:SET[USER])
-		do
-			users := us
-		end
 	getProject : PROJECT
 		do
 			Result := project
@@ -49,5 +43,11 @@ feature
 	setProject (proj : PROJECT)
 		do
 			project := proj
+		end
+	to_json: JSON_OBJECT
+		do
+			create Result.make
+			Result.put_integer(id, "id")
+			Result.put_integer(project.getId, "project")
 		end
 end

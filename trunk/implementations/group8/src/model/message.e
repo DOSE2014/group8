@@ -8,7 +8,7 @@ class
 	MESSAGE
 
 create
-	make
+	make, make_default
 
 
 feature{NONE}
@@ -27,6 +27,10 @@ feature
 		chat:= c
 		content:=cont
 	end
+	make_default
+		do
+
+		end
 feature
 	getId: INTEGER
 		do
@@ -72,8 +76,15 @@ feature
 	to_json: JSON_OBJECT
 		require
 			getId /= 0
+		local
+			epoch: DATE_TIME
 		do
+			create epoch.make_from_epoch(0)
 			create Result.make
 			Result.put_integer(id, "id")
+			Result.put_string(user.getfirstname.out + " " + user.getLastName, "user")
+			Result.put_integer(date.definite_duration(epoch).seconds_count, "date")
+			Result.put_integer(chat.getId, "chat")
+			Result.put_string(content, "content")
 		end
 end
