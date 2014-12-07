@@ -655,10 +655,12 @@ feature
 							loop
 								pbiiscompleted := true
 								tasks := db.gettasksfrompbiid (p.item.getId)
-								across tasks as t
-								loop
-									if t.item.getState = {STATE}.pending then
-										pbiIsCompleted := false
+								if attached tasks then
+									across tasks as t
+									loop
+										if t.item.getState = {STATE}.pending then
+											pbiIsCompleted := false
+										end
 									end
 								end
 								if pbiIsCompleted = true then

@@ -14,12 +14,12 @@ create
 feature{NONE}
 	id: INTEGER
 	user : USER
-	date : DATE
+	date : DATE_TIME
 	chat : CHAT
 	content : STRING
 
 feature
-	make (i : INTEGER; u : USER; d : DATE; c : CHAT; cont : STRING)
+	make (i : INTEGER; u : USER; d : DATE_TIME; c : CHAT; cont : STRING)
 	do
 		id :=i
 		user:=u
@@ -44,11 +44,11 @@ feature
 		do
 			user := u
 		end
-	getDate : DATE
+	getDate : DATE_TIME
 		do
 			Result := date
 		end
-	setDate (d : DATE )
+	setDate (d : DATE_TIME )
 	do
 		date := d
 	end
@@ -68,4 +68,12 @@ feature
 	do
 		content := cont
 	end
+
+	to_json: JSON_OBJECT
+		require
+			getId /= 0
+		do
+			create Result.make
+			Result.put_integer(id, "id")
+		end
 end
