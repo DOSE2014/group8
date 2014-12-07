@@ -99,8 +99,8 @@ feature
 
 			u := get_session_user
 			-- First GET the id of the project
-			if ok and not attached hp.path_param("idproj") then
-				send_malformed_json(http_response)
+			if ok and (not attached hp.path_param("idproj") or not attached hp.path_param("idproj").is_integer) then
+				send_generic_error("idproj not found or not integer.", hres)
 				-- And logs it
 				log.warning ("/projects/{idproj}/pbis/{idpbi}/listtasks [GET] Missing idproj in URL.")
 				ok := FALSE
@@ -120,15 +120,21 @@ feature
 				ok := FALSE
 			end
 			-- Second GET the id of the PBI
-			if ok and not attached hp.path_param("idpbi") then
-				send_malformed_json(http_response)
+			if ok and (not attached hp.path_param("idpbi") or not attached hp.path_param("idpbi").is_integer) then
+				send_generic_error("idpbi not found or not integer.", hres)
 				-- And logs it
 				log.warning ("/projects/{idproj}/pbis/{idpbi}/listtasks [GET] Missing idpbis in URL.")
 				ok := FALSE
-			end
-			if ok then
+			else
 				id_pbi := hp.path_param("idpbi").to_integer
 				pbi := db.getpbifromid (id_pbi)
+				if not attached pbi then
+					ok := FALSE
+					send_generic_error("PBI does not exists.", hres)
+					log.warning ("/projects/{idproj}/pbis/{idpbi}/listtasks [GET] Project does not exist.")
+				end
+			end
+			if ok then
 				b := db.getbacklogfromid (pbi.getbacklog.getid)
 				if   b.getproject.getid.is_equal (p.getid) then
 					print_list_of_tasks(pbi.getid)
