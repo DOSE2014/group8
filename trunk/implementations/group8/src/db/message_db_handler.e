@@ -43,7 +43,32 @@ feature
 				Result := Void
 			end
 		end
-	
+
+	insertMessage(message: MESSAGE): INTEGER
+		local
+			rowId: INTEGER
+			epoch: DATE_TIME
+			cursor: SQLITE_STATEMENT_ITERATION_CURSOR
+		do
+			create epoch.make_from_epoch (0)
+			create dbinsertstatement.make ("INSERT INTO Message(user, date, chat, content) VALUES('" + message.getuser.getid.out + "', '"
+											+ message.getdate.definite_duration (epoch).seconds_count.out + "', '" + message.getchat.getid.out + "', '" + message.getcontent
+											+ "');", db)
+			dbinsertstatement.execute
+			create dbquerystatement.make ("SELECT last_insert_rowid();", db)
+			cursor := dbquerystatement.execute_new
+			if not cursor.after then
+				rowId := cursor.item.value(1).out.to_integer
+			end
+
+			if dbinsertstatement.has_error
+			then print("Error while inserting a new message.%N")
+			end
+
+			Result := rowId
+
+		end
+
 feature{NONE}
 	genMessage(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: MESSAGE): BOOLEAN
 		local

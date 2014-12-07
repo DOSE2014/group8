@@ -275,5 +275,13 @@ feature
 		do
 			Result := userdbhandler.getUsersFromChatId(id)
 		end
+	insertMessage(message: MESSAGE): INTEGER
+		do
+			Result := messageDBHandler.insertMessage(message)
+		end
+	insertChat(chat: CHAT): INTEGER
+		do
+			Result := chatdbhandler.insertChat(chat)
+		end
 
 end
