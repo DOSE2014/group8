@@ -10,7 +10,7 @@ import projectscreatebacklog, projectsdeletebacklog, projectscreatefail,projects
 import projectsaddpbi, projectsdelpbi, projectseditpbi, taskslist, taskscreate
 import tasksdelete, tasksedit, stats, sprintlogslist, sprintlogscreate, sprintlogscreate_fail
 import sprintlogslistpbis, sprintlogsaddpbi, sprintlogsdelpbi, sprintlogsdelete, recoverpasswordok
-import recoverpasswordfail, recoverpasswordfail2, projectsgetbacklog, stats_proj
+import recoverpasswordfail, recoverpasswordfail2, projectsgetbacklog, stats_proj, stats_proj2
 
 
 
@@ -73,6 +73,7 @@ try:
     
     test_("/stats/devpoint", stats.exec_test, verbose)
     test_("/stats/projpoint", stats_proj.exec_test, verbose)
+    test_("/stats/projpoint - 2", stats_proj2.exec_test, verbose)
 
 finally:
     print_stats()
