@@ -39,10 +39,13 @@ feature
 		end
 
 	insertTask(t: TASK)
+		local
+			epoch: DATE_TIME
 		do
-			create dbInsertStatement.make("INSERT INTO Task(id, name, description, developer, points, state, pbi) VALUES('" + t.getid.out + "', '" +
+			create epoch.make_from_epoch (0)
+			create dbInsertStatement.make("INSERT INTO Task(id, name, description, developer, points, state, pbi, completionDate) VALUES('" + t.getid.out + "', '" +
 											t.getname + "', '" + t.getdescription + "', '" + t.getDeveloper.getid.out + "', '" +
-											t.getpoints.out + "', '" + t.getState.out + "', '" + t.getpbi.getid.out + "');", db)
+											t.getpoints.out + "', '" + t.getState.out + "', '" + t.getpbi.getid.out + "', '" + t.getcompletiondate.definite_duration (epoch).seconds_count.out + "');", db)
 			dbInsertStatement.execute
 			if dbInsertStatement.has_error
 			then print("Error while inserting task.")
@@ -80,6 +83,8 @@ feature
 
 feature{NONE}
 	genTask(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: TASK): BOOLEAN
+		local
+			completionDate: DATE_TIME
 		do
 			resultobject.setid (row.string_value (1).to_integer)
 			resultobject.setname (row.string_value (2))
@@ -91,6 +96,8 @@ feature{NONE}
 			else resultobject.setstate ({STATE}.pending)
 			end
 			resultobject.setpbi (pbiDBHandler.getPBIFromId(row.string_value (7).to_integer))
+			create completiondate.make_from_epoch (row.string_value (8).to_integer)
+			resultobject.setcompletiondate (completionDate)
 
 			Result := false
 		end
