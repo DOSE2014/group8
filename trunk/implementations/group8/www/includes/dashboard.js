@@ -85,30 +85,36 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 		$scope.nameRequired = '';
 		$scope.descriptionRequired = '';
 		$scope.stakeRequired = '';
+		$scope.managerRequired = '';
 
-		if (!$scope.name) {
+		if (!$scope.prjName) {
 			$scope.nameRequired = 'Required';
-		} else if (!$scope.description) {
+		} else if (!$scope.prjDescription) {
 			$scope.descriptionRequired = 'Required';
-		}else if (!$scope.stakeholder) {
+		}else if (!$scope.prjStakeholder) {
 			$scope.stakeRequired = 'Required';
+		}else if (!$scope.prjManager) {
+			$scope.managerRequired = 'Required';
 		} else {
 			var postData = {
-				'name' : $scope.name,
-				'description': $scope.description,
-				'manager': $scope.user.id,
-				'stakeholder': $scope.stakeholder.id
+				'name' : $scope.prjName,
+				'description': $scope.prjDescription,
+				'manager': $scope.prjManager.id,
+				'stakeholder': $scope.prjStakeholder.id
 			};
 			
 			$http.post(url_createProjects, JSON.stringify(postData)).success(function(data) {
 				if (data.status == "created") {
-					alert("Project created")
+					alert("Project created");
+					$('#modal_newProject').modal('hide');
 					
 				} else if (data.status == "error") {
 					alert(data.reason);
+					$('#modal_newProject').modal('hide');
 				}
 			}).error(function(error) {
 				alert(error);
+				$('#modal_newProject').modal('hide');
 			});
 			
 		}
@@ -288,13 +294,12 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 			}
 		}else{
 			//if the user has no projects sets the variable to blank
-			resetVariables();
+			$scope.resetVariables();
 		}
 	};
 	
 	//if the user has no projects sets the variable to blank
 	$scope.resetVariables = function(){
-		$scope.user = {};
 		$scope.projects = {};
 		$scope.project = {};
 		$scope.projectManager = {};
