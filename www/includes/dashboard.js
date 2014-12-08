@@ -9,6 +9,11 @@ var url_getPBIs = "/projects/{0}/sprintlogs/{1}/listpbis";
 var url_getTasks = "/projects/{0}/pbis/{1}/listtasks";
 var url_getDevPoints = "/stats/projpoints?idproj={0}&iddev={1}";
 var url_getProjectCompletion = "/projects/{0}/completion";
+var url_getStakeholders = "/account/liststakeholders"; 
+var url_getDevelopers = "/account/listdevelopers";
+var url_createProjects = "/projects/create";
+var url_remDevProject = "/projects/{0}/remdeveloper";
+var url_addDevProject = "/projects/{0}/adddeveloper";
 
 //
 var url_login = "login.html";
@@ -23,10 +28,93 @@ dashboard.config(function(){
 	
 });
 
+dashboard.controller('Profile', ['$scope', function($scope){
+	$scope.viewProfile = function(){
+		$('#modal_profile').modal('show');
+	}
+}]);
+
 dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 	$scope.openNewProject = function(){
-		$('#modal_newProject').modal('toggle')
+		$('#modal_newProject').modal('toggle');
 	}
+	
+	$scope.openDevManager = function(){
+		$('#modal_manager').modal('toggle');
+	}
+	
+	$scope.srvStakeholders = [];
+	$scope.srvDevelopers = [];
+	
+
+	$http.get(url_getStakeholders).success(function(response) {
+		$scope.srvStakeholders = response.stakeholders;
+	});
+	
+	$http.get(url_getDevelopers).success(function(response) {
+		$scope.srvDevelopers = response.developers;
+	});
+	
+	$scope.removeDev = function(devId){
+		if(confirm("Are you sure you want to remove the developer? All his info in the project will be lost.")){
+			$http.post(url_remDevProject.format($scope.project.id), JSON.stringify({ 'iddev' : devId })).success(function(data) {
+				if (data.status == "ok") {
+					$('#modal_manager').modal('hide');
+					alert("Developer removed from project");
+					
+				} else {
+					alert(data.status);
+				}
+			});
+		}
+	}
+	
+	$scope.addDev = function(){
+		$http.post(url_addDevProject.format($scope.project.id), JSON.stringify({ 'iddev' : $scope.addDeveloperId })).success(function(data) {
+			if (data.status == "ok") {
+				$('#modal_manager').modal('hide');
+				alert("Developer added to the project")
+			} else {
+				alert(data.status);
+			}
+		});
+		
+	}
+	
+	$scope.saveProject = function() {
+		$scope.nameRequired = '';
+		$scope.descriptionRequired = '';
+		$scope.stakeRequired = '';
+
+		if (!$scope.name) {
+			$scope.nameRequired = 'Required';
+		} else if (!$scope.description) {
+			$scope.descriptionRequired = 'Required';
+		}else if (!$scope.stakeholder) {
+			$scope.stakeRequired = 'Required';
+		} else {
+			var postData = {
+				'name' : $scope.name,
+				'description': $scope.description,
+				'manager': $scope.user.id,
+				'stakeholder': $scope.stakeholder.id
+			};
+			
+			$http.post(url_createProjects, JSON.stringify(postData)).success(function(data) {
+				if (data.status == "created") {
+					alert("Project created")
+					
+				} else if (data.status == "error") {
+					alert(data.reason);
+				}
+			}).error(function(error) {
+				alert(error);
+			});
+			
+		}
+	}
+	
+	
 }]);
 
 //Controller of the angularJS module
@@ -43,7 +131,7 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	$scope.tasks = [];
 	$scope.completion = [];
 	
-	//gets the current completion state of the project TODO
+	//gets the current completion state of the project
 	$scope.getProjectCompletion = function(){
 		//"completedPBIS":2,"numberOfPBIs":33
 		if($scope.completion.completedPBIS!=undefined){
@@ -54,11 +142,11 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 		}
 	};
 	
-	//gets the current completion state of the project TODO
+	//sets the current completion state of the project from the rest
 	$scope.setProjectCompletion = function(prjId){
 		$http.get(url_getProjectCompletion.format(''+prjId)).success(function(data){
 	        $scope.completion = data;
-	        console.log(data);
+	        //console.log(data);
 		});
 	};
 	
@@ -148,11 +236,11 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	$scope.setCurrentSprint = function(sprintId){
 	
 		$scope.currentSprint = $scope.sprints[sprintId];
-		
-		setChart($scope.currentSprint.name, $scope.currentSprint.startDate, $scope.currentSprint.endDate);
-        
+	
         restUsers.getTasks($scope.project.id, $scope.currentSprint.id, function(response){
-        	$scope.tasks = response;
+        	$scope.tasks = response;     
+        	
+        	setChart($scope.currentSprint.name, $scope.currentSprint.startDate, $scope.currentSprint.endDate, $scope.tasks);
         });
 	}
 	
@@ -169,26 +257,6 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	        $scope.setCurrentSprint(0);
 		});
 	};
-	
-	//gets the points of an user
-	$scope.getUserPoints = function(userId){
-		if(userId != '' && $scope.developers.length > 0){
-			var devPos = null;
-			for(var i=0; i<$scope.developers.length; i++){
-				if($scope.developers[i].id == userId){
-					devPos = i;
-					if($scope.developers[i].points != undefined){
-						return $scope.developers[i].points;
-					}else{
-						return 0;
-					}
-				}
-			}
-			
-		}else{
-			return 0;
-		}
-	}
 	
 	
 	//Sets the current working project to display on the dashboard
@@ -238,6 +306,11 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 		$scope.completion = [];
 	}
 	
+	$scope.getDate = function(time_date){
+		var res = new Date(time_date*1000);
+		res = res.getDate()+"/"+(res.getMonth()+1)+"/"+res.getFullYear();
+		return res;
+	}
 	
 }]);
 
@@ -285,40 +358,61 @@ dashboard.service('restUsers', function($http) {
 				var pbi = response.pbis;
 				
 				for(var i=0; i<pbi.length; i++){
-					//console.log(url_getTasks.format(""+pbi[i]+""));
 					$http.get(url_getTasks.format(''+projectId, ""+pbi[i]+"")).success(
 						function(response) {
 							for(var y=0; y<response.tasks.length; y++){
-								tasks.push(response.tasks[y]);
+								tasks[tasks.length] = (response.tasks[y]);
+								
 							}
-							//console.log(tasks);
+							callback(tasks);
 						}
 					);
 				}
 				
-				callback(tasks);
+				
 			}
 		);
 	};
 	
 	
 
+	
+	
+
 });
+
+
 
 function toggleVisible(elemId){
 	$('#'+elemId).toggleClass("hidden");
 }
 
 
-function setChart(name, startDate, endDate){
+function setChart(name, startDate, endDate, chTasks){
+	
+	var data = [];
+	var totalTask = chTasks.length;
+	
+	var diff = Math.ceil((endDate - startDate) / 86400);
+	
+	for(var i=0; i<=diff; i++){
+		var dayDate = (startDate+(i*86400));
+		var totTask = totalTask;
+		
+		for(var y=0; y<chTasks.length; y++){
+			if(chTasks[y].state == 'Completed' && chTasks[y].completionDate <= dayDate && chTasks[y].completionDate != 0){
+				totTask--;
+			}
+		}
+		
+		data.push({ x:i, y:totTask });
+	}
+	
 	startDate = new Date(startDate*1000);
 	startDate = startDate.getDate()+"/"+(startDate.getMonth()+1)+"/"+startDate.getFullYear();
 	
 	endDate = new Date(endDate*1000);
 	endDate = endDate.getDate()+"/"+(endDate.getMonth()+1)+"/"+endDate.getFullYear();
-	
-	//startDate = startDate.toLocaleString();
-	//endDate = endDate.toLocaleString();
 	
 	var chart = new CanvasJS.Chart("div_chart", {
 
@@ -328,12 +422,16 @@ function setChart(name, startDate, endDate){
 		},
 		 axisX : {
 			title : "Days",
-			titleFontSize : "12"
+			titleFontSize : "12",
+			minimum: -0.5,
+			interval:1
 		},
 
 		axisY : {
 			title : "Tasks",
-			titleFontSize : "12"
+			titleFontSize : "12",
+			minimum: 0,
+			interval:1
 		},
 		data : [//array of dataSeries              
 		{ //dataSeries object
@@ -342,63 +440,14 @@ function setChart(name, startDate, endDate){
 			type : "column",
 			toolTipContent: "Day # {x}, {y} tasks remaining",
 			color: "rgba(255,12,32,.5)",
-			dataPoints : [ {
-				x : 0,
-				y : 15
-			}, {
-				x : 1,
-				y : 13
-			}, {
-				x : 2,
-				y : 11
-			}, {
-				x : 3,
-				y : 10
-			}, {
-				x : 4,
-				y : 8
-			}, {
-				x : 5,
-				y : 7
-			}, {
-				x : 6,
-				y : 4
-			}, {
-				x : 7,
-				y : 3
-			}, {
-				x : 8,
-				y : 1
-			}, {
-				x : 9,
-				y : 0
-			} ]
+			scaleBeginAtZero : true,
+			dataPoints : data
 		} ]
 	});
 	chart.render();
 	
 	
 }
-
-//This is the function.
-/*String.prototype.format = function (args) {
-	var str = this;
-	return str.replace(String.prototype.format.regex, function(item) {
-		var intVal = parseInt(item.substring(1, item.length - 1));
-		var replace;
-		if (intVal >= 0) {
-			replace = args[intVal];
-		} else if (intVal === -1) {
-			replace = "{";
-		} else if (intVal === -2) {
-			replace = "}";
-		} else {
-			replace = "";
-		}
-		return replace;
-	});
-};
-String.prototype.format.regex = new RegExp("{-?[0-9]+}", "g");*/
 
 String.prototype.format = function() {
     var formatted = this;
