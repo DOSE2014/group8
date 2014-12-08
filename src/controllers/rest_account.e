@@ -219,8 +219,9 @@ feature
 			end
 
 			param := hp.post_param ("type")
-			if (param = Void or
-					not (param.is_equal("developer") or param.is_equal("stakeholder"))) then
+			--if (param = Void or
+			--		not (param.is_equal("developer") or param.is_equal("stakeholder"))) then
+			if param /= Void and (param.is_equal ("developer") or param.is_equal ("stakeholder")) then
 				u.setusertype (ec.bool_to_int (param.is_equal("developer")))
 			end
 
