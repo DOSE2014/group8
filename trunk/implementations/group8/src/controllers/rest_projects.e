@@ -105,6 +105,7 @@ feature
 			projId: INTEGER
 			stakeholder: USER
 			mgr: USER
+			chat: CHAT
 
 			--Parameters
 			param_name			: detachable STRING
@@ -167,6 +168,10 @@ feature
 					json_response.put_string ("created", "status")
 					json_response.put_integer (projId, "id")
 					send_json (hres, json_response)
+
+					--create the chat of the project
+					create chat.make (0, p)
+					chat.setid (db.insertchat (chat))
 				end
 
 				if not ok then
@@ -534,7 +539,7 @@ feature
 				then
 					send_malformed_json(http_response)
 					-- And logs it
-					log.warning ("/projects/{idproj}/createbacklog [GET] Missing idproj in URL.")
+					log.warning ("/projects/{idproj}/createbacklog [POST] Missing idproj in URL.")
 				else
 					idProj := hp.path_param ("idproj").to_integer
 					project := db.getprojectfromid (idProj)
@@ -542,7 +547,7 @@ feature
 					then	-- does project exist?
 						send_malformed_json(http_response)
 						-- And logs it
-						log.warning ("/projects/" + idproj.out + "/createbacklog [GET] Project not existent.")
+						log.warning ("/projects/" + idproj.out + "/createbacklog [POST] Project not existent.")
 					else
 
 						manager := project.getmanager

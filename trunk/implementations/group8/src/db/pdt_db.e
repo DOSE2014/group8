@@ -283,5 +283,17 @@ feature
 		do
 			Result := chatdbhandler.insertChat(chat)
 		end
+	getChatFromProjectId(projectId: INTEGER): CHAT
+		do
+			Result := chatdbhandler.getChatFromProjectId(projectId)
+		end
+	addUserInChat(user: USER; chat: CHAT)
+		do
+			chatdbhandler.adduserinchat (user, chat)
+		end
+	deleteUserInChat(user: USER; chat: CHAT)
+		do
+			chatdbhandler.deleteuserinchat (user, chat)
+		end
 
 end

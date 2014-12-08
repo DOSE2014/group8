@@ -14,6 +14,7 @@ feature{NONE}
 	db: SQLITE_DATABASE
 	dbQueryStatement: SQLITE_QUERY_STATEMENT
 	dbInsertStatement: SQLITE_INSERT_STATEMENT
+	dbModifyStatement: SQLITE_MODIFY_STATEMENT
 	projectDBHandler: PROJECT_DB_HANDLER
 	userDBHandler: USER_DB_HANDLER
 
@@ -34,6 +35,16 @@ feature
 			if Result.getId = 0 then
 				Result := Void
 			end
+		end
+	getChatFromProjectId(id: INTEGER): CHAT
+		do
+			create Result.make_default
+			create dbquerystatement.make ("SELECT * FROM Chat WHERE project=" + id.out + ";", db)
+			dbquerystatement.execute (agent genChat(?, 2, Result))
+			if Result.getId = 0 then
+				Result := Void
+			end
+
 		end
 
 	insertChat(chat: CHAT): INTEGER
@@ -58,6 +69,23 @@ feature
 
 		end
 
+	addUserInChat(user: USER; chat: CHAT)
+		do
+			create dbinsertstatement.make ("INSERT INTO Chat_User(chat, user) VALUES('" + chat.getid.out + "', '" + user.getid.out + "');", db)
+			dbinsertstatement.execute
+			if dbinsertstatement.has_error
+			then print("Error while inserting a new chat.%N")
+			end
+
+		end
+	deleteUserInChat(user: USER; chat: CHAT)
+		do
+			create dbmodifystatement.make ("DELETE FROM Chat_User WHERE chat=" + chat.getid.out + " AND user=" + user.getid.out + ";", db)
+			dbmodifystatement.execute
+			if dbmodifystatement.has_error
+			then print("Error while user from chat.%N")
+			end
+		end
 
 feature{NONE}
 	genChat(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: CHAT): BOOLEAN
