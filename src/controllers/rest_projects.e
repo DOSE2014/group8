@@ -63,9 +63,9 @@ feature
 				end
 
 				projects := db.getprojectsvisibletouser (u.getid)
-				create j_projects.make_array
 
 				if attached projects then
+					create j_projects.make_array
 					across projects as p
 					loop
 						j_project := p.item.to_json
@@ -77,15 +77,17 @@ feature
 								create j_number.make_integer (d.item.getId)
 								j_developers.add (j_number)
 							end
+						else
+							create j_developers.make_array
 						end
 						j_project.put (j_developers, "developers")
 						j_projects.add (j_project)
 					end
-				end
+					create json_response.make
+					json_response.put (j_projects, "projects")
+					send_json(hres, json_response)
 
-				create json_response.make
-				json_response.put (j_projects, "projects")
-				send_json(hres, json_response)
+				end
 			end
 		end
 

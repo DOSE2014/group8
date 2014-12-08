@@ -328,7 +328,8 @@ feature
 	getDevelopersFromProjectId(p: INTEGER): LINKED_SET[USER]
 		do
 			create Result.make
-			create dbquerystatement.make ("SELECT * FROM User JOIN Developer_Project ON User.id = Developer_Project.developer WHERE project=" + p.out + ";", db)
+			create dbquerystatement.make ("SELECT id, firstname, lastname, sex, dateOfBirth, country, timezone, email, password, userType, organization, deleted" +
+											" FROM User JOIN Developer_Project ON User.id = Developer_Project.developer WHERE project=" + p.out + ";", db)
 			dbquerystatement.execute (agent genUsers(?, 12, Result))
 			if Result.count = 0
 			then Result := Void
