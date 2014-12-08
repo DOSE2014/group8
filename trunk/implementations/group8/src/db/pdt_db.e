@@ -195,6 +195,10 @@ feature
 		do
 			Result := sprintlogdbhandler.listSprintlogsFromBacklogId(b)
 		end
+		listSprintlogsFromProjectId(p: INTEGER) : LINKED_SET[SPRINTLOG]
+			do
+				Result := sprintlogdbhandler.listSprintlogsFromProjectId(p)
+			end
 	editUser(u: USER)
 		do
 			userdbhandler.editUser(u)

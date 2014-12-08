@@ -69,6 +69,15 @@ feature
 				Result := Void
 			end
 		end
+		listSprintlogsFromProjectId(p: INTEGER): LINKED_SET[SPRINTLOG]
+			do
+				create Result.make
+				create dbquerystatement.make ("SELECT Sprintlog.* FROM Sprintlog JOIN Backlog ON Sprintlog.backlog = Backlog.id WHERE Backlog.project = " + p.out + ";", db)
+				dbquerystatement.execute (agent genSprintlogs(?, 6, Result))
+				if Result.count = 0 then
+					Result := Void
+				end
+			end
 
 feature{NONE}
 	genSprintlog(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: SPRINTLOG): BOOLEAN

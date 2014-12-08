@@ -97,7 +97,7 @@ CREATE TABLE `Backlog` (
 INSERT INTO `User` VALUES ('1','Filippo','Pagano','1','712022400','Italy','UTC+01:00','paganofilippo@gmail.com','password','1',NULL,'0');
 INSERT INTO `User` VALUES ('2','Federico','Reghenzani','1','712022400','Italy','UTC+01:00','federico1.reghenzani@mail.polimi.it','password','1',NULL,'0');
 INSERT INTO `User` VALUES ('3','Мунир','Махмутов','1','712022400','Russia','UTC+03:00','munir.makhmutov@gmail.com','password','0','Россия, Республика Татарстан, Казань','0');
-INSERT INTO `Task` VALUES ('1','First task','Something to get done','1','1','1','1');
+INSERT INTO `Task` VALUES ('1','First task','Something to get done','1','1','1','1','1415555293');
 INSERT INTO `Sprintlog` VALUES ('1','Chat','Lets make a chat','1','1415555293','1415575293');
 INSERT INTO `Sprintlog` VALUES ('2','Prototype','Tuesday, November 25th – 8 am (CET)v','2','1415689214','1416898814');
 INSERT INTO `Project` VALUES ('1','DOSE','Create DOSE software','1','3','1415555014','0');

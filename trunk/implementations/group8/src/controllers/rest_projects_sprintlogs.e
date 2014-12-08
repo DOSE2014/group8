@@ -63,10 +63,11 @@ feature
 			create hp.make (hreq)
 			if ensure_authenticated then
 				u := get_session_user
-				if attached hp.path_param ("idproj") then
+		--		print (hp.path_param ("idproj"))
+				if attached hp.path_param ("idproj") and hp.path_param ("idproj").is_integer then
 					id_project := hp.path_param ("idproj").to_integer --get id of the project
 					if db.checkVisibilityForProject (u.getId, id_project) then
-						sprints := db.listSprintlogsFromBacklogId (db.getbacklogfromprojectid (id_project).getid) --get sprints
+						sprints := db.listsprintlogsfromprojectid (id_project) --Get sprints
 						if attached sprints then
 							create j_sprints.make_array
 							across
