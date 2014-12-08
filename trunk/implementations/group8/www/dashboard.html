@@ -1,7 +1,7 @@
 
-<html data-ng-app="dashboard">
+<html data-ng-app="dashboard" data-ng-controller="Users">
 <head>
-<title>Developer Dashboard</title>
+<title>{{user.userType}} Dashboard</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
 <link href="css/dashboard.css" rel="stylesheet">
 </head>
 
-<body data-ng-controller="Users">
+<body >
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
@@ -31,8 +31,9 @@
 			<div class="col-sm-12 col-md-3">
 				<div class="row" data-ng-controller="Project">
 
-					<button type="button" class="btn btn-primary btn-lg btn-block" data-ng-click="openNewProject()">New
-						Project</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block" data-ng-show="user.userType=='stakeholder'" data-ng-click="openNewProject()">
+						New Project
+					</button>
 
 				</div>
 
@@ -58,7 +59,7 @@
 							<p class="navbar-brand">{{project.name}}</p>
 							<ul class="nav navbar-nav navbar_project_edit" data-ng-controller="Project">
 								<li><a class="navbar-link navbar_project_edit"
-									data-ng-show="user.id == project.manager || user.id == project.stakeholder" data-ng-click="openDevManager()">
+									data-ng-show="user.id == project.manager" data-ng-click="openDevManager()">
 										(Manage)
 									</a></li>
 							</ul>
@@ -261,19 +262,7 @@
 						</div>
 						<span data-ng-show="descriptionRequired">{{descriptionRequired}}</span>
 					</div>
-					
-					
-        			<div class="form-group">
-						<label for="sel_projectStake" class="col-sm-2 control-label">Stakeholder</label>
-							<div class="col-sm-8">
-								<select class="form-control" name="sel_projectStake"
-									data-ng-model="prjStakeholder"
-									data-ng-options="stake.firstname+' '+stake.lastname for stake in srvStakeholders track by stake.id">
-								</select>
-
-							</div>
-							<span data-ng-show="stakeRequired">{{stakeRequired}}</span>
-					</div>
+				
 					
 					<div class="form-group">
 						<label for="sel_projectManager" class="col-sm-2 control-label">Manager</label>

@@ -34,13 +34,12 @@ login.controller('loginController', ['$scope', '$http', function($scope, $http){
         };
 		
 		$http.post(url_login, JSON.stringify(data_post)).success(function(data) {
-			console.log(data);
+			//console.log(data);
 			if (data.status == "ok") {
 				window.location = url_dashboard
 			} else if (data.status == "error") {
 				alert("Login failed")
 				$scope.dataLoading = false;
-				
 			}
 		}).error(function(data) { // optional
 			$scope.dataLoading = false;

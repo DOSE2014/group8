@@ -46,7 +46,7 @@ dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 			$scope.profNPwdRequired = "Password don't match";
 		} else {
 			var postData = {
-				'password' : $scope.profNPwdRequired
+				'password' : $scope.profNPwd
 			};
 			
 			$http.post(url_editAccount, JSON.stringify(postData)).success(function(data) {
@@ -105,13 +105,15 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 	}
 	
 	$scope.addDev = function(){
-		$http.post(url_addDevProject.format($scope.project.id), JSON.stringify({ 'iddev' : $scope.addDeveloperId })).success(function(data) {
+		$http.post(url_addDevProject.format($scope.project.id), JSON.stringify({ 'iddev' : $scope.addDeveloperId.id })).success(function(data) {
 			if (data.status == "ok") {
 				$('#modal_manager').modal('hide');
-				alert("Developer added to the project")
+				alert("Developer added to the project");
 			} else {
 				alert(data.status);
 			}
+		}).error(function(error){
+			alert(error);
 		});
 		
 	}
@@ -119,23 +121,19 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 	$scope.saveProject = function() {
 		$scope.nameRequired = '';
 		$scope.descriptionRequired = '';
-		$scope.stakeRequired = '';
 		$scope.managerRequired = '';
 
 		if (!$scope.prjName) {
 			$scope.nameRequired = 'Required';
 		} else if (!$scope.prjDescription) {
 			$scope.descriptionRequired = 'Required';
-		}else if (!$scope.prjStakeholder) {
-			$scope.stakeRequired = 'Required';
 		}else if (!$scope.prjManager) {
 			$scope.managerRequired = 'Required';
 		} else {
 			var postData = {
 				'name' : $scope.prjName,
 				'description': $scope.prjDescription,
-				'manager': $scope.prjManager.id,
-				'stakeholder': $scope.prjStakeholder.id
+				'manager': $scope.prjManager.id
 			};
 			
 			$http.post(url_createProjects, JSON.stringify(postData)).success(function(data) {
@@ -302,6 +300,7 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	
 	//Sets the current working project to display on the dashboard
 	$scope.setProject = function(idProject){
+		$scope.resetVariables();
 		if(idProject > 0 && idProject != null){
 			for(var i=0; i<$scope.projects.length; i++){
 				if($scope.projects[i].id == idProject){
@@ -339,7 +338,6 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	
 	//if the user has no projects sets the variable to blank
 	$scope.resetVariables = function(){
-		$scope.projects = {};
 		$scope.project = {};
 		$scope.projectManager = {};
 		$scope.developers = [];
