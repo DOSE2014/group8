@@ -135,11 +135,16 @@ feature
 		query_result_cursor := dbquerystatement.execute_new
 
 
-		if not query_result_cursor.item.is_null (1) then
-			Result := True
+		if not query_result_cursor.after then
+			Result := true
 		else
-			Result := False
+			Result := false
 		end
+		--if not query_result_cursor.item.is_null (1) then
+		--	Result := True
+		--else
+		--	Result := False
+		--end
 	end
 
 	deleteDeveloperFromProject(d: INTEGER; p: INTEGER)
