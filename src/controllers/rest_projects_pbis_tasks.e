@@ -294,7 +294,7 @@ feature
 
 feature
 	deletetask(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
-	-- PATH: /projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/delete
+	-- PATH: /projects/{idproj}/tasks/{idtask}/delete
 	-- METHOD: POST
 	require
 		hreq /= Void
@@ -328,23 +328,15 @@ feature
 				send_malformed_json(http_response)
 				ok := FALSE
 				-- And logs it
-				log.warning (" /projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/delete [POST] Missing idproj in URL.")
+				log.warning ("/projects/{idproj}/tasks/{idtask}/delete [POST] Missing idproj in URL.")
 			end
 			id_project := hp.path_param("idproj").to_integer
-			-- Second GET the id of the PBI
-			if ok and not attached hp.path_param("idpbi") then
-				ok := FALSE
-				send_malformed_json(http_response)
-				-- And logs it
-				log.warning (" /projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/delete [POST] Missing idpbis in URL.")
-			end
-			id_pbi := hp.path_param("idpbi").to_integer
 			-- Third GET the id of the task
 			if ok and not attached hp.path_param("idtask") then
 				ok := FALSE
 				send_malformed_json(http_response)
 				-- And logs it
-				log.warning (" /projects/{idproj}/pbis/{idpbis}/tasks/{idtask}/delete [POST] Missing idpbis in URL.")
+				log.warning (" /projects/{idproj}/tasks/{idtask}/delete [POST] Missing idpbis in URL.")
 			end
 			id_task := hp.path_param("idtask").to_integer
 			t := db.gettaskfromid (id_task)
@@ -368,14 +360,14 @@ feature
 			end
 
 			if not ok then
-				log.warning("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [POST] Request error: " + error_reason)
+				log.warning(" /projects/{idproj}/tasks/{idtask}/delete  [POST] Request error: " + error_reason)
 				json_error.put_string (error_reason, "reason")
 				send_json(hres, json_error)
 			else
 
 				if ok then
 					db.deletetaskfromid (t.getid)
-					log.info (" /projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/delete [POST] Deleted a task "+t.getname )
+					log.info (" /projects/{idproj}/tasks/{idtask}/delete [POST] Deleted a task "+t.getname )
 					-- send OK to the user :)				
 					send_generic_ok(hres)
 				end
@@ -401,11 +393,9 @@ feature
 		u: USER
 		json_error : JSON_OBJECT
 		ok : BOOLEAN
-
 		id_project : INTEGER
 		id_pbi : INTEGER
 		id_task : INTEGER
-
 		param_name        : STRING
 		param_description        : STRING
 		param_points        : STRING
@@ -478,44 +468,67 @@ feature
 			if ok and  param_name.is_empty then
 				error_reason := "Name not present or not correct."
 				ok := FALSE
+			else
+				t.setname (param_name)
 			end
 
 			param_description := hp.post_param ("description")
 			if ok and  param_description.is_empty then
-				error_reason := "Description not present or not correct."
-				ok := FALSE
+
+			else
+				t.setdescription (param_description)
 			end
 
 			param_points:= hp.post_int_param ("points").out
 			if ok and not regex.check_integer (param_points) and param_points.to_integer < 0 then
 				error_reason := "Points not present or not correct."
 				ok := FALSE
+			else
+				t.setpoints (param_points.to_integer)
 			end
 
-			param_state:= hp.post_param ("state")
-			if ok and not regex.check_name (param_state) and not ec.statestring_to_int(param_pbi).is_equal (-1) then
-				error_reason := "State not present or not correct."
-				ok := FALSE
-			end
-
-			param_pbi:= hp.post_int_param ("pbi").out
-			if ok and not  regex.check_integer (param_pbi) and pbi.getbacklog.getproject.getid.is_equal (id_project) then
-					error_reason := "PBI not present or not correct."
+			if attached  hp.post_param ("state") then
+				param_state:= hp.post_param ("state")
+				if ok and not regex.check_name (param_state) and not ec.statestring_to_int(param_pbi).is_equal (-1) then
+					error_reason := "State not present or not correct."
 					ok := FALSE
+				else
+					t.setstate (ec.statestring_to_int(param_state))
+				end
 			end
+
+			if attached hp.post_int_param ("pbi") then
+				param_pbi:= hp.post_int_param ("pbi").out
+				if ok and not  regex.check_integer (param_pbi) and pbi.getbacklog.getproject.getid.is_equal (id_project) then
+						error_reason := "PBI not  correct."
+						ok := FALSE
+				else
+					pbi := db.getpbifromid (param_pbi.to_integer)
+					t.setpbi (pbi)
+				end
+			end
+
 
 			param_completionDate := hp.post_int_param ("completionDate")
-			if ok and not regex.check_unixtime (param_completionDate.out)then
+			if ok and attached param_completionDate and not regex.check_unixtime (param_completionDate.out)then
 				error_reason := "Completion date in bad format"
 				ok := FALSE
+			else
+				create completiondate.make_from_epoch (param_completionDate)
+				t.setcompletiondate (completiondate)
 			end
 
-			param_developer:= hp.post_int_param ("developer").out
-			u := db.getuserfromid (param_developer.to_integer)
-			if ok and not regex.check_integer (param_developer) and db.checkvisibilityforproject (u.getid, p.getid)  then
-				error_reason := "Developer not present or not correct."
-				ok := FALSE
+			if attached hp.post_int_param ("developer") then
+				param_developer:= hp.post_int_param ("developer").out
+				u := db.getuserfromid (param_developer.to_integer)
+				if ok and not regex.check_integer (param_developer) and not db.checkvisibilityforproject (u.getid, p.getid)  then
+					error_reason := "Developer not present or not correct."
+					ok := FALSE
+				else
+					t.setdeveloper (u)
+				end
 			end
+
 
 
 			--CHECK m is manager
@@ -524,15 +537,12 @@ feature
 				ok := FALSE
 			end
 
-			if not ok then
+			if not ok and not hres.status_committed then
 				log.warning("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [POST] Request error: " + error_reason)
 				json_error.put_string (error_reason, "reason")
 				send_json(hres, json_error)
 			else
 				if ok then
-					pbi := db.getpbifromid (param_pbi.to_integer)
-					create completiondate.make_from_epoch (param_completionDate)
-					create t.make (id_task, param_name, param_description, u, param_points.to_integer, ec.statestring_to_int(param_state), pbi, completionDate)
 					db.editTask(t)
 					log.info ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [POST] Edited a task "+param_name )
 					-- send OK to the user :)				
