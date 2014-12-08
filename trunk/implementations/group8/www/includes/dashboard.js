@@ -14,6 +14,7 @@ var url_getDevelopers = "/account/listdevelopers";
 var url_createProjects = "/projects/create";
 var url_remDevProject = "/projects/{0}/remdeveloper";
 var url_addDevProject = "/projects/{0}/adddeveloper";
+var url_editAccount = "/account/edit";
 
 //
 var url_login = "login.html";
@@ -28,10 +29,44 @@ dashboard.config(function(){
 	
 });
 
-dashboard.controller('Profile', ['$scope', function($scope){
+dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 	$scope.viewProfile = function(){
 		$('#modal_profile').modal('show');
 	}
+	
+	$scope.changePassword = function() {
+		$scope.profNPwdRequired = '';
+		$scope.profRPwdRequired = '';
+
+		if (!$scope.profNPwd) {
+			$scope.profNPwdRequired = 'Required';
+		} else if (!$scope.profRPwd) {
+			$scope.profRPwdRequired = 'Required';
+		}else if ($scope.profNPwd != $scope.profRPwd) {
+			$scope.profNPwdRequired = "Password don't match";
+		} else {
+			var postData = {
+				'password' : $scope.profNPwdRequired
+			};
+			
+			$http.post(url_editAccount, JSON.stringify(postData)).success(function(data) {
+				if (data.status == "ok") {
+					alert("Password changed");
+					$('#modal_profile').modal('hide');
+					
+				} else if (data.status == "error") {
+					alert(data.reason);
+					$('#modal_profile').modal('hide');
+				}
+			}).error(function(error) {
+				alert(error);
+				$('#modal_profile').modal('hide');
+			});
+			
+		}
+	}
+	
+	
 }]);
 
 dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
@@ -297,6 +332,10 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 			$scope.resetVariables();
 		}
 	};
+	
+	$scope.openPbiManager = function(){
+		alert("AAA");
+	}
 	
 	//if the user has no projects sets the variable to blank
 	$scope.resetVariables = function(){
