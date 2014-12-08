@@ -92,7 +92,15 @@
 											<div class="panel-heading acc_panel" role="tab" id="head_pbl"
 												data-toggle="collapse" data-parent="#accordion"
 												href="#body_pbi" aria-expanded="true"
-												aria-controls="body_pbi">Project Backlog</div>
+												aria-controls="body_pbi">
+
+												Project Backlog 
+												
+												<a class="navbar-link navbar_project_edit toRight"
+													data-ng-show="user.id == project.manager || user.id == project.stakeholder"
+													data-ng-click="openPbiManager()"> (Manage) </a>
+
+											</div>
 											<div id="body_pbi" class="panel-collapse collapse"
 												role="tabpanel" aria-labelledby="body_pbi">
 												<ul class="list-group">
@@ -437,9 +445,39 @@
 					</form>
 					<div class="row">
 						<div class="col-sm-12" style="text-align:right;">
-							<button type="button" class="btn btn-info">Change password</button>
+							<button type="button" class="btn btn-info" onClick="toggleVisible('frm_pwdChange')">Change password</button>
 						</div>
 					</div>
+					
+					<form class="form-horizontal hidden" role="form" id="frm_pwdChange">
+					<br/>
+					<div class="form-group">
+						<label for="txt_profNPwd" class="col-sm-2 control-label">New password</label>
+						<div class="col-sm-8">
+							<input type="password" class="form-control" id="txt_profNPwd"
+								placeholder="New password" data-ng-model="profNPwd">
+						</div>
+						<span data-ng-show="profNPwdRequired">{{profNPwdRequired}}</span>
+					</div>
+					
+					<div class="form-group">
+						<label for="txt_profRPwd" class="col-sm-2 control-label">Repeat</label>
+						<div class="col-sm-8">
+							<input type="password" class="form-control" id="txt_profRPwd"
+								placeholder="Repeat password" data-ng-model="profRPwd">
+						</div>
+						<span data-ng-show="profRPwdRequired">{{profRPwdRequired}}</span>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-12">
+							<div style="text-align:center;">
+							<button type="button" class="btn btn-default" data-ng-click="changePassword()">Change</button>
+							</div>
+						</div>
+					</div>
+					
+					</form>
 						
 				</div>
 				<div class="modal-footer">
