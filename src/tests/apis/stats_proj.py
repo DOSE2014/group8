@@ -7,7 +7,7 @@ params = """{
 }""";
 
 expected_response = json.loads("""
-{"points":33}
+{"points":45}
 """)
 
 def exec_test(debug=False):

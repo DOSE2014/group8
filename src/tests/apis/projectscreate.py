@@ -10,7 +10,7 @@ params = """{
 }""";
 
 expected_response = json.loads("""
-{"status":"created", "id":2}
+{"status":"created", "id":4}
 """)
 
 def exec_test(debug=False):

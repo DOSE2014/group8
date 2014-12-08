@@ -3,7 +3,11 @@ import json, login
 
 params = "";
 
-expected_response = json.loads("""{"id":1,"firstname":"Filippo","lastname":"Pagano","sex":"M","dateOfBirth":712022400,"country":"Italy","timezone":"UTC+01:00","userType":"developer","email":"paganofilippo@gmail.com","programmingLanguages":["Eiffel"],"languages":["Italian","English"]}""");
+expected_response = json.loads("""
+
+{"id":1,"firstname":"Filippo","lastname":"Pagano","sex":"M","dateOfBirth":712022400,"country":"Italy","timezone":"Europe/Rome","userType":"developer","email":"paganofilippo@gmail.com","programmingLanguages":["Eiffel"],"languages":["Italian","English"]}
+
+""")
 
 def exec_test(debug=False):
     headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain", "Cookie" : "_pdt_session_id_="+login.cookie_id+""}
