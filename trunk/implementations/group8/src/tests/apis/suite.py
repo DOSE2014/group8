@@ -20,7 +20,12 @@ print_logo()
 print("\nBackuping pdt.db DB... ",end="")
 # FIRST OF ALL SAVE A COPY OF THE DB
 shutil.copy2("../../../pdt.db", "pdtcopy.db")
+print("Done")
+
+print("\nReplacing pdt.db with database_for_testing.db... ",end="")
+shutil.copy2("database_for_testing.db", "../../../pdt.db")
 print("Done\n")
+
 
 verbose = False
 if len(sys.argv) > 1 and sys.argv[1] == "--verbose":
