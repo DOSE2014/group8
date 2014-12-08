@@ -77,10 +77,10 @@ feature{NONE}
 			resultobject.setdeleted (row.string_value (12).to_integer = 1)
 			if resultobject.getusertype = {USERTYPE}.developer then
 				programmingLanguageUser_Hash := getprogrammingLanguageUser
-				languageUser_Hash := getLanguageUser
 				resultobject.setprogramminglanguages (programminglanguageuser_hash.at (resultobject.getid))
-				resultobject.setlanguages (languageuser_hash.at (resultobject.getid))
 			end
+			languageUser_Hash := getLanguageUser
+			resultobject.setlanguages (languageuser_hash.at (resultobject.getid))
 			Result := false
 		end
 
