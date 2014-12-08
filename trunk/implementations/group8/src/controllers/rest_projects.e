@@ -437,7 +437,7 @@ feature
 
 				end
 
-				if not ok then
+				if not ok and error_reason /= Void then	-- error_reason is Void if no_permission called
 					log.warning("/projects/" + idproj.out + "/edit [POST] Request error: " + error_reason)
 					json_error.put_string (error_reason, "reason")
 					send_json(hres, json_error)
