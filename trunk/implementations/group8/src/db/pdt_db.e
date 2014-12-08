@@ -63,6 +63,10 @@ feature
 		do
 			Result := userDBHandler.getDevelopers
 		end
+	getStakeholders: LINKED_SET[USER]
+		do
+			Result := userdbhandler.getstakeholders
+		end
 	getUserFromEmailPassword(email, password: STRING): USER
 		do
 			Result := userDBHandler.getuserfromemailpassword (email, password)

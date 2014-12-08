@@ -209,6 +209,16 @@ feature
 		end
 	end
 
+	getStakeholders: LINKED_SET[USER]
+		do
+			create Result.make
+			create dbQueryStatement.make ("SELECT * FROM User WHERE userType=" + {USERTYPE}.stakeholder.out + ";", db)
+			dbquerystatement.execute (agent genUsers(?, 12, Result))
+			if Result.count = 0
+			then Result := Void
+			end
+		end
+
 	insertUser(u: USER)
 		local
 			i, j: INTEGER

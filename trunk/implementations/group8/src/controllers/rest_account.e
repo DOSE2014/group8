@@ -575,6 +575,37 @@ feature
 		end
 	end
 
+	listStakeholders(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /account/liststakeholders
+	-- METHOD: GET
+	local
+		stakeholders : LINKED_SET[USER]
+		j_user : JSON_OBJECT
+		j_stakes : JSON_ARRAY
+		json_response : JSON_OBJECT
+	do
+		http_request  := hreq
+		http_response := hres
+
+		if ensure_authenticated then
+			stakeholders := db.getStakeholders
+			create j_stakes.make_array
+
+			-- For all stakeholders...
+			across stakeholders as s
+			loop
+				j_user := s.item.to_minimal_json
+				j_stakes.add (j_user)
+			end
+
+			-- Now create the JSON response
+			create json_response.make
+			json_response.put (j_stakes, "stakeholders")
+			send_json(hres, json_response)
+		end
+	end
+
+
 	recover_password(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
 	-- PATH: /account/recover_password
 	-- METHOD: POST
