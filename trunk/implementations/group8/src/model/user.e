@@ -272,7 +272,12 @@ feature
 		Result.put_integer(dateOfBirth.definite_duration (epoch).seconds_count, "dateOfBirth")
 		Result.put_string (country, "country")
 		Result.put_string (timezone, "timezone")
-		Result.put_string (ut_class.to_string(userType), "userType")
+		--Result.put_string (ut_class.to_string(userType), "userType")
+		if usertype = {USERTYPE}.developer then
+			Result.put_string("developer", "userType")
+		else
+			Result.put_string("stakeholder", "userType")
+		end
 		if organization /= Void then
 			Result.put_string (organization, "organization")
 		end
