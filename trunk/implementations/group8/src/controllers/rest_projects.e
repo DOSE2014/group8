@@ -629,6 +629,7 @@ feature
 			tasks: LINKED_SET[TASK]
 			pbiIsCompleted: BOOLEAN
 			j_completion: JSON_OBJECT
+			backlog: BACKLOG
 		do
 			http_request := hreq
 			http_response := hres
@@ -652,40 +653,44 @@ feature
 						-- And logs it
 						log.warning ("/projects/" + idProj.out + "/completion [GET] Project not existent.")
 					else
-						pbis := db.getpbisfrombacklogid (db.getbacklogfromprojectid (idProj).getid)
-						if attached pbis then
-							pbis_completed := 0
-							pbis_notCompleted := 0
-							across pbis as p
-							loop
-								pbiiscompleted := true
-								tasks := db.gettasksfrompbiid (p.item.getId)
-								if attached tasks then
-									across tasks as t
-									loop
-										if t.item.getState = {STATE}.pending then
-											pbiIsCompleted := false
+						backlog := db.getbacklogfromprojectid (idProj)
+						if attached backlog then
+							pbis := db.getpbisfrombacklogid (db.getbacklogfromprojectid (idProj).getid)
+							if attached pbis then
+								pbis_completed := 0
+								pbis_notCompleted := 0
+								across pbis as p
+								loop
+									pbiiscompleted := true
+									tasks := db.gettasksfrompbiid (p.item.getId)
+									if attached tasks then
+										across tasks as t
+										loop
+											if t.item.getState = {STATE}.pending then
+												pbiIsCompleted := false
+											end
 										end
-									end
-									if pbiIsCompleted = true then
-										pbis_completed := pbis_completed + 1
+										if pbiIsCompleted = true then
+											pbis_completed := pbis_completed + 1
+										else
+											pbis_notcompleted := pbis_notcompleted + 1
+										end
 									else
-										pbis_notcompleted := pbis_notcompleted + 1
+										pbis_notcompleted := pbis_notCompleted + 1
 									end
-								else
-									pbis_notcompleted := pbis_notCompleted + 1
 								end
-							end
-							create j_completion.make
-							j_completion.put_integer (pbis_completed, "completedPBIS")
-							j_completion.put_integer (pbis_completed + pbis_notcompleted, "numberOfPBIs")
-							send_json (hres, j_completion)
+								create j_completion.make
+								j_completion.put_integer (pbis_completed, "completedPBIS")
+								j_completion.put_integer (pbis_completed + pbis_notcompleted, "numberOfPBIs")
+								send_json (hres, j_completion)
 
-						else
-							create j_completion.make
-							j_completion.put_integer (0, "completedPBIs")
-							j_completion.put_integer (0, "numberOfPBIs")
-							send_json (hres, j_completion)
+							else
+								create j_completion.make
+								j_completion.put_integer (0, "completedPBIs")
+								j_completion.put_integer (0, "numberOfPBIs")
+								send_json (hres, j_completion)
+							end
+
 						end
 					end
 				end
