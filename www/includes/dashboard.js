@@ -287,13 +287,14 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	$scope.getProjectSprintlog = function(projectId){
 		$http.get(url_getSprintlog.format(''+projectId)).success(function(data){
 	        $scope.sprints = data.sprintlogs;
-
-	        //orders by the start date, starting with the most recent one 
-	        $scope.sprints.sort(function(a,b) { 
-	        	return parseFloat(b.startDate) - parseFloat(a.startDate) 
-	        });
-	        
-	        $scope.setCurrentSprint(0);
+	        if(data.sprintlogs.length > 0){
+		        //orders by the start date, starting with the most recent one 
+		        $scope.sprints.sort(function(a,b) { 
+		        	return parseFloat(b.startDate) - parseFloat(a.startDate) 
+		        });
+		        
+		        $scope.setCurrentSprint(0);
+	        }
 		});
 	};
 	
