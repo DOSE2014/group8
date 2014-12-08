@@ -6,7 +6,7 @@ from suite_functions import check_reply
 params = "";
 
 expected_response = json.loads("""
-{"sprintlogs":[{"id":1,"name":"Chat","description":"Lets make a chat","startDate":1415555293,"endDate":1415575293}]}
+{"sprintlogs":[{"id":1,"name":"Chat","description":"Lets make a chat","startDate":1415555293,"endDate":1415575293},{"id":2,"name":"Prototype","description":"Tuesday, November 25th – 8 am (CET)v","startDate":1415689214,"endDate":1416898814}]}
 
 """)
 

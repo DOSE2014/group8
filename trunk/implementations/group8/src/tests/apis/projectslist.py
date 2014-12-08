@@ -6,7 +6,7 @@ from suite_functions import check_reply
 params = "";
 
 expected_response = json.loads("""
-{"projects":[{"id":1,"name":"DOSE","description":"Create DOSE software","manager":2,"stakeholder":3,"creationDate":1415555014,"deleted":false,"developers":[1]}]}
+{"projects":[{"id":1,"name":"DOSE","description":"Create DOSE software","manager":2,"stakeholder":5,"creationDate":1415555014,"deleted":false,"developers":[1]},{"id":2,"name":"My test","description":"New dummy test","manager":2,"stakeholder":9,"creationDate":1418052651,"deleted":false,"developers":[1]}]}
 """)
 
 def exec_test(debug=False):

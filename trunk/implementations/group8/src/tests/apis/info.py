@@ -3,7 +3,8 @@ import json, login
 
 params = "";
 
-expected_response = json.loads("""{"id":2,"firstname":"Federico","lastname":"Reghenzani","sex":"M","dateOfBirth":712022400,"country":"Italy","timezone":"UTC+01:00","userType":"developer","email":"federico1.reghenzani@mail.polimi.it","programmingLanguages":["Eiffel"],"languages":["Italian","English"]}
+expected_response = json.loads("""
+{"id":2,"firstname":"Federico","lastname":"Reghenzani","sex":"M","dateOfBirth":712022400,"country":"Italy","timezone":"Europe/Rome","userType":"developer","email":"federico1.reghenzani@mail.polimi.it","programmingLanguages":["Eiffel"],"languages":["Italian","English"]}
 """);
 
 def exec_test(debug=False):
