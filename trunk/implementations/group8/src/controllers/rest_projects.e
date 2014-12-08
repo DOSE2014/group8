@@ -66,12 +66,12 @@ feature
 				create j_projects.make_array
 
 				if attached projects then
-					create j_developers.make_array
 					across projects as p
 					loop
 						j_project := p.item.to_json
 						developersofproject := db.getdevelopersfromprojectid (p.item.getId)
 						if attached developersofproject then
+							create j_developers.make_array
 							across developersofproject as d
 							loop
 								create j_number.make_integer (d.item.getId)
