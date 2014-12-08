@@ -1,7 +1,7 @@
 
 <html data-ng-app="dashboard" data-ng-controller="Users">
 <head>
-<title>{{user.userType}} Dashboard</title>
+<title>{{user.userType=="developer"? "Developer" : "Stakeholder"}} Dashboard</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -217,7 +217,7 @@
 								</table>
 							</div>
 
-							<div class="panel panel-default">
+							<div class="panel panel-default hidden">
 								<div class="panel-heading">Current Events</div>
 								<div class="panel-body"></div>
 							</div>
