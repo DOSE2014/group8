@@ -125,7 +125,7 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/createtask", agent rest_projects_pbis_tasks.createtask, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/listtasks", agent rest_projects_pbis_tasks.listtasks, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/tasks/{idtask}/delete", agent rest_projects_pbis_tasks.deletetask, router.methods_post)
-			map_uri_template_agent_with_request_methods ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit", agent rest_projects_pbis_tasks.edittask , router.methods_post)
+			map_uri_template_agent_with_request_methods ("/projects/{idproj}/tasks/{idtask}/edit", agent rest_projects_pbis_tasks.edittask , router.methods_post)
 
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/sprintlogs/create", agent rest_projects_sprintlogs.createsprintlog, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/sprintlogs/list", agent rest_projects_sprintlogs.listsprintlogs, router.methods_get)

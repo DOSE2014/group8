@@ -9,7 +9,7 @@ feature
 frozen	to_integer(s : STRING) : INTEGER
 	require
 		is_valid(s)
-	once
+	do
 		if s = "requirement" then Result := requirement end
 		if s = "nonFunctionalRequirement" then Result := nonFunctionalRequirement end
 		if s = "bugFix" then Result := bugFix end

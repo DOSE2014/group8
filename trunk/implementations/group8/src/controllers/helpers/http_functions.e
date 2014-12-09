@@ -22,6 +22,8 @@ feature
 		res.header.put_content_type_application_json
 		res.header.put_content_length (json.representation.count)
 		res.put_string (json.representation)
+	rescue
+		-- Do nothing in case of client disconnession
 	end
 
 	send_error_json(res : WSF_RESPONSE; json : JSON_OBJECT; error : INTEGER)
@@ -33,6 +35,8 @@ feature
 		res.header.put_content_type_application_json
 		res.header.put_content_length (json.representation.count)
 		res.put_string (json.representation)
+	rescue
+		-- Do nothing in case of client disconnession
 	end
 
 	send(res : WSF_RESPONSE; text : STRING)
@@ -43,6 +47,8 @@ feature
 		res.header.put_content_type_text_plain
 		res.header.put_content_length (text.count)
 		res.put_string (text)
+	rescue
+		-- Do nothing in case of client disconnession
 	end
 
 	send_error(res : WSF_RESPONSE; text : STRING; error : INTEGER)
@@ -55,6 +61,8 @@ feature
 		res.header.put_content_type_text_plain
 		res.header.put_content_length (text.count)
 		res.put_string (text)
+	rescue
+		-- Do nothing in case of client disconnession
 	end
 
 	send_malformed_json(http_response : WSF_RESPONSE)
@@ -67,7 +75,8 @@ feature
 		json_error.put_string ("error", "status")
 		json_error.put_string ("JSON request malformed", "reason")
 		send_error_json (http_response,json_error,{HTTP_FUNCTIONS}.REQUEST_ERROR)
-
+	rescue
+		-- Do nothing in case of client disconnession
 	end
 
 	send_generic_ok(http_response : WSF_RESPONSE)
@@ -77,7 +86,8 @@ feature
 		create json_ok.make
 		json_ok.put_string ("ok", "status")
 		send_json (http_response,json_ok)
-
+	rescue
+		-- Do nothing in case of client disconnession
 	end
 
 	send_generic_error(str : STRING; http_response : WSF_RESPONSE)
@@ -88,6 +98,7 @@ feature
 		json_error.put_string ("error", "status")
 		json_error.put_string (str, "reason")
 		send_json (http_response,json_error)
-
+	rescue
+		-- Do nothing in case of client disconnession
 	end
 end
