@@ -93,7 +93,9 @@ feature{NONE}
 			resultobject.setpoints (row.string_value(5).to_integer)
 			if row.string_value (6).to_integer = {STATE}.completed
 			then resultobject.setstate ({STATE}.completed)
-			else resultobject.setstate ({STATE}.pending)
+			elseif row.string_value (6).to_integer = {STATE}.ongoing
+			then resultobject.setstate ({STATE}.ongoing)
+			else resultobject.setstate ({STATE}.awaiting)
 			end
 			resultobject.setpbi (pbiDBHandler.getPBIFromId(row.string_value (7).to_integer))
 			create completiondate.make_from_epoch (row.string_value (8).to_integer)

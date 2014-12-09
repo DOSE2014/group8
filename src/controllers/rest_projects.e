@@ -668,7 +668,7 @@ feature
 									if attached tasks then
 										across tasks as t
 										loop
-											if t.item.getState = {STATE}.pending then
+											if t.item.getState /= {STATE}.completed then
 												pbiIsCompleted := false
 											end
 										end

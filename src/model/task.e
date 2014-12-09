@@ -109,15 +109,18 @@ feature
 			getId /= 0
 		local
 			epoch: DATE_TIME
+			state_class : STATE
 		do
 			create epoch.make_from_epoch (0)
 			create Result.make
+			create state_class
+
 			Result.put_integer(id, "id")
 			Result.put_string(name, "name")
 			Result.put_string(description, "description")
 			Result.put_integer(points, "points")
 			Result.put_integer(developer.getid, "developer")
-			Result.put_string(ec.int_to_statestring (state), "state")
+			Result.put_string(state_class.to_string (state), "state")
 			Result.put_integer(pbi.getid, "pbi")
 			Result.put_integer(completionDate.definite_duration(epoch).seconds_count, "completionDate")
 		end
