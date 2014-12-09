@@ -15,6 +15,9 @@ var url_createProjects = "/projects/create";
 var url_remDevProject = "/projects/{0}/remdeveloper";
 var url_addDevProject = "/projects/{0}/adddeveloper";
 var url_editAccount = "/account/edit";
+var url_remPBI = "/projects/{0}/pbis/{1}/delete";
+var url_addPBI = "/projects/{0}/pbis/create";
+var url_addBacklog = "/projects/{0}/createbacklog";
 
 //
 var url_login = "login.html";
@@ -70,26 +73,23 @@ dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 }]);
 
 dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
+	//Opens the modal pop up to create a new project. STAKEHOLDER only
 	$scope.openNewProject = function(){
 		$('#modal_newProject').modal('toggle');
 	}
-	
+	//Opens the modal pop up to manage the developers in a project. Manager Only
 	$scope.openDevManager = function(){
 		$('#modal_manager').modal('toggle');
 	}
 	
-	$scope.srvStakeholders = [];
+	//Array with the available developers
 	$scope.srvDevelopers = [];
-	
-
-	$http.get(url_getStakeholders).success(function(response) {
-		$scope.srvStakeholders = response.stakeholders;
-	});
-	
+	//Gets the developers from the REST service
 	$http.get(url_getDevelopers).success(function(response) {
 		$scope.srvDevelopers = response.developers;
 	});
 	
+	//Remove a developer from a project
 	$scope.removeDev = function(devId){
 		if(confirm("Are you sure you want to remove the developer? All his info in the project will be lost.")){
 			$http.post(url_remDevProject.format($scope.project.id), JSON.stringify({ 'iddev' : devId })).success(function(data) {
@@ -104,6 +104,7 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 		}
 	}
 	
+	//Adds a developer to a project
 	$scope.addDev = function(){
 		$http.post(url_addDevProject.format($scope.project.id), JSON.stringify({ 'iddev' : $scope.addDeveloperId.id })).success(function(data) {
 			if (data.status == "ok") {
@@ -118,6 +119,95 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 		
 	}
 	
+	//Remove a PBI from a project
+	$scope.removeBacklog = function(bklId){
+		if(confirm("Are you sure you want to remove the PBI?")){
+			$http.post(url_remPBI.format($scope.project.id, bklId)).success(function(data) {
+				if (data.status == "ok") {
+					alert("PBI removed from project");
+				} else {
+					alert(data.status);
+				}
+			});
+		}
+	}
+	
+	$scope.addPBI = function(data){
+		$http.post(url_addPBI.format($scope.project.id), JSON.stringify(data)).success(function(data) {
+			if (data.status == "ok") {
+				alert("PBI created");
+			} else if (data.status == "error") {
+				alert(data.reason);
+				$('#modal_backlog').modal('hide');
+			}
+		}).error(function(error) {
+			alert(error);
+			$('#modal_backlog').modal('hide');
+		});
+	}
+	
+	//Adds a PBI to a project. And a backlog if it doesn't exist
+	$scope.addBacklog = function() {
+		
+		/*
+		 * 
+var url_addPBI = "/projects/{0}/pbis/create";
+var url_addBacklog = "/projects/{0}/createbacklog";
+		 * */
+		$scope.bklNameRequired = '';
+		$scope.bklDescriptionRequired = '';
+		$scope.bklPriorityRequired = '';
+		$scope.bklTypeRequired = '';
+
+		if (!$scope.bklName) {
+			$scope.bklNameRequired = 'Required';
+		} else if (!$scope.bklDescription) {
+			$scope.bklDescriptionRequired = 'Required';
+		}else if (!$scope.bklPriority) {
+			$scope.bklPriorityRequired = 'Required';
+		}else if (!$scope.bklType) {
+			$scope.bklTypeRequired = 'Required';
+		} else {
+			var postData = {
+				'name' : $scope.bklName,
+				'description': $scope.bklDescription,
+				'type' : '1',
+				'priority': $scope.bklPriority,
+				'dueDate': Math.floor(((new Date()).getTime())/1000)
+			};
+			
+			if(Object.size($scope.backlog) <= 0){
+				$http.post(url_addBacklog.format($scope.project.id), JSON.stringify({'description':'backlog'})).success(function(data) {
+					if (data.status == "ok") {
+						
+						var postData = {
+							'name' : $scope.bklName,
+							'description': $scope.bklDescription,
+							'type' : $scope.bklType,
+							'priority': $scope.bklPriority,
+							'dueDate': Math.floor(((new Date()).getTime())/1000)
+						};
+						
+						
+						$scope.addPBI(postData);
+					} else if (data.status == "error") {
+						alert(data.reason);
+						$('#modal_backlog').modal('hide');
+					}
+				}).error(function(error) {
+					alert(error);
+					$('#modal_backlog').modal('hide');
+				});
+			}else{
+				addPBI(postData);
+			}
+		
+			
+			
+		}
+	}
+	
+	//Saves a new project. STAKEHOLDER only
 	$scope.saveProject = function() {
 		$scope.nameRequired = '';
 		$scope.descriptionRequired = '';
@@ -333,8 +423,11 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 		}
 	};
 	
+	//Opens the PBI manager pop up. MANAGER only
 	$scope.openPbiManager = function(){
-		alert("AAA");
+		$('#txt_bklName').val('');
+		$('#txt_bklDescription').val('');
+		$('#modal_backlog').modal('show');
 	}
 	
 	//if the user has no projects sets the variable to blank
@@ -349,9 +442,19 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 		$scope.completion = [];
 	}
 	
+	//gets a formated date from a UNIX timestamp
 	$scope.getDate = function(time_date){
 		var res = new Date(time_date*1000);
 		res = res.getDate()+"/"+(res.getMonth()+1)+"/"+res.getFullYear();
+		return res;
+	}
+	
+	//get a range of numbers to the maximum value with a step value
+	$scope.getRange = function(maxVal, step){
+		var res = [];
+		for(var i=step; i<=maxVal; i=i+step){
+	        res.push(i);
+	    }
 		return res;
 	}
 	
@@ -372,6 +475,7 @@ dashboard.service('restUsers', function($http) {
 			})
 	};
 	
+	//gets the points of a developer in a project
 	this.getPoints = function (devId, projId, callback){
 		$http.get(url_getDevPoints.format(''+projId, ''+devId)).success(
 			function(response) {
