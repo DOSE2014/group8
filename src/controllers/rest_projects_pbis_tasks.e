@@ -156,15 +156,14 @@ feature
 		hres /= Void
 	local
 		id_project : INTEGER
-		id_pbis : INTEGER
+		id_pbi : INTEGER
 		hp : HTTP_PARSER
 
-		param_name        : STRING
-		param_description        : STRING
-		param_points        : STRING
-		param_developer        : STRING
+		param_name         : STRING
+		param_description  : STRING
+		param_points       : INTEGER
+		param_developer    : INTEGER
 		param_state        : STRING
-		param_pbi        : STRING
 		param_completionDate: INTEGER
 
 		state : STATE
@@ -178,7 +177,7 @@ feature
 		p : PROJECT
 		pbi : PBI
 		t: TASK
-		u,m : USER
+		dev,m : USER
 		completionDate: DATE_TIME
 
 	do
@@ -196,94 +195,109 @@ feature
 
 			-- First GET the id of the project
 			if not attached hp.path_param("idproj") or not hp.path_param("idproj").is_integer then
-				send_malformed_json(http_response)
+				send_generic_error ("idproj not found or not integer.", hres)
 				-- And logs it
 				log.warning ("/projects/{idproj}/pbis/{idpbis}/create [POST] Missing idproj in URL.")
 				ok := FALSE
 			else
 				id_project := hp.path_param("idproj").to_integer
-			end
-
-			-- Next check the POST parameters
-			create regex.make
-
-			json_error.put_string ("error", "status")
-
-			param_name := hp.post_param ("name")
-			if ok and param_name.is_empty then
-				error_reason := "Name not present or not correct."
-				ok := FALSE
-			end
-
-			param_description := hp.post_param ("description")
-			if ok and param_description.is_empty then
-				error_reason := "Description not present or not correct."
-				ok := FALSE
-			end
-
-			param_points:= hp.post_int_param ("points").out
-			if ok and not regex.check_integer (param_points) and param_points.to_integer < 0 then
-				error_reason := "Points not present or not correct."
-				ok := FALSE
-			end
-
-			param_state:= hp.post_param ("state")
-			if ok and not regex.check_name (param_state) and not state.is_valid (param_state) then
-				error_reason := "State not present or not correct."
-				ok := FALSE
-			end
-
-			param_pbi:= hp.post_int_param ("pbi").out
-			if ok and  regex.check_integer (param_pbi) then
-				pbi:= db.getpbifromid (param_pbi.to_integer)
-			end
-
-			if ok and not  regex.check_integer (param_pbi) and pbi.getbacklog.getproject.getid.is_equal (id_project) then
-					error_reason := "PBI not present or not correct."
+				p := db.getprojectfromid (id_project)
+				if not attached p then
+					send_generic_error ("Project not found.", hres)
 					ok := FALSE
+				end
 			end
 
-			param_developer:= hp.post_int_param ("developer").out
-			if ok and regex.check_integer (param_developer) then
-				u := db.getuserfromid (param_developer.to_integer)
-			end
-
-			if ok and not regex.check_integer (param_developer) and db.checkvisibilityforproject (u.getid, p.getid)  then
-				error_reason := "Developer not present or not correct."
+			-- First GET the id of the project
+			if not attached hp.path_param("idpbi") or not hp.path_param("idpbi").is_integer then
+				send_generic_error ("idpbi not found or not integer.", hres)
+				-- And logs it
+				log.warning ("/projects/{idproj}/pbis/{idpbis}/create [POST] Missing idpbi in URL.")
 				ok := FALSE
+			elseif ok then
+				id_pbi := hp.path_param("idpbi").to_integer
+				pbi := db.getpbifromid(id_pbi)
+				if not attached pbi or pbi.getbacklog.getproject.getid /= p.getId then
+					send_generic_error ("PBI not found or not in project.", hres)
+					ok := FALSE
+				end
 			end
 
-			param_completionDate := hp.post_int_param ("completionDate")
-			if ok and not regex.check_unixtime (param_completionDate.out)then
-				error_reason := "Completion date in bad format"
-				ok := FALSE
-			end
-
-			--CHECK m is manager
 			m := get_session_user
-			if ok then
-				p := pbi.getbacklog.getproject
-			end
-
-			if ok and not p.getmanager.getid.is_equal (m.getid) then
-				error_reason := "The current user is not manager of the project"
+			-- CHECK if m is manager
+			if ok and p.getmanager.getid /= m.getid then
+				send_generic_error ("The current user is not manager of the project", hres)
 				ok := FALSE
 			end
 
-			if not ok then
-				log.warning("/projects/{idproj}/pbis/{idpbis}/createtask [POST] Request error: " + error_reason)
-				json_error.put_string (error_reason, "reason")
-				send_json(hres, json_error)
-			else
+			if ok then
+				-- Next check the POST parameters
+				create regex.make
 
-				if ok then
+				json_error.put_string ("error", "status")
+
+				param_name := hp.post_param ("name")
+				if ok and (not attached param_name or param_name.is_empty) then
+					error_reason := "Name not present or not correct."
+					ok := FALSE
+				end
+
+				param_description := hp.post_param ("description")
+				if ok and (not attached param_description or param_description.is_empty) then
+					error_reason := "Description not present or not correct."
+					ok := FALSE
+				end
+
+				param_points := hp.post_int_param ("points")
+				if ok and (not attached param_points or param_points < 0) then
+					error_reason := "Points not present or not correct."
+					ok := FALSE
+				end
+
+				create state
+				param_state := hp.post_param ("state")
+				if ok and (not attached param_state or not state.is_valid (param_state)) then
+					error_reason := "State not present or not correct."
+					ok := FALSE
+				end
+
+				param_developer := hp.post_int_param ("developer")
+				if ok and not attached param_developer then
+					error_reason := "Developer not present."
+					ok := FALSE
+				elseif ok then
+					dev := db.getuserfromid (param_developer)
+					if not attached dev or not db.checkvisibilityforproject (dev.getid, p.getid) then
+						error_reason := "Developer not exists or not in the project."
+						ok := FALSE
+					end
+				end
+
+				param_completionDate := hp.post_int_param ("completionDate")
+				if ok and not regex.check_unixtime (param_completionDate.out)then
+					error_reason := "Completion date in bad format"
+					ok := FALSE
+				end
+
+				if ok and not p.getmanager.getid.is_equal (m.getid) then
+					error_reason := "The current user is not manager of the project"
+					ok := FALSE
+				end
+
+				if not ok then
+					log.warning("/projects/{idproj}/pbis/{idpbis}/createtask [POST] Request error: " + error_reason)
+					json_error.put_string (error_reason, "reason")
+					send_json(hres, json_error)
+				end
+			end -- end if ok
+
+			if ok then
 					create completionDate.make_from_epoch (param_completiondate)
-					create t.make (0, param_name, param_description, u, param_points.to_integer, state.to_integer(param_state), pbi, completiondate)
+					create t.make (0, param_name, param_description, dev, param_points.to_integer, state.to_integer(param_state), pbi, completiondate)
 					db.inserttask (t)
 					log.info ("/projects/{idproj}/pbis/{idpbis}/createtask [POST] Created a new task "+param_name )
 					-- send OK to the user :)				
 					send_generic_ok(hres)
-				end
 			end
 
 		else
@@ -324,7 +338,7 @@ feature
 			m := get_session_user
 
 			-- First GET the id of the project
-			if ok and ( not attached hp.path_param("idproj") or hp.path_param("idproj").is_integer) then
+			if ok and ( not attached hp.path_param("idproj") or not hp.path_param("idproj").is_integer) then
 				send_generic_error ("idproj not found or not integer.", hres)
 				ok := FALSE
 				log.warning ("/projects/{idproj}/tasks/{idtask}/delete [POST] Missing idproj in URL.")
@@ -332,7 +346,7 @@ feature
 			id_project := hp.path_param("idproj").to_integer
 
 			-- Third GET the id of the task
-			if ok and (not attached hp.path_param("idtask") or hp.path_param("idtask").is_integer) then
+			if ok and (not attached hp.path_param("idtask") or not hp.path_param("idtask").is_integer) then
 				send_generic_error ("idtask not found or not integer.", hres)
 				ok := FALSE
 				log.warning (" /projects/{idproj}/tasks/{idtask}/delete [POST] Missing idtask in URL.")
@@ -407,7 +421,7 @@ feature
 				send_generic_error ("idproj not found or not integer.", hres)
 				ok := FALSE
 				-- And logs it
-				log.warning ("/projects/{idproj}/pbis/{idpbi}/tasks/{idtask}/edit [POST] Missing idproj in URL.")
+				log.warning ("/projects/{idproj}/tasks/{idtask}/edit [POST] Missing idproj in URL.")
 			else
 				id_project := hp.path_param("idproj").to_integer
 				p := db.getprojectfromid (id_project)
@@ -415,6 +429,7 @@ feature
 				if not attached p then
 					send_generic_error ("Project not found", hres)
 					ok := FALSE
+					log.warning ("/projects/{idproj}/tasks/{idtask}/edit [POST] Project not found.")
 				end
 			end
 
@@ -424,7 +439,7 @@ feature
 				ok := FALSE
 				send_generic_error ("idtask not found or not integer.", hres)
 				-- And logs it
-				log.warning ("/projects/{idproj}/tasks/{idtask}/edit [GET] Missing idtask in URL.")
+				log.warning ("/projects/{idproj}/tasks/{idtask}/edit [POST] Missing idtask in URL.")
 			end
 			if ok then
 				id_task := hp.path_param("idtask").to_integer
@@ -432,6 +447,7 @@ feature
 				if not attached task then
 					send_generic_error ("Task not found", hres)
 					ok := FALSE
+					log.warning ("/projects/{idproj}/tasks/{idtask}/edit [POST] Task not found.")
 				end
 			end
 
@@ -439,6 +455,7 @@ feature
 			if ok and not p.getmanager.getid.is_equal (m.getid) then
 				send_generic_error ("The current user is not manager of the project", hres)
 				ok := FALSE
+				log.warning ("/projects/{idproj}/tasks/{idtask}/edit [POST] The current user is not manager of the project.")
 			end
 
 			if ok then
@@ -456,7 +473,7 @@ feature
 				end
 
 				param_int := hp.post_int_param ("points")
-				if ok and attached param_int and regex.check_integer (param_int.out) and param_int.to_integer >= 0 then
+				if attached param_int and regex.check_integer (param_int.out) and param_int.to_integer >= 0 then
 					task.setPoints (param_int)
 				end
 
@@ -477,7 +494,7 @@ feature
 				end
 
 				param_int := hp.post_int_param ("completionDate")
-				if ok and attached param_int and regex.check_unixtime (param_int.out)then
+				if attached param_int and regex.check_unixtime (param_int.out)then
 					create completiondate.make_from_epoch (param_int)
 					task.setcompletiondate (completiondate)
 				end
@@ -489,14 +506,17 @@ feature
 						task.setdeveloper (dev)
 					end
 				end
-			end -- end if ok
 
-			if ok then
 				db.editTask(task)
 				log.info ("/projects/{idproj}/tasks/{idtask}/edit [POST] Edited a task "+task.getname )
 				-- send OK to the user :)				
 				send_generic_ok(hres)
-			end
+
+			end -- end if ok
+
+		elseif not hp.is_good_request then
+			 send_malformed_json (hres)
+			 log.info ("/projects/{idproj}/tasks/{idtask}/edit [POST] Malformed JSON")
 
 		end -- end ensure_authenticated
 
