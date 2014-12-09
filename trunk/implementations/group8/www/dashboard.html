@@ -339,6 +339,105 @@
 		</div>
 	</div>
 	
+	
+	<div class="modal fade" id="modal_backlog" tabindex="-1" role="dialog"
+		aria-labelledby="Manage Backlog" aria-hidden="true" data-ng-controller="Project">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Manage backlog</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row" style="margin-right:5px;">
+						<div class="col-xs-12 well well-sm">
+							<div class="row">
+								<div class="col-xs-10">
+									<form class="form-horizontal" role="form">
+									<div class="form-group">
+										<label for="txt_bklName" class="col-sm-3 control-label">Name </label>
+										<div class="col-sm-7">
+											<input class="form-control" id="txt_bklName"
+												placeholder="Item name" data-ng-model="bklName">
+										</div>
+										<span data-ng-show="bklNameRequired">{{bklNameRequired}}</span>
+									</div>
+									
+									<div class="form-group">
+										<label for="txt_bklDescription" class="col-sm-3 control-label">Description </label>
+										<div class="col-sm-7">
+											<textarea class="form-control" rows="3" id="txt_bklDescription"
+												placeholder="Item description" data-ng-model="bklDescription"></textarea>
+											
+										</div>
+										<span data-ng-show="bklDescriptionRequired">{{bklDescriptionRequired}}</span>
+									</div>
+								
+									
+									<div class="form-group">
+										<label for="sel_bklPriority" class="col-sm-3 control-label">Priority</label>
+											<div class="col-sm-7">
+												<select class="form-control" name="sel_bklPriority"
+													data-ng-model="bklPriority"
+													data-ng-options="num for num in getRange(100,10)">
+												</select>
+				
+											</div>
+											<span data-ng-show="bklPriorityRequired">{{bklPriorityRequired}}</span>
+									</div>
+									
+									<div class="form-group">
+										<label for="sel_bklType" class="col-sm-3 control-label">Type</label>
+											<div class="col-sm-7">
+												<select class="form-control" name="sel_bklType" data-ng-model="bklType">
+													<option value="requirement">Requirement</option>
+													<option value="nonFunctionalRequirement">Non functional req</option>
+													<option value="bugFix">Bug fix</option>
+												</select>
+				
+											</div>
+											<span data-ng-show="bklTypeRequired">{{bklTypeRequired}}</span>
+									</div>
+									
+									</form>
+								</div>
+								<div class="col-xs-2">
+									<button type="button" class="btn btn-default" data-ng-click="addBacklog()">Add</button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<br/>
+					<div class="row" style="margin-right:5px;">
+						<ul class="list-group">
+							<li class="list-group-item" data-ng-repeat="bkl in backlog">
+								<div class="row">
+								<div class='col-xs-10'>
+									<span style="font-weight:bold;">PBI {{$index+1}}: </span>{{bkl.name}}
+								</div>
+								<div class='col-xs-2'>
+									<a class="navbar-link navbar_project_edit" data-ng-click="removeBacklog(bkl.id)">
+										(Remove)
+									</a>
+								</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					
+					
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<div class="modal fade" id="modal_profile" tabindex="-1" role="dialog"
 		aria-labelledby="My profile" aria-hidden="true" data-ng-controller="Profile">
 		<div class="modal-dialog">
