@@ -70,10 +70,17 @@ feature
 			end
 		end
 	editTask(t: TASK)
+	local
+		pbisql : STRING
 	do
+		if t.getpbi /= Void then
+			pbisql := ",pbi=" + t.getpbi.getid.out + " "
+		else
+			pbisql := ""
+		end
 		create dbmodifystatement.make ("UPDATE Task SET name='" + t.getname + "', description='" +
 					t.getdescription + "', developer='" + t.getdeveloper.getid.out + "', points='" + t.getpoints.out +
-					"', state='" + t.getstate.out + "', pbi='" + t.getpbi.getid.out +  "' WHERE id=" + t.getid.out + ";", db)
+					"', state='" + t.getstate.out + "' " + pbisql + " WHERE id=" + t.getid.out + ";", db)
 
 				dbmodifystatement.execute
 				if dbmodifystatement.has_error

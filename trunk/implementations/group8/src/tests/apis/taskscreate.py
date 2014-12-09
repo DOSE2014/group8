@@ -8,7 +8,7 @@ params = """{
 "description" : "A description for this task!",
 "points" : 102,
 "developer" : 1,
-"state" : "Ongoing",
+"state" : "ongoing",
 "pbi" : 5
 }""";
 
