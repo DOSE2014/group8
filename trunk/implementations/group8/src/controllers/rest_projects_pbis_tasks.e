@@ -171,6 +171,7 @@ feature
 		regex : REGEX
 		json_error  : JSON_OBJECT
 		error_reason : STRING
+		error_field  : STRING
 
 		ok : BOOLEAN
 
@@ -226,7 +227,7 @@ feature
 			m := get_session_user
 			-- CHECK if m is manager
 			if ok and p.getmanager.getid /= m.getid then
-				send_generic_error ("The current user is not manager of the project", hres)
+				no_permission
 				ok := FALSE
 			end
 
@@ -239,18 +240,21 @@ feature
 				param_name := hp.post_param ("name")
 				if ok and (not attached param_name or param_name.is_empty) then
 					error_reason := "Name not present or not correct."
+					error_field  := "name"
 					ok := FALSE
 				end
 
 				param_description := hp.post_param ("description")
 				if ok and (not attached param_description or param_description.is_empty) then
 					error_reason := "Description not present or not correct."
+					error_field  := "description"
 					ok := FALSE
 				end
 
 				param_points := hp.post_int_param ("points")
 				if ok and (not attached param_points or param_points < 0) then
 					error_reason := "Points not present or not correct."
+					error_field  := "points"
 					ok := FALSE
 				end
 
@@ -258,17 +262,20 @@ feature
 				param_state := hp.post_param ("state")
 				if ok and (not attached param_state or not state.is_valid (param_state)) then
 					error_reason := "State not present or not correct."
+					error_field  := "state"
 					ok := FALSE
 				end
 
 				param_developer := hp.post_int_param ("developer")
 				if ok and not attached param_developer then
 					error_reason := "Developer not present."
+					error_field  := "developer"
 					ok := FALSE
 				elseif ok then
 					dev := db.getuserfromid (param_developer)
 					if not attached dev or not db.checkvisibilityforproject (dev.getid, p.getid) then
 						error_reason := "Developer not exists or not in the project."
+						error_field  := "developer"
 						ok := FALSE
 					end
 				end
@@ -276,17 +283,15 @@ feature
 				param_completionDate := hp.post_int_param ("completionDate")
 				if ok and not regex.check_unixtime (param_completionDate.out)then
 					error_reason := "Completion date in bad format"
-					ok := FALSE
-				end
-
-				if ok and not p.getmanager.getid.is_equal (m.getid) then
-					error_reason := "The current user is not manager of the project"
+					error_field  := "completionDate"
 					ok := FALSE
 				end
 
 				if not ok then
 					log.warning("/projects/{idproj}/pbis/{idpbis}/createtask [POST] Request error: " + error_reason)
 					json_error.put_string (error_reason, "reason")
+					json_error.put_string (error_field,  "field")
+
 					send_json(hres, json_error)
 				end
 			end -- end if ok

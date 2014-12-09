@@ -8,7 +8,8 @@ params = """
 """;
 
 expected_response = json.loads("""
-{"tasks":[{"id":2,"name":"Second test task","description":"BLablabla","points":23,"developer":2,"state":"Awaiting","pbi":2,"completionDate":0},{"id":3,"name":"Another test","description":"Blablablabla","points":10,"developer":2,"state":"Completed","pbi":2,"completionDate":1415577600}]}
+{"tasks":[{"id":2,"name":"Second test task","description":"BLablabla","points":23,"developer":2,"state":"awaiting","pbi":2,"completionDate":0},{"id":3,"name":"Another test","description":"Blablablabla","points":10,"developer":2,"state":"completed","pbi":2,"completionDate":1415577600}]}
+
 """)
 
 def exec_test(debug=False):
