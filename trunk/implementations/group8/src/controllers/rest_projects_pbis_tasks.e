@@ -210,7 +210,7 @@ feature
 			end
 
 			-- First GET the id of the project
-			if not attached hp.path_param("idpbi") or not hp.path_param("idpbi").is_integer then
+			if ok and (not attached hp.path_param("idpbi") or not hp.path_param("idpbi").is_integer) then
 				send_generic_error ("idpbi not found or not integer.", hres)
 				-- And logs it
 				log.warning ("/projects/{idproj}/pbis/{idpbis}/create [POST] Missing idpbi in URL.")
@@ -281,7 +281,7 @@ feature
 				end
 
 				param_completionDate := hp.post_int_param ("completionDate")
-				if ok and not regex.check_unixtime (param_completionDate.out)then
+				if ok and (not attached param_completionDate or not regex.check_unixtime (param_completionDate.out)) then
 					error_reason := "Completion date in bad format"
 					error_field  := "completionDate"
 					ok := FALSE

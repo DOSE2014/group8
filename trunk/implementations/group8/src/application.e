@@ -29,17 +29,7 @@ create
 
 feature {NONE} -- Initialization
 
-	----------------------------------------------------------------------------
-	------------- REMOVE THESE, ONLY FOR TESTING COMPILATION -------------------
-	backlog : BACKLOG
-	pbi : PBI
-	sprintlog : SPRINTLOG
-	task : TASK
-	pdtdb : PDT_DB
-	state : STATE
-	------------- REMOVE PREVIOUS, ONLY FOR TESTING COMPILATION ----------------
-	----------------------------------------------------------------------------
-
+	pdtdb                    : PDT_DB
 	rest_account             : REST_ACCOUNT
 	rest_projects            : REST_PROJECTS
 	rest_projects_pbis 	     : REST_PROJECTS_PBIS
