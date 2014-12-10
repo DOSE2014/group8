@@ -128,6 +128,12 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/stats/devpoints", agent rest_stats.devpoints, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/stats/projpoints", agent rest_stats.projpoints, router.methods_get)
 
+			map_uri_template_agent_with_request_methods ("/chat/{idproj}/getchat", agent rest_chat.getchatfromprojectid, router.methods_get)
+			map_uri_template_agent_with_request_methods ("/chat/{idproj}/insertmessage", agent rest_chat.insertmessage, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/chat/{idproj}/adduser", agent rest_chat.adduserinchat, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/chat/{idproj}/deleteuser", agent rest_chat.deleteuserinchat, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/chat/{idproj}/polling", agent rest_chat.polling, router.methods_get)
+
 			-- setting the path to the folder from where we serve static files
 			create fhdl.make_hidden (path_to_www_folder)
 			fhdl.set_directory_index (<<"index.html">>)
