@@ -202,14 +202,12 @@
                         
  				
  <div ng-controller="Sprintlogcontroller">
-   <button type="button"  class="btn btn-lg btn-primary" ng-click="setManager()">If manager</button>
-      <button type="button"  class="btn btn-lg btn-primary" ng-click="setDeveloper()">If developer or stackholder</button>
-  <div class="row" ng-show="manager">
+  <div class="row" >
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" ng-hide="date">
                         <h2 align="center">Backlog Items</h2>
                         <div class="table-responsive">
-                            <table ng-repeat="x in PBInotinsprintlog|orderBy:'priority'" class="table table-bordered table-hover">
+<table ng-repeat="x in PBInotinsprintlog|orderBy:'priority'" class="table table-bordered table-hover">
                             <tr ng-hide="button">
     <td class="col-lg-3"> <b>Task Name: </b>{{ x.name }} <br> <b>Priority: </b>{{x.priority}} <br> <b>Description: </b>{{x.description}}</td>
     <td class="col-lg-3">Choose Developer: <br>
@@ -218,7 +216,7 @@
      </select>
      <h3>Select the points for this task</h3>
     <select ng-model="points" value="Taskpoint" name="Points for task">
-    <option value="1"selected>1</option>
+    <option value="1" selected>1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
@@ -236,9 +234,9 @@
  </div>
  </div>
  
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" ng-hide="date">
                         <h2 align="center">Items in sprintlog</h2>
-                        <button style="float:right;"type="button" class="btn btn-lg btn-primary" ng-click="setdate()">set time for sprintlog</button>
+                        <!--button style="float:right;" type="button" class="btn btn-lg btn-primary" ng-click="setdate()">set time for sprintlog</button -->
                         <div class="table-responsive">
                             <table ng-repeat="x in addToSprintlog|orderBy:'name'" class="table table-bordered table-hover">
                             <tr>
@@ -247,7 +245,7 @@
 </tr>
 </table>
  </div>
-<button style="float:right;"type="button" class="btn btn-lg btn-primary" ng-click="submitSprintlog()">Create sprintlog</button>
+<!--button style="float:right;" type="button" class="btn btn-lg btn-primary" ng-click="submitSprintlog()">Create sprintlog</button-->
 </div>
                 </div>
                 <!-- /.row -->
@@ -267,7 +265,7 @@
 
     </div>
     <!-- /#wrapper -->
-
+</div>
     <!-- jQuery -->
     <script src="includes/jquery.js"></script>
 
