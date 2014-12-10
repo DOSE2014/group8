@@ -63,7 +63,7 @@ feature
 			create hp.make (hreq)
 			if ensure_authenticated then
 				u := get_session_user
-		--		print (hp.path_param ("idproj"))
+					--		print (hp.path_param ("idproj"))
 				if attached hp.path_param ("idproj") and hp.path_param ("idproj").is_integer then
 					id_project := hp.path_param ("idproj").to_integer --get id of the project
 					if db.checkVisibilityForProject (u.getId, id_project) then
@@ -139,19 +139,24 @@ feature
 						json_error.put_string ("description", "field")
 						ok := FALSE
 					end
+					if attached  hp.post_int_param ("startDate") then
 					param_startDate := hp.post_int_param ("startDate").out
+					end
 					if ok and not attached param_startDate and not regex.check_unixtime (param_startDate.out) then
 						error_reason := "Start date not present or not correct (it should be unixtimestamp in seconds)."
 						json_error.put_string ("startDate", "field")
 						ok := FALSE
 					end
-					param_endDate := hp.post_int_param ("endDate").out
-					if ok and not attached param_startDate and not regex.check_unixtime (param_startDate.out) then
+					if attached  hp.post_int_param ("endDate") then
+						param_endDate := hp.post_int_param ("endDate").out
+					end
+					if ok and not attached param_endDate and not regex.check_unixtime (param_endDate.out) then
 						error_reason := "End date not present or not correct (it should be unixtimestamp in seconds)."
 						json_error.put_string ("endDate", "field")
 						ok := FALSE
 					end
 						--TODO: check if every pbi exists
+					if attached hp.post_array_param ("idpbis") then
 					param_idpbis := hp.post_array_param ("idpbis")
 					across
 						param_idpbis as e
@@ -162,6 +167,11 @@ feature
 							ok := FALSE
 						end
 					end --end loop
+					else
+					error_reason := "PBI not present or not correct."
+					json_error.put_string ("idpbis", "field")
+					ok := FALSE
+					end
 						-- FINISH check the POST parameters
 					if ok then --CHECK m is manager
 						m := get_session_user
@@ -314,10 +324,10 @@ feature
 					p := db.getprojectfromid (id_project)
 					param_id := hp.path_param ("idsprintlog")
 					s := db.getsprintlogfromid (param_id.to_integer)
-					if not attached s then
-						error_reason := "Sprintlog does not exist"
+					if (not attached s or not attached p) then --TODO: should also check if sprintlog belongs to project
+						error_reason := "Sprintlog or project does not exist"
 							-- And logs it
-						log.warning ("/projects/{idproj}/sprintlogs/{idsprintlog}/listpbis [POST] Missing idproj in URL.")
+						log.warning ("/projects/{idproj}/sprintlogs/{idsprintlog}/listpbis [POST] Missing idproj or idsprintlog in URL.")
 						ok := FALSE
 					end
 						-- Next check the POST parameters
@@ -326,8 +336,10 @@ feature
 						-- (in this case, this object is not used)
 					create json_error.make
 					json_error.put_string ("error", "status")
-					param_id := hp.post_int_param ("id").out
-					if ok and not regex.check_integer (param_id) then
+					if attached hp.post_int_param ("id") then
+						param_id := hp.post_int_param ("id").out
+					end
+					if ok and (not attached param_id or not regex.check_integer (param_id)) then
 						error_reason := "Id not present or not correct."
 						json_error.put_string ("id", "field")
 						ok := FALSE
@@ -416,8 +428,10 @@ feature
 							-- (in this case, this object is not used)
 						create json_error.make
 						json_error.put_string ("error", "status")
-						param_id := hp.post_int_param ("id").out
-						if ok and not regex.check_integer (param_id) then
+						if attached hp.post_int_param ("id") then
+							param_id := hp.post_int_param ("id").out
+						end
+						if ok and (not attached param_id or not regex.check_integer (param_id)) then
 							error_reason := "Id not present or not correct."
 							json_error.put_string ("id", "field")
 							ok := FALSE
@@ -428,17 +442,16 @@ feature
 							error_reason := "The current user is not manager of the project"
 							ok := FALSE
 						end
-						if not ok then
+
+						if ok then
+							db.removepbifromsprintlog (param_id.to_integer, s.getid)
+							log.info ("/projects/{idproj}/sprintlogs/{idsprintlog}/removepbi [POST] Added PBI to sprintlog " + s.getid.out)
+								-- send OK to the user :)
+							send_generic_ok (hres)
+						else
 							log.warning ("/projects/{idproj}/sprintlogs/{idsprintlog}/removepbi  [POST] Request error: " + error_reason)
 							json_error.put_string (error_reason, "reason")
 							send_json (hres, json_error)
-						else
-							if ok then
-								db.removepbifromsprintlog (param_id.to_integer, s.getid)
-								log.info ("/projects/{idproj}/sprintlogs/{idsprintlog}/removepbi [POST] Added PBI to sprintlog " + s.getid.out)
-									-- send OK to the user :)
-								send_generic_ok (hres)
-							end
 						end
 					end
 				end
@@ -525,4 +538,5 @@ feature
 				end
 			end -- end ensure authenticated and good request
 		end -- end current feature
+
 end
