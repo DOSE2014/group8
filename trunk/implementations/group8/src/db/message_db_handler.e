@@ -69,6 +69,16 @@ feature
 
 		end
 
+	getNewMessages(chatId, lastMessageId: INTEGER): LINKED_SET[MESSAGE]
+		do
+			create Result.make
+			create dbquerystatement.make ("SELECT * FROM Message WHERE chat=" + chatid.out + " AND id > " + lastmessageid.out + ";", db)
+			dbquerystatement.execute (agent genMessages(?, 5, Result))
+			if Result.count = 0 then
+				Result := Void
+			end
+		end
+
 feature{NONE}
 	genMessage(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultobject: MESSAGE): BOOLEAN
 		local

@@ -303,5 +303,8 @@ feature
 		do
 			chatdbhandler.deleteuserinchat (user, chat)
 		end
-
+	getNewMessages(chatId, lastMessageId: INTEGER): LINKED_SET[MESSAGE]
+		do
+			Result := messagedbhandler.getNewMessages(chatId, lastMessageId)
+		end
 end
