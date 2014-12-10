@@ -202,6 +202,15 @@
                         
  				
  <div ng-controller="Sprintlogcontroller">
+ 
+ <div class="row" ng-show="date">
+  <button type="button" class="btn btn-lg btn-primary" ng-click="goBack()">Go back </button>
+  <h3>Name: </h3> <input type="text" name="name" ng-model="cs.name" value=" "><br>
+  <h3>Description: </h3> <input type="text" name="description" ng-model="cs.description" value=" "><br>
+  <h3>Sprintlog Start Date: </h3> <input type="date" name="setdate" ng-model="cs.startdate" value=" "><br>
+  <h3>Sprintlog End Date: </h3> <input type="date" name="endDate" ng-model="cs.enddate" value=" "><br>
+  <button type="button" class="btn btn-lg btn-primary" ng-click="sprintLog(cs.name,cs.description,cs.startdate,cs.enddate)">Create sprintlog</button>
+  </div>
   <div class="row" >
 
                     <div class="col-lg-6" ng-hide="date">
@@ -249,14 +258,7 @@
 </div>
                 </div>
                 <!-- /.row -->
-  <div class="row" ng-show="date">
-  <button type="button" class="btn btn-lg btn-primary" ng-click="goBack()">Go back </button>
-  <h3>Name: </h3> <input type="text" name="name" ng-model="cs.name" value=" "><br>
-  <h3>Description: </h3> <input type="text" name="description" ng-model="cs.description" value=" "><br>
-  <h3>Sprintlog Start Date: </h3> <input type="date" name="setdate" ng-model="cs.startdate" value=" "><br>
-  <h3>Sprintlog End Date: </h3> <input type="date" name="endDate" ng-model="cs.enddate" value=" "><br>
-  <button type="button" class="btn btn-lg btn-primary" ng-click="sprintLog(cs.name,cs.description,cs.startdate,cs.enddate)">Create sprintlog</button>
-  </div>
+  
             </div>
             <!-- /.container-fluid -->
 
