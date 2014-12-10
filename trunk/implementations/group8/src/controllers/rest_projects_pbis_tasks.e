@@ -209,7 +209,7 @@ feature
 				end
 			end
 
-			-- First GET the id of the project
+			-- First GET the id of the PBI
 			if ok and (not attached hp.path_param("idpbi") or not hp.path_param("idpbi").is_integer) then
 				send_generic_error ("idpbi not found or not integer.", hres)
 				-- And logs it
