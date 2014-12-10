@@ -44,7 +44,7 @@ $http.get(url_getCurrentUser).success(function(response){
 	$http.get(url_getBacklog.format(backlId)).success(function(response){
 		$scope.pbis = response.pbis;
 	//should only get the Backlog Items that are not allready in a sprintlog		
-		if($scope.pbis.sprintlog = null){
+		if($scope.pbis.sprintlog == 1){
 	$scope.PBInotinsprintlog.push({ id : $scope.pbis.id, name : $scope.pbis.name, description : $scope.pbis.description, priority: $scope.pbis.priority, creatinDate : $scope.pbis.creationDate });	
 	}
 	});
