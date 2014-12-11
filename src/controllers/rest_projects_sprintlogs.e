@@ -251,7 +251,6 @@ feature
 		id_project: INTEGER
 		id_sprintlog: INTEGER
 		hp: HTTP_PARSER
-		regex: REGEX
 		ok: BOOLEAN
 		p: PROJECT
 		u: USER
@@ -344,7 +343,6 @@ feature
 		id_sprintlog: INTEGER
 		hp: HTTP_PARSER
 		param_id: INTEGER
-		regex: REGEX
 		ok: BOOLEAN
 		p: PROJECT
 		m: USER

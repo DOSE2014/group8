@@ -151,7 +151,6 @@ feature
 		regex : REGEX
 		hp : HTTP_PARSER
 		u : USER
-		json_error : JSON_OBJECT
 		param : detachable STRING
 		param_arr		: detachable ARRAYED_LIST [STRING]
 		param_int 		: detachable INTEGER

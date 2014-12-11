@@ -331,7 +331,6 @@ feature
 		id_project : INTEGER
 		id_task : INTEGER
 
-		error_reason : STRING
 	do
 		http_request  := hreq
 		http_response := hres

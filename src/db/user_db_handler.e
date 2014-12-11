@@ -357,9 +357,6 @@ feature
 		if not cursor.after and attached cursor.item.value(1) then
 			Result := cursor.item.value(1).out.to_integer
 		end
-
-	ensure
-		Result /= Void
 	end
 
 	getUsersFromChatId(chatid: INTEGER): LINKED_SET[USER]
