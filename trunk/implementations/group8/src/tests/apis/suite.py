@@ -14,7 +14,7 @@ import recoverpasswordfail, recoverpasswordfail2
 import projectsgetbacklog
 import stats_proj, stats_proj2
 import taskscreatefail, taskseditfail, sprintlogsaddpbi_fail, sprintlogslistpbis_fail, sprintlogsdelpbi_fail
-import badrequest1
+import badrequest1, badrequest2, sprintlogscreate_fail2, sprintlogscreate_fail3,  sprintlogscreate2
 
 print_logo()
 
@@ -76,6 +76,9 @@ try:
 #    test_("/projects/1/sprintlogs/list - FAIL", sprintlogslist_fail.exec_test, verbose)
     test_("/projects/1/sprintlogs/create", sprintlogscreate.exec_test, verbose)
     test_("/projects/1/sprintlogs/create - FAIL", sprintlogscreate_fail.exec_test, verbose)
+    test_("/projects/1/sprintlogs/create - FAIL 2", sprintlogscreate_fail2.exec_test, verbose)
+    test_("/projects/1/sprintlogs/create - FAIL 3", sprintlogscreate_fail3.exec_test, verbose)
+    test_("/projects/1/sprintlogs/create - OK 2", sprintlogscreate2.exec_test, verbose)
     test_("/projects/1/sprintlogs/1/listpbis", sprintlogslistpbis.exec_test, verbose)
     test_("/projects/1000/sprintlogs/1/listpbis - FAIL", sprintlogslistpbis_fail.exec_test, verbose)
     test_("/projects/1/sprintlogs/1/addpbi", sprintlogsaddpbi.exec_test, verbose)
@@ -88,7 +91,7 @@ try:
     test_("/stats/projpoint", stats_proj.exec_test, verbose)
     test_("/stats/projpoint - 2", stats_proj2.exec_test, verbose)
     test_("BAD REQUEST 1", badrequest1.exec_test, verbose)
-
+    test_("BAD REQUEST 2", badrequest2.exec_test, verbose)
 finally:
     print_stats()
     
