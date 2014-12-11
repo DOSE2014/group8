@@ -98,7 +98,7 @@ feature
 			then Result := Void
 			end
 		end
-		getpbisfromsprintlogid(id: INTEGER) : LINKED_SET[PBI]
+	getpbisfromsprintlogid(id: INTEGER) : LINKED_SET[PBI]
 		do
 			create Result.make
 				create dbquerystatement.make ("SELECT * FROM PBI WHERE sprintlog=" + id.out + ";", db)
@@ -108,7 +108,7 @@ feature
 				end
 		end
 
-		listPBIOfSprintlogId(s: INTEGER): LINKED_SET[PBI]
+	listPBIOfSprintlogId(s: INTEGER): LINKED_SET[PBI]
 		do
 			create Result.make
 			create dbquerystatement.make ("SELECT * FROM PBI Where sprintlog=" + s.out + ";", db)
@@ -117,7 +117,8 @@ feature
 			then Result := Void
 			end
 		end
-		insertpbiintosprintlog(pbi,s:INTEGER)
+
+	insertpbiintosprintlog(pbi,s:INTEGER)
 		do
 		create dbModifyStatement.make("UPDATE PBI SET sprintlog = '" + s.out + "' WHERE id='" +
 											pbi.out + "';", db)
@@ -126,15 +127,16 @@ feature
 			then print("Error while updating pbi.")
 			end
 		end
-		removepbifromsprintlog(pbi,s:INTEGER)
-			do
-			create dbModifyStatement.make("UPDATE PBI SET sprintlog = NULL WHERE id='" +
-												pbi.out + "';", db)
-				dbModifyStatement.execute
-				if dbModifyStatement.has_error
-				then print("Error while updating pbi.")
-				end
+
+	removepbifromsprintlog(pbi)
+		do
+		create dbModifyStatement.make("UPDATE PBI SET sprintlog = NULL WHERE id='" +
+											pbi.out + "';", db)
+			dbModifyStatement.execute
+			if dbModifyStatement.has_error
+			then print("Error while updating pbi.")
 			end
+		end
 
 feature{NONE}
 	genPBI(row: SQLITE_RESULT_ROW; numColumns: NATURAL; resultObject: PBI): BOOLEAN

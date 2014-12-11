@@ -490,7 +490,7 @@ feature
 			end
 
 			if ok then
-				db.removepbifromsprintlog (param_id, s.getid)
+				db.removepbifromsprintlog (param_id)
 				log.info ("/projects/{idproj}/sprintlogs/{idsprintlog}/removepbi [POST] Added PBI to sprintlog " + s.getid.out)
 				-- send OK to the user :)
 				send_generic_ok (hres)
