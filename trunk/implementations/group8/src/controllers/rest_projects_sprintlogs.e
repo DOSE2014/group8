@@ -395,7 +395,7 @@ feature
 			if ok then
 				param_id := hp.post_int_param ("id")
 
-				if not attached param_id then
+				if not attached param_id or param_id<=0  then
 					send_generic_error("id of pbi not found or not integer.", hres)
 					log.warning ("/projects/{idproj}/sprintlogs/{idsprintlog}/addpbi  [POST] id of pbi not found or not integer.")
 					ok := FALSE
