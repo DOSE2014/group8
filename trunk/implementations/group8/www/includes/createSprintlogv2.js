@@ -9,6 +9,9 @@ var url_getSprintlog = "/projects/{0}/sprintlogs/list";
 var url_getPBIs = "/projects/{0}/sprintlogs/{1}/listpbis";
 var url_getTasks = "/projects/{0}/pbis/{1}/listtasks";
 var url_login = "login.html";
+var url_creatSprintlog = "/projects/{0}/sprintlogs/create";
+var url_creatTask = "/projects/{idproj}/pbis/{idpbis}/createtask";
+
 
 var global_usr_id = null;
 var projectmanagerId = 6;
@@ -62,15 +65,6 @@ $http.get(url_getCurrentUser).success(function(response){
 	});
 	});
 
-
-
-	$scope.sprintLog = function(){
-	alert("Sprintlog Created");
-	}
-	$scope.setDeveloper = function(){
-	$scope.manager = null;
-	alert("You have  to be a manger to creat a sprintlog");
-	}
 	$scope.sprintlogName = '';
 	$scope.sprintlogDescription = '';
 	$scope.sprintlogStartdate = '';
@@ -78,31 +72,71 @@ $http.get(url_getCurrentUser).success(function(response){
 	$scope.creatSprintlog = [];
 	
 	$scope.sprintLog = function(name,description,startdate,enddate){
+	$scope.date = null;
 	$scope.sprintlogName = name;
 	$scope.sprintlogDescription = description;
 	$scope.sprintlogStartdate = startdate;
 	$scope.sprintlogEnddate = enddate;
-	$scope.creatSprintlog.push({name : $scope.sprintlogName, description : $scope.sprintlogDescription, startDate : $scope.sprintlogStartdate, enndDate : $scope.sprintlogEnddate});
-	$scope.date = null;
-	}
+	var creatSprintlog ={
+		'name' : $scope.sprintlogName,
+		'description' : $scope.sprintlogDescription, 
+		'startDate' : $scope.sprintlogStartdate,
+		'enndDate' : $scope.sprintlogEnddate
+	};
+	$http.post(url_creatSprintlog, JSON.stringify(creatSprintlog)).success(function(data) {
+				if (data.status == "created") {
+					alert("Sprintlog created");	
+				}
+				else if (data.status == "error") {
+					alert(data.reason);
+				}
+	});
+	}	
 	
 	
 	$scope.pbiName = '';
-	$scope.pbiPriority = '';
 	$scope.pbiDescription = '';
+	$scope.pbiPoints = '';
+	$scope.pbiDeveloperId = '';
 	$scope.pbiId = '';
 	$scope.addToSprintlog = [];
-	$scope.setAddsprintlog = function(name,priority,description,id){
+	$scope.setAddsprintlog = function(name,description,points,developerId,pbiID){
 	$scope.pbiName = name;
-	$scope.pbiPriority = priority;
 	$scope.pbiDescription = description;
-	$scope.pbiId = id;
-	$scope.addToTasks.push({ name : $scope.pbiName, description : $scope.pbiDescription, pbi : $scope.pbiId});
-	$scope.creatSprintlog.push({pbi : $scope.pbiId})
+	$scope.pbiPoints = points;
+	$scope.pbiDeveloperId = developerId;
+	$scope.pbiId = pbiID;
+	$scope.addToTasks.push({ name : $scope.pbiName, description : $scope.pbiDescription, points : $scope.pbiPoints, developer : $scope.pbiDeveloperId, state : 2, pbi : $scope.pbiId});
 	}
+	$scope.taskName = '';
+	$scope.taskDescription = '';
+	$scope.taskpoints = '';
+	$scope.taskDeveloperId = '';
+	$scope.taskpbiId = '';
+	$scope.addToTaskInServer = function(name,description,points,developer,pbid){
+	$scope.taskName = name;
+	$scope.taskDescription = description;
+	$scope.taskpoints = points;
+	$scope.taskDeveloperId = developer;
+	$scope.state = 2;
+	$scope.taskpbiId = pbid;
 	
-	$scope.submitSprintlog = function(){
-	
+	var creatSprintlog ={
+		'name' : $scope.taskName,
+		'description' : $scope.taskDescription, 
+		'points' : $scope.taskpoints,
+		'developer' : $scope.taskDeveloperId,
+		'state' : $scope.state,
+		'pbi' : $scope.taskpbiId
+	};	
+	$http.post("/projects/{projectId}/pbis/{$scope.taskpbiId}/createtask", JSON.stringify(creatSprintlog)).success(function(data) {
+				if (data.status == "created") {
+					alert("Project created");	
+				}
+				else if (data.status == "error") {
+					alert(data.reason);
+				}
+	});
 	
 	}
 }]);
