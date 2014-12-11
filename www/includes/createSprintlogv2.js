@@ -25,16 +25,16 @@ createSprintlog.controller('Sprintlogcontroller', ['$scope','$http', function($s
 	
 	$scope.pbis = null;
 	$scope.name = null;
-	$scope.manager = 1;
+	$scope.sprintlogCreated = null;
 	$scope.PBInotinsprintlog = [];
 	$scope.user = [];
 
 //Check if the current user is the manager of the current project
 $http.get(url_getCurrentUser).success(function(response){
 		$scope.currentuser = response;
-	if ($scope.currentuser.id =  projectmanagerId)
+	if ($scope.currentuser.id == projectmanagerId)
 	{
-	$scope.manager = 1;	
+	$scope.sprintlogCreated = 1;	
 	}
 	else
 	{
@@ -46,7 +46,7 @@ $http.get(url_getCurrentUser).success(function(response){
 	$http.get(url_getBacklog.format(backlId)).success(function(response){
 		$scope.pbis = response.pbis;
 	//should only get the Backlog Items that are not allready in a sprintlog		
-		if($scope.pbis.sprintlog = 1){
+		if($scope.pbis.sprintlog == 1){
 	$scope.PBInotinsprintlog.push({ id : $scope.pbis.id, name : $scope.pbis.name, description : $scope.pbis.description, priority: $scope.pbis.priority, creatinDate : $scope.pbis.creationDate });	
 	}
 	});
