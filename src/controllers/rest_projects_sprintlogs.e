@@ -83,6 +83,7 @@ feature
 
 		create hp.make (hreq)
 		if ensure_authenticated then
+--		print(""+u.getid.out)
 			u := get_session_user
 				--		print (hp.path_param ("idproj"))
 			if attached hp.path_param ("idproj") and hp.path_param ("idproj").is_integer then
