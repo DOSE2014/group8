@@ -126,6 +126,7 @@ feature
 		p: PROJECT
 		m: USER
 		s: SPRINTLOG
+		id_new_sprint : INTEGER
 
 		json_error  : JSON_OBJECT
 		error_reason : STRING
@@ -227,7 +228,14 @@ feature
 				create s.make (0, param_name, param_description, db.getbacklogfromprojectid (id_project),
 								create {DATE_TIME}.make_from_epoch (param_startDate),
 								create {DATE_TIME}.make_from_epoch (param_endDate))
-				db.insertsprintlog (s)
+				id_new_sprint := db.insertsprintlog (s)
+
+				-- Now set each PBI as owned by new sprintlogs
+				across param_idpbis as e
+				loop
+					db.insertpbiintosprintlog (e.item.to_integer, id_new_sprint)
+				end
+
 				log.info ("/projects/{idproj}/sprintlogs/create [POST] Created a new sprintlog " + param_name)
 				send_generic_ok (hres) -- send OK to the user :)
 			end
