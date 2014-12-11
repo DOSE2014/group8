@@ -59,11 +59,11 @@ dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 					
 				} else if (data.status == "error") {
 					alert(data.reason);
-					$('#modal_profile').modal('hide');
+					
 				}
 			}).error(function(error) {
 				alert(error);
-				$('#modal_profile').modal('hide');
+				
 			});
 			
 		}
@@ -74,26 +74,36 @@ dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 
 dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 	//Opens the modal pop up to create a new project. STAKEHOLDER only
-	$scope.openNewProject = function(){
+	$scope.openNewProject = function(){		
 		$('#modal_newProject').modal('toggle');
 	}
+	
+	
+	$scope.getSrvDevelopers = function(){
+		if($scope.srvDevelopers.length <=0 && $scope.devFetch == false){
+			$scope.devFetch = true;
+			$http.get(url_getDevelopers).success(function(response) {
+				$scope.srvDevelopers = response.developers;
+				return $scope.srvDevelopers;
+			});
+		}else{
+			return $scope.srvDevelopers;
+		}
+		
+	}
+	
+	
 	//Opens the modal pop up to manage the developers in a project. Manager Only
 	$scope.openDevManager = function(){
 		$('#modal_manager').modal('toggle');
 	}
-	
-	//Array with the available developers
-	$scope.srvDevelopers = [];
-	//Gets the developers from the REST service
-	$http.get(url_getDevelopers).success(function(response) {
-		$scope.srvDevelopers = response.developers;
-	});
 	
 	//Remove a developer from a project
 	$scope.removeDev = function(devId){
 		if(confirm("Are you sure you want to remove the developer? All his info in the project will be lost.")){
 			$http.post(url_remDevProject.format($scope.project.id), JSON.stringify({ 'iddev' : devId })).success(function(data) {
 				if (data.status == "ok") {
+					$scope.setProject($scope.project.id);
 					$('#modal_manager').modal('hide');
 					alert("Developer removed from project");
 					
@@ -108,8 +118,10 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 	$scope.addDev = function(){
 		$http.post(url_addDevProject.format($scope.project.id), JSON.stringify({ 'iddev' : $scope.addDeveloperId.id })).success(function(data) {
 			if (data.status == "ok") {
+				
 				$('#modal_manager').modal('hide');
 				alert("Developer added to the project");
+				$scope.setProject($scope.project.id);c
 			} else {
 				alert(data.status);
 			}
@@ -124,7 +136,9 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 		if(confirm("Are you sure you want to remove the PBI?")){
 			$http.post(url_remPBI.format($scope.project.id, bklId)).success(function(data) {
 				if (data.status == "ok") {
+					$scope.setProject($scope.project.id);
 					alert("PBI removed from project");
+					$('#modal_backlog').modal('hide');
 				} else {
 					alert(data.status);
 				}
@@ -135,25 +149,20 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 	$scope.addPBI = function(data){
 		$http.post(url_addPBI.format($scope.project.id), JSON.stringify(data)).success(function(data) {
 			if (data.status == "ok") {
+				$scope.setProject($scope.project.id);
 				alert("PBI created");
+				$('#modal_backlog').modal('hide');
 			} else if (data.status == "error") {
 				alert(data.reason);
-				$('#modal_backlog').modal('hide');
+				
 			}
 		}).error(function(error) {
 			alert(error);
-			$('#modal_backlog').modal('hide');
 		});
 	}
 	
 	//Adds a PBI to a project. And a backlog if it doesn't exist
 	$scope.addBacklog = function() {
-		
-		/*
-		 * 
-var url_addPBI = "/projects/{0}/pbis/create";
-var url_addBacklog = "/projects/{0}/createbacklog";
-		 * */
 		$scope.bklNameRequired = '';
 		$scope.bklDescriptionRequired = '';
 		$scope.bklPriorityRequired = '';
@@ -168,26 +177,25 @@ var url_addBacklog = "/projects/{0}/createbacklog";
 		}else if (!$scope.bklType) {
 			$scope.bklTypeRequired = 'Required';
 		} else {
+			
 			var postData = {
 				'name' : $scope.bklName,
 				'description': $scope.bklDescription,
-				'type' : '1',
+				'type' : $scope.bklType,
 				'priority': $scope.bklPriority,
 				'dueDate': Math.floor(((new Date()).getTime())/1000)
 			};
-			
 			if(Object.size($scope.backlog) <= 0){
 				$http.post(url_addBacklog.format($scope.project.id), JSON.stringify({'description':'backlog'})).success(function(data) {
 					if (data.status == "ok") {
 						
 						var postData = {
-							'name' : $scope.bklName,
-							'description': $scope.bklDescription,
-							'type' : $scope.bklType,
-							'priority': $scope.bklPriority,
-							'dueDate': Math.floor(((new Date()).getTime())/1000)
-						};
-						
+								'name' : $scope.bklName,
+								'description': $scope.bklDescription,
+								'type' : $scope.bklType,
+								'priority': $scope.bklPriority,
+								'dueDate': Math.floor(((new Date()).getTime())/1000)
+							};
 						
 						$scope.addPBI(postData);
 					} else if (data.status == "error") {
@@ -199,11 +207,8 @@ var url_addBacklog = "/projects/{0}/createbacklog";
 					$('#modal_backlog').modal('hide');
 				});
 			}else{
-				addPBI(postData);
+				$scope.addPBI(postData);
 			}
-		
-			
-			
 		}
 	}
 	
@@ -228,6 +233,7 @@ var url_addBacklog = "/projects/{0}/createbacklog";
 			
 			$http.post(url_createProjects, JSON.stringify(postData)).success(function(data) {
 				if (data.status == "created") {
+					$scope.getUserProjects();
 					alert("Project created");
 					$('#modal_newProject').modal('hide');
 					
@@ -250,7 +256,7 @@ var url_addBacklog = "/projects/{0}/createbacklog";
 dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, $http, restUsers){
 	
 	$scope.user = {};
-	$scope.projects = {};
+	$scope.projects = [];
 	$scope.project = {};
 	$scope.projectManager = {};
 	$scope.developers = [];
@@ -259,6 +265,18 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	$scope.currentSprint = {};
 	$scope.tasks = [];
 	$scope.completion = [];
+	$scope.srvDevelopers = [];
+	$scope.devFetch = false;
+	
+	//gets the info of the active user of the system
+	restUsers.getCurrentUser(function(response){
+		if(response.status == "error"){
+			window.location.replace(url_login);
+		}else{
+			$scope.user = response; 
+			global_usr_id = response.id;
+		}
+    });
 	
 	//gets the current completion state of the project
 	$scope.getProjectCompletion = function(){
@@ -280,15 +298,7 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	};
 	
 	
-	//gets the info of the active user of the system
-	restUsers.getCurrentUser(function(response){
-		if(response.status == "error"){
-			window.location.replace(url_login);
-		}else{
-			$scope.user = response; 
-			global_usr_id = response.id;
-		}
-    });
+	
 	
 	//gets the info from the rest service to set the project manager
 	$scope.setProjectManager = function(userId){
@@ -334,15 +344,22 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	}
 	
 	//gets the info from the rest service to set the projects where the user is currently on
-	$scope.getUserProjects = $http.get(url_getProjects).success(function(data){
-        $scope.projects = data.projects;
-        if($scope.projects.length > 0){
-        	$scope.setProject($scope.projects[0].id);
-        }else{
-        	$scope.setProject(null);
-        }
+	$scope.getUserProjects = function(){
+		$http.get(url_getProjects).success(function(data){
+	
+	        $scope.projects = data.projects;
+	        if($scope.projects.length > 0){
+	        	$scope.setProject($scope.projects[0].id);
+	        }else{
+	        	$scope.setProject(null);
+	        }
         
-    });
+		});
+	}
+	
+	if($scope.projects.length <=0){
+		$scope.getUserProjects();
+	}
 	
 	//gets the backlog of the project from the REST service
 	$scope.getProjectBacklog = function(projectId){
