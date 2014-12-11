@@ -185,6 +185,10 @@ feature
 					json_error.put_string (error_reason, "reason")
 					send_json(hres, json_error)
 				end
+			else
+				if not hp.is_good_request then
+					send_malformed_json (http_response)
+				end
 			end
 		end
 
@@ -210,11 +214,11 @@ feature
 			http_response := hres
 			create hp.make (hreq)
 
-			if ensure_authenticated
+			if ensure_authenticated and hp.is_good_request
 			then
 				u := get_session_user
 
-				if not attached hp.path_param("idproj")
+				if not attached hp.path_param("idproj") or not  hp.path_param("idproj").is_integer
 				then
 					send_malformed_json(http_response)
 					-- And logs it
@@ -260,7 +264,12 @@ feature
 						no_permission
 					end
 				end
+			else
+				if not hp.is_good_request then
+					send_malformed_json (http_response)
+				end
 			end
+
 		end
 
 	remDeveloper(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
@@ -285,7 +294,7 @@ feature
 			create hp.make (hreq)
 
 
-			if ensure_authenticated
+			if ensure_authenticated and hp.is_good_request
 			then
 				u := get_session_user
 
@@ -328,7 +337,12 @@ feature
 						no_permission
 					end
 				end
+			else
+				if not hp.is_good_request then
+					send_malformed_json (http_response)
+				end
 			end
+
 		end
 
 	editProject(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
@@ -446,7 +460,12 @@ feature
 					json_error.put_string (error_reason, "reason")
 					send_json(hres, json_error)
 				end
+			else
+				if not hp.is_good_request then
+					send_malformed_json (http_response)
+				end
 			end
+
 		end
 
 	getBacklog(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
@@ -536,7 +555,7 @@ feature
 
 			create hp.make (hreq)
 
-			if ensure_authenticated and hp.is_good_request then
+			if ensure_authenticated then
 				u := get_session_user
 
 				if not attached hp.path_param("idproj")
@@ -585,7 +604,7 @@ feature
 
 			create hp.make (hreq)
 
-			if ensure_authenticated and hp.is_good_request then
+			if ensure_authenticated then
 				u := get_session_user
 
 				if not attached hp.path_param("idproj")

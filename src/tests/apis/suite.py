@@ -14,7 +14,7 @@ import recoverpasswordfail, recoverpasswordfail2
 import projectsgetbacklog
 import stats_proj, stats_proj2
 import taskscreatefail, taskseditfail, sprintlogsaddpbi_fail, sprintlogslistpbis_fail, sprintlogsdelpbi_fail
-
+import badrequest1
 
 print_logo()
 
@@ -87,6 +87,7 @@ try:
     test_("/stats/devpoint", stats.exec_test, verbose)
     test_("/stats/projpoint", stats_proj.exec_test, verbose)
     test_("/stats/projpoint - 2", stats_proj2.exec_test, verbose)
+    test_("BAD REQUEST 1", badrequest1.exec_test, verbose)
 
 finally:
     print_stats()
