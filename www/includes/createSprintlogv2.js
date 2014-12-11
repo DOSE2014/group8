@@ -11,7 +11,7 @@ var url_getTasks = "/projects/{0}/pbis/{1}/listtasks";
 var url_login = "login.html";
 
 var global_usr_id = null;
-var projectmanagerId = 1;
+var projectmanagerId = 6;
 var projectId = 1;
 var backlId = 1;
 var splId = 1;
@@ -22,8 +22,7 @@ createSprintlog.controller('Sprintlogcontroller', ['$scope','$http', function($s
 	
 	$scope.pbis = null;
 	$scope.name = null;
-	$scope.date = null;
-	$scope.manager = null;
+	$scope.manager = 1;
 	$scope.PBInotinsprintlog = [];
 	$scope.user = [];
 
@@ -32,7 +31,7 @@ $http.get(url_getCurrentUser).success(function(response){
 		$scope.currentuser = response;
 	if ($scope.currentuser.id =  projectmanagerId)
 	{
-		$scope.date = 1;	
+	$scope.manager = 1;	
 	}
 	else
 	{
@@ -84,9 +83,7 @@ $http.get(url_getCurrentUser).success(function(response){
 	$scope.sprintlogStartdate = startdate;
 	$scope.sprintlogEnddate = enddate;
 	$scope.creatSprintlog.push({name : $scope.sprintlogName, description : $scope.sprintlogDescription, startDate : $scope.sprintlogStartdate, enndDate : $scope.sprintlogEnddate});
-	
 	$scope.date = null;
-	$scope.manager = 1;
 	}
 	
 	
