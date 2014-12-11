@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Creat Sprintlog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -204,6 +204,7 @@
  <div ng-controller="Sprintlogcontroller">
  
  <div class="row" ng-show="date">
+ <h2>data = {{currentuser.id}}</h2>
   <button type="button" class="btn btn-lg btn-primary" ng-click="goBack()">Go back </button>
   <h3>Name: </h3> <input type="text" name="name" ng-model="cs.name" value=" "><br>
   <h3>Description: </h3> <input type="text" name="description" ng-model="cs.description" value=" "><br>
