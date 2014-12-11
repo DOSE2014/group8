@@ -104,7 +104,7 @@ feature
 					end
 
 					param_description := hp.post_param ("description")
-					if ok and not regex.check_name (param_description) then
+					if ok and not attached param_description then
 						error_reason := "Description not present or not correct."
 						json_error.put_string ("description","field")
 						ok := FALSE
@@ -156,6 +156,10 @@ feature
 					no_permission
 				end
 			end -- else not attached hp.path_param("idproj")
+		else
+			if not hp.is_good_request then
+				send_malformed_json (http_response)
+			end
 		end -- end ensure authenticated
 
 	end -- end current feature
@@ -186,7 +190,7 @@ feature
 
 		create hp.make (hreq)
 
-		if ensure_authenticated then
+		if ensure_authenticated and hp.is_good_request then
 
 			u := get_session_user
 
@@ -259,7 +263,10 @@ feature
 
 				end
 			end
-
+		else
+			if not hp.is_good_request then
+				send_malformed_json (http_response)
+			end
 		end -- end ensure authenticated
 	end	-- end current feature
 
@@ -293,7 +300,7 @@ feature
 			if not attached hp.path_param("idproj") then
 				send_malformed_json(http_response)
 				-- And logs it
-				log.warning ("/projects/{idproj}/pbis/{idpbi}/edit [POST] Missing idproj in URL.")
+				log.warning ("/projects/{idproj}/pbis/{idpbi}/delete [POST] Missing idproj in URL.")
 			else
 				id_project := hp.path_param("idproj").to_integer
 				proj := db.getprojectfromid (id_project)
@@ -301,7 +308,7 @@ feature
 				if not attached proj then	-- does project exist?
 					send_malformed_json(http_response)
 					-- And logs it
-					log.warning ("/projects/{idproj}/pbis/{idpbi}/edit [POST] Project not existent.")
+					log.warning ("/projects/{idproj}/pbis/{idpbi}/delete [POST] Project not existent.")
 
 				-- is the user the manager?
 				elseif proj.getmanager.getId /= u.getId then
@@ -309,7 +316,7 @@ feature
 				elseif not attached hp.path_param("idpbi") then
 					send_malformed_json(http_response)
 					-- And logs it
-					log.warning ("/projects/{idproj}/pbis/{idpbi}/edit [POST] Missing idpbi in URL.")
+					log.warning ("/projects/{idproj}/pbis/{idpbi}/delete [POST] Missing idpbi in URL.")
 				else
 					id_pbi := hp.path_param("idpbi").to_integer
 					pbi := db.getpbifromid (id_pbi)
@@ -317,7 +324,7 @@ feature
 					if not attached pbi then	-- does project exist?
 						send_malformed_json(http_response)
 						-- And logs it
-						log.warning ("/projects/{idproj}/pbis/{idpbi}/edit [POST] PBI not existent.")
+						log.warning ("/projects/{idproj}/pbis/{idpbi}/delete [POST] PBI not existent.")
 					else
 						db.deletepbifromid (pbi.getid)
 						log.deb ("/projects/{idproj}/pbis/{idpbi}/delete [POST] PBI with id " + pbi.getid.out + " deleted.")
