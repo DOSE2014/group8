@@ -1,0 +1,193 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Summary description for {PBI}."/>
+<meta name="author" content=""/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>pbi Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pbi_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pbi_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pbi_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="pbi"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Summary description for </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../pdt/pbi.html#f_make">make</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../pdt/pbi.html#f_make_default">make_default</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> 
+
+	<A NAME="f_id"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_id">id</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_name"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_name">name</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_description"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_description">description</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_backlog"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_backlog">backlog</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog.html">BACKLOG</A>
+
+	<A NAME="f_sprintlog"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_sprintlog">sprintlog</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A>
+
+	<A NAME="f_type"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_type">type</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_priority"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_priority">priority</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_duedate"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_duedate">duedate</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">n</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">desc</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog.html">BACKLOG</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">t</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_id">id</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">i</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_name">name</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">n</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_description">description</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">desc</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_backlog">backlog</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">b</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_sprintlog">sprintlog</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_type">type</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">t</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_priority">priority</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">p</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_duedate">duedate</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">d</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_make_default"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_make_default">make_default</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_getid"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_getid">getid</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pbi.html#f_id">id</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setid"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_setid">setid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_id">id</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">i</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getname"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_getname">getname</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pbi.html#f_name">name</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setname"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_setname">setname</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_name">name</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getdescription"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_getdescription">getdescription</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pbi.html#f_description">description</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setdescription"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_setdescription">setdescription</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_description">description</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getbacklog"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_getbacklog">getbacklog</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog.html">BACKLOG</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pbi.html#f_backlog">backlog</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setbacklog"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_setbacklog">setbacklog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog.html">BACKLOG</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_backlog">backlog</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">b</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getsprintlog"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_getsprintlog">getsprintlog</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pbi.html#f_sprintlog">sprintlog</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setsprintlog"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_setsprintlog">setsprintlog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_sprintlog">sprintlog</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_gettype"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_gettype">gettype</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pbi.html#f_type">type</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_settype"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_settype">settype</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">t</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_type">type</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">t</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getpriority"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_getpriority">getpriority</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pbi.html#f_priority">priority</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setpriority"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_setpriority">setpriority</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_priority">priority</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">p</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getduedate"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_getduedate">getduedate</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pbi.html#f_duedate">duedate</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setduedate"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_setduedate">setduedate</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pbi.html#f_duedate">duedate</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">d</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_to_json"></A><A CLASS="efeature" HREF="../pdt/pbi.html#f_to_json">to_json</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_OBJECT</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">j_pbi</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_OBJECT</SPAN>
+			<SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">j_pbi</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_make_from_epoch">make_from_epoch</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">j_pbi</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_integer</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_id">id</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_64</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;id&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">j_pbi</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_name">name</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;name&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">j_pbi</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_description">description</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;description&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">j_pbi</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_integer</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_sprintlog">sprintlog</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_getid">getid</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_64</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;sprintlog&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/pbi.html#f_type">type</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/pbitype.html">PBITYPE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbitype.html#f_bugfix">bugfix</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">j_pbi</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;bugfix&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;type&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">elseif</SPAN> <A CLASS="efeature" HREF="../pdt/pbi.html#f_type">type</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/pbitype.html">PBITYPE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbitype.html#f_nonfunctionalrequirement">nonfunctionalrequirement</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">j_pbi</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;nonfunctionalrequirement&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;type&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">elseif</SPAN> <A CLASS="efeature" HREF="../pdt/pbi.html#f_type">type</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/pbitype.html">PBITYPE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbitype.html#f_requirement">requirement</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">j_pbi</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;requirement&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;type&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="elocal">j_pbi</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_integer</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_priority">priority</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_64</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;priority&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">j_pbi</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_integer</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_duedate">duedate</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_definite_duration">definite_duration</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time_duration.html#f_seconds_count">seconds_count</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;dueDate&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">j_pbi</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pbi_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pbi_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pbi_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="pbi"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

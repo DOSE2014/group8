@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Absolute temporal values composed of a date and a time"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="access" content="date, time"/>
+<meta name="eis" content="name=Obtaining a DATE from a DATE_TIME and vice versa, src=$(ISE_DOC_UUID)/195849fc-1a9c-d734-2d2b-acae78133886#Obtaining_a_DATE_from_a_DATE_TIME_and_vice_versa, tag=EiffelTime"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="copyright" content="Copyright (c) 1984-2009, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>date_time Relations</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time_chart.html">Chart</A></TD>
+<TD CLASS="nolink2">Relations</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="date_time"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">class</SPAN>
+	<A CLASS="eclass" HREF="../time/date_time_links.html">DATE_TIME</A>
+
+<SPAN CLASS="ekeyword">Ancestors</SPAN>
+	<A CLASS="eclass" HREF="../time/absolute_links.html">ABSOLUTE</A><SPAN CLASS="echar">*</SPAN>
+	<A CLASS="eclass" HREF="../time/date_time_validity_checker_links.html">DATE_TIME_VALIDITY_CHECKER</A>
+	<A CLASS="eclass" HREF="../time/date_time_value_links.html">DATE_TIME_VALUE</A><SPAN CLASS="echar">*</SPAN>
+	<SPAN CLASS="neclass">DEBUG_OUTPUT</SPAN><SPAN CLASS="echar">*</SPAN>
+
+<SPAN CLASS="ekeyword">Clients</SPAN>
+	<A CLASS="eclass" HREF="../time/date_links.html">DATE</A>
+	<A CLASS="eclass" HREF="../time/date_time_links.html">DATE_TIME</A>
+	<A CLASS="eclass" HREF="../time/date_time_code_string_links.html">DATE_TIME_CODE_STRING</A>
+	<A CLASS="eclass" HREF="../time/date_time_duration_links.html">DATE_TIME_DURATION</A>
+	<SPAN CLASS="neclass">HTTP_DATE</SPAN>
+	<SPAN CLASS="neclass">HTTP_DATE_TIME_UTILITIES</SPAN>
+	<SPAN CLASS="neclass">HTTP_HEADER_MODIFIER</SPAN><SPAN CLASS="echar">*</SPAN>
+	<A CLASS="eclass" HREF="../pdt/message_links.html">MESSAGE</A>
+	<A CLASS="eclass" HREF="../pdt/message_db_handler_links.html">MESSAGE_DB_HANDLER</A>
+	<A CLASS="eclass" HREF="../pdt/pbi_links.html">PBI</A>
+	<A CLASS="eclass" HREF="../pdt/pbi_db_handler_links.html">PBI_DB_HANDLER</A>
+	<A CLASS="eclass" HREF="../pdt/project_links.html">PROJECT</A>
+	<A CLASS="eclass" HREF="../pdt/project_db_handler_links.html">PROJECT_DB_HANDLER</A>
+	<A CLASS="eclass" HREF="../pdt/rest_account_links.html">REST_ACCOUNT</A>
+	<A CLASS="eclass" HREF="../pdt/rest_chat_links.html">REST_CHAT</A>
+	<A CLASS="eclass" HREF="../pdt/rest_projects_links.html">REST_PROJECTS</A>
+	<A CLASS="eclass" HREF="../pdt/rest_projects_pbis_links.html">REST_PROJECTS_PBIS</A>
+	<A CLASS="eclass" HREF="../pdt/rest_projects_pbis_tasks_links.html">REST_PROJECTS_PBIS_TASKS</A>
+	<A CLASS="eclass" HREF="../pdt/rest_projects_sprintlogs_links.html">REST_PROJECTS_SPRINTLOGS</A>
+	<A CLASS="eclass" HREF="../pdt/sprintlog_links.html">SPRINTLOG</A>
+	<A CLASS="eclass" HREF="../pdt/sprintlog_db_handler_links.html">SPRINTLOG_DB_HANDLER</A>
+	<A CLASS="eclass" HREF="../pdt/task_links.html">TASK</A>
+	<A CLASS="eclass" HREF="../pdt/task_db_handler_links.html">TASK_DB_HANDLER</A>
+	<A CLASS="eclass" HREF="../pdt/user_links.html">USER</A>
+	<A CLASS="eclass" HREF="../pdt/user_db_handler_links.html">USER_DB_HANDLER</A>
+	<SPAN CLASS="neclass">WSF_COOKIE_SESSION</SPAN>
+	<SPAN CLASS="neclass">WSF_FILE_RESPONSE</SPAN>
+	<SPAN CLASS="neclass">WSF_FILE_SYSTEM_HANDLER</SPAN>
+	<SPAN CLASS="neclass">WSF_SESSION</SPAN><SPAN CLASS="echar">*</SPAN>
+
+<SPAN CLASS="ekeyword">Suppliers</SPAN>
+	<A CLASS="eclass" HREF="../time/absolute_links.html">ABSOLUTE</A><SPAN CLASS="echar">*</SPAN>
+	<SPAN CLASS="neclass">BOOLEAN</SPAN>
+	<A CLASS="eclass" HREF="../time/c_date_links.html">C_DATE</A>
+	<A CLASS="eclass" HREF="../time/date_links.html">DATE</A>
+	<A CLASS="eclass" HREF="../time/date_duration_links.html">DATE_DURATION</A>
+	<A CLASS="eclass" HREF="../time/date_time_links.html">DATE_TIME</A>
+	<A CLASS="eclass" HREF="../time/date_time_code_string_links.html">DATE_TIME_CODE_STRING</A>
+	<A CLASS="eclass" HREF="../time/date_time_duration_links.html">DATE_TIME_DURATION</A>
+	<SPAN CLASS="neclass">INTEGER_32</SPAN>
+	<SPAN CLASS="neclass">REAL_64</SPAN>
+	<A CLASS="eclass" HREF="../time/time_links.html">TIME</A>
+	<A CLASS="eclass" HREF="../time/time_duration_links.html">TIME_DURATION</A>
+
+<FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time_chart.html">Chart</A></TD>
+<TD CLASS="nolink2">Relations</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="date_time"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>

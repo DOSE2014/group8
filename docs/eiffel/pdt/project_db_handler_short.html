@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Summary description for {PROJECT_DB_HANDLER}."/>
+<meta name="author" content=""/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>project_db_handler Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="project_db_handler"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Summary description for </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/project_db_handler_short.html">PROJECT_DB_HANDLER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../pdt/project_db_handler_short.html">PROJECT_DB_HANDLER</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../pdt/project_db_handler_short.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../pdt/project_db_handler_short.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_database_short.html">SQLITE_DATABASE</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">udbhand</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_db_handler_short.html">USER_DB_HANDLER</A><SPAN CLASS="esymbol">)</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;Do not use this method bugged (see BACKLOG_DB_HANDLER for better functions)</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;Federico</SPAN>
+<SPAN CLASS="ecomment">--</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">	getBacklogIdFromProjectAndUser(p : PROJECT; u : USER) : INTEGER</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">	require</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		p /= Void and u /= Void</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">	local</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		query_res_cursor: SQLITE_STATEMENT_ITERATION_CURSOR</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">	do</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		create dbQueryStatement.make (&quot;SELECT `id` FROM Backlog WHERE project=? AND EXISTS(SELECT * FROM Project WHERE manager=? AND project=?);&quot;, db)</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		query_res_cursor := dbQueryStatement.execute_new_with_arguments (&lt;&lt;p.getId, u.getId, p.getId&gt;&gt;)</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		if query_res_cursor.after then</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">			-- there are no rows in the result of the query</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">			Result := -1</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		else</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">			Result := ec.any_to_int (query_res_cursor.item.value(1))</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		end</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">	end</SPAN>
+
+	<A NAME="f_getprojectfromid"></A><A CLASS="efeature" HREF="../pdt/project_db_handler_short.html#f_getprojectfromid">getprojectfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project_short.html">PROJECT</A>
+
+	<A NAME="f_getprojectfromname"></A><A CLASS="efeature" HREF="../pdt/project_db_handler_short.html#f_getprojectfromname">getprojectfromname</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">name</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project_short.html">PROJECT</A>
+
+	<A NAME="f_insertproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler_short.html#f_insertproject">insertproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project_short.html">PROJECT</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_deleteproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler_short.html#f_deleteproject">deleteproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_adddevelopertoproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler_short.html#f_adddevelopertoproject">adddevelopertoproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_getprojectsvisibletouser"></A><A CLASS="efeature" HREF="../pdt/project_db_handler_short.html#f_getprojectsvisibletouser">getprojectsvisibletouser</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/project_short.html">PROJECT</A><SPAN CLASS="esymbol">]</SPAN>
+
+	<A NAME="f_checkvisibilityforproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler_short.html#f_checkvisibilityforproject">checkvisibilityforproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+
+	<A NAME="f_deletedeveloperfromproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler_short.html#f_deletedeveloperfromproject">deletedeveloperfromproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_editproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler_short.html#f_editproject">editproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project_short.html">PROJECT</A><SPAN CLASS="esymbol">)</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../pdt/project_db_handler_short.html">PROJECT_DB_HANDLER</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="project_db_handler"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

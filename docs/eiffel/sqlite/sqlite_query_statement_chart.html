@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="An SQLite statement specific for making queries to the database."/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="copyright" content="Copyright (c) 1984-2013, Eiffel Software"/>
+<meta name="license" content="GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"/>
+<meta name="licensing_options" content="http://www.eiffel.com/licensing"/>
+<meta name="copying" content="This file is part of Eiffel Software's Eiffel Development Environment.  Eiffel Software's Eiffel Development Environment is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2 of the License (available at the URL listed under license above).  Eiffel Software's Eiffel Development Environment is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with Eiffel Software's Eiffel Development Environment; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>sqlite_query_statement Chart</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_query_statement_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_query_statement.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_query_statement_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_query_statement"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">class</SPAN>
+	<A CLASS="eclass" HREF="../sqlite/sqlite_query_statement_chart.html">SQLITE_QUERY_STATEMENT</A>
+
+<SPAN CLASS="ekeyword">General</SPAN>
+	<SPAN CLASS="eitag">cluster</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="ecluster" HREF="../sqlite/index.html">sqlite</A>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;An SQLite statement specific for making queries to the database.&quot;</SPAN>
+	<SPAN CLASS="eitag">create</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">Ancestors</SPAN>
+	<A CLASS="eclass" HREF="../sqlite/sqlite_statement_chart.html">SQLITE_STATEMENT</A>
+
+<SPAN CLASS="ekeyword">Queries</SPAN>
+	<SPAN TITLE="`arguments_count' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_arguments_count">arguments_count</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN></SPAN>
+	<SPAN TITLE="`changes_count' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_changes_count">changes_count</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN></SPAN>
+	<SPAN TITLE="`column_count' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_query_statement.html#f_column_count">column_count</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN></SPAN>
+	<SPAN TITLE="`column_name' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_query_statement.html#f_column_name">column_name</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">IMMUTABLE_STRING_8</SPAN></SPAN>
+	<SPAN TITLE="`database' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_database">database</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_database_chart.html">SQLITE_DATABASE</A></SPAN>
+	<SPAN TITLE="`execute_new' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_execute_new">execute_new</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement_iteration_cursor_chart.html">SQLITE_STATEMENT_ITERATION_CURSOR</A></SPAN>
+	<SPAN TITLE="`execute_new_with_arguments' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_execute_new_with_arguments">execute_new_with_arguments</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_arguments</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ITERABLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement_iteration_cursor_chart.html">SQLITE_STATEMENT_ITERATION_CURSOR</A></SPAN>
+	<SPAN TITLE="`has_arguments' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_has_arguments">has_arguments</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`has_error' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_has_error">has_error</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_accessible' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_is_accessible">is_accessible</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_compiled' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_is_compiled">is_compiled</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_connected' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_is_connected">is_connected</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_executing' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_is_executing">is_executing</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_interface_usable' was declared in SQLITE_SHARED_API"><A CLASS="efeature" HREF="../sqlite/sqlite_shared_api.html#f_is_interface_usable">is_interface_usable</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_over_sqlite_limit_variable_number' was declared in SQLITE_BINDING_HELPERS"><A CLASS="efeature" HREF="../sqlite/sqlite_binding_helpers.html#f_is_over_sqlite_limit_variable_number">is_over_sqlite_limit_variable_number</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">lst</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ITERABLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_sqlite_available' was declared in SQLITE_SHARED_API"><A CLASS="efeature" HREF="../sqlite/sqlite_shared_api.html#f_is_sqlite_available">Is_sqlite_available</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_valid_argument' was declared in SQLITE_BINDING_HELPERS"><A CLASS="efeature" HREF="../sqlite/sqlite_binding_helpers.html#f_is_valid_argument">is_valid_argument</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_valid_arguments' was declared in SQLITE_BINDING_HELPERS"><A CLASS="efeature" HREF="../sqlite/sqlite_binding_helpers.html#f_is_valid_arguments">is_valid_arguments</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_args</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ITERABLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_valid_variable_name' was declared in SQLITE_BINDING_HELPERS"><A CLASS="efeature" HREF="../sqlite/sqlite_binding_helpers.html#f_is_valid_variable_name">is_valid_variable_name</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_var</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">READABLE_STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`iterable_has_count' was declared in SQLITE_BINDING_HELPERS"><A CLASS="efeature" HREF="../sqlite/sqlite_binding_helpers.html#f_iterable_has_count">iterable_has_count</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">lst</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ITERABLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">n</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`iterable_min_count_or_value' was declared in SQLITE_BINDING_HELPERS"><A CLASS="efeature" HREF="../sqlite/sqlite_binding_helpers.html#f_iterable_min_count_or_value">iterable_min_count_or_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">lst</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ITERABLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_nb</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`last_exception' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_last_exception">last_exception</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_exception_chart.html">SQLITE_EXCEPTION</A></SPAN>
+	<SPAN TITLE="`next_statement' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_next_statement">next_statement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement_chart.html">SQLITE_STATEMENT</A></SPAN>
+	<SPAN TITLE="`statement_string' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_statement_string">statement_string</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">IMMUTABLE_STRING_8</SPAN></SPAN>
+	<SPAN TITLE="`string' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_string">string</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">IMMUTABLE_STRING_8</SPAN></SPAN>
+
+<SPAN CLASS="ekeyword">Commands</SPAN>
+	<SPAN TITLE="`abort' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_abort">abort</A></SPAN>
+	<SPAN TITLE="`ensure_connected' was declared in SQLITE_STATEMENT"><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_ensure_connected">ensure_connected</A></SPAN>
+	<SPAN TITLE="`execute' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_query_statement.html#f_execute">execute</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_callback</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">FUNCTION</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="neclass">TUPLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_row_chart.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`execute_with_arguments' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_query_statement.html#f_execute_with_arguments">execute_with_arguments</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_callback</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">FUNCTION</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="neclass">TUPLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_row_chart.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_arguments</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ITERABLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+
+<FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_query_statement_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_query_statement.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_query_statement_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_query_statement"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>

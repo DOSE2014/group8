@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Summary description for {HTTP_SESSIONS}."/>
+<meta name="author" content=""/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>http_sessions Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_sessions_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_sessions_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_sessions_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="http_sessions"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Summary description for </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/http_sessions.html">HTTP_SESSIONS</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">deferred</SPAN> <SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../pdt/http_sessions.html">HTTP_SESSIONS</A>
+
+<SPAN CLASS="ekeyword">inherit</SPAN>
+	<A CLASS="eclass" HREF="../pdt/log.html">LOG</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_session_manager"></A><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_session_manager">session_manager</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_SESSION_MANAGER</SPAN>
+		<SPAN CLASS="ekeyword">deferred</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_http_request"></A><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_http_request">http_request</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN>
+		<SPAN CLASS="ekeyword">deferred</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_http_response"></A><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_http_response">http_response</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN>
+		<SPAN CLASS="ekeyword">deferred</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_session_cookie_name"></A><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_session_cookie_name">Session_cookie_name</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">once</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> &quot;_pdt_session_id_&quot;
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> 
+
+	<A NAME="f_ec"></A><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_ec">Ec</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/eiffel_conversion.html">EIFFEL_CONVERSION</A>
+		<SPAN CLASS="ekeyword">once</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_create_session"></A><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_create_session">create_session</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Creates a new (empty) session (you should sends a HTTP response after this)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">u</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">session_obj</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_COOKIE_SESSION</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">session_obj</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_new</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_session_cookie_name">Session_cookie_name</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_session_manager">session_manager</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">session_obj</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">remember</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">,</SPAN> &quot;user_obj&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">session_obj</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">commit</SPAN>
+			<SPAN CLASS="elocal">session_obj</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">apply</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_http_request">http_request</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_http_response">http_response</A><SPAN CLASS="esymbol">,</SPAN> &quot;/&quot;<SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_destroy_session"></A><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_destroy_session">destroy_session</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Destroy a session (logout user)</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">session_obj</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_COOKIE_SESSION</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">session_obj</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_http_request">http_request</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_session_cookie_name">Session_cookie_name</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_session_manager">session_manager</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">session_obj</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">destroy</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_get_session_user"></A><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_get_session_user">get_session_user</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Returns the USER object from the existent current session. Note: in this object it is not</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> setted either password nor password hash.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<A CLASS="efeature" HREF="../pdt/http_sessions.html#f_exists_session">exists_session</A>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">cookie_id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_STRING</SPAN>
+			<SPAN CLASS="elocal">session_data</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_SESSION_DATA</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">cookie_id</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_ec">Ec</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/eiffel_conversion.html#f_any_to_wsf_string">any_to_wsf_string</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_http_request">http_request</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">cookie</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_session_cookie_name">Session_cookie_name</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">session_data</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_session_manager">session_manager</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">session_data</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">cookie_id</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">value</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">as_readable_string_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_ec">Ec</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/eiffel_conversion.html#f_any_to_user">any_to_user</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">session_data</SPAN> <SPAN CLASS="esymbol">[</SPAN>&quot;user_obj&quot;<SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_exists_session"></A><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_exists_session">exists_session</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<A CLASS="efeature" HREF="../pdt/http_sessions.html#f_http_request">http_request</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<A CLASS="efeature" HREF="../pdt/http_sessions.html#f_session_manager">session_manager</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">cookie_str</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">WSF_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_http_request">http_request</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">cookie</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/http_sessions.html#f_session_cookie_name">Session_cookie_name</A><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">as</SPAN> cookie_id <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">cookie_str</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">cookie_id</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">value</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">as_string_8</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_session_manager">session_manager</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">session_exists</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">cookie_str</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../pdt/http_sessions.html">HTTP_SESSIONS</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_sessions_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_sessions_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_sessions_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="http_sessions"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

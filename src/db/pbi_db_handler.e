@@ -128,7 +128,7 @@ feature
 			end
 		end
 
-	removepbifromsprintlog(pbi)
+	removepbifromsprintlog(pbi : INTEGER)
 		do
 		create dbModifyStatement.make("UPDATE PBI SET sprintlog = NULL WHERE id='" +
 											pbi.out + "';", db)

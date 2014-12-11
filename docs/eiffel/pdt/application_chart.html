@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="project" content="Professional Developer⥯128//153/s Tool - DOSE 2014"/>
+<meta name="description" content="The main class of the project. It initializes the webframework and db object."/>
+<meta name="author" content="Milan3 Team - Politecnico di Milano"/>
+<meta name="email" content="se-dose-group8@lists.inf.ethz.ch"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>application Chart</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="application"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">class</SPAN>
+	<A CLASS="eclass" HREF="../pdt/application_chart.html">APPLICATION</A>
+
+<SPAN CLASS="ekeyword">General</SPAN>
+	<SPAN CLASS="eitag">cluster</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="ecluster" HREF="../pdt/index.html">pdt</A>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;The main class of the project. It initializes the webframework and db object.&quot;</SPAN>
+	<SPAN CLASS="eitag">create</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">make_and_launch</SPAN>
+
+<SPAN CLASS="ekeyword">Ancestors</SPAN>
+	<A CLASS="eclass" HREF="../pdt/log_chart.html">LOG</A>
+	<SPAN CLASS="neclass">WSF_DEFAULT_SERVICE</SPAN><SPAN CLASS="echar">*</SPAN>
+	<SPAN CLASS="neclass">WSF_ROUTED_SERVICE</SPAN><SPAN CLASS="echar">*</SPAN>
+	<SPAN CLASS="neclass">WSF_URI_TEMPLATE_HELPER_FOR_ROUTED_SERVICE</SPAN><SPAN CLASS="echar">*</SPAN>
+
+<SPAN CLASS="ekeyword">Queries</SPAN>
+	<SPAN TITLE="`log' was declared in LOG"><A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/log_singleton_chart.html">LOG_SINGLETON</A></SPAN>
+	<SPAN TITLE="`router' was declared in WSF_ROUTED_SERVICE"><SPAN CLASS="nefeature">router</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_ROUTER</SPAN></SPAN>
+	<SPAN TITLE="`to_wgi_service' was declared in WSF_SERVICE"><SPAN CLASS="nefeature">to_wgi_service</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WGI_SERVICE</SPAN></SPAN>
+
+<SPAN CLASS="ekeyword">Commands</SPAN>
+	<SPAN TITLE="`create_router' was declared in WSF_ROUTED_SERVICE"><SPAN CLASS="nefeature">create_router</SPAN></SPAN>
+	<SPAN TITLE="`execute' was declared in WSF_ROUTED_SERVICE"><SPAN CLASS="nefeature">execute</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">req</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">res</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`execute_default' was declared in WSF_ROUTED_SERVICE"><SPAN CLASS="nefeature">execute_default</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">req</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">res</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`initialize_router' was declared in WSF_ROUTED_SERVICE"><SPAN CLASS="nefeature">initialize_router</SPAN></SPAN>
+	<SPAN TITLE="`map_uri_template' was declared in WSF_URI_TEMPLATE_HELPER_FOR_ROUTED_SERVICE"><SPAN CLASS="nefeature">map_uri_template</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_tpl</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">h</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_URI_TEMPLATE_HANDLER</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`map_uri_template_agent' was declared in WSF_URI_TEMPLATE_HELPER_FOR_ROUTED_SERVICE"><SPAN CLASS="nefeature">map_uri_template_agent</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_tpl</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">READABLE_STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">proc</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">PROCEDURE</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="neclass">TUPLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`map_uri_template_agent_with_request_methods' was declared in WSF_URI_TEMPLATE_HELPER_FOR_ROUTED_SERVICE"><SPAN CLASS="nefeature">map_uri_template_agent_with_request_methods</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_tpl</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">READABLE_STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">proc</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">PROCEDURE</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="neclass">TUPLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">rqst_methods</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST_METHODS</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`map_uri_template_with_request_methods' was declared in WSF_URI_TEMPLATE_HELPER_FOR_ROUTED_SERVICE"><SPAN CLASS="nefeature">map_uri_template_with_request_methods</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_tpl</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">READABLE_STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">h</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_URI_TEMPLATE_HANDLER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">rqst_methods</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST_METHODS</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`set_service_option' was declared in WSF_LAUNCHABLE_SERVICE"><SPAN CLASS="nefeature">set_service_option</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_name</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">READABLE_STRING_GENERAL</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`setup_router' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/application.html#f_setup_router">setup_router</A></SPAN>
+
+<FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="application_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="application"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>

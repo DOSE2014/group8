@@ -1,0 +1,347 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Summary description for {USER}."/>
+<meta name="author" content=""/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>user Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="user"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Summary description for </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/user.html">USER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../pdt/user.html">USER</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../pdt/user.html#f_make">make</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../pdt/user.html#f_make_without_langs">make_without_langs</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../pdt/user.html#f_make_default">make_default</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> 
+
+	<A NAME="f_id"></A><A CLASS="efeature" HREF="../pdt/user.html#f_id">id</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_firstname"></A><A CLASS="efeature" HREF="../pdt/user.html#f_firstname">firstname</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_lastname"></A><A CLASS="efeature" HREF="../pdt/user.html#f_lastname">lastname</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_sex"></A><A CLASS="efeature" HREF="../pdt/user.html#f_sex">sex</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> See SEX class</SPAN>
+
+	<A NAME="f_dateofbirth"></A><A CLASS="efeature" HREF="../pdt/user.html#f_dateofbirth">dateofbirth</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A>
+
+	<A NAME="f_country"></A><A CLASS="efeature" HREF="../pdt/user.html#f_country">country</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_timezone"></A><A CLASS="efeature" HREF="../pdt/user.html#f_timezone">timezone</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_email"></A><A CLASS="efeature" HREF="../pdt/user.html#f_email">email</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_password"></A><A CLASS="efeature" HREF="../pdt/user.html#f_password">password</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_usertype"></A><A CLASS="efeature" HREF="../pdt/user.html#f_usertype">usertype</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> See USERTYPE class</SPAN>
+
+	<A NAME="f_organization"></A><A CLASS="efeature" HREF="../pdt/user.html#f_organization">organization</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_deleted"></A><A CLASS="efeature" HREF="../pdt/user.html#f_deleted">deleted</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+
+	<A NAME="f_programminglanguages"></A><A CLASS="efeature" HREF="../pdt/user.html#f_programminglanguages">programminglanguages</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/programming_language.html">PROGRAMMING_LANGUAGE</A><SPAN CLASS="esymbol">]</SPAN>
+
+	<A NAME="f_languages"></A><A CLASS="efeature" HREF="../pdt/user.html#f_languages">languages</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/language.html">LANGUAGE</A><SPAN CLASS="esymbol">]</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../pdt/user.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">fname</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">lname</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">dob</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">cntr</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">tmzn</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">eml</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">pass</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">usrtp</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">org</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">del</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">prgmlangs</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/programming_language.html">PROGRAMMING_LANGUAGE</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">langs</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/language.html">LANGUAGE</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">s</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/sex.html">SEX</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sex.html#f_male">male</A> <SPAN CLASS="ekeyword">or</SPAN> <SPAN CLASS="elocal">s</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/sex.html">SEX</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sex.html#f_female">female</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_id">id</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">i</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_firstname">firstname</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">fname</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_lastname">lastname</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">lname</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_sex">sex</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_dateofbirth">dateofbirth</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">dob</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_country">country</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">cntr</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_timezone">timezone</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">tmzn</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_email">email</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">eml</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_password">password</A> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_passhash">passhash</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pass</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_usertype">usertype</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">usrtp</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_organization">organization</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">org</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_deleted">deleted</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">del</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_programminglanguages">programminglanguages</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">prgmlangs</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_languages">languages</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">langs</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_make_without_langs"></A><A CLASS="efeature" HREF="../pdt/user.html#f_make_without_langs">make_without_langs</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">fname</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">lname</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">dob</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">cntr</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">tmzn</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">eml</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">pass</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">usrtp</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">org</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">del</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_id">id</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">i</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_firstname">firstname</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">fname</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_lastname">lastname</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">lname</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_sex">sex</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_dateofbirth">dateofbirth</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">dob</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_country">country</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">cntr</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_timezone">timezone</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">tmzn</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_email">email</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">eml</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_password">password</A> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_passhash">passhash</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pass</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_usertype">usertype</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">usrtp</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_organization">organization</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">org</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_deleted">deleted</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">del</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_make_default"></A><A CLASS="efeature" HREF="../pdt/user.html#f_make_default">make_default</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_getid"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_id">id</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setid"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setid">setid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_id">id</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">i</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getfirstname"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getfirstname">getfirstname</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_firstname">firstname</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setfirstname"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setfirstname">setfirstname</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_firstname">firstname</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getlastname"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getlastname">getlastname</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_lastname">lastname</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setlastname"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setlastname">setlastname</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_lastname">lastname</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getsex"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getsex">getsex</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_sex">sex</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setsex"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setsex">setsex</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_sex">sex</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getdateofbirth"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getdateofbirth">getdateofbirth</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_dateofbirth">dateofbirth</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setdateofbirth"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setdateofbirth">setdateofbirth</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_dateofbirth">dateofbirth</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">d</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getcountry"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getcountry">getcountry</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_country">country</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setcountry"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setcountry">setcountry</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">c</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_country">country</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">c</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_gettimezone"></A><A CLASS="efeature" HREF="../pdt/user.html#f_gettimezone">gettimezone</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_timezone">timezone</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_settimezone"></A><A CLASS="efeature" HREF="../pdt/user.html#f_settimezone">settimezone</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">t</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_timezone">timezone</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">t</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getemail"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getemail">getemail</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_email">email</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setemail"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setemail">setemail</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">e</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_email">email</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">e</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getpasswordhash"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getpasswordhash">getpasswordhash</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_password">password</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_checkpassword"></A><A CLASS="efeature" HREF="../pdt/user.html#f_checkpassword">checkpassword</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_password">password</A> <SPAN CLASS="esymbol">=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_passhash">passhash</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setpassword"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setpassword">setpassword</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> convert immediatly the password to hash</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_password">password</A> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_passhash">passhash</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_passhash"></A><A CLASS="efeature" HREF="../pdt/user.html#f_passhash">passhash</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">hashengine</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">SHA1</SPAN>
+			<SPAN CLASS="elocal">hashedstring</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">hashengine</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN>
+			<SPAN CLASS="elocal">hashengine</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">update_from_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">hashedstring</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hashengine</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">digest_as_string</SPAN>
+			<SPAN CLASS="elocal">hashedstring</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_lower</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hashedstring</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getusertype"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getusertype">getusertype</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_usertype">usertype</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setusertype"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setusertype">setusertype</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_usertype">usertype</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">u</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getorganization"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getorganization">getorganization</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_organization">organization</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setorganization"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setorganization">setorganization</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">o</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_organization">organization</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">o</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_isdeleted"></A><A CLASS="efeature" HREF="../pdt/user.html#f_isdeleted">isdeleted</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_deleted">deleted</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setdeleted"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setdeleted">setdeleted</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_deleted">deleted</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">d</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getprogramminglanguages"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getprogramminglanguages">getprogramminglanguages</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/programming_language.html">PROGRAMMING_LANGUAGE</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_programminglanguages">programminglanguages</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setprogramminglanguages"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setprogramminglanguages">setprogramminglanguages</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/programming_language.html">PROGRAMMING_LANGUAGE</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_programminglanguages">programminglanguages</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">p</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getlanguages"></A><A CLASS="efeature" HREF="../pdt/user.html#f_getlanguages">getlanguages</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/language.html">LANGUAGE</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_languages">languages</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_setlanguages"></A><A CLASS="efeature" HREF="../pdt/user.html#f_setlanguages">setlanguages</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/language.html">LANGUAGE</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/user.html#f_languages">languages</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_to_minimal_json"></A><A CLASS="efeature" HREF="../pdt/user.html#f_to_minimal_json">to_minimal_json</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_OBJECT</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_integer</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_id">id</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_64</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;id&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_firstname">firstname</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;firstname&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_lastname">lastname</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;lastname&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_to_json"></A><A CLASS="efeature" HREF="../pdt/user.html#f_to_json">to_json</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_OBJECT</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A>
+			<SPAN CLASS="elocal">sex_class</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sex.html">SEX</A>
+			<SPAN CLASS="elocal">ut_class</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/usertype.html">USERTYPE</A>
+			<SPAN CLASS="elocal">plangs</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_ARRAY</SPAN>
+			<SPAN CLASS="elocal">langs</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_ARRAY</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">sex_class</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">ut_class</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">plangs</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_array</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">langs</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_array</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_usertype">usertype</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">ut_class</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/usertype.html#f_developer">Developer</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">across</SPAN>
+					<A CLASS="efeature" HREF="../pdt/user.html#f_programminglanguages">programminglanguages</A> <SPAN CLASS="ekeyword">as</SPAN> pl
+				<SPAN CLASS="ekeyword">loop</SPAN>
+					<SPAN CLASS="elocal">plangs</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">add</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">create</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pl</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">item</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/programming_language.html#f_getname">getname</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">across</SPAN>
+				<A CLASS="efeature" HREF="../pdt/user.html#f_languages">languages</A> <SPAN CLASS="ekeyword">as</SPAN> l
+			<SPAN CLASS="ekeyword">loop</SPAN>
+				<SPAN CLASS="elocal">langs</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">add</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">create</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">item</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/language.html#f_getname">getname</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_make_from_epoch">make_from_epoch</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_integer</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_id">id</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_64</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;id&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_firstname">firstname</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;firstname&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_lastname">lastname</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;lastname&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sex_class</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sex.html#f_to_string">To_string</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_sex">sex</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;sex&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_integer</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_dateofbirth">dateofbirth</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_definite_duration">definite_duration</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time_duration.html#f_seconds_count">seconds_count</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;dateOfBirth&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_country">country</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;country&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_timezone">timezone</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;timezone&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_usertype">usertype</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/usertype.html">USERTYPE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/usertype.html#f_developer">developer</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;developer&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;userType&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">else</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;stakeholder&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;userType&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/user.html#f_organization">organization</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_organization">organization</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;organization&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_email">email</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;email&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">plangs</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">plangs</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;programmingLanguages&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">langs</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;languages&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../pdt/user.html">USER</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="user"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

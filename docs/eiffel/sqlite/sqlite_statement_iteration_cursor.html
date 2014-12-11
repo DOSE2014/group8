@@ -1,0 +1,317 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Cursor to iterate over SQLITE_STATEMENT execution result"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="copyright" content="Copyright (c) 1984-2013, Eiffel Software"/>
+<meta name="license" content="GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"/>
+<meta name="licensing_options" content="http://www.eiffel.com/licensing"/>
+<meta name="copying" content="This file is part of Eiffel Software's Eiffel Development Environment.  Eiffel Software's Eiffel Development Environment is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2 of the License (available at the URL listed under license above).  Eiffel Software's Eiffel Development Environment is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with Eiffel Software's Eiffel Development Environment; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>sqlite_statement_iteration_cursor Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_iteration_cursor_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_iteration_cursor_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_iteration_cursor_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_statement_iteration_cursor"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">Cursor to iterate over SQLITE_STATEMENT execution result</SPAN>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">legal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;See notice at end of class.&quot;</SPAN>
+	<SPAN CLASS="eitag">status</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;See notice at end of class.&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date: 2013-11-07 12:09:47 -0800 (Thu, 07 Nov 2013) $&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision: 93250 $&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../sqlite/sqlite_statement_iteration_cursor.html">SQLITE_STATEMENT_ITERATION_CURSOR</A>
+
+<SPAN CLASS="ekeyword">inherit</SPAN>
+	<SPAN CLASS="neclass">ITERATION_CURSOR</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_row.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">]</SPAN>
+
+	<SPAN CLASS="neclass">ITERABLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_row.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">]</SPAN>
+
+	<A CLASS="eclass" HREF="../sqlite/sqlite_shared_api.html">SQLITE_SHARED_API</A>
+		<SPAN CLASS="ekeyword">export</SPAN>
+			<SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ekeyword">all</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A CLASS="eclass" HREF="../sqlite/sqlite_internals.html">SQLITE_INTERNALS</A>
+		<SPAN CLASS="ekeyword">export</SPAN>
+			<SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ekeyword">all</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A CLASS="eclass" HREF="../sqlite/sqlite_database_externals.html">SQLITE_DATABASE_EXTERNALS</A>
+		<SPAN CLASS="ekeyword">export</SPAN>
+			<SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ekeyword">all</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A CLASS="eclass" HREF="../sqlite/sqlite_statement_externals.html">SQLITE_STATEMENT_EXTERNALS</A>
+		<SPAN CLASS="ekeyword">export</SPAN>
+			<SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ekeyword">all</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A CLASS="eclass" HREF="../sqlite/sqlite_bind_arg_marshaller.html">SQLITE_BIND_ARG_MARSHALLER</A>
+		<SPAN CLASS="ekeyword">export</SPAN>
+			<SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ekeyword">all</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_make">make</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_make_with_bindings">make_with_bindings</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Initalization</SPAN>
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_statement</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement.html">SQLITE_STATEMENT</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Initialize the cursor for </SPAN>`a_statement'<SPAN CLASS="ecomment">.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">a_statement_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">a_statement</SPAN>
+			<SPAN CLASS="etag">a_statement_is_accessible</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_statement</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_is_accessible">is_accessible</A>
+			<SPAN CLASS="etag">a_statement_is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_statement</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_is_connected">is_connected</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_statement">statement</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">a_statement</SPAN>
+			<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_code.html">SQLITE_RESULT_CODE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_code.html#f_ok">ok</A>
+			<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_start">start</A>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">statement_statement</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_statement">statement</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">a_statement</SPAN>
+			<SPAN CLASS="etag">last_result_is_valid</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_code.html">SQLITE_RESULT_CODE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_code.html#f_ok">ok</A> <SPAN CLASS="ekeyword">or</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_code.html">SQLITE_RESULT_CODE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_code.html#f_row">row</A> <SPAN CLASS="ekeyword">or</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_code.html">SQLITE_RESULT_CODE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_code.html#f_done">done</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_make_with_bindings"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_make_with_bindings">make_with_bindings</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_statement</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement.html">SQLITE_STATEMENT</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_bindings</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAY</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_bind_arg.html">SQLITE_BIND_ARG</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Initialize the cursor for </SPAN>`a_statement'<SPAN CLASS="ecomment"> using </SPAN>`a_binding'<SPAN CLASS="ecomment">.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">a_statement_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">a_statement</SPAN>
+			<SPAN CLASS="etag">a_statement_is_accessible</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_statement</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_is_accessible">is_accessible</A>
+			<SPAN CLASS="etag">a_statement_is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_statement</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_bindings_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">a_bindings</SPAN>
+			<SPAN CLASS="etag">not_a_bindings_is_empty</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">a_bindings</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_empty</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_bindings">bindings</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">a_bindings</SPAN>
+			<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_statement</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">statement_statement</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_statement">statement</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">a_statement</SPAN>
+			<SPAN CLASS="etag">bindings_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_bindings">bindings</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">a_bindings</SPAN>
+			<SPAN CLASS="etag">last_result_is_valid</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_code.html">SQLITE_RESULT_CODE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_code.html#f_ok">ok</A> <SPAN CLASS="ekeyword">or</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_code.html">SQLITE_RESULT_CODE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_code.html#f_row">row</A> <SPAN CLASS="ekeyword">or</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_code.html">SQLITE_RESULT_CODE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_code.html#f_done">done</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Access</SPAN>
+
+	<A NAME="f_statement"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_statement">statement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement.html">SQLITE_STATEMENT</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> SQLite statement being iterated over.</SPAN>
+
+	<A NAME="f_bindings"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_bindings">bindings</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAY</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_bind_arg.html">SQLITE_BIND_ARG</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">]</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Binding arguments to execute the statement with.</SPAN>
+
+	<A NAME="f_item"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_item">item</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_result_row.html">SQLITE_RESULT_ROW</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Item at current cursor position.</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">l_result</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_internal_item">internal_item</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">l_result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_internal_item">internal_item</A>
+			<SPAN CLASS="ekeyword">check</SPAN>
+				<SPAN CLASS="etag">l_result_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">l_result</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_result</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Access</SPAN>
+
+	<A NAME="f_new_cursor"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_new_cursor">new_cursor</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ITERATION_CURSOR</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_row.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">]</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Fresh cursor associated with current structure</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">Current</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Access</SPAN>
+
+	<A NAME="f_last_result"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Last result code set by </SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_start">start</A><SPAN CLASS="ecomment">/</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_forth">forth</A><SPAN CLASS="ecomment">.</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Status report</SPAN>
+
+	<A NAME="f_after"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_after">after</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Are there no more items to iterate over?</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_helpers.html#f_sqlite_success">sqlite_success</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">or else</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_code.html">SQLITE_RESULT_CODE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_code.html#f_done">done</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Status report</SPAN>
+
+	<A NAME="f_has_started"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_has_started">has_started</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Indicates if the cursor has been started yet.</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Cursor movement</SPAN>
+
+	<A NAME="f_start"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_start">start</A>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">l_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api.html#f_sqlite_api">Sqlite_api</A>
+			<SPAN CLASS="elocal">l_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="elocal">l_result</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">i_upper</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">l_arg_variable</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">IMMUTABLE_STRING_8</SPAN>
+			<SPAN CLASS="elocal">l_arg_id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">C_STRING</SPAN>
+			<SPAN CLASS="elocal">l_arg_index</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_internal_item">internal_item</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="elocal">l_api</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api.html#f_sqlite_api">Sqlite_api</A>
+			<SPAN CLASS="elocal">l_stmt</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_statement">statement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_internal_stmt">internal_stmt</A>
+			<SPAN CLASS="elocal">l_result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_reset">sqlite3_reset</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_api</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_stmt</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">check</SPAN>
+				<SPAN CLASS="etag">success</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_helpers.html#f_sqlite_success">sqlite_success</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_result</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_bindings">bindings</A> <SPAN CLASS="ekeyword">as</SPAN> l_bindings <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">l_result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_clear_bindings">sqlite3_clear_bindings</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_api</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_stmt</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">check</SPAN>
+					<SPAN CLASS="etag">success</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_helpers.html#f_sqlite_success">sqlite_success</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_result</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+				<SPAN CLASS="ekeyword">from</SPAN>
+					<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_bindings</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">lower</SPAN>
+					<SPAN CLASS="elocal">i_upper</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_bindings</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">upper</SPAN>
+				<SPAN CLASS="ekeyword">until</SPAN>
+					<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="elocal">i_upper</SPAN>
+				<SPAN CLASS="ekeyword">loop</SPAN>
+					<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">l_bindings</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="ekeyword">as</SPAN> l_arg <SPAN CLASS="ekeyword">then</SPAN>
+						<SPAN CLASS="elocal">l_arg_variable</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_arg</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_bind_arg.html#f_variable">variable</A>
+						<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_arg_id</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_arg_variable</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="elocal">l_arg_index</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_bind_parameter_index">sqlite3_bind_parameter_index</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_api</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_stmt</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_arg_id</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">item</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">l_arg_index</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">and then</SPAN> <SPAN CLASS="elocal">l_arg_variable</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="echar">'?'</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<SPAN CLASS="elocal">l_arg_variable</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_arg_variable</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">substring</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">2</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_arg_variable</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">l_arg_variable</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_integer_32</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+								<SPAN CLASS="elocal">l_arg_index</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_arg_variable</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_32</SPAN>
+							<SPAN CLASS="ekeyword">else</SPAN>
+								<SPAN CLASS="ekeyword">check</SPAN>
+									<SPAN CLASS="etag">should_never_happen</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+								<SPAN CLASS="ekeyword">end</SPAN>
+							<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">l_arg_index</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<SPAN CLASS="elocal">l_arg</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_bind_arg.html#f_bind_to_statement">bind_to_statement</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_statement">statement</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_arg_index</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+					<SPAN CLASS="ekeyword">end</SPAN>
+					<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="enumber">1</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_result</SPAN>
+			<A CLASS="efeature" HREF="../sqlite/sqlite_helpers.html#f_sqlite_raise_on_failure">sqlite_raise_on_failure</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_result</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_after">after</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_statement">statement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_on_before_execute">on_before_execute</A>
+				<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_forth">forth</A>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_forth"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_forth">forth</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Move to next position.</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">l_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api.html#f_sqlite_api">Sqlite_api</A>
+			<SPAN CLASS="elocal">l_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="elocal">l_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_database.html">SQLITE_DATABASE</A>
+			<SPAN CLASS="elocal">l_exception</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_exception.html">SQLITE_EXCEPTION</A>
+			<SPAN CLASS="elocal">l_result</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">l_done</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="elocal">l_locked</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">l_api</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api.html#f_sqlite_api">Sqlite_api</A>
+			<SPAN CLASS="elocal">l_stmt</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_statement">statement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_internal_stmt">internal_stmt</A>
+			<SPAN CLASS="elocal">l_db</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_statement">statement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_database">database</A>
+			<SPAN CLASS="elocal">l_db</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_database.html#f_lock">lock</A>
+			<SPAN CLASS="elocal">l_locked</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+			<SPAN CLASS="elocal">l_result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_step">sqlite3_step</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_api</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_stmt</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_done</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_result</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_code.html">SQLITE_RESULT_CODE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_code.html#f_done">done</A>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_helpers.html#f_sqlite_success">sqlite_success</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_result</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_internal_item">internal_item</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_statement">statement</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">else</SPAN>
+				<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_internal_item">internal_item</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">l_exception</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_db</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_database.html#f_last_exception">last_exception</A>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="elocal">l_locked</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+			<SPAN CLASS="elocal">l_db</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_database.html#f_unlock">unlock</A>
+			<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_last_result">last_result</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_result</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_after">after</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_statement">statement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_on_after_executed">on_after_executed</A>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">l_exception</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">l_exception</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">raise</SPAN>
+			<SPAN CLASS="ekeyword">else</SPAN>
+				<A CLASS="efeature" HREF="../sqlite/sqlite_helpers.html#f_sqlite_raise_on_failure">sqlite_raise_on_failure</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_result</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">rescue</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">l_locked</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">l_db</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">l_locked</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+				<SPAN CLASS="elocal">l_db</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_database.html#f_unlock">unlock</A>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Implementation: Internal cache</SPAN>
+
+	<A NAME="f_internal_item"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_internal_item">internal_item</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_item">item</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Cached version of </SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_item">item</A><SPAN CLASS="ecomment">.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Note: Do not use directly!</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Implementation: void-safety helper</SPAN>
+
+	<A NAME="f_dummy_target"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_dummy_target">Dummy_target</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ITERABLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_row.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">]</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Dummy object used to initialize </SPAN>`target'<SPAN CLASS="ecomment"> with attached value</SPAN>
+		<SPAN CLASS="ekeyword">once</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">SPECIAL</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_row.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_empty</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">copyright</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Copyright (c) 1984-2013, Eiffel Software&quot;</SPAN>
+	<SPAN CLASS="eitag">license</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;GPL version 2 (see </SPAN><A CLASS="estring" HREF="http://www.eiffel.com/licensing/gpl.txt">http://www.eiffel.com/licensing/gpl.txt</A><SPAN CLASS="estring">)&quot;</SPAN>
+	<SPAN CLASS="eitag">licensing_options</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><A CLASS="estring" HREF="http://www.eiffel.com/licensing">http://www.eiffel.com/licensing</A><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">copying</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">This file is part of Eiffel Software's Eiffel Development Environment.</SPAN>
+		
+		<SPAN CLASS="estring">Eiffel Software's Eiffel Development Environment is free</SPAN>
+		<SPAN CLASS="estring">software; you can redistribute it and/or modify it under</SPAN>
+		<SPAN CLASS="estring">the terms of the GNU General Public License as published</SPAN>
+		<SPAN CLASS="estring">by the Free Software Foundation, version 2 of the License</SPAN>
+		<SPAN CLASS="estring">(available at the URL listed under &quot;license&quot; above).</SPAN>
+		
+		<SPAN CLASS="estring">Eiffel Software's Eiffel Development Environment is</SPAN>
+		<SPAN CLASS="estring">distributed in the hope that it will be useful, but</SPAN>
+		<SPAN CLASS="estring">WITHOUT ANY WARRANTY; without even the implied warranty</SPAN>
+		<SPAN CLASS="estring">of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</SPAN>
+		<SPAN CLASS="estring">See the GNU General Public License for more details.</SPAN>
+		
+		<SPAN CLASS="estring">You should have received a copy of the GNU General Public</SPAN>
+		<SPAN CLASS="estring">License along with Eiffel Software's Eiffel Development</SPAN>
+		<SPAN CLASS="estring">Environment; if not, write to the Free Software Foundation,</SPAN>
+		<SPAN CLASS="estring">Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</SPAN>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">source</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">Eiffel Software</SPAN>
+		<SPAN CLASS="estring">5949 Hollister Ave., Goleta, CA 93117 USA</SPAN>
+		<SPAN CLASS="estring">Telephone 805-685-1006, Fax 805-685-6869</SPAN>
+		<SPAN CLASS="estring">Website </SPAN><A CLASS="estring" HREF="http://www.eiffel.com">http://www.eiffel.com</A>
+		<SPAN CLASS="estring">Customer support </SPAN><A CLASS="estring" HREF="http://support.eiffel.com">http://support.eiffel.com</A>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_statement_iteration_cursor.html">SQLITE_STATEMENT_ITERATION_CURSOR</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_iteration_cursor_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_iteration_cursor_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_iteration_cursor_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_statement_iteration_cursor"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

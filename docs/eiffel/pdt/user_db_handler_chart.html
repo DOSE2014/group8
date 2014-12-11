@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Summary description for {USER_DB_HANDLER}."/>
+<meta name="author" content=""/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>user_db_handler Chart</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_db_handler_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_db_handler.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_db_handler_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="user_db_handler"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">class</SPAN>
+	<A CLASS="eclass" HREF="../pdt/user_db_handler_chart.html">USER_DB_HANDLER</A>
+
+<SPAN CLASS="ekeyword">General</SPAN>
+	<SPAN CLASS="eitag">cluster</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="ecluster" HREF="../pdt/index.html">pdt</A>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Summary description for </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/user_db_handler_chart.html">USER_DB_HANDLER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">create</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">Ancestors</SPAN>
+	<A CLASS="eclass" HREF="../pdt/log_chart.html">LOG</A>
+
+<SPAN CLASS="ekeyword">Queries</SPAN>
+	<SPAN TITLE="`existsemail' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_existsemail">existsemail</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">email</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A></SPAN>
+	<SPAN TITLE="`getdevelopers' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getdevelopers">getdevelopers</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A><SPAN CLASS="esymbol">]</SPAN></SPAN>
+	<SPAN TITLE="`getdevelopersfromprojectid' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getdevelopersfromprojectid">getdevelopersfromprojectid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A><SPAN CLASS="esymbol">]</SPAN></SPAN>
+	<SPAN TITLE="`getstakeholders' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getstakeholders">getstakeholders</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A><SPAN CLASS="esymbol">]</SPAN></SPAN>
+	<SPAN TITLE="`getstatistics' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getstatistics">getstatistics</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/stat_entry_chart.html">STAT_ENTRY</A><SPAN CLASS="esymbol">]</SPAN></SPAN>
+	<SPAN TITLE="`getstatisticsfromuserproject' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getstatisticsfromuserproject">getstatisticsfromuserproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">userid</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">projid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`getuserfromemailanddob' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getuserfromemailanddob">getuserfromemailanddob</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">email</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">dateofbirth</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A></SPAN>
+	<SPAN TITLE="`getuserfromemailpassword' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getuserfromemailpassword">getuserfromemailpassword</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">email</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">password</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A></SPAN>
+	<SPAN TITLE="`getuserfromid' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getuserfromid">getuserfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A></SPAN>
+	<SPAN TITLE="`getusersfromchatid' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getusersfromchatid">getusersfromchatid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">chatid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A><SPAN CLASS="esymbol">]</SPAN></SPAN>
+	<SPAN TITLE="`log' was declared in LOG"><A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/log_singleton_chart.html">LOG_SINGLETON</A></SPAN>
+
+<SPAN CLASS="ekeyword">Commands</SPAN>
+	<SPAN TITLE="`deleteuser' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_deleteuser">deleteuser</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`edituser' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_edituser">edituser</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`insertuser' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_insertuser">insertuser</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`make' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_database_chart.html">SQLITE_DATABASE</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">landbhand</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/language_db_handler_chart.html">LANGUAGE_DB_HANDLER</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">proglandbhand</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/programming_language_db_handler_chart.html">PROGRAMMING_LANGUAGE_DB_HANDLER</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+
+<FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_db_handler_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_db_handler.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="user_db_handler_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="user_db_handler"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>

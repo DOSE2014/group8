@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="{MESSAGE} is the message class. A message is charaterized by id, user sending a message, date of the message, chat to which it belongs and a message content."/>
+<meta name="author" content="Filippo"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>message Chart</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="message_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="message.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="message_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="message"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">class</SPAN>
+	<A CLASS="eclass" HREF="../pdt/message_chart.html">MESSAGE</A>
+
+<SPAN CLASS="ekeyword">General</SPAN>
+	<SPAN CLASS="eitag">cluster</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="ecluster" HREF="../pdt/index.html">pdt</A>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><A CLASS="eclass" HREF="../pdt/message_chart.html">MESSAGE</A><SPAN CLASS="estring"> is the message class. A message is charaterized by id, user sending a message, date of the message, chat to which it belongs and a message content.&quot;</SPAN>
+	<SPAN CLASS="eitag">create</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../pdt/message.html#f_make">make</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/message.html#f_make_default">make_default</A>
+
+<SPAN CLASS="ekeyword">Ancestors</SPAN>
+	<SPAN CLASS="neclass">ANY</SPAN>
+
+<SPAN CLASS="ekeyword">Queries</SPAN>
+	<SPAN TITLE="`getchat' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_getchat">getchat</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/chat_chart.html">CHAT</A></SPAN>
+	<SPAN TITLE="`getcontent' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_getcontent">getcontent</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN></SPAN>
+	<SPAN TITLE="`getdate' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_getdate">getdate</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time_chart.html">DATE_TIME</A></SPAN>
+	<SPAN TITLE="`getid' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_getid">getid</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`getuser' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_getuser">getuser</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A></SPAN>
+	<SPAN TITLE="`to_json' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_to_json">to_json</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_OBJECT</SPAN></SPAN>
+
+<SPAN CLASS="ekeyword">Commands</SPAN>
+	<SPAN TITLE="`make' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time_chart.html">DATE_TIME</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">c</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/chat_chart.html">CHAT</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">cont</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`make_default' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_make_default">make_default</A></SPAN>
+	<SPAN TITLE="`setchat' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_setchat">setchat</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">c</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/chat_chart.html">CHAT</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`setcontent' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_setcontent">setcontent</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">cont</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`setdate' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_setdate">setdate</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time_chart.html">DATE_TIME</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`setid' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_setid">setid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`setuser' is declared in `Current'"><A CLASS="efeature" HREF="../pdt/message.html#f_setuser">setuser</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_chart.html">USER</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+
+<FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="message_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="message.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="message_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="message"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
