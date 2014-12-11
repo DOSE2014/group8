@@ -1,0 +1,292 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Absolute temporal values composed of a date and a time"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="access" content="date, time"/>
+<meta name="eis" content="name=Obtaining a DATE from a DATE_TIME and vice versa, src=$(ISE_DOC_UUID)/195849fc-1a9c-d734-2d2b-acae78133886#Obtaining_a_DATE_from_a_DATE_TIME_and_vice_versa, tag=EiffelTime"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="copyright" content="Copyright (c) 1984-2009, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>date_time Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="date_time"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Absolute temporal values composed of a date and a time&quot;</SPAN>
+	<SPAN CLASS="eitag">legal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;See notice at end of class.&quot;</SPAN>
+	<SPAN CLASS="eitag">status</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;See notice at end of class.&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date: 2009-07-17 21:24:31 -0700 (Fri, 17 Jul 2009) $&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision: 79839 $&quot;</SPAN>
+	<SPAN CLASS="eitag">access</SPAN><SPAN CLASS="esymbol">:</SPAN> date<SPAN CLASS="esymbol">,</SPAN> time
+	<SPAN CLASS="eitag">eis</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;name=Obtaining a DATE from a DATE_TIME and vice versa&quot;</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="estring">&quot;src=$(ISE_DOC_UUID)/195849fc-1a9c-d734-2d2b-acae78133886#Obtaining_a_DATE_from_a_DATE_TIME_and_vice_versa&quot;</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="estring">&quot;tag=EiffelTime&quot;</SPAN>
+	<SPAN CLASS="eitag">eis</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;name=DATE / TIME to STRING Conversion&quot;</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="estring">&quot;src=$(ISE_DOC_UUID)/88972ba4-694b-8558-b0c8-87b1fc40afc4&quot;</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="estring">&quot;tag=EiffelTime&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../time/date_time_short.html">DATE_TIME</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../time/date_time_short.html#f_make">make</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../time/date_time_short.html#f_make_fine">make_fine</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../time/date_time_short.html#f_make_by_date_time">make_by_date_time</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../time/date_time_short.html#f_make_by_date">make_by_date</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../time/date_time_short.html#f_make_now">make_now</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../time/date_time_short.html#f_make_now_utc">make_now_utc</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../time/date_time_short.html#f_make_from_epoch">make_from_epoch</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../time/date_time_short.html#f_make_from_string">make_from_string</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../time/date_time_short.html#f_make_from_string_with_base">make_from_string_with_base</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../time/date_time_short.html#f_make_from_string_default">make_from_string_default</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../time/date_time_short.html#f_make_from_string_default_with_base">make_from_string_default_with_base</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Initialization</SPAN>
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">y</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">mo</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">h</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">mi</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_year">year</A><SPAN CLASS="ecomment">, </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_month">month</A><SPAN CLASS="ecomment"> </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_day">day</A><SPAN CLASS="ecomment"> to </SPAN>`y'<SPAN CLASS="ecomment">, </SPAN>`mo'<SPAN CLASS="ecomment">, </SPAN>`d'<SPAN CLASS="ecomment">.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_hour">hour</A><SPAN CLASS="ecomment">, </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_minute">minute</A><SPAN CLASS="ecomment">, </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_second">second</A><SPAN CLASS="ecomment"> to </SPAN>`h'<SPAN CLASS="ecomment">, </SPAN>`mi'<SPAN CLASS="ecomment">, </SPAN>`s'<SPAN CLASS="ecomment">.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">correct_date_time</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_validity_checker_short.html#f_is_correct_date_time">is_correct_date_time</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">y</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">mo</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">h</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">mi</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_double</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">False</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">year_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_year">year</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">y</SPAN>
+			<SPAN CLASS="etag">month_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_month">month</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">mo</SPAN>
+			<SPAN CLASS="etag">day_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_day">day</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">d</SPAN>
+			<SPAN CLASS="etag">hour_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_hour">hour</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">h</SPAN>
+			<SPAN CLASS="etag">minute_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_minute">minute</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">mi</SPAN>
+			<SPAN CLASS="etag">second_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_second">second</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+
+	<A NAME="f_make_fine"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_make_fine">make_fine</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">y</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">mo</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">h</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">mi</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">REAL_64</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_year">year</A><SPAN CLASS="ecomment">, </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_month">month</A><SPAN CLASS="ecomment"> </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_day">day</A><SPAN CLASS="ecomment"> to </SPAN>`y'<SPAN CLASS="ecomment">, </SPAN>`mo'<SPAN CLASS="ecomment">, </SPAN>`d'<SPAN CLASS="ecomment">.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_hour">hour</A><SPAN CLASS="ecomment">, </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_minute">minute</A><SPAN CLASS="ecomment">, </SPAN><A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_second">second</A><SPAN CLASS="ecomment"> to </SPAN>`h'<SPAN CLASS="ecomment">, </SPAN>`m'<SPAN CLASS="ecomment">, </SPAN>`s'<SPAN CLASS="ecomment">.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">correct_date_time</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_validity_checker_short.html#f_is_correct_date_time">is_correct_date_time</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">y</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">mo</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">h</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">mi</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">False</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">year_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_year">year</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">y</SPAN>
+			<SPAN CLASS="etag">month_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_month">month</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">mo</SPAN>
+			<SPAN CLASS="etag">day_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_day">day</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">d</SPAN>
+			<SPAN CLASS="etag">hour_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_hour">hour</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">h</SPAN>
+			<SPAN CLASS="etag">minute_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_minute">minute</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">mi</SPAN>
+			<SPAN CLASS="etag">second_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_measurement_short.html#f_fine_second">fine_second</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+
+	<A NAME="f_make_by_date_time"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_make_by_date_time">make_by_date_time</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_short.html">DATE</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">t</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/time_short.html">TIME</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_date">date</A><SPAN CLASS="ecomment"> to </SPAN>`d'<SPAN CLASS="ecomment"> and </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_time">time</A><SPAN CLASS="ecomment"> to </SPAN>`t'
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">d_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">d</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">t_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">t</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">date_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_short.html#f_date">date</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">d</SPAN>
+			<SPAN CLASS="etag">time_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_short.html#f_time">time</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">t</SPAN>
+
+	<A NAME="f_make_by_date"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_make_by_date">make_by_date</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_short.html">DATE</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_date">date</A><SPAN CLASS="ecomment"> to </SPAN>`d'<SPAN CLASS="ecomment"> and </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_time">time</A><SPAN CLASS="ecomment"> to origin of time.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">d_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">d</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">date_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_short.html#f_date">date</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">d</SPAN>
+			<SPAN CLASS="etag">time_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_short.html#f_time">time</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_time">time</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/time_short.html#f_origin">Origin</A><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_make_now"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_make_now">make_now</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Get the date and the time from the system.</SPAN>
+
+	<A NAME="f_make_now_utc"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_make_now_utc">make_now_utc</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Get the date and the time from the system.</SPAN>
+
+	<A NAME="f_make_from_string_default"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_make_from_string_default">make_from_string_default</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Initialize from a &quot;standard&quot; string of form</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="efeature" HREF="../time/time_utility_short.html#f_default_format_string">default_format_string</A><SPAN CLASS="ecomment">.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> (For 2-digit year specifications, the current century is used as</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> base century.)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">s_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">s</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">date_time_valid</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_validity_checker_short.html#f_date_time_valid">date_time_valid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../time/time_utility_short.html#f_default_format_string">default_format_string</A><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_make_from_string_default_with_base"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_make_from_string_default_with_base">make_from_string_default_with_base</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">base</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Initialize from a &quot;standard&quot; string of form</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><A CLASS="efeature" HREF="../time/time_utility_short.html#f_default_format_string">default_format_string</A><SPAN CLASS="ecomment"> with base century </SPAN>`base'<SPAN CLASS="ecomment">.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">s_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">s</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">base_valid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">base</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">base</SPAN> <SPAN CLASS="esymbol">\\</SPAN> <SPAN CLASS="enumber">100</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="etag">date_time_valid</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_validity_checker_short.html#f_date_time_valid_with_base">date_time_valid_with_base</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../time/time_utility_short.html#f_default_format_string">default_format_string</A><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">base</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_make_from_string"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_make_from_string">make_from_string</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">code</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Initialize from a &quot;standard&quot; string of form</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`code'<SPAN CLASS="ecomment">.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> (For 2-digit year specifications, the current century is used as</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> base century.)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">s_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">s</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">c_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">code</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">date_time_valid</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_validity_checker_short.html#f_date_time_valid">date_time_valid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">code</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_make_from_string_with_base"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_make_from_string_with_base">make_from_string_with_base</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">code</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">base</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Initialize from a &quot;standard&quot; string of form</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`code'<SPAN CLASS="ecomment"> with base century </SPAN>`base'<SPAN CLASS="ecomment">.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">s_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">s</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">c_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">code</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">base_valid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">base</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">base</SPAN> <SPAN CLASS="esymbol">\\</SPAN> <SPAN CLASS="enumber">100</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="etag">date_time_valid</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_validity_checker_short.html#f_date_time_valid_with_base">date_time_valid_with_base</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">code</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">base</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_make_from_epoch"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_make_from_epoch">make_from_epoch</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Create a new date time from the number of</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> seconds since epoch (1 Jan 1970 at 00:00:00).</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Access</SPAN>
+
+	<A NAME="f_date"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_date">date</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_short.html">DATE</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Date of the current object</SPAN>
+
+	<A NAME="f_time"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_time">time</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/time_short.html">TIME</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Time of the current object</SPAN>
+
+	<A NAME="f_origin"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_origin">Origin</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time_short.html">DATE_TIME</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Origin date with origin time</SPAN>
+
+	<A NAME="f_date_duration"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_date_duration">date_duration</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_duration_short.html">DATE_DURATION</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Definite duration between origin of date and current date</SPAN>
+
+	<A NAME="f_days"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_days">days</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Number of days elapsed since </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_origin">Origin</A>
+
+	<A NAME="f_time_duration"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_time_duration">time_duration</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/time_duration_short.html">TIME_DURATION</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Duration elapsed from midnight of the current date</SPAN>
+
+	<A NAME="f_seconds"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_seconds">seconds</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Number of seconds elapsed from midnight of the current date</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Comparison</SPAN>
+
+	<A NAME="f_is_less"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_is_less">is_less</A> <SPAN CLASS="ekeyword">alias</SPAN> <SPAN CLASS="esymbol">&quot;</SPAN><A CLASS="esymbol" HREF="../time/date_time_short.html#f_is_less">&lt;</A><SPAN CLASS="esymbol">&quot;</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Is the current object before </SPAN>`other'<SPAN CLASS="ecomment">?</SPAN>
+
+	<A NAME="f_is_equal"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_is_equal">is_equal</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Is the current object equal to </SPAN>`other'<SPAN CLASS="ecomment">?</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Measurement</SPAN>
+
+	<A NAME="f_duration"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_duration">duration</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time_duration_short.html">DATE_TIME_DURATION</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Definite duration elapsed from </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_origin">Origin</A>
+		<SPAN CLASS="ekeyword">ensure then</SPAN>
+			<SPAN CLASS="etag">definite_result</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time_duration_short.html#f_definite">definite</A>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Element Change</SPAN>
+
+	<A NAME="f_set_date"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_set_date">set_date</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_short.html">DATE</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_date">date</A><SPAN CLASS="ecomment"> to </SPAN>`d'<SPAN CLASS="ecomment">.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">d_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">d</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">date_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_short.html#f_date">date</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">d</SPAN>
+
+	<A NAME="f_set_time"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_set_time">set_time</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">t</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/time_short.html">TIME</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Set </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_time">time</A><SPAN CLASS="ecomment"> to </SPAN>`t'<SPAN CLASS="ecomment">.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">t_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">t</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">time_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_short.html#f_time">time</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">t</SPAN>
+
+	<A NAME="f_copy"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_copy">copy</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> set </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_date">date</A><SPAN CLASS="ecomment"> and </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_time">time</A><SPAN CLASS="ecomment"> with the </SPAN>`other'<SPAN CLASS="ecomment"> attributes.</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Basic operations</SPAN>
+
+	<A NAME="f_plus"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_plus">plus</A> <SPAN CLASS="ekeyword">alias</SPAN> <SPAN CLASS="esymbol">&quot;</SPAN><A CLASS="esymbol" HREF="../time/date_time_short.html#f_plus">+</A><SPAN CLASS="esymbol">&quot;</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time_duration_short.html">DATE_TIME_DURATION</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Sum the current object with </SPAN>`d'
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">d_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">d</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_add"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_add">add</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">dtd</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time_duration_short.html">DATE_TIME_DURATION</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Adds </SPAN>`dtd'<SPAN CLASS="ecomment"> to current duration</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">dtd_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">dtd</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_relative_duration"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_relative_duration">relative_duration</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time_duration_short.html">DATE_TIME_DURATION</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Duration from </SPAN>`other'<SPAN CLASS="ecomment"> to current date</SPAN>
+		<SPAN CLASS="ekeyword">ensure then</SPAN>
+			<SPAN CLASS="etag">origin_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time_duration_short.html#f_origin_date_time">origin_date_time</A><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_definite_duration"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_definite_duration">definite_duration</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time_duration_short.html">DATE_TIME_DURATION</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Duration from </SPAN>`other'<SPAN CLASS="ecomment"> to the current date, converted to a</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> definite duration</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">other_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">other</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">definite_result</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time_duration_short.html#f_definite">definite</A>
+
+	<A NAME="f_day_add"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_day_add">day_add</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Add </SPAN>`d'<SPAN CLASS="ecomment"> days to the current date.</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">days_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../time/date_time_short.html#f_days">days</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">old</SPAN> <A CLASS="efeature" HREF="../time/date_time_short.html#f_days">days</A> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">d</SPAN>
+
+	<A NAME="f_hour_add"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_hour_add">hour_add</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">h</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Add </SPAN>`h'<SPAN CLASS="ecomment"> hours to the current time.</SPAN>
+
+	<A NAME="f_minute_add"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_minute_add">minute_add</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">m</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Add </SPAN>`m'<SPAN CLASS="ecomment"> minutes to the current time.</SPAN>
+
+	<A NAME="f_second_add"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_second_add">second_add</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Add </SPAN>`s'<SPAN CLASS="ecomment"> seconds to the current time.</SPAN>
+
+	<A NAME="f_fine_second_add"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_fine_second_add">fine_second_add</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">REAL_64</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Add </SPAN>`s'<SPAN CLASS="ecomment"> seconds to the current object.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> if </SPAN>`s'<SPAN CLASS="ecomment"> has decimals, </SPAN><A CLASS="efeature" HREF="../time/time_value_short.html#f_fractional_second">fractional_second</A><SPAN CLASS="ecomment"> from </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_time">time</A><SPAN CLASS="ecomment"> is modified.</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Output</SPAN>
+
+	<A NAME="f_debug_output"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_debug_output">debug_output</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Printable representation of the current object</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> With &quot;standard&quot; form: </SPAN><A CLASS="efeature" HREF="../time/time_utility_short.html#f_default_format_string">default_format_string</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Was declared in </SPAN><A CLASS="eclass" HREF="../time/date_time_short.html">DATE_TIME</A><SPAN CLASS="ecomment"> as synonym of </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_out">out</A><SPAN CLASS="ecomment">.</SPAN>
+
+	<A NAME="f_out"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_out">out</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Printable representation of the current object</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> With &quot;standard&quot; form: </SPAN><A CLASS="efeature" HREF="../time/time_utility_short.html#f_default_format_string">default_format_string</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Was declared in </SPAN><A CLASS="eclass" HREF="../time/date_time_short.html">DATE_TIME</A><SPAN CLASS="ecomment"> as synonym of </SPAN><A CLASS="efeature" HREF="../time/date_time_short.html#f_debug_output">debug_output</A><SPAN CLASS="ecomment">.</SPAN>
+
+	<A NAME="f_formatted_out"></A><A CLASS="efeature" HREF="../time/date_time_short.html#f_formatted_out">formatted_out</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Printable representation of the current object</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> With &quot;standard&quot; form: </SPAN>`s'
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">s_exists</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">s</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+	
+<SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">copyright</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Copyright (c) 1984-2009, Eiffel Software and others&quot;</SPAN>
+	<SPAN CLASS="eitag">license</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Eiffel Forum License v2 (see </SPAN><A CLASS="estring" HREF="http://www.eiffel.com/licensing/forum.txt">http://www.eiffel.com/licensing/forum.txt</A><SPAN CLASS="estring">)&quot;</SPAN>
+	<SPAN CLASS="eitag">source</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">Eiffel Software</SPAN>
+		<SPAN CLASS="estring">5949 Hollister Ave., Goleta, CA 93117 USA</SPAN>
+		<SPAN CLASS="estring">Telephone 805-685-1006, Fax 805-685-6869</SPAN>
+		<SPAN CLASS="estring">Website </SPAN><A CLASS="estring" HREF="http://www.eiffel.com">http://www.eiffel.com</A>
+		<SPAN CLASS="estring">Customer support </SPAN><A CLASS="estring" HREF="http://support.eiffel.com">http://support.eiffel.com</A>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../time/date_time_short.html">DATE_TIME</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="date_time.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="date_time"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

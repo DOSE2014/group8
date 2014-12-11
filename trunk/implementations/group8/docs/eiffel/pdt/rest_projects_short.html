@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Summary description for {REST_PROJECT}."/>
+<meta name="author" content=""/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>rest_projects Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="rest_projects"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Summary description for </SPAN><SPAN CLASS="estring">{</SPAN><SPAN CLASS="estring">REST_PROJECT</SPAN><SPAN CLASS="estring">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../pdt/rest_projects_short.html">REST_PROJECTS</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> declaring deferred properties</SPAN>
+
+	<A NAME="f_session_manager"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_session_manager">session_manager</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_SESSION_MANAGER</SPAN>
+
+	<A NAME="f_http_request"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_http_request">http_request</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN>
+
+	<A NAME="f_http_response"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_http_response">http_response</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_listprojects"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_listprojects">listprojects</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/listProjects</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: GET</SPAN>
+
+	<A NAME="f_create_project"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_create_project">create_project</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/create</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: POST</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_adddeveloper"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_adddeveloper">adddeveloper</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPROJ</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/adddeveloper</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: POST</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_remdeveloper"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_remdeveloper">remdeveloper</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPROJ</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/remdeveloper</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: POST</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_editproject"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_editproject">editproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPROJ</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/edit</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: POST</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_getbacklog"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_getbacklog">getbacklog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_create_backlog"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_create_backlog">create_backlog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_delete_backlog"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_delete_backlog">delete_backlog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_getcompletionpercentage"></A><A CLASS="efeature" HREF="../pdt/rest_projects_short.html#f_getcompletionpercentage">getcompletionpercentage</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../pdt/rest_projects_short.html">REST_PROJECTS</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="rest_projects"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

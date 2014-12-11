@@ -11,9 +11,9 @@ import projectsaddpbi, projectsdelpbi, projectseditpbi, taskslist, taskscreate
 import tasksdelete, tasksedit, stats, sprintlogslist, sprintlogscreate, sprintlogscreate_fail
 import sprintlogslistpbis, sprintlogsaddpbi, sprintlogsdelpbi, sprintlogsdelete, recoverpasswordok
 import recoverpasswordfail, recoverpasswordfail2 
-#import projectsgetbacklog
+import projectsgetbacklog
 import stats_proj, stats_proj2
-import taskscreatefail, taskseditfail
+import taskscreatefail, taskseditfail, sprintlogsaddpbi_fail, sprintlogslistpbis_fail, sprintlogsdelpbi_fail
 
 
 print_logo()
@@ -56,7 +56,7 @@ try:
     test_("/projects/create", projectscreate.exec_test, verbose)
     test_("/projects/create - FAIL 1", projectscreatefail.exec_test, verbose)
     test_("/projects/create - FAIL 2", projectscreatefail2.exec_test, verbose)
-#    test_("/projects/1/getbacklog", projectsgetbacklog.exec_test, verbose)
+    test_("/projects/1/getbacklog", projectsgetbacklog.exec_test, verbose)
     test_("/projects/1/adddeveloper", projectsadddev.exec_test, verbose)
     test_("/projects/1/remdeveloper", projectsremdev.exec_test, verbose)
     test_("/projects/2/edit", projectsedit.exec_test, verbose)
@@ -73,11 +73,15 @@ try:
 
     test_("/projects/1/tasks/1/delete", tasksdelete.exec_test, verbose)   
     test_("/projects/1/sprintlogs/list", sprintlogslist.exec_test, verbose)
+#    test_("/projects/1/sprintlogs/list - FAIL", sprintlogslist_fail.exec_test, verbose)
     test_("/projects/1/sprintlogs/create", sprintlogscreate.exec_test, verbose)
     test_("/projects/1/sprintlogs/create - FAIL", sprintlogscreate_fail.exec_test, verbose)
     test_("/projects/1/sprintlogs/1/listpbis", sprintlogslistpbis.exec_test, verbose)
+    test_("/projects/1000/sprintlogs/1/listpbis - FAIL", sprintlogslistpbis_fail.exec_test, verbose)
     test_("/projects/1/sprintlogs/1/addpbi", sprintlogsaddpbi.exec_test, verbose)
+    test_("/projects/1/sprintlogs/10582/addpbi", sprintlogsaddpbi_fail.exec_test, verbose)
     test_("/projects/1/sprintlogs/1/removepbi", sprintlogsdelpbi.exec_test, verbose)
+    test_("/projects/1/sprintlogs/1/removepbi - FAIL", sprintlogsdelpbi_fail.exec_test, verbose)
     test_("/projects/1/sprintlogs/2/delete", sprintlogsdelete.exec_test, verbose)
     
     test_("/stats/devpoint", stats.exec_test, verbose)

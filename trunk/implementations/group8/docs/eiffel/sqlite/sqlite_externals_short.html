@@ -1,0 +1,201 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Direct wrapping of SQLite C functions."/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="copyright" content="Copyright (c) 1984-2009, Eiffel Software"/>
+<meta name="license" content="GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"/>
+<meta name="licensing_options" content="http://www.eiffel.com/licensing"/>
+<meta name="copying" content="This file is part of Eiffel Software's Eiffel Development Environment.  Eiffel Software's Eiffel Development Environment is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2 of the License (available at the URL listed under license above).  Eiffel Software's Eiffel Development Environment is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with Eiffel Software's Eiffel Development Environment; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>sqlite_externals Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_externals_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_externals_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_externals.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_externals"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">Direct wrapping of SQLite C functions.</SPAN>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">legal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;See notice at end of class.&quot;</SPAN>
+	<SPAN CLASS="eitag">status</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;See notice at end of class.&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date: 2009-11-13 13:16:18 -0800 (Fri, 13 Nov 2009) $&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision: 81535 $&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../sqlite/sqlite_externals_short.html">SQLITE_EXTERNALS</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<SPAN CLASS="nefeature">default_create</SPAN>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Externals</SPAN>
+
+	<A NAME="f_c_sqlite3_bind_blob"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_bind_blob">c_sqlite3_bind_blob</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_index</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_blob</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_size</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_destructor</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_bind_double"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_bind_double">c_sqlite3_bind_double</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_index</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">REAL_64</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_bind_int"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_bind_int">c_sqlite3_bind_int</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_index</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_bind_int64"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_bind_int64">c_sqlite3_bind_int64</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_index</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_64</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_bind_null"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_bind_null">c_sqlite3_bind_null</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_index</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_bind_parameter_count"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_bind_parameter_count">c_sqlite3_bind_parameter_count</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_bind_parameter_index"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_bind_parameter_index">c_sqlite3_bind_parameter_index</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_variable</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_bind_parameter_name"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_bind_parameter_name">c_sqlite3_bind_parameter_name</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_index</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_bind_text"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_bind_text">c_sqlite3_bind_text</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_index</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_text</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_size</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_destructor</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_busy_timeout"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_busy_timeout">c_sqlite3_busy_timeout</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_ms</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_busy_handler"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_busy_handler">c_sqlite3_busy_handler</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_callback</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_data</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_changes"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_changes">c_sqlite3_changes</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_clear_bindings"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_clear_bindings">c_sqlite3_clear_bindings</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_close"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_close">c_sqlite3_close</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_column_blob"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_blob">c_sqlite3_column_blob</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_column_bytes"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_bytes">c_sqlite3_column_bytes</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_column_bytes16"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_bytes16">c_sqlite3_column_bytes16</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_column_count"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_count">c_sqlite3_column_count</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_column_double"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_double">c_sqlite3_column_double</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">REAL_64</SPAN>
+
+	<A NAME="f_c_sqlite3_column_int"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_int">c_sqlite3_column_int</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_column_int64"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_int64">c_sqlite3_column_int64</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_64</SPAN>
+
+	<A NAME="f_c_sqlite3_column_name"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_name">c_sqlite3_column_name</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_column_text"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_text">c_sqlite3_column_text</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_column_text16"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_text16">c_sqlite3_column_text16</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_column_type"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_type">c_sqlite3_column_type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_column_value"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_column_value">c_sqlite3_column_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_commit_hook"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_commit_hook">c_sqlite3_commit_hook</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_callback</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_data</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_complete"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_complete">c_sqlite3_complete</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_sql</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_data_count"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_data_count">c_sqlite3_data_count</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_db_handle"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_db_handle">c_sqlite3_db_handle</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_db_mutex"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_db_mutex">c_sqlite3_db_mutex</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_errcode"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_errcode">c_sqlite3_errcode</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_errmsg"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_errmsg">c_sqlite3_errmsg</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_extended_errcode"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_extended_errcode">c_sqlite3_extended_errcode</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_extended_result_codes"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_extended_result_codes">c_sqlite3_extended_result_codes</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_onoff</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_finalize"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_finalize">c_sqlite3_finalize</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_initialize"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_initialize">c_sqlite3_initialize</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_interrupt"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_interrupt">c_sqlite3_interrupt</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_c_sqlite3_last_insert_rowid"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_last_insert_rowid">c_sqlite3_last_insert_rowid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_64</SPAN>
+
+	<A NAME="f_c_sqlite3_libversion"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_libversion">c_sqlite3_libversion</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_libversion_number"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_libversion_number">c_sqlite3_libversion_number</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_mutex_enter"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_mutex_enter">c_sqlite3_mutex_enter</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_mutex</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_c_sqlite3_mutex_leave"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_mutex_leave">c_sqlite3_mutex_leave</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_mutex</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_c_sqlite3_next_stmt"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_next_stmt">c_sqlite3_next_stmt</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_open_v2"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_open_v2">c_sqlite3_open_v2</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_file_name</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">TYPED_POINTER</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_flags</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_vfs</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_prepare_v2"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_prepare_v2">c_sqlite3_prepare_v2</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_statement</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_bytes</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_hnd</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">TYPED_POINTER</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_tail</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">TYPED_POINTER</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_progress_handler"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_progress_handler">c_sqlite3_progress_handler</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_flag</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_callback</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_data</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_c_sqlite3_reset"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_reset">c_sqlite3_reset</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_rollback_hook"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_rollback_hook">c_sqlite3_rollback_hook</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_callback</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_data</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+
+	<A NAME="f_c_sqlite3_shutdown"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_shutdown">c_sqlite3_shutdown</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_step"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_step">c_sqlite3_step</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_threadsafe"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_threadsafe">c_sqlite3_threadsafe</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_total_changes"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_total_changes">c_sqlite3_total_changes</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_c_sqlite3_update_hook"></A><A CLASS="efeature" HREF="../sqlite/sqlite_externals_short.html#f_c_sqlite3_update_hook">c_sqlite3_update_hook</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_callback</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_data</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+	
+<SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">copyright</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Copyright (c) 1984-2009, Eiffel Software&quot;</SPAN>
+	<SPAN CLASS="eitag">license</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;GPL version 2 (see </SPAN><A CLASS="estring" HREF="http://www.eiffel.com/licensing/gpl.txt">http://www.eiffel.com/licensing/gpl.txt</A><SPAN CLASS="estring">)&quot;</SPAN>
+	<SPAN CLASS="eitag">licensing_options</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><A CLASS="estring" HREF="http://www.eiffel.com/licensing">http://www.eiffel.com/licensing</A><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">copying</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">This file is part of Eiffel Software's Eiffel Development Environment.</SPAN>
+		
+		<SPAN CLASS="estring">Eiffel Software's Eiffel Development Environment is free</SPAN>
+		<SPAN CLASS="estring">software; you can redistribute it and/or modify it under</SPAN>
+		<SPAN CLASS="estring">the terms of the GNU General Public License as published</SPAN>
+		<SPAN CLASS="estring">by the Free Software Foundation, version 2 of the License</SPAN>
+		<SPAN CLASS="estring">(available at the URL listed under &quot;license&quot; above).</SPAN>
+		
+		<SPAN CLASS="estring">Eiffel Software's Eiffel Development Environment is</SPAN>
+		<SPAN CLASS="estring">distributed in the hope that it will be useful, but</SPAN>
+		<SPAN CLASS="estring">WITHOUT ANY WARRANTY; without even the implied warranty</SPAN>
+		<SPAN CLASS="estring">of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</SPAN>
+		<SPAN CLASS="estring">See the GNU General Public License for more details.</SPAN>
+		
+		<SPAN CLASS="estring">You should have received a copy of the GNU General Public</SPAN>
+		<SPAN CLASS="estring">License along with Eiffel Software's Eiffel Development</SPAN>
+		<SPAN CLASS="estring">Environment; if not, write to the Free Software Foundation,</SPAN>
+		<SPAN CLASS="estring">Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</SPAN>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">source</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">Eiffel Software</SPAN>
+		<SPAN CLASS="estring">5949 Hollister Ave., Goleta, CA 93117 USA</SPAN>
+		<SPAN CLASS="estring">Telephone 805-685-1006, Fax 805-685-6869</SPAN>
+		<SPAN CLASS="estring">Website </SPAN><A CLASS="estring" HREF="http://www.eiffel.com">http://www.eiffel.com</A>
+		<SPAN CLASS="estring">Customer support </SPAN><A CLASS="estring" HREF="http://support.eiffel.com">http://support.eiffel.com</A>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_externals_short.html">SQLITE_EXTERNALS</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_externals_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_externals_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_externals.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_externals"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

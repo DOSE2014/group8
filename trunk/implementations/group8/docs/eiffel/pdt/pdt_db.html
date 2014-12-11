@@ -1,0 +1,408 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Summary description for {PDT_DB}."/>
+<meta name="author" content=""/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>pdt_db Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pdt_db_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pdt_db_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pdt_db_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="pdt_db"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Summary description for </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/pdt_db.html">PDT_DB</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../pdt/pdt_db.html">PDT_DB</A>
+
+<SPAN CLASS="ekeyword">inherit</SPAN>
+	<A CLASS="eclass" HREF="../pdt/log.html">LOG</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> 
+
+	<A NAME="f_db"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_database.html">SQLITE_DATABASE</A>
+
+	<A NAME="f_dbquerystatement"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_query_statement.html">SQLITE_QUERY_STATEMENT</A>
+
+	<A NAME="f_dbinsertstatement"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_insert_statement.html">SQLITE_INSERT_STATEMENT</A>
+
+	<A NAME="f_dbmodifystatement"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_modify_statement.html">SQLITE_MODIFY_STATEMENT</A>
+
+	<A NAME="f_languagedbhandler"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_languagedbhandler">languagedbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/language_db_handler.html">LANGUAGE_DB_HANDLER</A>
+
+	<A NAME="f_programminglanguagedbhandler"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_programminglanguagedbhandler">programminglanguagedbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/programming_language_db_handler.html">PROGRAMMING_LANGUAGE_DB_HANDLER</A>
+
+	<A NAME="f_userdbhandler"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_db_handler.html">USER_DB_HANDLER</A>
+
+	<A NAME="f_projectdbhandler"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project_db_handler.html">PROJECT_DB_HANDLER</A>
+
+	<A NAME="f_backlogdbhandler"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_backlogdbhandler">backlogdbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog_db_handler.html">BACKLOG_DB_HANDLER</A>
+
+	<A NAME="f_sprintlogdbhandler"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_sprintlogdbhandler">sprintlogdbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sprintlog_db_handler.html">SPRINTLOG_DB_HANDLER</A>
+
+	<A NAME="f_pbidbhandler"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/pbi_db_handler.html">PBI_DB_HANDLER</A>
+
+	<A NAME="f_taskdbhandler"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_taskdbhandler">taskdbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/task_db_handler.html">TASK_DB_HANDLER</A>
+
+	<A NAME="f_chatdbhandler"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_chatdbhandler">chatdbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/chat_db_handler.html">CHAT_DB_HANDLER</A>
+
+	<A NAME="f_messagedbhandler"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_messagedbhandler">messagedbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/message_db_handler.html">MESSAGE_DB_HANDLER</A>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pathtodb</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">validpath</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">pathtodb</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">pathtodb</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_empty</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">create</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">RAW_FILE</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pathtodb</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">as_string_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">exists</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_database.html#f_make_open_read_write">make_open_read_write</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pathtodb</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">else</SPAN>
+				<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;[PDT_DB] no DB found, creating one...&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_languagedbhandler">languagedbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/language_db_handler.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_programminglanguagedbhandler">programminglanguagedbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/programming_language_db_handler.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_languagedbhandler">languagedbhandler</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_programminglanguagedbhandler">programminglanguagedbhandler</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_backlogdbhandler">backlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/backlog_db_handler.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_sprintlogdbhandler">sprintlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_backlogdbhandler">backlogdbhandler</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi_db_handler.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_backlogdbhandler">backlogdbhandler</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_sprintlogdbhandler">sprintlogdbhandler</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_taskdbhandler">taskdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/task_db_handler.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_chatdbhandler">chatdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/chat_db_handler.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_messagedbhandler">messagedbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/message_db_handler.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_db">db</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_chatdbhandler">chatdbhandler</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_getuserfromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getuserfromid">getuserfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getuserfromid">getuserfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getdevelopers"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getdevelopers">getdevelopers</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/user.html">USER</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getdevelopers">getdevelopers</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getstakeholders"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getstakeholders">getstakeholders</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/user.html">USER</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getstakeholders">getstakeholders</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getuserfromemailpassword"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getuserfromemailpassword">getuserfromemailpassword</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">email</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">password</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getuserfromemailpassword">getuserfromemailpassword</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">email</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">password</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_insertuser"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_insertuser">insertuser</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_insertuser">insertuser</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_deleteuserfromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_deleteuserfromid">deleteuserfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_deleteuser">deleteuser</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getprojectfromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getprojectfromid">getprojectfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_getprojectfromid">getprojectfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_insertproject"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_insertproject">insertproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_insertproject">insertproject</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_deleteprojectfromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_deleteprojectfromid">deleteprojectfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_deleteproject">deleteproject</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getbacklogfromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getbacklogfromid">getbacklogfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog.html">BACKLOG</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_backlogdbhandler">backlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/backlog_db_handler.html#f_getbacklogfromid">getbacklogfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_insertbacklog"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_insertbacklog">insertbacklog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog.html">BACKLOG</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_backlogdbhandler">backlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/backlog_db_handler.html#f_insertbacklog">insertbacklog</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_updatebacklog"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_updatebacklog">updatebacklog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog.html">BACKLOG</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_backlogdbhandler">backlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/backlog_db_handler.html#f_updatebacklog">updatebacklog</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getlanguages"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getlanguages">getlanguages</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/language.html">LANGUAGE</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_languagedbhandler">languagedbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/language_db_handler.html#f_getlanguages">getlanguages</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getprogramminglanguages"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getprogramminglanguages">getprogramminglanguages</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/programming_language.html">PROGRAMMING_LANGUAGE</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_programminglanguagedbhandler">programminglanguagedbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/programming_language_db_handler.html#f_getprogramminglanguages">getprogramminglanguages</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getpbifromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getpbifromid">getpbifromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi_db_handler.html#f_getpbifromid">getpbifromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_insertpbi"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_insertpbi">insertpbi</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi_db_handler.html#f_insertpbi">insertpbi</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_deletepbifromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_deletepbifromid">deletepbifromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi_db_handler.html#f_deletepbi">deletepbi</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getsprintlogfromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getsprintlogfromid">getsprintlogfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_sprintlogdbhandler">sprintlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_getsprintlogfromid">getsprintlogfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_insertsprintlog"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_insertsprintlog">insertsprintlog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_sprintlogdbhandler">sprintlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_insertsprintlog">insertsprintlog</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_deletesprintlogfromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_deletesprintlogfromid">deletesprintlogfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_sprintlogdbhandler">sprintlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_deletesprintlog">deletesprintlog</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_gettaskfromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_gettaskfromid">gettaskfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/task.html">TASK</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_taskdbhandler">taskdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/task_db_handler.html#f_gettaskfromid">gettaskfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_inserttask"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_inserttask">inserttask</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">t</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/task.html">TASK</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_taskdbhandler">taskdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/task_db_handler.html#f_inserttask">inserttask</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">t</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_deletetaskfromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_deletetaskfromid">deletetaskfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">t</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_taskdbhandler">taskdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/task_db_handler.html#f_deletetask">deletetask</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">t</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_adddevelopertoproject"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_adddevelopertoproject">adddevelopertoproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_adddevelopertoproject">adddevelopertoproject</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getprojectsvisibletouser"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getprojectsvisibletouser">getprojectsvisibletouser</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_getprojectsvisibletouser">getprojectsvisibletouser</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_deletedeveloperfromproject"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_deletedeveloperfromproject">deletedeveloperfromproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_deletedeveloperfromproject">deletedeveloperfromproject</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getbacklogfromprojectid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getbacklogfromprojectid">getbacklogfromprojectid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog.html">BACKLOG</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_backlogdbhandler">backlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/backlog_db_handler.html#f_getbacklogfromprojectid">getbacklogfromprojectid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_deletebacklogfromprojectid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_deletebacklogfromprojectid">deletebacklogfromprojectid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_backlogdbhandler">backlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/backlog_db_handler.html#f_deletebacklogfromprojectid">deletebacklogfromprojectid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_gettasksfrompbiid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_gettasksfrompbiid">gettasksfrompbiid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/task.html">TASK</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_taskdbhandler">taskdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/task_db_handler.html#f_gettasksfrompbiid">gettasksfrompbiid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_existsemailinuser"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_existsemailinuser">existsemailinuser</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">email</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">u</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_existsemail">existsemail</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">email</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">u</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+			<SPAN CLASS="ekeyword">else</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_listpbiofsprintlogid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_listpbiofsprintlogid">listpbiofsprintlogid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi_db_handler.html#f_listpbiofsprintlogid">listpbiofsprintlogid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_editpbi"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_editpbi">editpbi</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi_db_handler.html#f_editpbi">editpbi</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_listsprintlogsfrombacklogid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_listsprintlogsfrombacklogid">listsprintlogsfrombacklogid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_sprintlogdbhandler">sprintlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_listsprintlogsfrombacklogid">listsprintlogsfrombacklogid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_listsprintlogsfromprojectid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_listsprintlogsfromprojectid">listsprintlogsfromprojectid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_sprintlogdbhandler">sprintlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_listsprintlogsfromprojectid">listsprintlogsfromprojectid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_edituser"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_edituser">edituser</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_edituser">edituser</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_existsnameinproject"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_existsnameinproject">existsnameinproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">name</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">p</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_getprojectfromname">getprojectfromname</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">name</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">p</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+			<SPAN CLASS="ekeyword">else</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_edittask"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_edittask">edittask</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">t</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/task.html">TASK</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_taskdbhandler">taskdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/task_db_handler.html#f_edittask">edittask</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">t</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getdevelopersfromprojectid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getdevelopersfromprojectid">getdevelopersfromprojectid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/user.html">USER</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getdevelopersfromprojectid">getdevelopersfromprojectid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_editproject"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_editproject">editproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_editproject">editproject</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_checkvisibilityforproject"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_checkvisibilityforproject">checkvisibilityforproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_projectdbhandler">projectdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_checkvisibilityforproject">checkvisibilityforproject</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getpbisfrombacklogid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getpbisfrombacklogid">getpbisfrombacklogid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi_db_handler.html#f_getpbisfrombacklogid">getpbisfrombacklogid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getstatistics"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getstatistics">getstatistics</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_LIST</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/stat_entry.html">STAT_ENTRY</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getstatistics">getstatistics</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getstatisticsfromuserproject"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getstatisticsfromuserproject">getstatisticsfromuserproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">userid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">projectid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getstatisticsfromuserproject">getstatisticsfromuserproject</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">userid</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">projectid</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getuserfromemailanddob"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getuserfromemailanddob">getuserfromemailanddob</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">email</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">dateofbirth</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getuserfromemailanddob">getuserfromemailanddob</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">email</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">dateofbirth</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getpbisfromsprintlogid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getpbisfromsprintlogid">getpbisfromsprintlogid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi_db_handler.html#f_getpbisfromsprintlogid">getpbisfromsprintlogid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_insertpbiintosprintlog"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_insertpbiintosprintlog">insertpbiintosprintlog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi_db_handler.html#f_insertpbiintosprintlog">insertpbiintosprintlog</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_removepbifromsprintlog"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_removepbifromsprintlog">removepbifromsprintlog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_pbidbhandler">pbidbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi_db_handler.html#f_removepbifromsprintlog">removepbifromsprintlog</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getmessagefromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getmessagefromid">getmessagefromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/message.html">MESSAGE</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_messagedbhandler">messagedbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/message_db_handler.html#f_getmessagefromid">getmessagefromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getmessagesfromchatid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getmessagesfromchatid">getmessagesfromchatid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/message.html">MESSAGE</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_messagedbhandler">messagedbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/message_db_handler.html#f_getchatmessagesfromchatid">getchatmessagesfromchatid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getchatfromid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getchatfromid">getchatfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/chat.html">CHAT</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_chatdbhandler">chatdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/chat_db_handler.html#f_getchatfromid">getchatfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getusersfromchatid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getusersfromchatid">getusersfromchatid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/user.html">USER</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getusersfromchatid">getusersfromchatid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_insertmessage"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_insertmessage">insertmessage</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">message</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/message.html">MESSAGE</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_messagedbhandler">messagedbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/message_db_handler.html#f_insertmessage">insertmessage</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">message</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_insertchat"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_insertchat">insertchat</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">chat</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/chat.html">CHAT</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_chatdbhandler">chatdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/chat_db_handler.html#f_insertchat">insertchat</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">chat</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getchatfromprojectid"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getchatfromprojectid">getchatfromprojectid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">projectid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/chat.html">CHAT</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_chatdbhandler">chatdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/chat_db_handler.html#f_getchatfromprojectid">getchatfromprojectid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">projectid</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_adduserinchat"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_adduserinchat">adduserinchat</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">user</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">chat</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/chat.html">CHAT</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_chatdbhandler">chatdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/chat_db_handler.html#f_adduserinchat">adduserinchat</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">user</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">chat</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_deleteuserinchat"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_deleteuserinchat">deleteuserinchat</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">user</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">chat</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/chat.html">CHAT</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/pdt_db.html#f_chatdbhandler">chatdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/chat_db_handler.html#f_deleteuserinchat">deleteuserinchat</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">user</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">chat</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getnewmessages"></A><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getnewmessages">getnewmessages</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">chatid</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">lastmessageid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/message.html">MESSAGE</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/pdt_db.html#f_messagedbhandler">messagedbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/message_db_handler.html#f_getnewmessages">getnewmessages</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">chatid</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">lastmessageid</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../pdt/pdt_db.html">PDT_DB</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pdt_db_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pdt_db_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="pdt_db_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="pdt_db"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

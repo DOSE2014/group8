@@ -262,9 +262,9 @@ feature
 	do
 		pbidbhandler.insertpbiintosprintlog (pbi, s)
 	end
-	removepbifromsprintlog (pbi, s: INTEGER)
+	removepbifromsprintlog (pbi : INTEGER)
 	do
-		pbidbhandler.removepbifromsprintlog (pbi, s)
+		pbidbhandler.removepbifromsprintlog (pbi)
 	end
 
 	getMessageFromID(id: INTEGER): MESSAGE

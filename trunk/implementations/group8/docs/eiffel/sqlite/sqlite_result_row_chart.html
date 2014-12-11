@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="A row returned from executing a SQLite query statement.  Note: Result rows are the same for the same query, meaning they should not be retained by any       client. Upon reciept of a row object any column value of worth should be queried and       retained by the client."/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="copyright" content="Copyright (c) 1984-2013, Eiffel Software"/>
+<meta name="license" content="GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"/>
+<meta name="licensing_options" content="http://www.eiffel.com/licensing"/>
+<meta name="copying" content="This file is part of Eiffel Software's Eiffel Development Environment.  Eiffel Software's Eiffel Development Environment is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2 of the License (available at the URL listed under license above).  Eiffel Software's Eiffel Development Environment is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with Eiffel Software's Eiffel Development Environment; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>sqlite_result_row Chart</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_result_row"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">class</SPAN>
+	<A CLASS="eclass" HREF="../sqlite/sqlite_result_row_chart.html">SQLITE_RESULT_ROW</A>
+
+<SPAN CLASS="ekeyword">General</SPAN>
+	<SPAN CLASS="eitag">cluster</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="ecluster" HREF="../sqlite/index.html">sqlite</A>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> 
+		<SPAN CLASS="estring">&quot;A row returned from executing a SQLite query statement.</SPAN>
+		
+		<SPAN CLASS="estring">Note: Result rows are the same for the same query, meaning they should not be retained by any</SPAN>
+		<SPAN CLASS="estring"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;client. Upon reciept of a row object any column value of worth should be queried and</SPAN>
+		<SPAN CLASS="estring"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retained by the client.&quot;</SPAN>
+	<SPAN CLASS="eitag">create</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">Ancestors</SPAN>
+	<A CLASS="eclass" HREF="../sqlite/sqlite_internals_chart.html">SQLITE_INTERNALS</A><SPAN CLASS="echar">*</SPAN>
+	<A CLASS="eclass" HREF="../sqlite/sqlite_result_externals_chart.html">SQLITE_RESULT_EXTERNALS</A>
+	<A CLASS="eclass" HREF="../sqlite/sqlite_shared_api_chart.html">SQLITE_SHARED_API</A>
+	<A CLASS="eclass" HREF="../sqlite/sqlite_statement_externals_chart.html">SQLITE_STATEMENT_EXTERNALS</A>
+
+<SPAN CLASS="ekeyword">Queries</SPAN>
+	<SPAN TITLE="`blob_value' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_blob_value">blob_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">MANAGED_POINTER</SPAN></SPAN>
+	<SPAN TITLE="`boolean_value' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_boolean_value">boolean_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`column_name' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_column_name">column_name</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">IMMUTABLE_STRING_8</SPAN></SPAN>
+	<SPAN TITLE="`count' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_count">count</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN></SPAN>
+	<SPAN TITLE="`index' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_index">index</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN></SPAN>
+	<SPAN TITLE="`integer_64_value' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_integer_64_value">integer_64_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_64</SPAN></SPAN>
+	<SPAN TITLE="`integer_value' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_integer_value">integer_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`is_boolean_value' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_is_boolean_value">is_boolean_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_connected' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_is_connected">is_connected</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_interface_usable' was declared in SQLITE_SHARED_API"><A CLASS="efeature" HREF="../sqlite/sqlite_shared_api.html#f_is_interface_usable">is_interface_usable</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_null' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_is_null">is_null</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_sqlite_available' was declared in SQLITE_SHARED_API"><A CLASS="efeature" HREF="../sqlite/sqlite_shared_api.html#f_is_sqlite_available">Is_sqlite_available</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`real_64_value' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_real_64_value">real_64_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">REAL_64</SPAN></SPAN>
+	<SPAN TITLE="`real_value' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_real_value">real_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">REAL_32</SPAN></SPAN>
+	<SPAN TITLE="`statement' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_statement">statement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement_chart.html">SQLITE_STATEMENT</A></SPAN>
+	<SPAN TITLE="`string_value' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN></SPAN>
+	<SPAN TITLE="`type' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_type">type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`value' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_value">value</A> <SPAN CLASS="ekeyword">alias</SPAN> <SPAN CLASS="esymbol">&quot;</SPAN><A CLASS="esymbol" HREF="../sqlite/sqlite_result_row.html#f_value">[]</A><SPAN CLASS="esymbol">&quot;</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ANY</SPAN></SPAN>
+
+<FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_result_row"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>

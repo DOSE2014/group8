@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Summary description for {SPRINTLOG_DB_HANDLER}."/>
+<meta name="author" content=""/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>sprintlog_db_handler Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sprintlog_db_handler_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sprintlog_db_handler_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sprintlog_db_handler_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sprintlog_db_handler"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Summary description for </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/sprintlog_db_handler.html">SPRINTLOG_DB_HANDLER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../pdt/sprintlog_db_handler.html">SPRINTLOG_DB_HANDLER</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> 
+
+	<A NAME="f_db"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_database.html">SQLITE_DATABASE</A>
+
+	<A NAME="f_dbquerystatement"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_query_statement.html">SQLITE_QUERY_STATEMENT</A>
+
+	<A NAME="f_dbmodifystatement"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_modify_statement.html">SQLITE_MODIFY_STATEMENT</A>
+
+	<A NAME="f_dbinsertstatement"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_insert_statement.html">SQLITE_INSERT_STATEMENT</A>
+
+	<A NAME="f_backlogdbhandler"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_backlogdbhandler">backlogdbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog_db_handler.html">BACKLOG_DB_HANDLER</A>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_database.html">SQLITE_DATABASE</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">backdbhand</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog_db_handler.html">BACKLOG_DB_HANDLER</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_db">db</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+			<A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_backlogdbhandler">backlogdbhandler</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">backdbhand</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_getsprintlogfromid"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_getsprintlogfromid">getsprintlogfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_make_default">make_default</A>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;SELECT * FROM Sprintlog WHERE id=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">id</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;;&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_query_statement.html#f_execute">execute</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">agent</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_gensprintlog">gensprintlog</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">?</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">6</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_getid">getid</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_insertsprintlog"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_insertsprintlog">insertsprintlog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_make_from_epoch">make_from_epoch</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;INSERT INTO Sprintlog(name, description, backlog, startDate, endDate) VALUES ('&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_getname">getname</A> <SPAN CLASS="esymbol">+</SPAN> &quot;', '&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_getdescription">getdescription</A> <SPAN CLASS="esymbol">+</SPAN> &quot;', '&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_getbacklog">getbacklog</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/backlog.html#f_getid">getid</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;', '&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_getstartdate">getstartdate</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_definite_duration">definite_duration</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time_duration.html#f_seconds_count">seconds_count</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;', '&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_getenddate">getenddate</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_definite_duration">definite_duration</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time_duration.html#f_seconds_count">seconds_count</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;');&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_modify_statement.html#f_execute">execute</A>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_has_error">has_error</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Error while inserting new Sprintlog&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_deletesprintlog"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_deletesprintlog">deletesprintlog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;DELETE FROM Sprintlog WHERE id=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;;&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_modify_statement.html#f_execute">execute</A>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_has_error">has_error</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Error while deleting sprintlog&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_listsprintlogsfrombacklogid"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_listsprintlogsfrombacklogid">listsprintlogsfrombacklogid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;SELECT * FROM Sprintlog WHERE backlog=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">b</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;;&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_query_statement.html#f_execute">execute</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">agent</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_gensprintlogs">gensprintlogs</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">?</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">6</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_listsprintlogsfromprojectid"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_listsprintlogsfromprojectid">listsprintlogsfromprojectid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;SELECT Sprintlog.* FROM Sprintlog JOIN Backlog ON Sprintlog.backlog = Backlog.id WHERE Backlog.project = &quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;;&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_query_statement.html#f_execute">execute</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">agent</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_gensprintlogs">gensprintlogs</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">?</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">6</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> 
+
+	<A NAME="f_gensprintlog"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_gensprintlog">gensprintlog</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_result_row.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">numcolumns</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_setid">setid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_setname">setname</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">2</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_setdescription">setdescription</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">3</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_setbacklog">setbacklog</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_backlogdbhandler">backlogdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/backlog_db_handler.html#f_getbacklogfromid">getbacklogfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">4</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">d</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_make_from_epoch">make_from_epoch</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">5</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_setstartdate">setstartdate</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">d</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_make_from_epoch">make_from_epoch</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">6</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_setenddate">setenddate</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_gensprintlogs"></A><A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_gensprintlogs">gensprintlogs</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_result_row.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">numcolumns</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">x</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/sprintlog.html">SPRINTLOG</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/sprintlog.html#f_make_default">make_default</A>
+			<SPAN CLASS="elocal">x</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/sprintlog_db_handler.html#f_gensprintlog">gensprintlog</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">numcolumns</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">extend</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../pdt/sprintlog_db_handler.html">SPRINTLOG_DB_HANDLER</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sprintlog_db_handler_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sprintlog_db_handler_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sprintlog_db_handler_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sprintlog_db_handler"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

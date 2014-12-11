@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Externals for interacting with SQLite statements (sqlite3_stmt *)."/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="copyright" content="Copyright (c) 1984-2009, Eiffel Software"/>
+<meta name="license" content="GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"/>
+<meta name="licensing_options" content="http://www.eiffel.com/licensing"/>
+<meta name="copying" content="This file is part of Eiffel Software's Eiffel Development Environment.  Eiffel Software's Eiffel Development Environment is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2 of the License (available at the URL listed under license above).  Eiffel Software's Eiffel Development Environment is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with Eiffel Software's Eiffel Development Environment; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>sqlite_statement_externals Chart</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_externals_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_externals.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_externals_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_statement_externals"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">class</SPAN>
+	<A CLASS="eclass" HREF="../sqlite/sqlite_statement_externals_chart.html">SQLITE_STATEMENT_EXTERNALS</A>
+
+<SPAN CLASS="ekeyword">General</SPAN>
+	<SPAN CLASS="eitag">cluster</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="ecluster" HREF="../sqlite/index.html">sqlite</A>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Externals for interacting with SQLite statements (sqlite3_stmt *).&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">Ancestors</SPAN>
+	<SPAN CLASS="neclass">ANY</SPAN>
+
+<SPAN CLASS="ekeyword">Queries</SPAN>
+	<SPAN TITLE="`sqlite3_bind_null' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_bind_null">sqlite3_bind_null</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_index</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`sqlite3_bind_parameter_count' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_bind_parameter_count">sqlite3_bind_parameter_count</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`sqlite3_bind_parameter_index' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_bind_parameter_index">sqlite3_bind_parameter_index</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">a_variable</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`sqlite3_bind_parameter_name' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_bind_parameter_name">sqlite3_bind_parameter_name</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_index</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN></SPAN>
+	<SPAN TITLE="`sqlite3_clear_bindings' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_clear_bindings">sqlite3_clear_bindings</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`sqlite3_column_count' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_column_count">sqlite3_column_count</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`sqlite3_column_name' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_column_name">sqlite3_column_name</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN></SPAN>
+	<SPAN TITLE="`sqlite3_db_handle' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_db_handle">sqlite3_db_handle</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN></SPAN>
+	<SPAN TITLE="`sqlite3_finalize' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_finalize">sqlite3_finalize</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`sqlite3_prepare_v2' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_prepare_v2">sqlite3_prepare_v2</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_db</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">a_statement</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_bytes</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_hnd</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">a_tail</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">TYPED_POINTER</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`sqlite3_reset' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_reset">sqlite3_reset</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`sqlite3_step' is declared in `Current'"><A CLASS="efeature" HREF="../sqlite/sqlite_statement_externals.html#f_sqlite3_step">sqlite3_step</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_api</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_api_chart.html">SQLITE_API</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_stmt</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+
+<FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_externals_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_externals.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_externals_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_statement_externals"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>

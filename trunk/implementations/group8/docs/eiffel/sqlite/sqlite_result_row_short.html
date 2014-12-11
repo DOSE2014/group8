@@ -1,0 +1,269 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="A row returned from executing a SQLite query statement.  Note: Result rows are the same for the same query, meaning they should not be retained by any       client. Upon reciept of a row object any column value of worth should be queried and       retained by the client."/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="copyright" content="Copyright (c) 1984-2013, Eiffel Software"/>
+<meta name="license" content="GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"/>
+<meta name="licensing_options" content="http://www.eiffel.com/licensing"/>
+<meta name="copying" content="This file is part of Eiffel Software's Eiffel Development Environment.  Eiffel Software's Eiffel Development Environment is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2 of the License (available at the URL listed under license above).  Eiffel Software's Eiffel Development Environment is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with Eiffel Software's Eiffel Development Environment; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>sqlite_result_row Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_result_row"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">A row returned from executing a SQLite query statement.</SPAN>
+		
+		<SPAN CLASS="estring">Note: Result rows are the same for the same query, meaning they should not be retained by any</SPAN>
+		<SPAN CLASS="estring"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;client. Upon reciept of a row object any column value of worth should be queried and</SPAN>
+		<SPAN CLASS="estring"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retained by the client.</SPAN>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">legal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;See notice at end of class.&quot;</SPAN>
+	<SPAN CLASS="eitag">status</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;See notice at end of class.&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date: 2013-11-07 13:49:24 -0800 (Thu, 07 Nov 2013) $&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision: 93258 $&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../sqlite/sqlite_result_row_short.html">SQLITE_RESULT_ROW</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_statement_short.html">SQLITE_STATEMENT</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement_iteration_cursor_short.html">SQLITE_STATEMENT_ITERATION_CURSOR</A><SPAN CLASS="esymbol">}</SPAN>
+	<A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Access</SPAN>
+
+	<A NAME="f_statement"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_statement">statement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement_short.html">SQLITE_STATEMENT</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Statement used when generating the row.</SPAN>
+
+	<A NAME="f_index"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_index">index</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN> <SPAN CLASS="ekeyword">assign</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_set_index">set_index</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Row result index (not the row id!)</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Measurement</SPAN>
+
+	<A NAME="f_count"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Number of returned columns in the row.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Status report</SPAN>
+
+	<A NAME="f_is_connected"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Indicates if the results are still connected to the statement.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Disconnection occurs when a statement is disconnected from the database, which can happen</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> if the database is closed.</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">statement_is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_statement">statement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">statement_mark_equal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_statement">statement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_mark">mark</A> <SPAN CLASS="esymbol">=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_statement_mark">statement_mark</A>
+
+	<A NAME="f_is_null"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_null">is_null</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Determines if a column contains a null value.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column index.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`Result'<SPAN CLASS="ecomment">: True if the column contains a null value; False otherwise.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">not_result</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_type">type</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_type_short.html">SQLITE_TYPE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_type_short.html#f_null">null</A>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Query</SPAN>
+
+	<A NAME="f_column_name"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_column_name">column_name</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">IMMUTABLE_STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Retrieve the name of a column in a statement.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column index to retrieve a name for.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`Result'<SPAN CLASS="ecomment">: A column name, or an</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="ekeyword">Result</SPAN>
+
+	<A NAME="f_value"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_value">value</A> <SPAN CLASS="ekeyword">alias</SPAN> <SPAN CLASS="esymbol">&quot;</SPAN><A CLASS="esymbol" HREF="../sqlite/sqlite_result_row_short.html#f_value">[]</A><SPAN CLASS="esymbol">&quot;</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Fetches a value for the column </SPAN>`a_column'<SPAN CLASS="ecomment">.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Unlike the specific type functions such as </SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_string_value">string_value</A><SPAN CLASS="ecomment">, </SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_real_value">real_value</A><SPAN CLASS="ecomment">, ... the result</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> returns an unconverted best match based on the information held in the database and</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> result information.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Note: All results are of the highest bit length (64 bit REAL and INTEGER) </SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column to retrieve the result for.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`Result'<SPAN CLASS="ecomment">: The value object, actual object or Void if no result data was found for the column.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+
+	<A NAME="f_type"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_type">type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Returns the type of the column.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column to retrieve the result for.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`Result'<SPAN CLASS="ecomment">: A column type as described in </SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_type_short.html">SQLITE_TYPE</A>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">valid_type</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">create</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_type_short.html">SQLITE_TYPE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_type_short.html#f_is_valid_type">is_valid_type</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="esymbol">)</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Query: Value affinity</SPAN>
+
+	<A NAME="f_blob_value"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_blob_value">blob_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">MANAGED_POINTER</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Retrieves a blob representation of a column result value.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column to retrieve the result for.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+			<SPAN CLASS="etag">not_a_column_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_null">is_null</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_integer_value"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_integer_value">integer_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Retrieves a </SPAN><SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="ecomment"> representation of a column result value.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column to retrieve the result for.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+			<SPAN CLASS="etag">not_a_column_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_null">is_null</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_integer_64_value"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_integer_64_value">integer_64_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_64</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Retrieves a </SPAN><SPAN CLASS="neclass">INTEGER_64</SPAN><SPAN CLASS="ecomment"> representation of a column result value.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column to retrieve the result for.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+			<SPAN CLASS="etag">not_a_column_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_null">is_null</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_string_value"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_string_value">string_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Retrieves a </SPAN><SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="ecomment"> representation of a column result value.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column to retrieve the result for.	</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+			<SPAN CLASS="etag">not_a_column_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_null">is_null</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_real_value"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_real_value">real_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">REAL_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Retrieves a </SPAN><SPAN CLASS="neclass">REAL_32</SPAN><SPAN CLASS="ecomment"> representation of a column result value.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column to retrieve the result for.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+			<SPAN CLASS="etag">not_a_column_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_null">is_null</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_real_64_value"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_real_64_value">real_64_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">REAL_64</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Retrieves a </SPAN><SPAN CLASS="neclass">REAL_64</SPAN><SPAN CLASS="ecomment"> representation of a column result value.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column to retrieve the result for.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+			<SPAN CLASS="etag">not_a_column_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_null">is_null</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_is_boolean_value"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_boolean_value">is_boolean_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Retrieves a </SPAN><SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="ecomment"> representation of a column result value.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column to retrieve the result for.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+			<SPAN CLASS="etag">not_a_column_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_null">is_null</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_boolean_value"></A><A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_boolean_value">boolean_value</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Retrieves a </SPAN><SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="ecomment"> representation of a column result value.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_column'<SPAN CLASS="ecomment">: The column to retrieve the result for.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">a_column_positive</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+			<SPAN CLASS="etag">a_column_small_enough</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">a_column</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_count">count</A>
+			<SPAN CLASS="etag">not_a_column_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_result_row_short.html#f_is_null">is_null</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_column</SPAN><SPAN CLASS="esymbol">)</SPAN>
+	
+<SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">copyright</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Copyright (c) 1984-2013, Eiffel Software&quot;</SPAN>
+	<SPAN CLASS="eitag">license</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;GPL version 2 (see </SPAN><A CLASS="estring" HREF="http://www.eiffel.com/licensing/gpl.txt">http://www.eiffel.com/licensing/gpl.txt</A><SPAN CLASS="estring">)&quot;</SPAN>
+	<SPAN CLASS="eitag">licensing_options</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><A CLASS="estring" HREF="http://www.eiffel.com/licensing">http://www.eiffel.com/licensing</A><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">copying</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">This file is part of Eiffel Software's Eiffel Development Environment.</SPAN>
+		
+		<SPAN CLASS="estring">Eiffel Software's Eiffel Development Environment is free</SPAN>
+		<SPAN CLASS="estring">software; you can redistribute it and/or modify it under</SPAN>
+		<SPAN CLASS="estring">the terms of the GNU General Public License as published</SPAN>
+		<SPAN CLASS="estring">by the Free Software Foundation, version 2 of the License</SPAN>
+		<SPAN CLASS="estring">(available at the URL listed under &quot;license&quot; above).</SPAN>
+		
+		<SPAN CLASS="estring">Eiffel Software's Eiffel Development Environment is</SPAN>
+		<SPAN CLASS="estring">distributed in the hope that it will be useful, but</SPAN>
+		<SPAN CLASS="estring">WITHOUT ANY WARRANTY; without even the implied warranty</SPAN>
+		<SPAN CLASS="estring">of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</SPAN>
+		<SPAN CLASS="estring">See the GNU General Public License for more details.</SPAN>
+		
+		<SPAN CLASS="estring">You should have received a copy of the GNU General Public</SPAN>
+		<SPAN CLASS="estring">License along with Eiffel Software's Eiffel Development</SPAN>
+		<SPAN CLASS="estring">Environment; if not, write to the Free Software Foundation,</SPAN>
+		<SPAN CLASS="estring">Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</SPAN>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">source</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">Eiffel Software</SPAN>
+		<SPAN CLASS="estring">5949 Hollister Ave., Goleta, CA 93117 USA</SPAN>
+		<SPAN CLASS="estring">Telephone 805-685-1006, Fax 805-685-6869</SPAN>
+		<SPAN CLASS="estring">Website </SPAN><A CLASS="estring" HREF="http://www.eiffel.com">http://www.eiffel.com</A>
+		<SPAN CLASS="estring">Customer support </SPAN><A CLASS="estring" HREF="http://support.eiffel.com">http://support.eiffel.com</A>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_result_row_short.html">SQLITE_RESULT_ROW</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_result_row.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_result_row"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

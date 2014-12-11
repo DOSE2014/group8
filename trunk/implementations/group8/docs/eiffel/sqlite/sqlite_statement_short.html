@@ -1,0 +1,236 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="An SQLite statement associated with a database connection.  Note: If a database connection is closed the statement can no longer be used. In some cases,       when a connection is reopened the statement will recompile itself for use with the new       connection. However, this is not guarenteed to work. As such, please use caution when       caching statements when database connections are open and closed."/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="copyright" content="Copyright (c) 1984-2013, Eiffel Software"/>
+<meta name="license" content="GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"/>
+<meta name="licensing_options" content="http://www.eiffel.com/licensing"/>
+<meta name="copying" content="This file is part of Eiffel Software's Eiffel Development Environment.  Eiffel Software's Eiffel Development Environment is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2 of the License (available at the URL listed under license above).  Eiffel Software's Eiffel Development Environment is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with Eiffel Software's Eiffel Development Environment; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>sqlite_statement Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_statement"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">An SQLite statement associated with a database connection.</SPAN>
+		
+		<SPAN CLASS="estring">Note: If a database connection is closed the statement can no longer be used. In some cases,</SPAN>
+		<SPAN CLASS="estring"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a connection is reopened the statement will recompile itself for use with the new</SPAN>
+		<SPAN CLASS="estring"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connection. However, this is not guarenteed to work. As such, please use caution when</SPAN>
+		<SPAN CLASS="estring"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;caching statements when database connections are open and closed.</SPAN>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">legal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;See notice at end of class.&quot;</SPAN>
+	<SPAN CLASS="eitag">status</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;See notice at end of class.&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date: 2013-11-07 12:09:47 -0800 (Thu, 07 Nov 2013) $&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision: 93250 $&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../sqlite/sqlite_statement_short.html">SQLITE_STATEMENT</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Access</SPAN>
+
+	<A NAME="f_string"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_string">string</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">IMMUTABLE_STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> The full statement string passed during initialization.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> May contain multiple SQLite statements.</SPAN>
+
+	<A NAME="f_database"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_database">database</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_database_short.html">SQLITE_DATABASE</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Database to execute the SQL statement on.</SPAN>
+
+	<A NAME="f_statement_string"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_statement_string">statement_string</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">IMMUTABLE_STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> The actual compiled database string.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> This may not be the same as </SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_string">string</A><SPAN CLASS="ecomment"> because statements string can be composed of</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> of multiple statements. After compilation this will contain a single statement.</SPAN>
+
+	<A NAME="f_next_statement"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_next_statement">next_statement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement_short.html">SQLITE_STATEMENT</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Next statement in the chain, when the supplied SQLite statement contained multiple SQLite</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> statements.</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Access: Error handling</SPAN>
+
+	<A NAME="f_last_exception"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_last_exception">last_exception</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_exception_short.html">SQLITE_EXCEPTION</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Last occurring error, set during compilation.</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Access: Cursor</SPAN>
+
+	<A NAME="f_execute_new"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_execute_new">execute_new</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement_iteration_cursor_short.html">SQLITE_STATEMENT_ITERATION_CURSOR</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Execute the SQLite statement.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_compiled</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_compiled">is_compiled</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">not_is_executing</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_executing">is_executing</A>
+			<SPAN CLASS="etag">is_accessible</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_accessible">is_accessible</A>
+			<SPAN CLASS="etag">not_has_arguments</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_has_arguments">has_arguments</A>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="ekeyword">Result</SPAN>
+
+	<A NAME="f_execute_new_with_arguments"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_execute_new_with_arguments">execute_new_with_arguments</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_arguments</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ITERABLE</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement_iteration_cursor_short.html">SQLITE_STATEMENT_ITERATION_CURSOR</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Executes the SQLite statement with bound set of arguments.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN>`a_arguments'<SPAN CLASS="ecomment">: The bound arguments to call the SQLite query statement with.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valid arguments are those that descent </SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_bind_arg_short.html">SQLITE_BIND_ARG</A><SPAN CLASS="ecomment"> or</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN CLASS="neclass">READABLE_STRING_8</SPAN><SPAN CLASS="ecomment">, or of type {INTEGER_*}, {NATURAL_*} (with the expection</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of </SPAN><SPAN CLASS="neclass">NATURAL_64</SPAN><SPAN CLASS="ecomment">), or </SPAN><SPAN CLASS="neclass">MANAGED_POINTER</SPAN><SPAN CLASS="ecomment"> (for blobs).</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note: If *not* using </SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_bind_arg_short.html">SQLITE_BIND_ARG</A><SPAN CLASS="ecomment">, the SQLite statement should use ?NNN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arguments and not named arguments.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;see </SPAN><A CLASS="ecomment" HREF="http://sqlite.org/c3ref/bind_blob.html">http://sqlite.org/c3ref/bind_blob.html</A>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_compiled</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_compiled">is_compiled</A>
+			<SPAN CLASS="etag">is_connected</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_connected">is_connected</A>
+			<SPAN CLASS="etag">not_is_executing</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_executing">is_executing</A>
+			<SPAN CLASS="etag">is_accessible</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_accessible">is_accessible</A>
+			<SPAN CLASS="etag">has_arguments</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_has_arguments">has_arguments</A>
+			<SPAN CLASS="etag">a_arguments_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">a_arguments</SPAN>
+			<SPAN CLASS="etag">a_arguments_is_valid_arguments</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_binding_helpers_short.html#f_is_valid_arguments">is_valid_arguments</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_arguments</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="ekeyword">Result</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Measurement</SPAN>
+
+	<A NAME="f_arguments_count"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_arguments_count">arguments_count</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Number of arguments required to be bound to execute the statement.</SPAN>
+
+	<A NAME="f_changes_count"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_changes_count">changes_count</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> The number of changes executing this statement caused</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Status report</SPAN>
+
+	<A NAME="f_is_executing"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_executing">is_executing</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Indicates if the statement is currently be executed.</SPAN>
+
+	<A NAME="f_is_compiled"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_compiled">is_compiled</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Indicates if the statement was successfully compiled, and if it is compiled with the</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> associated database </SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_database">database</A><SPAN CLASS="ecomment">.</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">not_internal_stmt_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_internal_stmt">internal_stmt</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="nefeature">default_pointer</SPAN>
+
+	<A NAME="f_is_connected"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_connected">is_connected</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Indicates if the statement is still connected to a database.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Disconnection occurs when a database connection is closed. Even when reopen the statement</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> will still remain disconnected. Use </SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_ensure_connected">ensure_connected</A><SPAN CLASS="ecomment"> to attempt to reconnect to the</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> associated database.</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">not_internal_stmt_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_compiled">is_compiled</A> <SPAN CLASS="ekeyword">and then</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_internal_db">internal_db</A> <SPAN CLASS="esymbol">=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_database">database</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_database_short.html#f_internal_db">internal_db</A><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_is_accessible"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_accessible">is_accessible</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Indicates if the statement is accessible on the current thread.</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">true_result</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">PLATFORM</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_thread_capable</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_database">database</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_database_short.html#f_is_accessible">is_accessible</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="etag">same_internal_thread_id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">PLATFORM</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_thread_capable</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_internal_thread_id">internal_thread_id</A> <SPAN CLASS="esymbol">=</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_get_current_thread_id">get_current_thread_id</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_32</SPAN>
+
+	<A NAME="f_has_arguments"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_has_arguments">has_arguments</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Indicates if the statement has required arguments to execute.</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">has_arguments</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_arguments_count">arguments_count</A> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_has_error"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_has_error">has_error</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Indicates if an error occurred during the last operation.</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">last_exception_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_last_exception">last_exception</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Basic operations</SPAN>
+
+	<A NAME="f_abort"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_abort">abort</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Aborts an executing statement.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Note: Unlike most of the routines, this can be called from another thread.</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_sqlite_available</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_sqlite_available">Is_sqlite_available</A>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_executing</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_accessible">is_accessible</A> <SPAN CLASS="ekeyword">implies</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_executing">is_executing</A>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">is_abort_requested</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_abort_requested">is_abort_requested</A>
+
+	<A NAME="f_ensure_connected"></A><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_ensure_connected">ensure_connected</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Attempts to ensure a statement is connected to the associated database.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Note: This helper routine can be used prior to executing the statement to ensure the</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;statement is compiled for use with the associated database. Statements become</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disconnected when the assoicated database is closed. Even when reopening the database</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a reconnection must be made.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calling this routine will not reopen the database!</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reconnection is not guarenteed!</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">is_sqlite_available</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_sqlite_available">Is_sqlite_available</A>
+			<SPAN CLASS="etag">is_interface_usable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_shared_api_short.html#f_is_interface_usable">is_interface_usable</A>
+			<SPAN CLASS="etag">is_accessible</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_accessible">is_accessible</A>
+			<SPAN CLASS="etag">database_is_accessible</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_database">database</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_database_short.html#f_is_accessible">is_accessible</A>
+			<SPAN CLASS="etag">database_is_readable</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_database">database</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_database_short.html#f_is_readable">is_readable</A>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">mark_increased</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">old</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_is_connected">is_connected</A><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_mark">mark</A> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="ekeyword">old</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_mark">mark</A><SPAN CLASS="esymbol">)</SPAN>
+	
+<SPAN CLASS="ekeyword">invariant</SPAN>
+	<SPAN CLASS="etag">database_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_database">database</A>
+	<SPAN CLASS="etag">statement_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_statement_string">statement_string</A>
+	<SPAN CLASS="etag">not_statement_is_empty</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_statement_string">statement_string</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_empty</SPAN>
+	<SPAN CLASS="etag">string_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_string">string</A>
+	<SPAN CLASS="etag">not_string_is_empty</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_string">string</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_empty</SPAN>
+	<SPAN CLASS="etag">not_internal_db_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_internal_stmt">internal_stmt</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="nefeature">default_pointer</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_internal_db">internal_db</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="nefeature">default_pointer</SPAN>
+	<SPAN CLASS="etag">internal_db_is_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_internal_stmt">internal_stmt</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="nefeature">default_pointer</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_internal_db">internal_db</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="nefeature">default_pointer</SPAN>
+	<SPAN CLASS="etag">internal_thread_id_set</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">PLATFORM</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_thread_capable</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <A CLASS="efeature" HREF="../sqlite/sqlite_statement_short.html#f_internal_thread_id">internal_thread_id</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+
+<SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">copyright</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Copyright (c) 1984-2013, Eiffel Software&quot;</SPAN>
+	<SPAN CLASS="eitag">license</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;GPL version 2 (see </SPAN><A CLASS="estring" HREF="http://www.eiffel.com/licensing/gpl.txt">http://www.eiffel.com/licensing/gpl.txt</A><SPAN CLASS="estring">)&quot;</SPAN>
+	<SPAN CLASS="eitag">licensing_options</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><A CLASS="estring" HREF="http://www.eiffel.com/licensing">http://www.eiffel.com/licensing</A><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">copying</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">This file is part of Eiffel Software's Eiffel Development Environment.</SPAN>
+		
+		<SPAN CLASS="estring">Eiffel Software's Eiffel Development Environment is free</SPAN>
+		<SPAN CLASS="estring">software; you can redistribute it and/or modify it under</SPAN>
+		<SPAN CLASS="estring">the terms of the GNU General Public License as published</SPAN>
+		<SPAN CLASS="estring">by the Free Software Foundation, version 2 of the License</SPAN>
+		<SPAN CLASS="estring">(available at the URL listed under &quot;license&quot; above).</SPAN>
+		
+		<SPAN CLASS="estring">Eiffel Software's Eiffel Development Environment is</SPAN>
+		<SPAN CLASS="estring">distributed in the hope that it will be useful, but</SPAN>
+		<SPAN CLASS="estring">WITHOUT ANY WARRANTY; without even the implied warranty</SPAN>
+		<SPAN CLASS="estring">of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</SPAN>
+		<SPAN CLASS="estring">See the GNU General Public License for more details.</SPAN>
+		
+		<SPAN CLASS="estring">You should have received a copy of the GNU General Public</SPAN>
+		<SPAN CLASS="estring">License along with Eiffel Software's Eiffel Development</SPAN>
+		<SPAN CLASS="estring">Environment; if not, write to the Free Software Foundation,</SPAN>
+		<SPAN CLASS="estring">Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA</SPAN>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+	<SPAN CLASS="eitag">source</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;</SPAN><SPAN CLASS="estring">[</SPAN>
+		<SPAN CLASS="estring">Eiffel Software</SPAN>
+		<SPAN CLASS="estring">5949 Hollister Ave., Goleta, CA 93117 USA</SPAN>
+		<SPAN CLASS="estring">Telephone 805-685-1006, Fax 805-685-6869</SPAN>
+		<SPAN CLASS="estring">Website </SPAN><A CLASS="estring" HREF="http://www.eiffel.com">http://www.eiffel.com</A>
+		<SPAN CLASS="estring">Customer support </SPAN><A CLASS="estring" HREF="http://support.eiffel.com">http://support.eiffel.com</A>
+	<SPAN CLASS="estring">]</SPAN><SPAN CLASS="estring">&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../sqlite/sqlite_statement_short.html">SQLITE_STATEMENT</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sqlite_statement.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sqlite_statement"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

@@ -1,0 +1,290 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Summary description for {REST_PROJECT_PBIS}."/>
+<meta name="author" content=""/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>rest_projects_pbis Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="rest_projects_pbis"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Summary description for </SPAN><SPAN CLASS="estring">{</SPAN><SPAN CLASS="estring">REST_PROJECT_PBIS</SPAN><SPAN CLASS="estring">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../pdt/rest_projects_pbis.html">REST_PROJECTS_PBIS</A>
+
+<SPAN CLASS="ekeyword">inherit</SPAN>
+	<A CLASS="eclass" HREF="../pdt/authentication.html">AUTHENTICATION</A>
+
+	<A CLASS="eclass" HREF="../pdt/http_functions.html">HTTP_FUNCTIONS</A>
+
+	<A CLASS="eclass" HREF="../pdt/log.html">LOG</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Constructors</SPAN>
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sm</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_SESSION_MANAGER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">pdt_db</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/pdt_db.html">PDT_DB</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">sm</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">pdt_db</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_session_manager">session_manager</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">sm</SPAN>
+			<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_db">db</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">pdt_db</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Private properies</SPAN>
+
+	<A NAME="f_db"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_db">db</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/pdt_db.html">PDT_DB</A>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> declaring deferred properties</SPAN>
+
+	<A NAME="f_session_manager"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_session_manager">session_manager</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_SESSION_MANAGER</SPAN>
+
+	<A NAME="f_http_request"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_request">http_request</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN>
+
+	<A NAME="f_http_response"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_create_pbi"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_create_pbi">create_pbi</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPROJ</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/pbis/create</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: POST</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">id_project</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/http_parser.html">HTTP_PARSER</A>
+			<SPAN CLASS="elocal">param_name</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="elocal">param_description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="elocal">param_type</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="elocal">param_priority</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">param_duedate</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/regex.html">REGEX</A>
+			<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_OBJECT</SPAN>
+			<SPAN CLASS="elocal">error_reason</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="elocal">ok</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A>
+			<SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A>
+			<SPAN CLASS="elocal">proj</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A>
+			<SPAN CLASS="elocal">backlog</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/backlog.html">BACKLOG</A>
+			<SPAN CLASS="elocal">pbitype</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/pbitype.html">PBITYPE</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_request">http_request</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hreq</SPAN>
+			<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hres</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">pbitype</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/authentication.html#f_ensure_authenticated">ensure_authenticated</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">u</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_get_session_user">get_session_user</A>
+				<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_path_param">path_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;idproj&quot;<SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+					<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_malformed_json">send_malformed_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A><SPAN CLASS="esymbol">)</SPAN>
+					<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/create [POST] Missing idproj in URL.&quot;<SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">else</SPAN>
+					<SPAN CLASS="elocal">id_project</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_path_param">path_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;idproj&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN>
+					<SPAN CLASS="elocal">proj</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_db">db</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getprojectfromid">getprojectfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id_project</SPAN><SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">proj</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+						<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_malformed_json">send_malformed_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A><SPAN CLASS="esymbol">)</SPAN>
+						<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/create [POST] Project not existent.&quot;<SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="ekeyword">elseif</SPAN> <SPAN CLASS="elocal">proj</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getmanager">getmanager</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">u</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A> <SPAN CLASS="ekeyword">then</SPAN>
+						<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_make">make</A>
+						<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN>
+						<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;error&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;status&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+						<SPAN CLASS="elocal">param_name</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_post_param">post_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;name&quot;<SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_check_name">check_name</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_name</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<SPAN CLASS="elocal">error_reason</SPAN> <SPAN CLASS="esymbol">:=</SPAN> &quot;Name not present or not correct.&quot;
+							<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;name&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;field&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="elocal">param_description</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_post_param">post_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;description&quot;<SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_check_name">check_name</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_description</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<SPAN CLASS="elocal">error_reason</SPAN> <SPAN CLASS="esymbol">:=</SPAN> &quot;Description not present or not correct.&quot;
+							<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;description&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;field&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="elocal">param_type</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_post_param">post_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;type&quot;<SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_check_name">check_name</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_type</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">or</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">pbitype</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbitype.html#f_is_valid">is_valid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_type</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<SPAN CLASS="elocal">error_reason</SPAN> <SPAN CLASS="esymbol">:=</SPAN> &quot;Type not present or not correct.&quot;
+							<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;type&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;field&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="elocal">param_priority</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_post_int_param">post_int_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;priority&quot;<SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_check_integer">check_integer</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_priority</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<SPAN CLASS="elocal">error_reason</SPAN> <SPAN CLASS="esymbol">:=</SPAN> &quot;Priority not present or not integer.&quot;
+							<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;priority&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;field&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="elocal">param_duedate</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_post_int_param">post_int_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;dueDate&quot;<SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_check_integer">check_integer</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_duedate</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<SPAN CLASS="elocal">error_reason</SPAN> <SPAN CLASS="esymbol">:=</SPAN> &quot;dueDate not present or not unixtimestamp.&quot;
+							<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;dueDate&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;field&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">ok</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/create [POST] Request error: &quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">error_reason</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">error_reason</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;reason&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_json">send_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">else</SPAN>
+							<SPAN CLASS="elocal">backlog</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_db">db</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getbacklogfromprojectid">getbacklogfromprojectid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id_project</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">param_name</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">param_description</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">backlog</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">Void</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">pbitype</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbitype.html#f_to_integer">to_integer</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_type</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">param_priority</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_make_from_epoch">make_from_epoch</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_duedate</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_db">db</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_insertpbi">insertpbi</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_info">info</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">id_project</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;/pbis/create [POST] Added pbi to project&quot;<SPAN CLASS="esymbol">)</SPAN>
+							<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_generic_ok">send_generic_ok</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+					<SPAN CLASS="ekeyword">else</SPAN>
+						<A CLASS="efeature" HREF="../pdt/authentication.html#f_no_permission">no_permission</A>
+					<SPAN CLASS="ekeyword">end</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_edit_pbi"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_edit_pbi">edit_pbi</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPROJ</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/pbis/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPBI</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/delete</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: POST</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">id_project</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">id_pbi</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/http_parser.html">HTTP_PARSER</A>
+			<SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A>
+			<SPAN CLASS="elocal">proj</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A>
+			<SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A>
+			<SPAN CLASS="elocal">param</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="elocal">param_int</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/regex.html">REGEX</A>
+			<SPAN CLASS="elocal">pbitype</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/pbitype.html">PBITYPE</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_request">http_request</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hreq</SPAN>
+			<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hres</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/authentication.html#f_ensure_authenticated">ensure_authenticated</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">u</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_get_session_user">get_session_user</A>
+				<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_path_param">path_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;idproj&quot;<SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+					<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_malformed_json">send_malformed_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A><SPAN CLASS="esymbol">)</SPAN>
+					<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/{idpbi}/edit [POST] Missing idproj in URL.&quot;<SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">else</SPAN>
+					<SPAN CLASS="elocal">id_project</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_path_param">path_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;idproj&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN>
+					<SPAN CLASS="elocal">proj</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_db">db</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getprojectfromid">getprojectfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id_project</SPAN><SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">proj</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+						<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_malformed_json">send_malformed_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A><SPAN CLASS="esymbol">)</SPAN>
+						<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/{idpbi}/edit [POST] Project not existent.&quot;<SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="ekeyword">elseif</SPAN> <SPAN CLASS="elocal">proj</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getmanager">getmanager</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="elocal">u</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A> <SPAN CLASS="ekeyword">then</SPAN>
+						<A CLASS="efeature" HREF="../pdt/authentication.html#f_no_permission">no_permission</A>
+					<SPAN CLASS="ekeyword">elseif</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_path_param">path_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;idpbi&quot;<SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+						<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_malformed_json">send_malformed_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A><SPAN CLASS="esymbol">)</SPAN>
+						<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/{idpbi}/edit [POST] Missing idpbi in URL.&quot;<SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="ekeyword">else</SPAN>
+						<SPAN CLASS="elocal">id_pbi</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_path_param">path_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;idpbi&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN>
+						<SPAN CLASS="elocal">pbi</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_db">db</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getpbifromid">getpbifromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id_pbi</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">pbi</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_malformed_json">send_malformed_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A><SPAN CLASS="esymbol">)</SPAN>
+							<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/{idpbi}/edit [POST] PBI not existent.&quot;<SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">else</SPAN>
+							<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_make">make</A>
+							<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">pbitype</SPAN>
+							<SPAN CLASS="elocal">param</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_post_param">post_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;name&quot;<SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_check_name">check_name</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+								<SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_setname">setname</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">end</SPAN>
+							<SPAN CLASS="elocal">param</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_post_param">post_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;description&quot;<SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_check_name">check_name</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+								<SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_setdescription">setdescription</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">end</SPAN>
+							<SPAN CLASS="elocal">param</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_post_param">post_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;type&quot;<SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_check_name">check_name</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="elocal">pbitype</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbitype.html#f_is_valid">is_valid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+								<SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_settype">settype</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbitype</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbitype.html#f_to_integer">to_integer</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">end</SPAN>
+							<SPAN CLASS="elocal">param_int</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_post_int_param">post_int_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;priority&quot;<SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_check_integer">check_integer</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_int</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+								<SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_setpriority">setpriority</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_int</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">end</SPAN>
+							<SPAN CLASS="elocal">param_int</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_post_int_param">post_int_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;dueDate&quot;<SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">regex</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/regex.html#f_check_unixtime">check_unixtime</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_int</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+								<SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_setduedate">setduedate</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">create</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_make_from_epoch">make_from_epoch</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">param_int</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">end</SPAN>
+							<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_db">db</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_editpbi">editpbi</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_deb">deb</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/{idpbi}/edit [POST] PBI with id &quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_getid">getid</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot; edited.&quot;<SPAN CLASS="esymbol">)</SPAN>
+							<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_generic_ok">send_generic_ok</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+					<SPAN CLASS="ekeyword">end</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_delete_pbi"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_delete_pbi">delete_pbi</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPROJ</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/pbis/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPBI</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/delete</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: POST</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">id_project</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">id_pbi</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/http_parser.html">HTTP_PARSER</A>
+			<SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/pbi.html">PBI</A>
+			<SPAN CLASS="elocal">proj</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A>
+			<SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user.html">USER</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_request">http_request</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hreq</SPAN>
+			<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hres</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/authentication.html#f_ensure_authenticated">ensure_authenticated</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">u</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/http_sessions.html#f_get_session_user">get_session_user</A>
+				<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_path_param">path_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;idproj&quot;<SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+					<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_malformed_json">send_malformed_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A><SPAN CLASS="esymbol">)</SPAN>
+					<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/{idpbi}/edit [POST] Missing idproj in URL.&quot;<SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">else</SPAN>
+					<SPAN CLASS="elocal">id_project</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_path_param">path_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;idproj&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN>
+					<SPAN CLASS="elocal">proj</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_db">db</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getprojectfromid">getprojectfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id_project</SPAN><SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">proj</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+						<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_malformed_json">send_malformed_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A><SPAN CLASS="esymbol">)</SPAN>
+						<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/{idpbi}/edit [POST] Project not existent.&quot;<SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="ekeyword">elseif</SPAN> <SPAN CLASS="elocal">proj</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getmanager">getmanager</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="elocal">u</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A> <SPAN CLASS="ekeyword">then</SPAN>
+						<A CLASS="efeature" HREF="../pdt/authentication.html#f_no_permission">no_permission</A>
+					<SPAN CLASS="ekeyword">elseif</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_path_param">path_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;idpbi&quot;<SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+						<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_malformed_json">send_malformed_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A><SPAN CLASS="esymbol">)</SPAN>
+						<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/{idpbi}/edit [POST] Missing idpbi in URL.&quot;<SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="ekeyword">else</SPAN>
+						<SPAN CLASS="elocal">id_pbi</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">hp</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_parser.html#f_path_param">path_param</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;idpbi&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN>
+						<SPAN CLASS="elocal">pbi</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_db">db</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_getpbifromid">getpbifromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id_pbi</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">attached</SPAN> <SPAN CLASS="elocal">pbi</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_malformed_json">send_malformed_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_http_response">http_response</A><SPAN CLASS="esymbol">)</SPAN>
+							<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_warning">warning</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/{idpbi}/edit [POST] PBI not existent.&quot;<SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">else</SPAN>
+							<A CLASS="efeature" HREF="../pdt/rest_projects_pbis.html#f_db">db</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pdt_db.html#f_deletepbifromid">deletepbifromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_getid">getid</A><SPAN CLASS="esymbol">)</SPAN>
+							<A CLASS="efeature" HREF="../pdt/log.html#f_log">Log</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/log_singleton.html#f_deb">deb</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;/projects/{idproj}/pbis/{idpbi}/delete [POST] PBI with id &quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">pbi</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/pbi.html#f_getid">getid</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot; deleted.&quot;<SPAN CLASS="esymbol">)</SPAN>
+							<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_generic_ok">send_generic_ok</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+					<SPAN CLASS="ekeyword">end</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../pdt/rest_projects_pbis.html">REST_PROJECTS_PBIS</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="rest_projects_pbis"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

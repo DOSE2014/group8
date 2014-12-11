@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Summary description for {REST_PROJECTS_PBIS_TASKS}."/>
+<meta name="author" content="Milan3 - Politecnico di Milano"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>rest_projects_pbis_tasks Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_tasks_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_tasks_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_tasks.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="rest_projects_pbis_tasks"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Summary description for </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/rest_projects_pbis_tasks_short.html">REST_PROJECTS_PBIS_TASKS</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Milan3 - Politecnico di Milano&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../pdt/rest_projects_pbis_tasks_short.html">REST_PROJECTS_PBIS_TASKS</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../pdt/rest_projects_pbis_tasks_short.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> declaring deferred properties</SPAN>
+
+	<A NAME="f_session_manager"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis_tasks_short.html#f_session_manager">session_manager</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_SESSION_MANAGER</SPAN>
+
+	<A NAME="f_http_request"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis_tasks_short.html#f_http_request">http_request</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN>
+
+	<A NAME="f_http_response"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis_tasks_short.html#f_http_response">http_response</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_listtasks"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis_tasks_short.html#f_listtasks">listtasks</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPROJ</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/pbis/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPBIS</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/listtasks</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: GET</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">TODO: manage unauthorized requests</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_createtask"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis_tasks_short.html#f_createtask">createtask</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPROJ</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/pbis/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPBIS</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/createtask</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: POST</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_deletetask"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis_tasks_short.html#f_deletetask">deletetask</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPROJ</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/tasks/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDTASK</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/delete</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: POST</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_edittask"></A><A CLASS="efeature" HREF="../pdt/rest_projects_pbis_tasks_short.html#f_edittask">edittask</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hreq</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_REQUEST</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">hres</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> PATH: /projects/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDPROJ</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/tasks/</SPAN><SPAN CLASS="ecomment">{</SPAN><SPAN CLASS="ecomment">IDTASK</SPAN><SPAN CLASS="ecomment">}</SPAN><SPAN CLASS="ecomment">/edit</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> METHOD: POST</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">NOTE: All fields are OPTIONAL</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">hreq</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+				<SPAN CLASS="elocal">hres</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../pdt/rest_projects_pbis_tasks_short.html">REST_PROJECTS_PBIS_TASKS</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_tasks_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_tasks_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="rest_projects_pbis_tasks.html">Text</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="rest_projects_pbis_tasks"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

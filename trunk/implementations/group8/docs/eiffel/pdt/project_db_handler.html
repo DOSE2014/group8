@@ -1,0 +1,233 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="Summary description for {PROJECT_DB_HANDLER}."/>
+<meta name="author" content=""/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>project_db_handler Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="project_db_handler"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Summary description for </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/project_db_handler.html">PROJECT_DB_HANDLER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../pdt/project_db_handler.html">PROJECT_DB_HANDLER</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_make">make</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> 
+
+	<A NAME="f_db"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_database.html">SQLITE_DATABASE</A>
+
+	<A NAME="f_dbquerystatement"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_query_statement.html">SQLITE_QUERY_STATEMENT</A>
+
+	<A NAME="f_dbinsertstatement"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_insert_statement.html">SQLITE_INSERT_STATEMENT</A>
+
+	<A NAME="f_dbmodifystatement"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_modify_statement.html">SQLITE_MODIFY_STATEMENT</A>
+
+	<A NAME="f_userdbhandler"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_db_handler.html">USER_DB_HANDLER</A>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_make"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_make">make</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">s</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_database.html">SQLITE_DATABASE</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">udbhand</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/user_db_handler.html">USER_DB_HANDLER</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">s</SPAN>
+			<A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_userdbhandler">userdbhandler</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">udbhand</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;Do not use this method bugged (see BACKLOG_DB_HANDLER for better functions)</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &nbsp;Federico</SPAN>
+<SPAN CLASS="ecomment">--</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">	getBacklogIdFromProjectAndUser(p : PROJECT; u : USER) : INTEGER</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">	require</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		p /= Void and u /= Void</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">	local</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		query_res_cursor: SQLITE_STATEMENT_ITERATION_CURSOR</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">	do</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		create dbQueryStatement.make (&quot;SELECT `id` FROM Backlog WHERE project=? AND EXISTS(SELECT * FROM Project WHERE manager=? AND project=?);&quot;, db)</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		query_res_cursor := dbQueryStatement.execute_new_with_arguments (&lt;&lt;p.getId, u.getId, p.getId&gt;&gt;)</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		if query_res_cursor.after then</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">			-- there are no rows in the result of the query</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">			Result := -1</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		else</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">			Result := ec.any_to_int (query_res_cursor.item.value(1))</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		end</SPAN>
+<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">	end</SPAN>
+
+	<A NAME="f_getprojectfromid"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_getprojectfromid">getprojectfromid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A>
+		<SPAN CLASS="ekeyword">local</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_make_default">make_default</A>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;SELECT * FROM Project WHERE id=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">id</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;;&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_query_statement.html#f_execute">execute</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">agent</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_genproject">genproject</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">?</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">7</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getid">getid</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getprojectfromname"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_getprojectfromname">getprojectfromname</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">name</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_make_default">make_default</A>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;SELECT * FROM Project WHERE name='&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">name</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;';&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_query_statement.html#f_execute">execute</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">agent</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_genproject">genproject</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">?</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">7</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getid">getid</A> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_insertproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_insertproject">insertproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A>
+			<SPAN CLASS="elocal">rowid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">cursor</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement_iteration_cursor.html">SQLITE_STATEMENT_ITERATION_CURSOR</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_make_from_epoch">make_from_epoch</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;INSERT INTO Project(name, description, manager, stakeholder, creationDate, deleted) &quot; <SPAN CLASS="esymbol">+</SPAN> &quot;VALUES ('&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getname">getname</A> <SPAN CLASS="esymbol">+</SPAN> &quot;', '&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getdescription">getdescription</A> <SPAN CLASS="esymbol">+</SPAN> &quot;', '&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getmanager">getmanager</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;', '&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getstakeholder">getstakeholder</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;', '&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getcreationdate">getcreationdate</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_definite_duration">definite_duration</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time_duration.html#f_seconds_count">seconds_count</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;', '&quot; <SPAN CLASS="esymbol">+</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_ec">Ec</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/eiffel_conversion.html#f_bool_to_int">bool_to_int</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getdeleted">getdeleted</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;');&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_modify_statement.html#f_execute">execute</A>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;SELECT last_insert_rowid();&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">cursor</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_execute_new">execute_new</A>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">cursor</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_after">after</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">rowid</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">cursor</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_item">item</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_value">value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_has_error">has_error</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Error while inserting a new project.%N&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">rowid</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_deleteproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_deleteproject">deleteproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;DELETE FROM Project WHERE id=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;;&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_modify_statement.html#f_execute">execute</A>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_has_error">has_error</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Error while deleting project.%N&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_adddevelopertoproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_adddevelopertoproject">adddevelopertoproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;INSERT INTO Developer_Project(developer, project) VALUES('&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">d</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;', '&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;');&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_modify_statement.html#f_execute">execute</A>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbinsertstatement">dbinsertstatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_has_error">has_error</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Error while inserting a developer in project.&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getprojectsvisibletouser"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_getprojectsvisibletouser">getprojectsvisibletouser</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;SELECT id, name, description, manager, stakeholder, creationDate, deleted FROM Project WHERE manager=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">u</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot; OR stakeholder=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">u</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot; &quot; <SPAN CLASS="esymbol">+</SPAN> &quot;UNION &quot; <SPAN CLASS="esymbol">+</SPAN> &quot;SELECT id, name, description, manager, stakeholder, creationDate, deleted FROM Project &quot; <SPAN CLASS="esymbol">+</SPAN> &quot;INNER JOIN Developer_Project ON Project.id = Developer_Project.project WHERE Developer_Project.developer=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">u</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;;&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_query_statement.html#f_execute">execute</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">agent</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_genprojects">genprojects</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">?</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">7</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_checkvisibilityforproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_checkvisibilityforproject">checkvisibilityforproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">u</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">query_result_cursor</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_statement_iteration_cursor.html">SQLITE_STATEMENT_ITERATION_CURSOR</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;SELECT * FROM PROJECT JOIN Developer_Project&quot; <SPAN CLASS="esymbol">+</SPAN> &quot; ON Project.id = Developer_Project.project WHERE (manager=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">u</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot; OR stakeholder=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">u</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot; OR Developer_Project.developer=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">u</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;)  AND id=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;;&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">query_result_cursor</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbquerystatement">dbquerystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_execute_new">execute_new</A>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">query_result_cursor</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement_iteration_cursor.html#f_after">after</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+			<SPAN CLASS="ekeyword">else</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_deletedeveloperfromproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_deletedeveloperfromproject">deletedeveloperfromproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;DELETE FROM Developer_Project WHERE developer=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">d</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot; AND project=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;;&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_modify_statement.html#f_execute">execute</A>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_has_error">has_error</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Error while deleting developer from project.&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_editproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_editproject">editproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_make_from_epoch">make_from_epoch</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;UPDATE Project SET name='&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getname">getname</A> <SPAN CLASS="esymbol">+</SPAN> &quot;', description='&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getdescription">getdescription</A> <SPAN CLASS="esymbol">+</SPAN> &quot;', manager='&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getmanager">getmanager</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;', stakeholder='&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getstakeholder">getstakeholder</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user.html#f_getid">getid</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;', creationDate='&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getcreationdate">getcreationdate</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_definite_duration">definite_duration</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">epoch</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time_duration.html#f_seconds_count">seconds_count</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;', deleted='&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getdeleted">getdeleted</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;' WHERE id=&quot; <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_getid">getid</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot;;&quot;<SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_db">db</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_modify_statement.html#f_execute">execute</A>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_dbmodifystatement">dbmodifystatement</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_statement.html#f_has_error">has_error</A> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Error while updating project.&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> 
+
+	<A NAME="f_genproject"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_genproject">genproject</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_result_row.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">numcolumns</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../time/date_time.html">DATE_TIME</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_setid">setid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_setname">setname</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">2</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_setdescription">setdescription</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">3</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_setmanager">setmanager</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getuserfromid">getuserfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">4</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_setstakeholder">setstakeholder</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_userdbhandler">userdbhandler</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/user_db_handler.html#f_getuserfromid">getuserfromid</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">5</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">d</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../time/date_time.html#f_make_from_epoch">make_from_epoch</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">6</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_setcreationdate">setcreationdate</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">d</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_setdeleted">setdeleted</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_ec">Ec</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/eiffel_conversion.html#f_int_to_bool">int_to_bool</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">7</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_genprojects"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_genprojects">genprojects</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_result_row.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">numcolumns</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">LINKED_SET</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">x</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/project.html">PROJECT</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/project.html#f_make_default">make_default</A>
+			<SPAN CLASS="elocal">x</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_genproject">genproject</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">numcolumns</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">extend</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_getlastinsertrowid"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_getlastinsertrowid">getlastinsertrowid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../sqlite/sqlite_result_row.html">SQLITE_RESULT_ROW</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">numcolumns</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">resultobject</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">set_item</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">row</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../sqlite/sqlite_result_row.html#f_string_value">string_value</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> 
+
+	<A NAME="f_ec"></A><A CLASS="efeature" HREF="../pdt/project_db_handler.html#f_ec">Ec</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../pdt/eiffel_conversion.html">EIFFEL_CONVERSION</A>
+		<SPAN CLASS="ekeyword">once</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../pdt/project_db_handler.html">PROJECT_DB_HANDLER</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="project_db_handler_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="project_db_handler"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="ISE EiffelStudio version 14.05.9.5417 GPL Edition - linux-x86-64">
+<meta name="description" content="HTTP_FUNCTIONS"/>
+<meta name="author" content="Milan3 Team"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>http_functions Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<P ALIGN="CENTER">Automatic generation produced by ISE Eiffel</P>
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_functions_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_functions_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_functions_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="http_functions"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;HTTP_FUNCTIONS&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Milan3 Team&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../pdt/http_functions.html">HTTP_FUNCTIONS</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<SPAN CLASS="nefeature">default_create</SPAN>
+
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_not_authorized"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_not_authorized">Not_authorized</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">402</SPAN>
+
+	<A NAME="f_not_authenticated"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_not_authenticated">Not_authenticated</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">403</SPAN>
+
+	<A NAME="f_not_found"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_not_found">Not_found</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">404</SPAN>
+
+	<A NAME="f_request_error"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_request_error">Request_error</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">405</SPAN>
+
+	<A NAME="f_server_error"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_server_error">Server_error</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">500</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> 
+
+	<A NAME="f_send_json"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_json">send_json</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">res</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">json</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_OBJECT</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Send a JSON response with OK HTTP status (200)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">set_status_code</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">200</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">header</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_content_type_application_json</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">header</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_content_length</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">json</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">representation</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">json</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">representation</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">rescue</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_send_error_json"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_error_json">send_error_json</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">res</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">json</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_OBJECT</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">error</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Send a JSON response with error HTTP status (!=200)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">error</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">500</SPAN> <SPAN CLASS="ekeyword">or</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">error</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">402</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="elocal">error</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <SPAN CLASS="enumber">405</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">set_status_code</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">error</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">header</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_content_type_application_json</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">header</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_content_length</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">json</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">representation</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">json</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">representation</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">rescue</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_send"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_send">send</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">res</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">text</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">obsolete</SPAN> &quot;Use JSON method instead of this.&quot;
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">set_status_code</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">200</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">header</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_content_type_text_plain</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">header</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_content_length</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">text</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">text</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">rescue</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_send_error"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_error">send_error</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">res</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">text</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">error</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">obsolete</SPAN> &quot;Use JSON method instead of this.&quot;
+		<SPAN CLASS="ekeyword">require</SPAN>
+				<SPAN CLASS="elocal">error</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">500</SPAN> <SPAN CLASS="ekeyword">or</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">error</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">402</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="elocal">error</SPAN> <SPAN CLASS="esymbol">&lt;=</SPAN> <SPAN CLASS="enumber">405</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">set_status_code</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">error</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">header</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_content_type_text_plain</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">header</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_content_length</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">text</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">res</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">text</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">rescue</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_send_malformed_json"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_malformed_json">send_malformed_json</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">http_response</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_OBJECT</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN>
+			<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;error&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;status&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;JSON request malformed&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;reason&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_error_json">send_error_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">http_response</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../pdt/http_functions.html">HTTP_FUNCTIONS</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../pdt/http_functions.html#f_request_error">request_error</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">rescue</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_send_generic_ok"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_generic_ok">send_generic_ok</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">http_response</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">json_ok</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_OBJECT</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">json_ok</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN>
+			<SPAN CLASS="elocal">json_ok</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;ok&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;status&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_json">send_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">http_response</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">json_ok</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">rescue</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_send_generic_error"></A><A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_generic_error">send_generic_error</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">str</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">http_response</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">WSF_RESPONSE</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">JSON_OBJECT</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN>
+			<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;error&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;status&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">str</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">JSON_STRING</SPAN><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_json</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;reason&quot;<SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../pdt/http_functions.html#f_send_json">send_json</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">http_response</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">json_error</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">rescue</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../pdt/http_functions.html">HTTP_FUNCTIONS</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_functions_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_functions_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="http_functions_short.html">Contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="http_functions"></TD>
+</TR></TABLE></FORM></pre>
+<P ALIGN="CENTER"> &#045;&#045; Generated by ISE Eiffel &#045;&#045; 
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+
