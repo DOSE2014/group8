@@ -67,12 +67,12 @@ feature
 		create hp.make(hreq)
 		create pbitype
 
-		if ensure_authenticated then
+		if ensure_authenticated and hp.is_good_request then
 
 			u := get_session_user
 
 			-- First GET the id of the project
-			if not attached hp.path_param("idproj") then
+			if not attached hp.path_param("idproj") or not hp.path_param ("idproj").is_integer then
 				send_malformed_json(http_response)
 				-- And logs it
 				log.warning ("/projects/{idproj}/pbis/create [POST] Missing idproj in URL.")
@@ -97,7 +97,7 @@ feature
 					ok := TRUE
 
 					param_name := hp.post_param ("name")
-					if ok and not regex.check_name (param_name) then
+					if ok and (not attached param_name or not regex.check_name (param_name)) then
 						error_reason := "Name not present or not correct."
 						json_error.put_string ("name","field")
 						ok := FALSE
