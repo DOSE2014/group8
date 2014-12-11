@@ -129,7 +129,7 @@ feature
 	local
 		query_result_cursor: SQLITE_STATEMENT_ITERATION_CURSOR
 	do
-		create dbquerystatement.make ("SELECT * FROM PROJECT JOIN Developer_Project" +
+		create dbquerystatement.make ("SELECT * FROM PROJECT LEFT OUTER JOIN Developer_Project" +
 											" ON Project.id = Developer_Project.project WHERE (manager=" + u.out + " OR stakeholder=" + u.out +
 											" OR Developer_Project.developer=" + u.out + ")  AND id="+p.out+";", db)
 		query_result_cursor := dbquerystatement.execute_new
