@@ -143,14 +143,18 @@ feature{NONE}
 		local
 			d: DATE_TIME
 		do
-			resultobject.setid (row.string_value (1).to_integer)
+			resultobject.setid (row.integer_value (1))
 			resultobject.setname (row.string_value (2))
 			resultobject.setdescription (row.string_value (3))
-			resultobject.setbacklog(backlogDBHandler.getBacklogFromId(row.string_value (4).to_integer))
-			resultobject.setsprintlog(sprintlogDBHandler.getSprintlogFromId(row.string_value (5).to_integer))
-			resultobject.settype (row.string_value (6).to_integer)
-			resultobject.setpriority (row.string_value(7).to_integer)
-			create d.make_from_epoch (row.string_value (8).to_integer)
+			resultobject.setbacklog(backlogDBHandler.getBacklogFromId(row.integer_value (4)))
+			if row.is_null (5) then
+				resultobject.setsprintlog(Void)
+			else
+				resultobject.setsprintlog(sprintlogDBHandler.getSprintlogFromId(row.integer_value (5)))
+			end
+			resultobject.settype (row.integer_value (6))
+			resultobject.setpriority (row.integer_value (7))
+			create d.make_from_epoch (row.integer_value (8))
 			resultobject.setduedate (d)
 
 			Result := false

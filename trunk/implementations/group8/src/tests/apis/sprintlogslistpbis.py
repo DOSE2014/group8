@@ -7,7 +7,7 @@ params = """{
 }""";
 
 expected_response = json.loads("""
-{"pbis":[2,10,12,14,15,16]}
+{"pbis":[2,10,12,15,16]}
 """)
 
 def exec_test(debug=False):
