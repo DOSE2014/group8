@@ -113,7 +113,11 @@ feature
 			j_pbi.put_integer (id, "id")
 			j_pbi.put_string (name, "name")
 			j_pbi.put_string (description, "description")
-			j_pbi.put_integer (sprintlog.getid, "sprintlog")
+			if attached sprintlog then
+				j_pbi.put_integer (sprintlog.getid, "sprintlog")
+			else
+				j_pbi.put (create {JSON_NULL}, "sprintlog")
+			end
 			if type = {PBITYPE}.bugfix then
 				j_pbi.put_string ("bugfix", "type")
 			elseif type = {PBITYPE}.nonfunctionalrequirement then
