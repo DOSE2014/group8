@@ -130,8 +130,12 @@ feature
 				param_description 	:= hp.post_param ("description")
 				param_manager 		:= hp.post_int_param ("manager")
 
-				if ok and param_name.count = 0 then
+				if ok and (not attached param_name or param_name.count = 0) then
 					error_reason := "Project name is empty."
+					ok := FALSE
+				end
+				if ok and (not attached param_description) then
+					error_reason := "Description is empty."
 					ok := FALSE
 				end
 				if ok and db.existsNameInProject(param_name)
@@ -149,7 +153,7 @@ feature
 					error_reason := "Manager doesn't exist."
 					ok := FALSE
 				end
-				if ok and mgr.getid = stakeholder.getId
+				if ok and mgr.getid.is_equal (stakeholder.getId)
 				then
 					error_reason := "The stakeholder that creates the project cannot be manager."
 					ok := FALSE
