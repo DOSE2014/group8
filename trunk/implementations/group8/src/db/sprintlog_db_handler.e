@@ -35,9 +35,11 @@ feature
 			end
 		end
 
-	insertSprintlog(s: SPRINTLOG)
+	insertSprintlog(s: SPRINTLOG) : INTEGER
 		local
 			epoch: DATE_TIME
+			rowId: INTEGER
+			cursor: SQLITE_STATEMENT_ITERATION_CURSOR
 		do
 			create epoch.make_from_epoch (0)
 			create dbInsertStatement.make("INSERT INTO Sprintlog(name, description, backlog, startDate, endDate) VALUES ('" +
@@ -45,9 +47,17 @@ feature
 											s.getstartdate.definite_duration(epoch).seconds_count.out + "', '" +
 											s.getenddate.definite_duration(epoch).seconds_count.out + "');", db)
 			dbInsertStatement.execute
-			if dbInsertStatement.has_error
-			then print("Error while inserting new Sprintlog")
+			create dbquerystatement.make ("SELECT last_insert_rowid();", db)
+			cursor := dbquerystatement.execute_new
+			if not cursor.after then
+				rowId := cursor.item.value(1).out.to_integer
 			end
+
+			if dbinsertstatement.has_error then
+				print("Error while inserting a new sprintlog.%N")
+			end
+			Result := rowId
+
 
 			--TODO Should insert backlog from here? I think the method to insert backlog should be called separately.
 		end

@@ -129,9 +129,9 @@ feature
 		do
 			Result := sprintlogdbhandler.getsprintlogfromid (id)
 		end
-	insertSprintlog(s: SPRINTLOG)
+	insertSprintlog(s: SPRINTLOG) : INTEGER
 		do
-			sprintlogdbhandler.insertsprintlog (s)
+			Result := sprintlogdbhandler.insertsprintlog (s)
 		end
 	deleteSprintlogFromId(s: INTEGER)
 		do
