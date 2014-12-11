@@ -33,7 +33,7 @@ feature
 		require
 			validPath: pathToDB /= Void and not pathToDB.is_empty
 		do
-			if ((create {RAW_FILE}.make (pathToDB.as_string_8)).exists) then
+			if ((create {RAW_FILE}.make_open_read (pathToDB.as_string_8)).exists) then
 				-- If db exists, open it!
 				create db.make_open_read_write(pathToDB)
 			else

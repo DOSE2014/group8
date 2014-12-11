@@ -458,7 +458,7 @@ feature
 		j_backlog: JSON_OBJECT
 		j_pbi: JSON_OBJECT
 		j_pbis: JSON_ARRAY
-		ok: BOOLEAN
+
 		idProj: INTEGER
 		error_reason: STRING
 		pbis: LINKED_SET[PBI]
@@ -524,8 +524,6 @@ feature
 			project: PROJECT
 			backlog: BACKLOG
 			manager: USER
-			json_error: JSON_OBJECT
-			error_reason: STRING
 			idProj: INTEGER
 			param_description: STRING
 		do
@@ -621,10 +619,8 @@ feature
 		local
 			hp: HTTP_PARSER
 			u: USER
-			json_error: JSON_OBJECT
 			idProj: INTEGER
 			project: PROJECT
-			error_reason: STRING
 			pbis: LINKED_SET[PBI]
 			pbis_completed: INTEGER
 			pbis_notCompleted: INTEGER

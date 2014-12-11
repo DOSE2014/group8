@@ -42,9 +42,7 @@ feature
 			hp: HTTP_PARSER
 			chat: CHAT
 			j_chat: JSON_OBJECT
-			j_message: JSON_OBJECT
 			j_messages: JSON_ARRAY
-			j_user: JSON_OBJECT
 			j_users: JSON_ARRAY
 			messages: LINKED_SET[MESSAGE]
 			idProj: INTEGER
@@ -122,11 +120,7 @@ feature
 			hp: HTTP_PARSER
 			u: USER
 			project: PROJECT
-			manager: USER
-			json_error: JSON_OBJECT
-			error_reason: STRING
 			idProj: INTEGER
-			param_userId: INTEGER
 			chat: CHAT
 			param_content: STRING
 			date: DATE_TIME
@@ -177,14 +171,9 @@ feature
 			user: USER
 			project: PROJECT
 			manager: USER
-			json_error: JSON_OBJECT
-			error_reason: STRING
 			idProj: INTEGER
 			param_user: INTEGER
 			chat: CHAT
-			param_content: STRING
-			date: DATE_TIME
-			message: MESSAGE
 		do
 			http_request := hreq
 			http_response := hres
@@ -233,14 +222,9 @@ feature
 			user: USER
 			project: PROJECT
 			manager: USER
-			json_error: JSON_OBJECT
-			error_reason: STRING
 			idProj: INTEGER
 			param_user: INTEGER
 			chat: CHAT
-			param_content: STRING
-			date: DATE_TIME
-			message: MESSAGE
 		do
 			http_request := hreq
 			http_response := hres
@@ -285,17 +269,12 @@ feature
 		local
 			hp: HTTP_PARSER
 			chatId: INTEGER
-			j_chat: JSON_OBJECT
-			j_message: JSON_OBJECT
 			j_messages: JSON_ARRAY
-			j_user: JSON_OBJECT
-			j_users: JSON_ARRAY
 			messages: LINKED_SET[MESSAGE]
 			idProj: INTEGER
 			u: USER
 			project: PROJECT
 			j_error: JSON_OBJECT
-			users: LINKED_SET[USER]
 			lastMessageId: INTEGER
 			j_result: JSON_OBJECT
 
