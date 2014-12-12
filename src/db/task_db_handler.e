@@ -72,12 +72,14 @@ feature
 	editTask(t: TASK)
 	local
 		pbisql : STRING
+		epoch: DATE_TIME
 	do
 		if t.getpbi /= Void then
 			pbisql := ",pbi=" + t.getpbi.getid.out + " "
 		else
 			pbisql := ""
 		end
+		create epoch.make_from_epoch (0)
 		create dbmodifystatement.make ("UPDATE Task SET name='" + t.getname + "', description='" +
 					t.getdescription + "', developer='" + t.getdeveloper.getid.out + "', points='" + t.getpoints.out +
 					"', state='" + t.getstate.out + "' " + pbisql + ", completionDate='" + t.getcompletiondate.definite_duration (epoch).seconds_count.out +
