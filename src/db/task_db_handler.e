@@ -80,7 +80,8 @@ feature
 		end
 		create dbmodifystatement.make ("UPDATE Task SET name='" + t.getname + "', description='" +
 					t.getdescription + "', developer='" + t.getdeveloper.getid.out + "', points='" + t.getpoints.out +
-					"', state='" + t.getstate.out + "' " + pbisql + " WHERE id=" + t.getid.out + ";", db)
+					"', state='" + t.getstate.out + "' " + pbisql + ", completionDate='" + t.getcompletiondate.definite_duration (epoch).seconds_count.out +
+					"' WHERE id=" + t.getid.out + ";", db)
 
 				dbmodifystatement.execute
 				if dbmodifystatement.has_error
