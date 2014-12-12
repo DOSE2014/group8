@@ -6,13 +6,14 @@ feature
 	completed : INTEGER = 1
 	awaiting  : INTEGER = 2
 
-frozen	to_integer(s : STRING) : INTEGER
+--frozen	
+to_integer(s : STRING) : INTEGER
 	require
 		is_valid(s)
 	do
-		if s = "ongoing" then Result := ongoing end
-		if s = "completed" then Result := completed end
-		if s = "awaiting" then Result := awaiting end
+		if s = "ongoing" then Result := 0 end
+		if s = "completed" then Result := 1 end
+		if s = "awaiting" then Result := 2 end
 	end
 
 	frozen to_string(i : INTEGER) : STRING

@@ -484,7 +484,14 @@ feature
 				create state
 				param_string := hp.post_param ("state")
 				if attached param_string and state.is_valid(param_string) then
-					task.setState ( state.to_integer(param_string) )
+					--task.setState ( state.to_integer(param_string) )
+					if param_string.is_equal ("completed") then
+						task.setstate ({STATE}.completed)
+					elseif param_string.is_equal ("ongoing") then
+						task.setstate ({STATE}.ongoing)
+					elseif param_string.is_equal ("awaiting") then
+						task.setstate ({STATE}.awaiting)
+					end
 				end
 
 				param_int := hp.post_int_param ("pbi")
