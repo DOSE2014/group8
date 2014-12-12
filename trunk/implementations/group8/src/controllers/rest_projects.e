@@ -406,7 +406,8 @@ feature
 					param_description := hp.post_param ("description")
 				end
 
-				if attached hp.post_int_param ("manager") then
+				-- Note: next cannot be void
+				if hp.post_int_param ("manager") > 0 then
 					param_manager := hp.post_int_param ("manager")
 					newMgr := db.getuserfromid (param_manager)
 					if ok and not attached newMgr then
@@ -440,7 +441,7 @@ feature
 					if attached param_name then
 						project.setname (param_name)
 					end
-					if attached param_manager then
+					if param_manager >0 then
 						project.setmanager (db.getuserfromid (param_manager))
 					end
 					if attached param_description then
@@ -458,6 +459,7 @@ feature
 				if not ok and error_reason /= Void then	-- error_reason is Void if no_permission called
 					log.warning("/projects/" + idproj.out + "/edit [POST] Request error: " + error_reason)
 					json_error.put_string (error_reason, "reason")
+					json_error.put_string ("error", "status")
 					send_json(hres, json_error)
 				end
 			else
