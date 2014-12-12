@@ -221,17 +221,16 @@
                     <div class="col-lg-6" ng-show="sprintlogCreated">
                         <h2 align="center">Backlog Items</h2>
                         <div class="table-responsive">
-<table class="table table-bordered table-hover" ng-repeat="x in pbis|filter: {sprintlog:splId}">
+<table class="table table-bordered table-hover" ng-repeat="x in pbis|filter: {backlog:backlId}|filter: {sprintlog:splId}">
                             <tr ng-hide="button">
     <td class="col-lg-3"> <b>Task Name: </b>{{ x.name }} <br> <b>Priority: </b>{{x.priority}} <b>Sprintlog: </b>{{x.sprintlog}} <br> <b>Description: </b>{{x.description}}</td>
     <td class="col-lg-3">Choose Developer: <br>
-    <select ng-model="developer">
-    	<option ng-repeat="y in user" id="y.Id">{{y.firstname}} {{ y.lastname }}</option>
-     </select>
+    <select class="col-lg-12" ng-model="chosenDeveloper" ng-options ="developer.id+' '+developer.firstname+' '+developer.lastname for developer in developer">
+    </select>
      <h3>Select the points for this task</h3>
-    <select ng-model="points" value="Taskpoint" name="Points for task">
-    <option value="1" selected>1</option>
-    <option value="2">2</option>
+    <select required class="col-lg-6" ng-model="points">
+    <option value="1">1</option>
+    <option value="2" selected>2</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
@@ -242,7 +241,7 @@
       <option value="10">10</option>
   </select>
      </td>
-    <td class="col-lg-3" align="center"><button type="button" class="btn btn-lg btn-primary" ng-click="button=! button; setAddsprintlog(x.name,x.description,points,y.id,x.id)">Add to sprintlog</button></td>
+    <td class="col-lg-3" align="center"><button type="button" class="btn btn-lg btn-primary" ng-click="button=! button; setAddsprintlog(x.name,x.description,points,chosenDeveloper.id,x.id)">Add to sprintlog</button></td>
 </tr>
 </table>
  </div>
@@ -254,7 +253,7 @@
                     <div class="table-responsive">
                             <table ng-repeat="x in addToTasks|orderBy:'name'" class="table table-bordered table-hover">
                             <tr ng-hide"button">
-    <td class="col-lg-3" align="center"> <b>Task Name: </b>{{ x.name }} <br> <b>Description: </b>{{x.description}} <br> <b>Points: </b>{{x.points}} <br> <b>PBI id: </b>{{x.pbi}}</td>
+    <td class="col-lg-3" align="center"> <b>Task Name: </b>{{ x.name }} <br> <b>Description: </b>{{x.description}} <br> <b>Points:  {{x.points}}</b> <b>Developer Id: </b>{{x.developer}} <br/><b>PBI id: </b>{{x.pbi}}</td>
   
   <td class="col-lg-3" align="center"><button type="button" class="btn btn-lg btn-primary" ng-click="button=! button; addToTaskInServer(x.name,x.description,x.points,x.developer,x.pbid)">Send to Server</button></td>
         
