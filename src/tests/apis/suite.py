@@ -15,6 +15,8 @@ import projectsgetbacklog
 import stats_proj, stats_proj2
 import taskscreatefail, taskseditfail, sprintlogsaddpbi_fail, sprintlogslistpbis_fail, sprintlogsdelpbi_fail
 import badrequest1, badrequest2, sprintlogscreate_fail2, sprintlogscreate_fail3,  sprintlogscreate2
+import stats_proj_fail, stats_proj_fail2
+import sprintlogsdelete_fail, projectsedit_fail, projectsedit_fail2
 
 print_logo()
 
@@ -60,6 +62,8 @@ try:
     test_("/projects/1/adddeveloper", projectsadddev.exec_test, verbose)
     test_("/projects/1/remdeveloper", projectsremdev.exec_test, verbose)
     test_("/projects/2/edit", projectsedit.exec_test, verbose)
+    test_("/projects/2/edit - FAIL 1", projectsedit_fail.exec_test, verbose)
+    test_("/projects/2/edit - FAIL 2", projectsedit_fail2.exec_test, verbose)
     test_("/projects/2/createbacklog", projectscreatebacklog.exec_test, verbose)
     test_("/projects/2/deletebacklog", projectsdeletebacklog.exec_test, verbose)
     test_("/projects/1/pbis/create", projectsaddpbi.exec_test, verbose)
@@ -86,10 +90,13 @@ try:
     test_("/projects/1/sprintlogs/1/removepbi", sprintlogsdelpbi.exec_test, verbose)
     test_("/projects/1/sprintlogs/1/removepbi - FAIL", sprintlogsdelpbi_fail.exec_test, verbose)
     test_("/projects/1/sprintlogs/2/delete", sprintlogsdelete.exec_test, verbose)
+    test_("/projects/1/sprintlogs/6462/delete FAIL", sprintlogsdelete_fail.exec_test, verbose)
     
     test_("/stats/devpoint", stats.exec_test, verbose)
     test_("/stats/projpoint", stats_proj.exec_test, verbose)
     test_("/stats/projpoint - 2", stats_proj2.exec_test, verbose)
+    test_("/stats/projpoint - FAIL 1", stats_proj_fail.exec_test, verbose)
+    test_("/stats/projpoint - FAIL 2", stats_proj_fail2.exec_test, verbose)
     test_("BAD REQUEST 1", badrequest1.exec_test, verbose)
     test_("BAD REQUEST 2", badrequest2.exec_test, verbose)
 finally:

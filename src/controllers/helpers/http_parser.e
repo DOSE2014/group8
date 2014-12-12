@@ -97,6 +97,8 @@ feature
 	require
 		http_request.is_post_request_method
 	do
+		Result := -999999
+
 		-- we have to convert the json integer into an eiffel integer
 		if attached {JSON_NUMBER} j_object.item (name) as i then
 			if i.item.is_integer_32 then	-- Safe check for 32-bit
