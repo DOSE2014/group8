@@ -1,7 +1,7 @@
 //global variables to the REST services
 var url_getCurrentUser = "/account/userinfo";
 var url_getUser = "/account/userinfo?id={0}";
-var url_listdevelopers = "/accunt/listdevelopers";
+var url_listdevelopers = "/account/listdevelopers";
 var url_getProjectlist = "/projects/list";
 var url_getBacklog = "/projects/{0}/getbacklog";
 var url_logout = "account/logout";
@@ -23,8 +23,12 @@ var createSprintlog = angular.module('createSprintlog', []);
 
 createSprintlog.controller('Sprintlogcontroller', ['$scope','$http', function($scope,$http){
 	
+	//$("#txt_startDate").datepicker();
+	//$("#txt_endDate").datepicker();
+	$scope.splId = splId;
 	$scope.pbis = null;
 	$scope.name = null;
+	$scope.sprintlogId = null;
 	$scope.sprintlogCreated = null;
 	$scope.PBInotinsprintlog = [];
 	$scope.user = [];
@@ -32,26 +36,22 @@ createSprintlog.controller('Sprintlogcontroller', ['$scope','$http', function($s
 //Check if the current user is the manager of the current project
 $http.get(url_getCurrentUser).success(function(response){
 		$scope.currentuser = response;
-	if ($scope.currentuser.id == projectmanagerId)
-	{
-	$scope.sprintlogCreated = 1;	
-	}
-	else
-	{
-	alert("You need to be manager to creat a sprintlog")	
-		}
 	});		
 	
 	
 	$http.get(url_getBacklog.format(backlId)).success(function(response){
 		$scope.pbis = response.pbis;
-	//should only get the Backlog Items that are not allready in a sprintlog		
+		$scope.sprintlogId = response.pbis.sprintlog;
+	//should only get the Backlog Items that are not allready in a sprintlog
+	console.log($scope.sprintlogId);
+			
 		if($scope.pbis.sprintlog == 1){
+			alert("L");
 	$scope.PBInotinsprintlog.push({ id : $scope.pbis.id, name : $scope.pbis.name, description : $scope.pbis.description, priority: $scope.pbis.priority, creatinDate : $scope.pbis.creationDate });	
 	}
 	});
 	
-	$http.get(url_listdeveloper).success(function(response){
+	$http.get(url_listdevelopers).success(function(response){
 	
 	$scope.developer = response.developers;
 	$http.get(url_getProjectlist).success(function(responses){
@@ -70,27 +70,36 @@ $http.get(url_getCurrentUser).success(function(response){
 	$scope.sprintlogStartdate = '';
 	$scope.sprintlogEnddate = '';
 	$scope.creatSprintlog = [];
-	
-	$scope.sprintLog = function(name,description,startdate,enddate){
-	$scope.date = null;
-	$scope.sprintlogName = name;
-	$scope.sprintlogDescription = description;
-	$scope.sprintlogStartdate = startdate;
-	$scope.sprintlogEnddate = enddate;
-	var creatSprintlog ={
-		'name' : $scope.sprintlogName,
-		'description' : $scope.sprintlogDescription, 
-		'startDate' : $scope.sprintlogStartdate,
-		'enndDate' : $scope.sprintlogEnddate
-	};
-	$http.post(url_creatSprintlog, JSON.stringify(creatSprintlog)).success(function(data) {
+
+	$scope.sprintLog = function(){
+			$scope.sprintlogCreated = 1;
+		
+		if($scope.sprintlogEnddate<$scope.sprintlogStartdate){
+			alert("the end date have to be later then the start date");	
+		}else{
+			
+		var startDate = $.datepicker.formatDate('@',$.datepicker.parseDate( "d/m/yy", $scope.sprintlogStartdate));
+		var endDate = $.datepicker.formatDate('@',$.datepicker.parseDate( "d/m/yy", $scope.sprintlogEnddate));
+			var creatSprintlog ={
+				'name' : $scope.sprintlogName,
+				'description' : $scope.sprintlogDescription,
+				'backlog' : backlId,
+				'startDate' : parseInt(startDate),
+				'endDate' : parseInt(endDate),
+				'idpbis' : []
+			};
+			
+			console.log(JSON.stringify(creatSprintlog));
+			
+			/*$http.post(url_creatSprintlog.format(projectId), JSON.stringify(creatSprintlog)).success(function(data) {
 				if (data.status == "created") {
 					alert("Sprintlog created");	
-				}
-				else if (data.status == "error") {
+				}else if (data.status == "error") {
 					alert(data.reason);
 				}
-	});
+			});*/
+			
+		}
 	}	
 	
 	
@@ -99,14 +108,15 @@ $http.get(url_getCurrentUser).success(function(response){
 	$scope.pbiPoints = '';
 	$scope.pbiDeveloperId = '';
 	$scope.pbiId = '';
-	$scope.addToSprintlog = [];
+	$scope.addToTasks = [];
 	$scope.setAddsprintlog = function(name,description,points,developerId,pbiID){
 	$scope.pbiName = name;
 	$scope.pbiDescription = description;
 	$scope.pbiPoints = points;
 	$scope.pbiDeveloperId = developerId;
 	$scope.pbiId = pbiID;
-	$scope.addToTasks.push({ name : $scope.pbiName, description : $scope.pbiDescription, points : $scope.pbiPoints, developer : $scope.pbiDeveloperId, state : 2, pbi : $scope.pbiId});
+	$scope.addToTasks.push({ name : $scope.pbiName, description : $scope.pbiDescription, points : 			    $scope.pbiPoints, developer : $scope.pbiDeveloperId, state : 2, pbi : $scope.pbiId});
+	console.log($scope.addToTaskInServer);
 	}
 	$scope.taskName = '';
 	$scope.taskDescription = '';

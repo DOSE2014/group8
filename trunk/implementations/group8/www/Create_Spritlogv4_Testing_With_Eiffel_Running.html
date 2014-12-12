@@ -18,7 +18,9 @@
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
+
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+     <!-- Custom Fonts -->   
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -205,21 +207,23 @@
  
  <div class="row" ng-hide="sprintlogCreated">
  <!--h2>data = {{currentuser.id}}</h2 -->
-  <button type="button" class="btn btn-lg btn-primary" ng-click="goBack()">Go back </button>
-  <h3>Name: </h3> <input type="text" name="name" ng-model="cs.name" value=" "><br>
-  <h3>Description: </h3> <input type="text" name="description" ng-model="cs.description" value=" "><br>
-  <h3>Sprintlog Start Date: </h3> <input type="date" name="setdate" ng-model="cs.startdate" value=" "><br>
-  <h3>Sprintlog End Date: </h3> <input type="date" name="endDate" ng-model="cs.enddate" value=" "><br>
-  <button type="button" class="btn btn-lg btn-primary" ng-click="sprintLog(cs.name,cs.description,cs.startdate,cs.enddate)">Create sprintlog</button>
+  <h3>Name: </h3> <input type="text" name="name" ng-model="sprintlogName"><br>
+  <h3>Description: </h3> <input type="text" name="description" ng-model="sprintlogDescription" ><br>
+  <h3>Sprintlog Start Date: </h3> <input type="date" id="txt_startDate" placeholder="day/month/year" ng-model="sprintlogStartdate"/>
+<h3>Sprintlog End Date: </h3> <input type = "date" id="endDate" placeholder="day/month/year" ng-model="sprintlogEnddate"/>
+<br/>
+<br/>
+<br/>
+  <button type="button" class="btn btn-lg btn-primary" ng-click="sprintLog()">Create sprintlog</button>
   </div>
   <div class="row" >
 
                     <div class="col-lg-6" ng-show="sprintlogCreated">
                         <h2 align="center">Backlog Items</h2>
                         <div class="table-responsive">
-<table ng-repeat="x in PBInotinsprintlog|orderBy:'priority'" class="table table-bordered table-hover">
+<table class="table table-bordered table-hover" ng-repeat="x in pbis|filter: {sprintlog:splId}">
                             <tr ng-hide="button">
-    <td class="col-lg-3"> <b>Task Name: </b>{{ x.name }} <br> <b>Priority: </b>{{x.priority}} <br> <b>Description: </b>{{x.description}}</td>
+    <td class="col-lg-3"> <b>Task Name: </b>{{ x.name }} <br> <b>Priority: </b>{{x.priority}} <b>Sprintlog: </b>{{x.sprintlog}} <br> <b>Description: </b>{{x.description}}</td>
     <td class="col-lg-3">Choose Developer: <br>
     <select ng-model="developer">
     	<option ng-repeat="y in user" id="y.Id">{{y.firstname}} {{ y.lastname }}</option>
@@ -244,7 +248,7 @@
  </div>
  </div>
  
-                 <div class="col-lg-6" ng-hide="sprintlogCreated">
+                 <div class="col-lg-6" ng-show="sprintlogCreated">
                     <h2 align="center">Items in sprintlog</h2>
                         <!--button style="float:right;" type="button" class="btn btn-lg btn-primary" ng-click="setdate()">set time for sprintlog</button -->
                     <div class="table-responsive">
@@ -273,6 +277,7 @@
 </div>
     <!-- jQuery -->
     <script src="includes/jquery.js"></script>
+    <script src="includes/jquery-ui.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="includes/bootstrap.min.js"></script>
