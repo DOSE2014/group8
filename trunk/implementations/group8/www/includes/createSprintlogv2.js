@@ -30,7 +30,6 @@ createSprintlog.controller('Sprintlogcontroller', ['$scope','$http', function($s
 	$scope.name = null;
 	$scope.sprintlogId = null;
 	$scope.sprintlogCreated = null;
-	$scope.PBInotinsprintlog = [];
 	$scope.user = [];
 
 //Check if the current user is the manager of the current project
@@ -41,27 +40,25 @@ $http.get(url_getCurrentUser).success(function(response){
 	
 	$http.get(url_getBacklog.format(backlId)).success(function(response){
 		$scope.pbis = response.pbis;
-		$scope.sprintlogId = response.pbis.sprintlog;
-	//should only get the Backlog Items that are not allready in a sprintlog
-	console.log($scope.sprintlogId);
 			
-		if($scope.pbis.sprintlog == 1){
-			alert("L");
-	$scope.PBInotinsprintlog.push({ id : $scope.pbis.id, name : $scope.pbis.name, description : $scope.pbis.description, priority: $scope.pbis.priority, creatinDate : $scope.pbis.creationDate });	
-	}
 	});
 	
 	$http.get(url_listdevelopers).success(function(response){
 	
 	$scope.developer = response.developers;
+	$scope.user.push({id : $scope.developer.id, name : $scope.developer.firstname}); 
 	$http.get(url_getProjectlist).success(function(responses){
 		
-		$scope.project = responses.projects;
-		
+		$scope.project = responses;
+		$scope.projectDeveloper = responses.develepors;
+	
+	/*	
 		if ($scope.project.id == projectId && $scope.project.developers == $scope.developer.id){
 		$scope.user.push({id : $scope.developer.id, firstname : $scope.developer.firstname, lastname : $scope.developer.lastname}); 	
-			}
-
+		}
+	
+*/
+		console.log($scope.projectdeveloper);
 	});
 	});
 
@@ -105,7 +102,7 @@ $http.get(url_getCurrentUser).success(function(response){
 	
 	$scope.pbiName = '';
 	$scope.pbiDescription = '';
-	$scope.pbiPoints = '';
+	$scope.pbiPoints = 0;
 	$scope.pbiDeveloperId = '';
 	$scope.pbiId = '';
 	$scope.addToTasks = [];
@@ -115,7 +112,11 @@ $http.get(url_getCurrentUser).success(function(response){
 	$scope.pbiPoints = points;
 	$scope.pbiDeveloperId = developerId;
 	$scope.pbiId = pbiID;
-	$scope.addToTasks.push({ name : $scope.pbiName, description : $scope.pbiDescription, points : 			    $scope.pbiPoints, developer : $scope.pbiDeveloperId, state : 2, pbi : $scope.pbiId});
+	if($scope.pbiPoints>0){
+	$scope.addToTasks.push({ name : $scope.pbiName, description : $scope.pbiDescription, points : $scope.pbiPoints, developer : $scope.pbiDeveloperId, state : 2, pbi : $scope.pbiId});
+	} else {
+	alert("You need to chose points for task");	
+	}
 	console.log($scope.addToTaskInServer);
 	}
 	$scope.taskName = '';
@@ -139,6 +140,8 @@ $http.get(url_getCurrentUser).success(function(response){
 		'state' : $scope.state,
 		'pbi' : $scope.taskpbiId
 	};	
+	console.log(JSON.stringify(creatSprintlog));
+	/*
 	$http.post("/projects/{projectId}/pbis/{$scope.taskpbiId}/createtask", JSON.stringify(creatSprintlog)).success(function(data) {
 				if (data.status == "created") {
 					alert("Project created");	
@@ -147,6 +150,7 @@ $http.get(url_getCurrentUser).success(function(response){
 					alert(data.reason);
 				}
 	});
+	*/
 	
 	}
 }]);
