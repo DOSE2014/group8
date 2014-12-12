@@ -152,7 +152,7 @@
 									<tbody>
 										<tr data-ng-repeat="tsk in tasks | orderBy:['-state','points']:true">
 											<td>
-												<span class="label" data-ng-class="(tsk.state=='Completed') ? 'label-success' : 'label-warning'">
+												<span class="label" data-ng-class="(tsk.state=='completed') ? 'label-success' : 'label-warning'">
 													{{ tsk.name }}
 												</span>
 												</td>
@@ -168,8 +168,10 @@
 
 								<div class="form-group">
 									<div class="col-xs-12">
-										<button type="button" class="btn btn-default btn-block">View
-											Tasks</button>
+										<button type="button" class="btn btn-default btn-block" data-ng-click="openTaskManager()">
+											Manage
+											Tasks
+										</button>
 									</div>
 								</div>
 								<div class="form-group hidden">
@@ -571,6 +573,90 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="modal_taskManager" tabindex="-1" role="dialog"
+		aria-labelledby="Tasks" aria-hidden="true" data-ng-controller="Tasks">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Tasks manager</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="panel panel-default" data-ng-repeat="tk in tasks" data-ng-show="user.id == project.manager || user.id == tk.developer ">
+						<div class="panel-body">
+							<div class='col-xs-1' data-ng-show="user.id != project.manager">
+								<span data-ng-show="tk.state == 'completed'"
+									class="label label-success">Done</span>
+								<span data-ng-show="tk.state != 'completed'"
+									class="label label-warning">Pending</span>
+								
+								
+							</div>
+							<div class='col-xs-2'>
+								<div class='row'>
+								<span data-ng-show="user.id != project.manager">{{ tk.name }}</span>
+							
+								<input data-ng-show="user.id == project.manager" 
+									class='col-xs-12' type='text' style="padding-left:0;"
+									data-ng-model='tk.name'/>
+						
+								</div>
+							</div>
+							
+							<div class="{{(user.id==project.manager) ? 'col-xs-4':'col-xs-5'}}">
+								<span data-ng-show="user.id != project.manager">{{ tk.description }}</span>
+								<span data-ng-show="user.id == project.manager">
+									<textarea data-ng-model='tk.description'></textarea>
+								</span>
+							</div>
+							<div class='col-xs-2'>
+								Points:
+								<select class="form-control" name="tkManager_points"
+									data-ng-model="tk.points"
+									data-ng-options="num for num in getRange(100,1)"
+									data-ng-disabled="user.id != project.manager">
+								</select>
+							</div>
+							<div class='col-xs-2' data-ng-show="user.id == project.manager">
+								Developer:
+								<select class="form-control" name="tkManager_dev"
+									
+									
+									data-ng-options="dev.id as dev.firstname+' '+dev.lastname for dev in developers"
+									
+									data-ng-model="tk.developer">
+								</select>
+							</div>
+							<div class='col-xs-1'>
+								<span data-ng-show="tk.state == 'completed'">Done</span>
+								<span data-ng-show="tk.state != 'completed'">Pending</span>
+								<input type="checkbox" data-ng-model="tk.state"
+                					 data-ng-true-value="completed" data-ng-false-value="awaiting">
+   
+								
+							</div>
+
+							<div class='col-xs-1'>
+								<br/>
+								<button type="button" class="btn btn-default btn-sm" aria-label="Save task"
+									title="Save"
+									data-ng-click="updateTask(tk.id, tk.name, tk.description, tk.points, tk.developer, tk.state)">
+									<span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+								</button>
+
+							</div>
+
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>

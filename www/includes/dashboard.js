@@ -18,6 +18,7 @@ var url_editAccount = "/account/edit";
 var url_remPBI = "/projects/{0}/pbis/{1}/delete";
 var url_addPBI = "/projects/{0}/pbis/create";
 var url_addBacklog = "/projects/{0}/createbacklog";
+var url_editTask = "/projects/{0}/tasks/{1}/edit";
 
 //
 var url_login = "login.html";
@@ -78,7 +79,6 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 		$('#modal_newProject').modal('toggle');
 	}
 	
-	
 	$scope.getSrvDevelopers = function(){
 		if($scope.srvDevelopers.length <=0 && $scope.devFetch == false){
 			$scope.devFetch = true;
@@ -91,8 +91,7 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 		}
 		
 	}
-	
-	
+
 	//Opens the modal pop up to manage the developers in a project. Manager Only
 	$scope.openDevManager = function(){
 		$('#modal_manager').modal('toggle');
@@ -244,12 +243,9 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 			}).error(function(error) {
 				alert(error);
 				$('#modal_newProject').modal('hide');
-			});
-			
+			});		
 		}
-	}
-	
-	
+	}	
 }]);
 
 //Controller of the angularJS module
@@ -296,9 +292,6 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	        //console.log(data);
 		});
 	};
-	
-	
-	
 	
 	//gets the info from the rest service to set the project manager
 	$scope.setProjectManager = function(userId){
@@ -353,7 +346,6 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	        }else{
 	        	$scope.setProject(null);
 	        }
-        
 		});
 	}
 	
@@ -447,6 +439,12 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 		$('#modal_backlog').modal('show');
 	}
 	
+	//Opens the Task manager pop up
+	$scope.openTaskManager = function(){
+		
+		$('#modal_taskManager').modal('show');
+	}
+	
 	//if the user has no projects sets the variable to blank
 	$scope.resetVariables = function(){
 		$scope.project = {};
@@ -475,6 +473,36 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 		return res;
 	}
 	
+}]);
+
+//Controller of the angularJS module
+dashboard.controller('Tasks', ['$scope', '$http', function($scope, $http){
+	$scope.updateTask = function(idTask, tkName, tkDesc, tkPoints, tkDev, tkState){
+		var postData = {
+			'name' 			: tkName,
+			'description' 	: tkDesc,
+			'points'		: tkPoints,	
+			'developer'		: tkDev,
+			'state'		: tkState
+		};
+		if(tkState == 'completed'){
+			postData.completionDate = Math.floor(((new Date()).getTime())/1000);
+		}else{
+			postData.completionDate = 0;
+		}
+		$http.post(url_editTask.format($scope.project.id, idTask), JSON.stringify(postData)).success(function(data) {
+			if (data.status == "ok") {
+				$scope.setProject($scope.project.id);
+				alert("Saved");
+			} else if (data.status == "error") {
+				alert(data.reason);
+				
+			}
+		}).error(function(error) {
+			alert(error);
+			
+		});
+	};
 }]);
 
 
@@ -564,7 +592,7 @@ function setChart(name, startDate, endDate, chTasks){
 		var totTask = totalTask;
 		
 		for(var y=0; y<chTasks.length; y++){
-			if(chTasks[y].state == 'Completed' && chTasks[y].completionDate <= dayDate && chTasks[y].completionDate != 0){
+			if(chTasks[y].state == 'completed' && chTasks[y].completionDate <= dayDate && chTasks[y].completionDate != 0){
 				totTask--;
 			}
 		}
