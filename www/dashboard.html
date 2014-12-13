@@ -234,6 +234,31 @@
 		</div>
 
 	</div>
+	
+	<div class='row chat_row'>
+		<div class='col-xs-4'>
+			
+		</div>
+	</div>
+
+	<nav class="navbar navbar-default navbar-fixed-bottom"
+		role="navigation"
+		data-ng-controller="Chat">
+		<div class="container">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<div style="position:absolute; left:30px; top:5px;" data-ng-show="newMessage">
+						<span class="glyphicon glyphicon-asterisk" style="color:red;"></span>
+					</div>
+					<button type="button" class="btn btn-link btn-lg"
+						aria-label="Chat"
+						data-ng-click="openChatWindow()">
+						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+					</button>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
 	<div class="modal fade" id="modal_newProject" tabindex="-1" role="dialog"
 		aria-labelledby="New Project" aria-hidden="true" data-ng-controller="Project">

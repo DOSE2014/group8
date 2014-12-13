@@ -1,5 +1,6 @@
 //global variables to the REST services
 var url_login = "account/login";
+var url_recoverPwd = "/account/recoverpassword";
 
 //global var
 var url_dashboard = "dashboard.html";
@@ -13,6 +14,10 @@ var login = angular.module('login', []);
 login.controller('loginController', ['$scope', '$http', function($scope, $http){
 	$scope.username = "";
 	$scope.password = "";
+	
+	$("#birth").datepicker({
+		dateFormat: "dd/mm/yy"
+	});
 	
 	$scope.login = function() {
 		// Authentication against the server
@@ -44,6 +49,38 @@ login.controller('loginController', ['$scope', '$http', function($scope, $http){
 		}).error(function(data) { // optional
 			$scope.dataLoading = false;
 		});
+	};
+	
+	
+	
+	$scope.recoverPassword = function() {
+		
+		$scope.emailRequired = '';
+		$scope.birthRequired = '';
+		
+		if (!$scope.email) {
+			$scope.emailRequired = 'Required';
+		}else if (!$scope.birth) {
+			$scope.birthRequired = 'Required';
+		}else{
+			var timestamp = Math.round($.datepicker.formatDate('@',$.datepicker.parseDate( "d/m/yy", $scope.birth))/1000);
+			var data_post = {
+	        	'email' : $scope.email,
+				'dateOfBirth' : timestamp
+	        };
+			
+			$http.post(url_recoverPwd, JSON.stringify(data_post)).success(function(data) {
+				//console.log(data);
+				if (data.status == "ok") {
+					alert("Your new password has been sent to your email account. Check your spam folder");
+					$('#modal_pwdRecovery').modal('hide');
+				} else if (data.status == "error") {
+					alert(data.reason)
+				}
+			}).error(function(data) { // optional
+				alert(data.reason);
+			});
+		}
 	};
 	
 }]);
