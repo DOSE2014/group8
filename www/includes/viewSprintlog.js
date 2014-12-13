@@ -1,12 +1,20 @@
+var url_getBacklogpbi = "/projects/{0}/getbacklog";
+
+var projectId = 1;
+var backlId = 1;
+var splId = 1;
+
 var viewSprintlog = angular.module('viewSprintlog', []);
 
 viewSprintlog.controller('Sprintlogcontroller', ['$scope','$http', function($scope,$http){
 	
+	var global_usr_id = null;
+	$scope.backlId = backlId;
+	$scope.splId = splId;
 	$scope.pbis = null;
-	$scope.manager = 1;
-	$http.get("https://dose2014.googlecode.com/svn/trunk/implementations/group8/www/includes/Test_JSON.php")
-	//Change address to the correct one
-    .success(function(response) {$scope.pbis = response;});
+	$http.get(url_getBacklogpbi.format(backlId)).success(function(response) {
+		$scope.pbis = response.pbis;
+	});
 	//should only get the Backlog Items that are not allready in a list
     $scope.CurrentName = null;
 	$scope.setCurrentName = function(name){
@@ -42,6 +50,23 @@ viewSprintlog.controller('Sprintlogcontroller', ['$scope','$http', function($sco
 	}
 
 }]);
+
+String.prototype.format = function() {
+    var formatted = this;
+    for (var i = 0; i < arguments.length; i++) {
+        var regexp = new RegExp('\\{'+i+'\\}', 'gi');
+        formatted = formatted.replace(regexp, arguments[i]);
+    }
+    return formatted;
+};
+
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
 
 
 

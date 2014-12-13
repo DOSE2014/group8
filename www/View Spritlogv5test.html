@@ -12,14 +12,16 @@
  
       <title>SB Admin - Bootstrap Admin Template</title>
  
-      <!-- Bootstrap Core CSS -->
-      <link href="css/bootstrap.min.css" rel="stylesheet">
- 
-      <!-- Custom CSS -->
-      <link href="css/sb-admin.css" rel="stylesheet">
- 
-      <!-- Custom Fonts -->
-      <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+     <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+     <!-- Custom Fonts -->   
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
  
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -215,7 +217,7 @@
                               <div align="justify">
                                 <table class="table table-bordered table-hover" >
                                   <tr ng-repeat="x in pbis|orderBy:'Name'">
-                                    <td class="col-lg-3" align="center"> <b>Item Name: </b>{{ x.Name }} <br> <b> Description: </b>{{x.Country}} <br> <b>Priority:</b>{{x.Id}}</td>
+                                    <td class="col-lg-3" align="center"> <b>Item Name: </b>{{ x.name }} <br> <b> Description: </b>{{x.description}} <br> <b>Priority:</b>{{x.priority}}</td>
                                     <!--If task is completed backgroundcolor should be green-->
                                     <!--If task is progress backgroundcolor should be blue-->
                                     <!--If task is not being worked on or there is no developer working on this item then backgroundcolor should be red and it should be possible to add a Developer to the task-->
@@ -311,14 +313,15 @@
       </div>
       <!-- /#wrapper -->
  
-      <!-- jQuery -->
-      <script src="includes/jquery.js"></script>
- 
-      <!-- Bootstrap Core JavaScript -->
-      <script src="includes/bootstrap.min.js"></script>
-     
-      <script src="includes/viewSprintlog.js"></script>
-     
+        <!-- jQuery -->
+    <script src="includes/jquery.js"></script>
+    <script src="includes/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="includes/bootstrap.min.js"></script>
+    
+    
+    <script src="includes/viewSprintlog.js"></script>
              
  
   </body>
