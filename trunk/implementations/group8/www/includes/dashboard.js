@@ -651,7 +651,8 @@ dashboard.controller('Tasks', ['$scope', '$http', function($scope, $http){
 					'description':$scope.pbiTaskDescription,
 					'points' : 0,
 					'developer' : $scope.project.manager,
-					'state' : 'awaiting'
+					'state' : 'awaiting',
+					'completionDate':0
 				}
 				$http.post(url_createTask.format($scope.project.id, pbiId), 
 							JSON.stringify(postData)).success(function(data) {
@@ -728,7 +729,7 @@ dashboard.controller('Tasks', ['$scope', '$http', function($scope, $http){
 					});
 				}
 				$scope.setProject($scope.project.id);
-				alert('Items added to the backlog');
+				alert('Items added to the sprintlog');
 				$("#modal_addPBI").modal('hide');
 			}else{
 				alert("you haven't added any items");
