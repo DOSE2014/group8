@@ -43,7 +43,7 @@ feature
 			epoch: DATE_TIME
 		do
 			create epoch.make_from_epoch (0)
-			create dbInsertStatement.make("INSERT INTO Task(id, name, description, developer, points, state, pbi, completionDate) VALUES('" + t.getid.out + "', '" +
+			create dbInsertStatement.make("INSERT INTO Task( name, description, developer, points, state, pbi, completionDate) VALUES('" +
 											t.getname + "', '" + t.getdescription + "', '" + t.getDeveloper.getid.out + "', '" +
 											t.getpoints.out + "', '" + t.getState.out + "', '" + t.getpbi.getid.out + "', '" + t.getcompletiondate.definite_duration (epoch).seconds_count.out + "');", db)
 			dbInsertStatement.execute
