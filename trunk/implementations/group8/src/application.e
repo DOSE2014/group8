@@ -72,6 +72,7 @@ feature {NONE} -- Initialization
 			create rest_projects_pbis_tasks.make (session_manager, pdtdb)
 			create rest_projects_sprintlogs.make (session_manager, pdtdb)
 			create rest_stats.make (session_manager, pdtdb)
+			create rest_chat.make (session_manager, pdtdb)
 
 			set_service_option ("port", 8080)
 			initialize_router
