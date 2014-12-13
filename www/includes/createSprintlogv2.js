@@ -112,7 +112,9 @@ $http.get(url_getCurrentUser).success(function(response){
 	$scope.pbiPoints = points;
 	$scope.pbiDeveloperId = developerId;
 	$scope.pbiId = pbiID;
+	
 	if($scope.pbiPoints>0){
+	$scope.button=! $scope.button;
 	$scope.addToTasks.push({ name : $scope.pbiName, description : $scope.pbiDescription, points : $scope.pbiPoints, developer : $scope.pbiDeveloperId, state : 2, pbi : $scope.pbiId});
 	} else {
 	alert("You need to chose points for task");	
