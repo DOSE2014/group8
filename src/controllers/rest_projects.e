@@ -178,6 +178,8 @@ feature
 					--create the chat of the project
 					create chat.make (0, p)
 					chat.setid (db.insertchat (chat))
+					db.adduserinchat (mgr, chat)
+					db.adduserinchat (stakeholder, chat)
 				end
 
 				if not ok then
@@ -253,7 +255,7 @@ feature
 							send_json(hres, json_error)
 						else
 							db.adddevelopertoproject (param_iddev, idProj)
-
+							db.adduserinchat (developer, db.getchatfromprojectid (idproj))
 							log.info ("/projects/" + idproj.out + "/adddeveloper [POST] Added developer to project")
 
 							-- send OK to the user :)				
@@ -326,7 +328,7 @@ feature
 							log.warning ("/projects/" + idProj.out + "/remdeveloper [POST] Developer not existent.")
 						else
 							db.deletedeveloperfromproject (param_iddev, idProj)
-
+							db.deleteuserinchat (developer, db.getchatfromprojectid (idproj))
 							log.info ("/projects/" + idproj.out + "/remdeveloper [POST] Removed developer from project")
 
 							-- send OK to the user :)				
