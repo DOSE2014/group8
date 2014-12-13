@@ -19,6 +19,7 @@ var url_remPBI = "/projects/{0}/pbis/{1}/delete";
 var url_addPBI = "/projects/{0}/pbis/create";
 var url_addBacklog = "/projects/{0}/createbacklog";
 var url_editTask = "/projects/{0}/tasks/{1}/edit";
+var url_getChat = "/chat/{0}/getchat";
 
 //
 var url_login = "login.html";
@@ -70,6 +71,27 @@ dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 		}
 	}
 	
+	
+}]);
+
+dashboard.controller('Chat', ['$scope', '$http', function($scope, $http){
+	$scope.newMessage = false;
+	
+	$scope.messages = function(){
+		if($scope.project.id != undefined){
+			$http.get(url_getChat.format($scope.project.id)).success(function(data) {
+		
+				consoloe.log(data);
+			}).error(function(error) {
+				alert(error);
+				
+			});
+		}
+	}
+	
+	$scope.openChatWindow = function(){
+		$scope.messages();
+	}
 	
 }]);
 

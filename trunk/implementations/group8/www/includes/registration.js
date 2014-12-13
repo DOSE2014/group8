@@ -22,7 +22,9 @@ reg.controller('regController', ['$scope', '$http', function($scope, $http){
     });
 	
 	
-	$("#birthdate").datepicker();
+	$("#birthdate").datepicker({
+		dateFormat: "dd/mm/yy"
+	});
 
 	$scope.timezones = [
 'Pacific/Midway',
@@ -226,7 +228,7 @@ reg.controller('regController', ['$scope', '$http', function($scope, $http){
 				'firstname' : $scope.formInfo.fName,
 				'lastname': $scope.formInfo.lName,
 				'sex' : $scope.formInfo.Sex,
-				'dateOfBirth': timestamp/1000,
+				'dateOfBirth': Math.round(timestamp/1000),
 				'city' : $scope.formInfo.City,
 				'country' : $scope.formInfo.Country,
 				'timezone' : $scope.formInfo.tZone,
