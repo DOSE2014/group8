@@ -6,6 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.min.css" rel="stylesheet">
+
+<link href="css/jquery-ui.min.css" rel="stylesheet">
 <link href="css/dashboard.css" rel="stylesheet">
 </head>
 
@@ -165,6 +167,15 @@
 
 								</table>
 								</div>
+								
+								<div class="form-group" data-ng-show="user.id == project.manager">
+									<div class="col-xs-12">
+										<button type="button" class="btn btn-default btn-block" data-ng-click="openSplManager()">
+											Manage
+											Sprintlogs
+										</button>
+									</div>
+								</div>
 
 								<div class="form-group">
 									<div class="col-xs-12">
@@ -190,7 +201,7 @@
 						</div>
 
 						<div class="col-xs-7">
-							<div class="panel panel-default">
+							<div class="panel panel-default" id='panel_burndown'>
 								<div class="panel-heading">Current Sprintlog Burndown</div>
 								<div class="panel-body">
 									<div id="div_chart" style="width: 100%; height: 300px;"></div>
@@ -235,7 +246,7 @@
 
 	</div>
 	
-	<div class='row chat_row'>
+	<div id='chatWindow' class='row chat_row hidden'>
 		<div class='col-xs-4'>
 			
 		</div>
@@ -614,7 +625,9 @@
 					<h4 class="modal-title" id="myModalLabel">Tasks manager</h4>
 				</div>
 				<div class="modal-body">
-
+					<div class="panel panel-default" data-ng-hide="tasks.length > 0">
+						You have no tasks assigned for this sprintlog
+					</div>
 					<div class="panel panel-default" data-ng-repeat="tk in tasks" data-ng-show="user.id == project.manager || user.id == tk.developer ">
 						<div class="panel-body">
 							<div class='col-xs-1' data-ng-show="user.id != project.manager">
@@ -686,7 +699,255 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal fade" id="modal_splManager" tabindex="-1" role="dialog"
+		aria-labelledby="Sprintlogs" aria-hidden="true" data-ng-controller="Tasks">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Sprintlog manager</h4>
+				</div>
+				<div class="modal-body">
+					
+					
+					<div class="well">
+						<div class='row'>
+							<div class='col-xs-12'>
+								<h3>Create sprintlog</h3>
+							</div>
+						</div>
+						
+						<div class='row'>
+							
+							<div class='col-xs-3'>
+								Name
+								<input class="form-control col-xs-12" id="inputFirstName" 
+									placeholder="Sprint Name" data-ng-model="nSpl.name"/>
+						
+							</div>
+							
+							<div class='col-xs-5'>
+								Description
+								<textarea class='col-xs-12' style="padding-left:0;" data-ng-model='nSpl.description'></textarea>
+							</div>
+							
+							<div class='col-xs-2'>
+								Start date:
+								<input class='col-xs-12' id="nSplStart" type='text' style="padding-left:0;"
+									data-ng-model='nSpl.startDate' />
+								
+							</div>
+							
+							<div class='col-xs-2'>
+								End date:
+								<input class='col-xs-12' id="nSplEnd" type='text' style="padding-left:0;"
+									data-ng-model='nSpl.endDate'/>
+							
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							<div class='col-xs-12'>
+								<button type="button" class="btn btn-success" data-ng-click='saveNewSprintlog()'>Save new sprintlog</button>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="panel panel-default" data-ng-hide="sprints.length > 0">
+						There are no sprintlogs configured for this project
+					</div>
+					
+					<h3 data-ng-show="sprints.length > 0">Manage project sprintlogs</h3>
 
+					
+					<div class="panel panel-default" data-ng-repeat="spl in sprints">
+						<div class="panel-body">
+							<div class='row'>
+								<div class='col-xs-2'>
+									<strong>Sprintlog</strong><br/>
+									{{spl.name}}
+							
+								</div>
+								
+								<div class='col-xs-5'>
+									<strong>Description</strong><br/>
+									{{spl.description}}
+								</div>
+								
+								<div class='col-xs-2'>
+									<strong>Start date</strong><br/>
+									{{getDate(spl.startDate)}}
+									
+								</div>
+								
+								<div class='col-xs-2'>
+									<strong>End date</strong><br/>
+									{{getDate(spl.endDate)}}
+								
+								</div>
+	
+	
+								<div class='col-xs-1'>
+									<br/>
+								
+									<button type="button" class="btn btn-default btn-sm" aria-label="View sprint"
+										title="View"
+										data-ng-click="det_show = !det_show; loadSplPbis($index, spl.id);" >
+										<span class='glyphicon glyphicon-eye-open' aria-hidden="true"></span>
+									</button>
+	
+								</div>
+							</div>
+							<div class='row' style='margin-top:10px;'>
+								<div class='col-xs-12' style="text-align:right;">
+									<button type="button" class="btn btn-danger" data-ng-click='deleteSprintlog(spl.id)'>Delete Sprintlog</button>
+									<button type="button" class="btn btn-success" data-ng-click='openAddPbi(spl.id)'>Add Backlog Item</button>
+									
+									
+								</div>
+							</div>
+
+						</div>
+						<div class="panel-footer" data-ng-show="det_show">
+							<span data-ng-hide='splPbis[$index].length > 0'>
+								{{pbiFetchState}}
+							</span>
+							<ul class="list-group">
+								<li  class="list-group-item" data-ng-repeat="pb in splPbis[$index]">
+									<span><strong>PBI: </strong>{{pb.name}}</span>
+									
+									<span class="btn-group" role="group" style="float:right; margin-top:-5px;">
+										<button type="button" class="btn btn-default"
+											aria-label="Add task" title="Add tasks"
+											data-ng-click="openAddTaskToPbi(pb.id)">
+											<span class="glyphicon glyphicon-plus"
+												aria-hidden="true"></span>
+										</button>
+										<button type="button" class="btn btn-default"
+											aria-label="View tasks" title="View tasks"
+											data-ng-click="detp_show = !detp_show; loadSplPbisTasks($parent.$index, $index, pb.id);">
+											<span class="glyphicon glyphicon-tasks"
+												aria-hidden="true"></span>
+										</button>
+										<button type="button" class="btn btn-default"
+											aria-label="Remove PBI" title='Remove PBI'
+											data-ng-click="removePbiFromSpl(spl.id, pb.id)">
+											<span class="glyphicon glyphicon-trash"
+												aria-hidden="true"></span>
+										</button>
+										
+									</span>
+									<ul class="list-group" data-ng-show="detp_show" style="margin-top:10px;">
+										<li class="list-group-item" data-ng-hide='splPbis[$parent.$index][$index].tasks.length > 0'>
+											{{taskFetchState}}
+										</li>
+										<li  class="list-group-item" data-ng-repeat="tk in splPbis[$parent.$index][$index].tasks">
+											<span><strong>Task: </strong>{{tk.name}}</span>
+											
+											<span class="btn-group" role="group" style="float:right; margin-top:-5px;">
+												<button type="button" class="btn btn-default"
+													aria-label="Delete task" title='Delete task'
+													data-ng-click='deleteTask(tk.id)'>
+													<span class="glyphicon glyphicon-trash"
+														aria-hidden="true"></span>
+												</button>
+												
+											</span>
+										</li>
+									</ul>
+									
+								</li>
+							</ul>
+							To edit the tasks, go to the task manager
+							
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="modal_addPBI" tabindex="-1" role="dialog"
+		aria-labelledby="Add Item" aria-hidden="true" data-ng-controller="Tasks">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Add Backlog Items</h4>
+				</div>
+				<div class="modal-body">
+					<input type='hidden' id='modal_splId'/>
+					<div class="row">
+						<ul class="list-group" id='list_pbiToSpl'>
+							<li class="list-group-item" data-ng-repeat='bk in filtBacklog = ( backlog | filter: {sprintlog:null} | orderBy: priority)'>
+								<input id='{{bk.id}}' data-name='{{bk.name}}' data-description={{bk.description}} type='checkbox'/> &nbsp;&nbsp;{{bk.name}} - Priority: {{bk.priority}}
+							</li >
+							<li class="list-group-item" data-ng-hide="filtBacklog.length">No items available</li>
+						</ul>
+					</div>
+					<div class='row'>
+						If you don't see an item on the list, it is because it is added in another sprintlog.
+						To add it to the current sprintlog you should remove it from the sprintlog that it is currently in.
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-ng-click='addPbiToSpl()'>Add</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="modal_addTask" tabindex="-1" role="dialog"
+		aria-labelledby="Add Task" aria-hidden="true" data-ng-controller="Tasks">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Add Task</h4>
+				</div>
+				<div class="modal-body">
+					<input type='hidden' id='modal_pbiId'/>
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label for="pbiTaskName" class="col-sm-2 control-label">Task name</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="pbiTaskName"
+									placeholder="Task Name" data-ng-model="pbiTaskName">
+							</div>
+							<span data-ng-show="pbiTaskNameRequired">{{pbiTaskNameRequired}}</span>
+						</div>
+						
+						<div class="form-group">
+							<label for="pbiTaskDescription" class="col-sm-2 control-label">Task description</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="pbiTaskDescription"
+									placeholder="Task Description" data-ng-model="pbiTaskDescription">
+							</div>
+							<span data-ng-show="pbiTaskDescriptionRequired">{{pbiTaskDescriptionRequired}}</span>
+						</div>
+						
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-ng-click='addTaskToPbi()'>Add</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

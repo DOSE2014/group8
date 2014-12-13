@@ -20,6 +20,12 @@ var url_addPBI = "/projects/{0}/pbis/create";
 var url_addBacklog = "/projects/{0}/createbacklog";
 var url_editTask = "/projects/{0}/tasks/{1}/edit";
 var url_getChat = "/chat/{0}/getchat";
+var url_createSprint = "projects/{0}/sprintlogs/create";
+var url_addPBISpl = "/projects/{0}/sprintlogs/{1}/addpbi";
+var url_remPBISpl = "/projects/{0}/sprintlogs/{1}/removepbi";
+var url_deleteSpl = "/projects/{0}/sprintlogs/{1}/delete";
+var url_createTask = "/projects/{0}/pbis/{1}/createtask";
+var url_delTask = "/projects/{0}/tasks/{1}/delete";
 
 //
 var url_login = "login.html";
@@ -28,11 +34,19 @@ var url_login = "login.html";
 var global_usr_id = null;
 
 //Initializes the dashboard with AngularJS
-var dashboard = angular.module('dashboard', []);
+var dashboard = angular.module('dashboard', []).filter('timeToDate', function() {
+	return function(input) {
+		//var dat = new Date(input*100);
+		return "WW"+input;
+	};
+});
 
 dashboard.config(function(){
 	
+	
 });
+
+
 
 dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 	$scope.viewProfile = function(){
@@ -76,12 +90,13 @@ dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 
 dashboard.controller('Chat', ['$scope', '$http', function($scope, $http){
 	$scope.newMessage = false;
+	$scope.showWindow = false;
 	
 	$scope.messages = function(){
 		if($scope.project.id != undefined){
 			$http.get(url_getChat.format($scope.project.id)).success(function(data) {
 		
-				consoloe.log(data);
+				console.log(data);
 			}).error(function(error) {
 				alert(error);
 				
@@ -90,7 +105,14 @@ dashboard.controller('Chat', ['$scope', '$http', function($scope, $http){
 	}
 	
 	$scope.openChatWindow = function(){
-		$scope.messages();
+		toggleVisible('chatWindow');
+		if($scope.showWindow == false){
+			$scope.showWindow = true;
+			
+			$scope.messages();
+		}else{
+			$scope.showWindow = false;
+		}
 	}
 	
 }]);
@@ -286,6 +308,13 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	$scope.srvDevelopers = [];
 	$scope.devFetch = false;
 	
+	$('#nSplEnd').datepicker({
+		dateFormat: "dd/mm/yy"
+	});
+	$('#nSplStart').datepicker({
+		dateFormat: "dd/mm/yy"
+	});
+	
 	//gets the info of the active user of the system
 	restUsers.getCurrentUser(function(response){
 		if(response.status == "error"){
@@ -406,6 +435,7 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	
 	//gets the sprintlog of the project from the REST service
 	$scope.getProjectSprintlog = function(projectId){
+		setChart('','','','');
 		$http.get(url_getSprintlog.format(''+projectId)).success(function(data){
 	        $scope.sprints = data.sprintlogs;
 	        if(data.sprintlogs.length > 0){
@@ -463,8 +493,14 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	
 	//Opens the Task manager pop up
 	$scope.openTaskManager = function(){
-		
 		$('#modal_taskManager').modal('show');
+	}
+	
+	//Opens the Sprintlog manager pop up. MANAGER only
+	$scope.openSplManager = function(){
+		
+		$('#modal_splManager').modal('show');
+		
 	}
 	
 	//if the user has no projects sets the variable to blank
@@ -499,6 +535,270 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 
 //Controller of the angularJS module
 dashboard.controller('Tasks', ['$scope', '$http', function($scope, $http){
+	
+	$scope.splPbis = [];
+	$scope.nSpl = {};
+	$scope.pbiFetchState = "Loading PBIs...";
+	$scope.taskFetchState = "Loading Tasks...";
+	
+	$scope.loadSplPbis = function(splInd, splId){
+		$scope.pbiFetchState = "Loading PBIs...";
+		$http.get(url_getPBIs.format($scope.project.id, splId)).success((function(splInd){
+			return function(data){
+				var ret = data.pbis;
+				var res = [];
+				
+				
+				
+				for(var i=0; i<ret.length; i++){
+					for(var y=0; y<$scope.backlog.length; y++){
+						if($scope.backlog[y].id == ret[i]){
+							res.push($scope.backlog[y]);
+							break;
+						}
+					}
+				}
+				if(res.length <= 0){
+					$scope.pbiFetchState = "No items are set";
+				}
+				$scope.splPbis[splInd] = res;
+			}
+			
+		})(splInd));
+	}
+	
+	$scope.deleteSprintlog = function(splId){
+		if(confirm("Are you sure that you want to delete the sprintlog?. All the information of it will be lost. The backlog items will be preserved in the backlog")){
+			var postData = {};
+			$http.post(url_deleteSpl.format($scope.project.id, splId), JSON.stringify(postData)).success(function(data) {
+				if (data.status == "ok") {
+					$scope.setProject($scope.project.id);
+					alert('Sprintlog deleted correctly');
+				} else if (data.status == "error") {
+					alert(data.reason);
+				}
+			}).error(function(error) {
+				alert(error);
+				
+			});
+		}
+	}
+	
+	$scope.deleteTask = function(taskId){
+		if(confirm("Are you sure that you want to delete the task?")){
+			var postData = {};
+			$http.post(url_delTask.format($scope.project.id, taskId), JSON.stringify(postData)).success(function(data) {
+				if (data.status == "ok") {
+					$scope.setProject($scope.project.id);
+					alert('Task deleted correctly');
+				} else if (data.status == "error") {
+					alert(data.reason);
+				}
+			}).error(function(error) {
+				alert(error);
+				
+			});
+		}
+		
+	}
+	
+	$scope.removePbiFromSpl = function(splId, pbiId){
+		if(confirm("Are you sure that you want to remove the PBI from the sprintlog?.")){
+			var postData = {
+				'id': pbiId
+			};
+			
+			$http.post(url_remPBISpl.format($scope.project.id, splId), JSON.stringify(postData)).success(function(data) {
+				if (data.status == "ok") {
+					$scope.setProject($scope.project.id);
+					alert('PBI was removed from sprintlog');
+				} else if (data.status == "error") {
+					alert(data.reason);
+				}
+			}).error(function(error) {
+				alert(error);
+				
+			});
+		}
+	}
+	
+	$scope.openAddPbi = function(splId){
+		$('#modal_splId').val(splId);
+		
+		$("#modal_addPBI").modal('show');
+	}
+	
+	$scope.openAddTaskToPbi = function(pbiId){
+		$('#modal_pbiId').val(pbiId);
+		
+		$("#modal_addTask").modal('show');
+	}
+	
+	$scope.addTaskToPbi = function(){
+		var pbiId = $('#modal_pbiId').val();
+		
+		if(pbiId != null){
+			$scope.pbiTaskNameRequired = '';
+			$scope.pbiTaskDescriptionRequired = '';
+
+			if (!$scope.pbiTaskDescription) {
+				$scope.fnameRequired = 'Required';
+			} else if (!$scope.pbiTaskName) {
+				$scope.lnameRequired = 'Required';
+			} else {
+				var postData = {
+					'name':$scope.pbiTaskName,
+					'description':$scope.pbiTaskDescription,
+					'points' : 0,
+					'developer' : $scope.project.manager,
+					'state' : 'awaiting'
+				}
+				$http.post(url_createTask.format($scope.project.id, pbiId), 
+							JSON.stringify(postData)).success(function(data) {
+					if (data.status == "ok") {
+						alert("Task created successfuly");
+					} else if (data.status == "error") {
+						alert(data.reason);
+						
+					}
+				}).error(function(error) {
+					alert(error);
+					
+				});
+			}
+		}
+	}
+	
+	$scope.addPbiToSpl = function(){
+		var splId = $('#modal_splId').val();
+		
+		if(splId != null){
+			var toAdd = [];
+			var extraInfo = [];
+			$('#list_pbiToSpl').children('li').each(function(){
+				if($(this).children('input:checked').first().attr('id') != undefined){
+					toAdd.push($(this).children('input:checked').first().attr('id'));
+					var extra = {
+						'id':$(this).children('input:checked').first().attr('id'),
+						'name':$(this).children('input:checked').first().data('name'),
+						'description':$(this).children('input:checked').first().data('description')
+					}
+					extraInfo.push(extra);
+				}
+			});
+			if(toAdd.length > 0){
+				for(var i=0; i< toAdd.length; i++){
+					var postData = {
+						'id' : parseInt(toAdd[i])
+					};
+					var extra = extraInfo[i];
+					
+					$http.post(url_addPBISpl.format($scope.project.id, splId), 
+							JSON.stringify(postData)).success((function(extra) {
+						return function(data){
+							if (data.status == "ok") {
+								var postData = {
+									'name':extra.name,
+									'description':extra.description,
+									'points' : 0,
+									'developer' : $scope.project.manager,
+									'state' : 'awaiting',
+									'completionDate': 0
+								}
+								$http.post(url_createTask.format($scope.project.id, extra.id), 
+											JSON.stringify(postData)).success(function(data) {
+									if (data.status == "ok") {
+										
+									} else if (data.status == "error") {
+										alert(data.reason);
+										
+									}
+								}).error(function(error) {
+									alert(error);
+									
+								});
+							} else if (data.status == "error") {
+								alert(data.reason);
+								
+							}
+						}
+					})(extra)).error(function(error) {
+						alert(error);
+						
+					});
+				}
+				$scope.setProject($scope.project.id);
+				alert('Items added to the backlog');
+				$("#modal_addPBI").modal('hide');
+			}else{
+				alert("you haven't added any items");
+			}
+		}
+	}
+	
+	$scope.loadSplPbisTasks = function(parentIndex, curIndex, pbiId){
+		var indexes = [parentIndex, curIndex];
+		$scope.taskFetchState = "Loading Tasks...";
+		$http.get(url_getTasks.format($scope.project.id, pbiId)).success((function(indexes){
+			return function(data){
+				
+				var res = data.tasks;
+				
+				if(res.length <= 0){
+					$scope.taskFetchState = "No tasks are set";
+				}
+				
+				$scope.splPbis[indexes[0]][indexes[1]].tasks = res;
+			}
+			
+		})(indexes));
+	}
+	
+	$scope.saveNewSprintlog = function(){
+		var timeEnd = null;
+		var timeStart = null;
+		if($scope.nSpl.name && $scope.nSpl.description && $scope.nSpl.startDate && $scope.nSpl.endDate){
+			
+			timeEnd = $.datepicker.formatDate('@',$.datepicker.parseDate( "d/m/yy", $scope.nSpl.endDate));
+			timeStart = $.datepicker.formatDate('@',$.datepicker.parseDate( "d/m/yy", $scope.nSpl.startDate));
+			var nowDate = new Date().getTime();
+			
+			if(timeEnd <= timeStart){
+				alert("End time cannot be before start time");
+				return;
+			}
+			
+			if(timeStart < nowDate){
+				alert("You can't create a sprintlog for a date that has already passed");
+				return;
+			}
+			
+		}else{
+			alert("All fields are required");
+			return;
+		}
+		
+		var postData = {
+			'name' 			: $scope.nSpl.name,
+			'description' 	: $scope.nSpl.description,
+			'startDate'		: Math.round(timeStart/1000),	
+			'endDate'		: Math.round(timeEnd/1000),
+			'idpbis'		: []
+		};
+		
+		$http.post(url_createSprint.format($scope.project.id), JSON.stringify(postData)).success(function(data) {
+			if (data.status == "ok") {
+				$scope.setProject($scope.project.id);
+				alert("Sprint log created");
+			} else if (data.status == "error") {
+				alert(data.reason);
+				
+			}
+		}).error(function(error) {
+			alert(error);
+		});
+	}
+	
 	$scope.updateTask = function(idTask, tkName, tkDesc, tkPoints, tkDev, tkState){
 		var postData = {
 			'name' 			: tkName,
@@ -525,6 +825,8 @@ dashboard.controller('Tasks', ['$scope', '$http', function($scope, $http){
 			
 		});
 	};
+	
+	
 }]);
 
 
@@ -587,13 +889,8 @@ dashboard.service('restUsers', function($http) {
 			}
 		);
 	};
-	
-	
-
-	
-	
-
 });
+
 
 
 
@@ -603,6 +900,12 @@ function toggleVisible(elemId){
 
 
 function setChart(name, startDate, endDate, chTasks){
+	
+	if(startDate == ''){
+		$('#panel_burndown').hide();
+	}else{
+		$('#panel_burndown').show();
+	}
 	
 	var data = [];
 	var totalTask = chTasks.length;
@@ -679,7 +982,5 @@ Object.size = function(obj) {
     }
     return size;
 };
-
-
 
 //$(setChart());
