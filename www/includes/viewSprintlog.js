@@ -1,5 +1,7 @@
 var url_getBacklogpbi = "/projects/{0}/getbacklog";
+var url_listdevelopers = "/account/listdevelopers";
 
+var global_usr_id = null;
 var projectId = 1;
 var backlId = 1;
 var splId = 1;
@@ -8,13 +10,30 @@ var viewSprintlog = angular.module('viewSprintlog', []);
 
 viewSprintlog.controller('Sprintlogcontroller', ['$scope','$http', function($scope,$http){
 	
-	var global_usr_id = null;
+
 	$scope.backlId = backlId;
 	$scope.splId = splId;
 	$scope.pbis = null;
+	$scope.pbisfunction = [];
+	$scope.pbisId = [];
 	$http.get(url_getBacklogpbi.format(backlId)).success(function(response) {
 		$scope.pbis = response.pbis;
+		
+	for (var i = 0; i < $scope.pbis.length; i++) {
+		$scope.pbisfunction.push({pbiId : $scope.pbis[i].id, sprintlog : $scope.pbis[i].sprintlog}); 
+    }	
+	for (var i = 0; i < $scope.pbisfunction.length; i++) {
+	 if ($scope.pbisfunction[i].sprintlog = splId){
+		$scope.pbisId.push({pbiId : $scope.pbisfunction.sprintlog}); 
+	}	
+	}
+		console.log($scope.pbisfunction);	
+		console.log($scope.pbisId);	
 	});
+	$http.get(url_listdevelopers).success(function(response) {
+		$scope.developers = response.developers;
+	});
+	
 	//should only get the Backlog Items that are not allready in a list
     $scope.CurrentName = null;
 	$scope.setCurrentName = function(name){
