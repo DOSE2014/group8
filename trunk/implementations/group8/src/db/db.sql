@@ -138,7 +138,7 @@ INSERT INTO `PBI` VALUES ('30','Change task states','To change task states','1',
 INSERT INTO `PBI` VALUES ('31','Developers chart','The system should allow forming chart of developers','1', '1', '3','3','1416898814');
 INSERT INTO `PBI` VALUES ('32','Project’s progress','To show ongoing tasks on dashboard and project statistics','1', '1', '3','3','1416898814');
 INSERT INTO `PBI` VALUES ('33','Chat','To organize communication between users','1', '1', '3','3','1416898814');
-INSERT INTO `Message` VALUES ('1','Filippo','1415555014','1','Hello world! :)');
+INSERT INTO `Message` VALUES ('1','1','1415555014','1','Hello world! :)');
 INSERT INTO `Language_User` VALUES ('1','1');
 INSERT INTO `Language_User` VALUES ('2','1');
 INSERT INTO `Language_User` VALUES ('1','2');
