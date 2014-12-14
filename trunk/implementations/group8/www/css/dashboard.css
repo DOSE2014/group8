@@ -57,18 +57,31 @@ a{
 .chat_row{
 	position:fixed;
 	width:30%;
-	height:30%;
+	height:40%;
 	bottom: 50px;
 	right:0px;
 	margin-right:0px;
 	padding:10px;
 	background-color: #DDDDDD;
 	overflow-x:hidden;
-	overflow-y:auto;
+	overflow-y:hidden;
+	
 }
 
 .chat_col{
-	
+	height:80%;
+	width:98%;
+	overflow-y:auto;
+}
+.chat_txt{
+	margin-left:-25px;
+}
+.chat_bubble{
+	width:80%;
+	background-color:#FFF;
+	padding:5px;
+	margin-top:10px;
+	margin-bottom:5px;
 }
 
 

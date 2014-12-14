@@ -26,6 +26,7 @@ var url_remPBISpl = "/projects/{0}/sprintlogs/{1}/removepbi";
 var url_deleteSpl = "/projects/{0}/sprintlogs/{1}/delete";
 var url_createTask = "/projects/{0}/pbis/{1}/createtask";
 var url_delTask = "/projects/{0}/tasks/{1}/delete";
+var url_addMsgChat = "/chat/{0}/insertmessage";
 
 //
 var url_login = "login.html";
@@ -34,19 +35,12 @@ var url_login = "login.html";
 var global_usr_id = null;
 
 //Initializes the dashboard with AngularJS
-var dashboard = angular.module('dashboard', []).filter('timeToDate', function() {
-	return function(input) {
-		//var dat = new Date(input*100);
-		return "WW"+input;
-	};
-});
+var dashboard = angular.module('dashboard', []);
 
 dashboard.config(function(){
 	
 	
 });
-
-
 
 dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 	$scope.viewProfile = function(){
@@ -88,31 +82,69 @@ dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 	
 }]);
 
-dashboard.controller('Chat', ['$scope', '$http', function($scope, $http){
+dashboard.controller('Chat', ['$scope', '$http', '$interval', function($scope, $http, $interval){
 	$scope.newMessage = false;
+	
+	$scope.chatUsrMsg = '';
+	$scope.chatData = {};
+	$scope.chatMsg = [];
+	
+
+	var chatInterval = undefined;
 	$scope.showWindow = false;
+	
 	
 	$scope.messages = function(){
 		if($scope.project.id != undefined){
 			$http.get(url_getChat.format($scope.project.id)).success(function(data) {
-		
-				console.log(data);
+				$scope.chatData = data;
+				$scope.chatMsg = data.messages;
 			}).error(function(error) {
 				alert(error);
 				
 			});
+			console.log('call');
 		}
 	}
 	
 	$scope.openChatWindow = function(){
+		
+		if($('#chatWindow').hasClass('hidden')){
+			$scope.showWindow = false;
+		}else{
+			$scope.showWindow = true;
+		}
+		
 		toggleVisible('chatWindow');
+		
+		
+		
 		if($scope.showWindow == false){
 			$scope.showWindow = true;
-			
 			$scope.messages();
+			chatInterval = $interval(function(){ $scope.messages() }, 3000);
 		}else{
+			$interval.cancel(chatInterval);
+			chatInterval = undefined;
 			$scope.showWindow = false;
 		}
+	}
+	
+	$scope.sendMessage = function(){
+		
+		if($scope.chatUsrMsg && $scope.chatUsrMsg!=''){
+			
+			$http.post(url_addMsgChat.format($scope.project.id), JSON.stringify({ 'content' : $scope.chatUsrMsg })).success(function(data) {
+				if (data.status == "ok") {
+					$scope.chatUsrMsg = '';
+					$scope.messages();
+					
+				} else {
+					alert(data.status);
+				}
+			});
+		}
+		
 	}
 	
 }]);
@@ -164,7 +196,7 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 				
 				$('#modal_manager').modal('hide');
 				alert("Developer added to the project");
-				$scope.setProject($scope.project.id);c
+				$scope.setProject($scope.project.id);
 			} else {
 				alert(data.status);
 			}
@@ -293,7 +325,7 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 }]);
 
 //Controller of the angularJS module
-dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, $http, restUsers){
+dashboard.controller('Users', ['$scope', '$http', 'restUsers', '$interval', function($scope, $http, restUsers, $interval){
 	
 	$scope.user = {};
 	$scope.projects = [];
@@ -307,6 +339,7 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	$scope.completion = [];
 	$scope.srvDevelopers = [];
 	$scope.devFetch = false;
+	
 	
 	$('#nSplEnd').datepicker({
 		dateFormat: "dd/mm/yy"
@@ -452,6 +485,11 @@ dashboard.controller('Users', ['$scope', '$http', 'restUsers', function($scope, 
 	
 	//Sets the current working project to display on the dashboard
 	$scope.setProject = function(idProject){
+		
+		//Clear chat
+		$('#chatWindow').addClass('hidden');
+		//
+		
 		$scope.resetVariables();
 		if(idProject > 0 && idProject != null){
 			for(var i=0; i<$scope.projects.length; i++){
