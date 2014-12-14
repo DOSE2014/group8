@@ -284,6 +284,7 @@ feature
 		hp : HTTP_PARSER
 
 		pbi : PBI
+		tasksOfPBI: LINKED_SET[TASK]
 		proj : PROJECT
 		u : USER
 	do
@@ -327,6 +328,11 @@ feature
 						log.warning ("/projects/{idproj}/pbis/{idpbi}/delete [POST] PBI not existent.")
 					else
 						db.deletepbifromid (pbi.getid)
+						tasksOfPBI := db.gettasksfrompbiid (pbi.getid)
+						across tasksOfP as t
+						loop
+							db.deletetaskfromid (t.item.getId)
+						end
 						log.deb ("/projects/{idproj}/pbis/{idpbi}/delete [POST] PBI with id " + pbi.getid.out + " deleted.")
 
 						-- send OK to the user :)				
