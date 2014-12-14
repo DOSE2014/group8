@@ -329,7 +329,7 @@ feature
 					else
 						db.deletepbifromid (pbi.getid)
 						tasksOfPBI := db.gettasksfrompbiid (pbi.getid)
-						across tasksOfP as t
+						across tasksOfPBI as t
 						loop
 							db.deletetaskfromid (t.item.getId)
 						end
