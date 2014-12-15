@@ -43,15 +43,23 @@ feature
 		hres /= Void
 	local
 		u : USER
+		json_error : JSON_OBJECT
 	do
 		http_request  := hreq
 		http_response := hres
 
 		if ensure_authenticated then
 			u := get_session_user
-			db.deleteuserfromid (u.getid)
-			logout -- from AUTHENTICATION
-			send_generic_ok(hres)
+			if db.isManagerOfProjects(u.getid)  then
+				create json_error.make
+				json_error.put_string ("error", "status")
+				json_error.put_string ("You are the manager of one or more projects. You must delete them before deleting your account.", "reason")
+				send_json(http_response, json_error)
+			else
+				db.deleteuserfromid (u.getid)
+				logout -- from AUTHENTICATION
+				send_generic_ok(hres)
+			end
 		end
 	end
 

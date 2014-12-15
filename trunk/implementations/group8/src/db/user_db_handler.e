@@ -303,11 +303,36 @@ feature
 			then log.severe("Error while deleting Language_User.%N")
 			end
 
-			create dbmodifystatement.make ("DELETE FROM ProgrammingLanguage_User WHERE user=" + u.out + "; COMMIT;", db)
+			create dbmodifystatement.make ("DELETE FROM ProgrammingLanguage_User WHERE user=" + u.out + ";", db)
 			dbmodifystatement.execute
 			if dbmodifystatement.has_error
 			then log.severe("Error while deleting ProgrammingLanguage_User.%N")
 			end
+
+			create dbmodifystatement.make ("DELETE FROM Chat_User WHERE user=" + u.out + ";", db)
+			dbmodifystatement.execute
+			if dbmodifystatement.has_error
+			then log.severe("Error while deleting Chat_User.%N")
+			end
+
+			create dbmodifystatement.make ("DELETE FROM Developer_Project WHERE developer=" + u.out + ";", db)
+			dbmodifystatement.execute
+			if dbmodifystatement.has_error
+			then log.severe("Error while deleting Developer_Project.%N")
+			end
+
+			create dbmodifystatement.make ("DELETE FROM Message WHERE user=" + u.out + ";", db)
+			dbmodifystatement.execute
+			if dbmodifystatement.has_error
+			then log.severe("Error while deleting Message.%N")
+			end
+
+			create dbmodifystatement.make ("UPDATE Task SET developer=NULL WHERE developer=" + u.out + "; COMMIT;", db)
+			dbmodifystatement.execute
+			if dbmodifystatement.has_error
+			then log.severe("Error while updating tasks.%N")
+			end
+
 
 		end
 
@@ -382,5 +407,18 @@ feature
 			then Result := Void
 			end
 		end
+	isManagerOfProjects(a : INTEGER) : BOOLEAN
+	local
+		cursor : SQLITE_STATEMENT_ITERATION_CURSOR
+	do
+		create ec
+		Result := FALSE
+		create dbQueryStatement.make ("SELECT COUNT(*) FROM Project WHERE manager=" +a.out + ";", db)
+		cursor := dbquerystatement.execute_new
+		if not cursor.after and attached cursor.item.value(1) then
+			Result := ec.int_to_bool (cursor.item.value(1).out.to_integer)
+		end
+
+	end
 
 end
