@@ -64,7 +64,13 @@
 									data-ng-show="user.id == project.manager" data-ng-click="openDevManager()">
 										
 										(Manage)
-									</a></li>
+									</a>
+									<a class="navbar-link navbar_project_edit"
+									data-ng-show="user.id == project.stakeholder" data-ng-click="deleteProject()">
+										
+										(Delete)
+									</a>
+									</li>
 							</ul>
 							<p class="navbar-text navbar-project-info" style="">{{
 								getProjectFormatedDate() }}</p>
