@@ -194,6 +194,53 @@ feature
 			end
 		end
 
+	deleteProject(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
+	-- PATH: /projects/{idproj}/delete
+	-- METHOD: GET
+	local
+		ok : BOOLEAN
+		idProj : INTEGER
+		project : PROJECT
+		u : USER
+		hp : HTTP_PARSER
+	do
+		http_request := hreq
+		http_response := hres
+
+		if ensure_authenticated then
+
+			ok := TRUE
+			u := get_session_user
+			create hp.make (hreq)
+
+			if not attached hp.path_param("idproj") or not  hp.path_param("idproj").is_integer
+			then
+				send_malformed_json(http_response)
+				ok := FALSE
+				-- And logs it
+				log.warning ("/projects/{idproj}/adddeveloper [POST] Missing idproj in URL.")
+			else
+				idProj := hp.path_param ("idproj").to_integer
+				project := db.getprojectfromid (idProj)
+				if not attached project
+				then	-- does project exist?
+					send_malformed_json(http_response)
+					ok := FALSE
+					-- And logs it
+					log.warning ("/projects/" + idproj.out + "/adddeveloper [POST] Project not existent.")
+				end
+			end
+			if ok then
+				if project.getstakeholder.getid /= u.getid then
+					no_permission
+				else
+					db.deleteprojectfromid (project.getid)
+					send_generic_ok(hres)
+				end
+			end
+		end
+	end
+
 	addDeveloper(hreq: WSF_REQUEST; hres: WSF_RESPONSE)
 		-- PATH: /projects/{idproj}/adddeveloper
 		-- METHOD: POST
