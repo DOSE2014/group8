@@ -307,4 +307,9 @@ feature
 		do
 			Result := messagedbhandler.getNewMessages(chatId, lastMessageId)
 		end
+
+	isManagerOfProjects(a : INTEGER) : BOOLEAN
+		do
+			Result := userdbhandler.isManagerOfProjects(a)
+		end
 end
