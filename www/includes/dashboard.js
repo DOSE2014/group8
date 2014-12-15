@@ -15,6 +15,7 @@ var url_createProjects = "/projects/create";
 var url_remDevProject = "/projects/{0}/remdeveloper";
 var url_addDevProject = "/projects/{0}/adddeveloper";
 var url_editAccount = "/account/edit";
+var url_delAccount = "/account/delete";
 var url_remPBI = "/projects/{0}/pbis/{1}/delete";
 var url_addPBI = "/projects/{0}/pbis/create";
 var url_addBacklog = "/projects/{0}/createbacklog";
@@ -27,6 +28,7 @@ var url_deleteSpl = "/projects/{0}/sprintlogs/{1}/delete";
 var url_createTask = "/projects/{0}/pbis/{1}/createtask";
 var url_delTask = "/projects/{0}/tasks/{1}/delete";
 var url_addMsgChat = "/chat/{0}/insertmessage";
+
 
 //
 var url_login = "login.html";
@@ -67,6 +69,26 @@ dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 					alert("Password changed");
 					$('#modal_profile').modal('hide');
 					
+				} else if (data.status == "error") {
+					alert(data.reason);
+					
+				}
+			}).error(function(error) {
+				alert(error);
+				
+			});
+			
+		}
+	}
+	
+	$scope.deleteAccount = function(){
+		//url_delAccount
+		if(confirm("Are you sure you want to delete your account, this cannot be undone. All your information in the system (Task completion, chat messages, etc) will be deleted. \nDo you want to continue?")){
+			$http.get(url_delAccount).success(function(data) {
+				console.log(data);
+				if (data.status == "ok") {
+					alert("Thank you for using Group8 SCRUM tool. \nUser deleted");
+					window.location.href = url_login;
 				} else if (data.status == "error") {
 					alert(data.reason);
 					
