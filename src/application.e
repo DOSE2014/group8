@@ -89,6 +89,7 @@ feature -- Basic operations
 		do
 			-- List of accessible URL.
 			-- PLEASE KEEP URL IN LESSICAL ORDER!
+			map_uri_template_agent_with_request_methods ("/account/delete", agent rest_account.delete_user, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/account/edit", agent rest_account.edit, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/account/langs", agent rest_account.langs, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/account/listdevelopers", agent rest_account.listdevelopers, router.methods_get)
