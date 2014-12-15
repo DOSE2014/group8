@@ -92,7 +92,7 @@ feature
 
 	deleteProject(p: INTEGER)
 	do
-			create dbmodifystatement.make ("DELETE FROM Project WHERE id=" + p.out + ";", db)
+			create dbmodifystatement.make ("UPDATE Project SET deleted=1 WHERE id=" + p.out + ";", db)
 			dbmodifystatement.execute
 			if dbmodifystatement.has_error
 			then print("Error while deleting project.%N")
@@ -113,10 +113,10 @@ feature
 			create Result.make
 			create dbquerystatement.make (
 			-- First select all projects where user is stakeholder or manager
-			"SELECT id, name, description, manager, stakeholder, creationDate, deleted FROM Project WHERE manager="+u.out+" OR stakeholder=" + u.out + " "
-			+ "UNION "	-- then UNION the case of user is a developer
+			"SELECT id, name, description, manager, stakeholder, creationDate, deleted FROM Project WHERE (manager="+u.out+" OR stakeholder=" + u.out + ") "
+			+ "AND deleted=0 UNION "	-- then UNION the case of user is a developer
 			+ "SELECT id, name, description, manager, stakeholder, creationDate, deleted FROM Project "
-			+ "INNER JOIN Developer_Project ON Project.id = Developer_Project.project WHERE Developer_Project.developer="+u.out+";"
+			+ "INNER JOIN Developer_Project ON Project.id = Developer_Project.project WHERE Developer_Project.developer="+u.out+" AND Project.deleted=0;"
 			, db)
 
 			dbquerystatement.execute (agent genProjects(?, 7, Result))

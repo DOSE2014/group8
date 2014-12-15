@@ -106,6 +106,7 @@ feature -- Basic operations
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/adddeveloper", agent rest_projects.adddeveloper, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/remdeveloper", agent rest_projects.remdeveloper, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/edit", agent rest_projects.editproject, router.methods_post)
+			map_uri_template_agent_with_request_methods ("/projects/{idproj}/delete", agent rest_projects.deleteproject, router.methods_get)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/createbacklog", agent rest_projects.create_backlog, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/deletebacklog", agent rest_projects.delete_backlog, router.methods_post)
 			map_uri_template_agent_with_request_methods ("/projects/{idproj}/completion", agent rest_projects.getcompletionpercentage, router.methods_get)
@@ -138,7 +139,7 @@ feature -- Basic operations
 
 			-- setting the path to the folder from where we serve static files
 			create fhdl.make_hidden (path_to_www_folder)
-			fhdl.set_directory_index (<<"index.html">>)
+			fhdl.set_directory_index (<<"login.html">>)
 			router.handle_with_request_methods ("", fhdl, router.methods_GET)
 		end
 
