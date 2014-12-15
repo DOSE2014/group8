@@ -12,6 +12,7 @@ var url_getProjectCompletion = "/projects/{0}/completion";
 var url_getStakeholders = "/account/liststakeholders"; 
 var url_getDevelopers = "/account/listdevelopers";
 var url_createProjects = "/projects/create";
+var url_delProjects = "/projects/{0}/delete";
 var url_remDevProject = "/projects/{0}/remdeveloper";
 var url_addDevProject = "/projects/{0}/adddeveloper";
 var url_editAccount = "/account/edit";
@@ -85,7 +86,7 @@ dashboard.controller('Profile', ['$scope', '$http', function($scope, $http){
 		//url_delAccount
 		if(confirm("Are you sure you want to delete your account, this cannot be undone. All your information in the system (Task completion, chat messages, etc) will be deleted. \nDo you want to continue?")){
 			$http.get(url_delAccount).success(function(data) {
-				console.log(data);
+				
 				if (data.status == "ok") {
 					alert("Thank you for using Group8 SCRUM tool. \nUser deleted");
 					window.location.href = url_login;
@@ -188,6 +189,23 @@ dashboard.controller('Project', ['$scope', '$http', function($scope, $http){
 			return $scope.srvDevelopers;
 		}
 		
+	}
+	
+	//Deletes the project
+	$scope.deleteProject = function(){
+		if(confirm("Are you sure you want to delete the project, this cannot be undone. All the project information in the system (Task completion, chat messages, etc) will be deleted. \nDo you want to continue?")){
+			$http.get(url_delProjects.format($scope.project.id)).success(function(data) {
+				
+				if (data.status == "ok") {
+					alert("Project deleted");
+					$scope.getUserProjects();
+				} else if (data.status == "error") {
+					alert(data.reason);
+				}
+			}).error(function(error) {
+				alert(error);
+			});	
+		}
 	}
 
 	//Opens the modal pop up to manage the developers in a project. Manager Only
