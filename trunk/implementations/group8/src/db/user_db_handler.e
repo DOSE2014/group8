@@ -289,13 +289,26 @@ feature
 
 	deleteUser(u: INTEGER)
 		do
-			create dbmodifystatement.make ("DELETE FROM User WHERE id=" + u.out + ";", db)
+			-- First delete the user
+			create dbmodifystatement.make ("BEGIN TRANSACTION; DELETE FROM User WHERE id=" + u.out + ";", db)
 			dbmodifystatement.execute
 			if dbmodifystatement.has_error
-			then print("Error while deleting user.%N")
+			then log.severe("Error while deleting user.%N")
 			end
 
-			--TODO Delete entries from Language_User, ProgrammingLanguage_User?
+			-- Then, delete Language_User and ProgrammingLanguage_User entries
+			create dbmodifystatement.make ("DELETE FROM Language_User WHERE user=" + u.out + ";", db)
+			dbmodifystatement.execute
+			if dbmodifystatement.has_error
+			then log.severe("Error while deleting Language_User.%N")
+			end
+
+			create dbmodifystatement.make ("DELETE FROM ProgrammingLanguage_User WHERE user=" + u.out + "; COMMIT;", db)
+			dbmodifystatement.execute
+			if dbmodifystatement.has_error
+			then log.severe("Error while deleting ProgrammingLanguage_User.%N")
+			end
+
 		end
 
 	existsEmail(email: STRING): USER

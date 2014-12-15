@@ -35,6 +35,26 @@ feature -- declaring deferred properties
 
 feature
 
+	delete_user(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
+	-- PATH: /account/delete
+	-- METHOD: GET
+	require
+		hreq /= Void
+		hres /= Void
+	local
+		u : USER
+	do
+		http_request  := hreq
+		http_response := hres
+
+		if ensure_authenticated then
+			u := get_session_user
+			db.deleteuserfromid (u.getid)
+			logout -- from AUTHENTICATION
+			send_generic_ok(hres)
+		end
+	end
+
 	account_info(hreq : WSF_REQUEST; hres : WSF_RESPONSE)
 	-- PATH: /account/userinfo
 	-- METHOD: GET
