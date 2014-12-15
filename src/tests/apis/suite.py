@@ -17,6 +17,7 @@ import taskscreatefail, taskseditfail, sprintlogsaddpbi_fail, sprintlogslistpbis
 import badrequest1, badrequest2, sprintlogscreate_fail2, sprintlogscreate_fail3,  sprintlogscreate2
 import stats_proj_fail, stats_proj_fail2
 import sprintlogsdelete_fail, projectsedit_fail, projectsedit_fail2
+import user_delete, projectsdelete, user_delete_fail
 
 print_logo()
 
@@ -99,6 +100,11 @@ try:
     test_("/stats/projpoint - FAIL 2", stats_proj_fail2.exec_test, verbose)
     test_("BAD REQUEST 1", badrequest1.exec_test, verbose)
     test_("BAD REQUEST 2", badrequest2.exec_test, verbose)
+    test_("/projects/2/delete", projectsdelete.exec_test, verbose)
+    test_("/account/delete", user_delete.exec_test, verbose)
+    test_("/account/delete - FAIL", user_delete_fail.exec_test, verbose)
+
+
 finally:
     print_stats()
     

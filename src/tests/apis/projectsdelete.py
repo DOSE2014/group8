@@ -1,18 +1,18 @@
 import http.client
-import json, login
+import json, login_sh
 
 from suite_functions import check_reply
 
-params = """{
-}""";
+params = """
+""";
 
 expected_response = json.loads("""
 {"status":"ok"}
 """)
 
 def exec_test(debug=False):
-    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain", "Cookie" : "_pdt_session_id_="+login.cookie_id+""}
+    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain", "Cookie" : "_pdt_session_id_="+login_sh.cookie_id+""}
     conn = http.client.HTTPConnection("localhost", 8080)
-    conn.request("POST", "/projects/1/tasks/5/delete", params, headers)
+    conn.request("GET", "/projects/4/delete", params, headers)
 
     return check_reply(conn, expected_response, debug)
