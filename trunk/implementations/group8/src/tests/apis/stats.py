@@ -7,7 +7,7 @@ params = """{
 }""";
 
 expected_response = json.loads("""
-{"stats":[{"dev":2,"points":45}]}
+{"stats":[{"dev":2,"points":25}]}
 """)
 
 def exec_test(debug=False):
